@@ -74,6 +74,14 @@
 		echo( json_encode( $resultado ) );				
 	}			
 	
+	if (isset($_GET["ultimaCotacao"])){
+		$ultimoIdCotacao = CotacaoSql::ultimo();		
+		$resultado[] = array(				
+			'resultado'	=>  $ultimoIdCotacao,						
+		);					
+		echo( json_encode( $resultado ) );				
+	}			
+	
 	if (isset($_GET["alterarCotacao"])){
 		if (CotacaoSql::alterar($cotacao)){
 			$resultado[] = array(				
