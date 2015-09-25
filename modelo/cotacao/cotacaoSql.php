@@ -2,7 +2,21 @@
   require_once("banco.php");  
   require_once("cotacao.php");  
 
-  class CotacaoSql {  
+  class CotacaoSql { 
+
+    public static function ultimo() {
+      $conexao = Conexao::getInstance()->getConexao();	  
+      $sql = "select max(id) as max from cotacoes";      
+	  $resultado = @mysql_query($sql, $conexao);
+      if ($resultado) {        
+        while ($linha = mysql_fetch_array($resultado)) {
+          $u = $linha["max"];                    
+          $retorno = $u;
+         }				 
+        return ($retorno);
+      } else
+        return null; 	
+    } 		  
   
      public static function adicionar(Cotacao $u) {
       $conexao = Conexao::getInstance()->getConexao();     
