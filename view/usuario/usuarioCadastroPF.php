@@ -140,207 +140,51 @@
             <div class="row">
                <div class="navbar-wrapper">
                   <nav class="navbar">
-                     <br><br><br><br>
+                     
                      <div class="container">
                         <form>
                            <table>
                               <!--Dados Pessoais -->
-                              <h2>
-                              Dados Pessoa Fisica
-                              </h1>
+                              <h2>Dados Pessoa Fisica</h2><br>
                               <tr>
-                                 <td>
-                                    <b>
-                                    Nome Completo
-                                    </b>
-                                 </td>
+                              <td><b>Nome Completo</b></td>
+                              <td><b>CPF(Somente numeros)</b></td>
+                              <td><b>CPF(Somente numeros)</b></td>
+                              <td><b>Orgão Expedidor</b></td>
                               </tr>
-                              <tr>
-                                 <td>
-                                    <input type="text" 
-                                       style="text-transform:uppercase"
-                                       id="nomeCompleto"                                                                    
-                                       name="" 
-                                       size="96" 
-                                       class="form-control" 
-                                       placeholder="Nome Completo" 
-                                       tabindex="1" 
-                                       type="text"
-                                       onkeyup="validar(this,'text');">    
-                                 </td>
+                              <tr>                           
+                              <td><input type="text" style="text-transform:uppercase" id="nomeCompleto" name="" size="40" class="form-control" placeholder="Nome Completo" tabindex="1" type="text" onkeyup="validar(this,'text');"></td>
+                              <td><input type="text" id="cpf" name="" size="40" class="form-control" maxlength="14" placeholder="CPF" tabindex="1" type="text" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"></td>
+                              <td><input type="text" id="rg" name="" size="40" class="form-control" maxlength="9" placeholder="RG" tabindex="1" type="text" onkeypress="javascript: mascara(this, Rg);"></td>
+                              <td><input type="text" id="orgaoExpedidor" style="text-transform:uppercase" name="" size="40" maxlength="8" class="form-control" placeholder="Orgão Expedidor" tabindex="1" type="text" onkeyup="validar(this,'text');"></td>
+
                               </tr>
-                           </table>
-                           <table>
-                              <tr>
-                                 <td>
-                                    <b>
-                                    CPF(Somente numeros)
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    RG
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Orgão Expedidor
-                                    </b>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
-                                    <input type="text" 
-                                       id="cpf" 
-                                       name="" 
-                                       size="30" 
-                                       class="form-control"
-                                       maxlength="14"
-                                       placeholder="CPF" 
-                                       tabindex="1" 
-                                       type="text"
-                                       onblur="javascript: validarCPF(this.value);" 
-                                       onkeypress="javascript: mascara(this, cpf_mask);">
-                                 </td>
-                                 <td>
-                                    <input type="text" 
-                                       id="rg" 
-                                       name="" 
-                                       size="30" 
-                                       class="form-control"
-                                       maxlength="9"
-                                       placeholder="RG" 
-                                       tabindex="1" type="text"
-                                       onkeypress="javascript: mascara(this, Rg);">
-                                 </td>
-                                 <td>
-                                    <input type="text" 
-                                       id="orgaoExpedidor" 
-                                       style="text-transform:uppercase"
-                                       name="" size="20" 
-                                       maxlength="8"
-                                       class="form-control" 
-                                       placeholder="Orgão Expedidor" 
-                                       tabindex="1" 
-                                       type="text"
-                                       onkeyup="validar(this,'text');">
-                                 </td>
-                              </tr>
-                           </table>
+                           </table><br>
+
                            <table>
                               <!--Endereço -->
-                              <h2>
-                                 Endereço
-                              </h2>
+                              <h2>Endereço</h2><br>
                               <tr>
-                                 <td>
-                                    <b>
-                                    CEP
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Logradouro
-                                    </b>
-                                 </td>
+                              <td><b>CEP</b></td>
+                              <td><b>Logradouro</b></td>
+                              <td><b>Número</b></td>
+                              <td><b>Bairro</b></td>
                               </tr>
                               <tr>
-                                 <td>
-                                    <input type="text" 
-                                       id="cep" 
-                                       name="" 
-                                       size="30" 
-                                       class="form-control"
-                                       maxlength="9"
-                                       placeholder="CEP" 
-                                       tabindex="1"
-                                       type="text"
-                                       onkeypress="mascaraCep(this, '#####-###')" 
-                                       onkeyup="validar(this,'num');">
-                                 <td>
-                                    <input type="text" 
-                                       id="logradouro" 
-                                       name="" 
-                                       size="58" 
-                                       class="form-control" 
-                                       placeholder="Logradouro" 
-                                       tabindex="1" 
-                                       type="text"
-                                       style="text-transform:uppercase">
-                                 </td>
-                                 </td>
+                              <td><input type="text" id="cep" name="" size="40" class="form-control"maxlength="9"placeholder="CEP" tabindex="1"type="text" onkeypress="mascaraCep(this, '#####-###')" onkeyup="validar(this,'num');"></td>
+                              <td><input type="text" id="logradouro" name="" size="40" class="form-control" placeholder="Logradouro" tabindex="1" type="text"style="text-transform:uppercase"></td>
+                              <td><input type="text" id="numero" name="" size="40" maxlength="5"class="form-control"placeholder="Número" tabindex="1"type="text"onkeyup="validar(this,'num');"></td>
+                              <td><input type="text" id="bairro" name="" style="text-transform:uppercase" size="40" class="form-control"placeholder="Bairro" tabindex="1" type="text"onkeyup="validar(this,'text');"></td>
                               </tr>
-                           </table>
-                           <table>
+
                               <tr>
-                                 <td>
-                                    <b>
-                                    Número
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Bairro
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Complemento
-                                    </b>
-                                 </td>
+                              <td><b>Complemento</b></td>
+                              <td><b>Estado</b></td>
+                              <td><b>Cidade</b></td>
                               </tr>
                               <tr>
-                                 <td>
-                                    <input type="text" 
-                                       id="numero" 
-                                       name="" 
-                                       size="30" 
-                                       maxlength="5"
-                                       class="form-control"
-                                       placeholder="Número" 
-                                       tabindex="1" 
-                                       type="text"
-                                       onkeyup="validar(this,'num');">
-                                 </td>
-                                 <td>
-                                    <input type="text" 
-                                       id="bairro" 
-                                       name="" 
-                                       style="text-transform:uppercase"
-                                       size="20" 
-                                       class="form-control"
-                                       placeholder="Bairro" 
-                                       tabindex="1" 
-                                       type="text"
-                                       onkeyup="validar(this,'text');">
-                                 </td>
-                                 <td>
-                                    <input type="text"
-                                       id="complemento" 
-                                       name="" 
-                                       size="30" 
-                                       style="text-transform:uppercase"
-                                       class="form-control"
-                                       placeholder="Complemento"
-                                       tabindex="1" type="text">
-                                 </td>
-                              </tr>
-                           </table>
-                           <table>
-                              <tr>
-                                 <td>
-                                    <b>
-                                    Estado
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Cidade
-                                    </b>
-                                 </td>
-                              </tr>
-                              <tr>
-                                 <td>
+                              <td><input type="text"id="complemento" name="" size="40" style="text-transform:uppercase"class="form-control"placeholder="Complemento"tabindex="1" type="text"></td>
+                              <td>
                                     <select tabindex="3" class="form-control" id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0','Escolha a Cidade!')" >
                                        <option value="">Escolha o seu Estado</option>
                                        <option value="PE">PE</option>
@@ -371,144 +215,56 @@
                                        <option value="SP">SP</option>
                                        <option value="TO">TO</option>
                                     </select>
-                                 </td>
-                                 <td>
+                              </td>
+                              <td>
                                     <select tabindex="4" class="form-control" id="cidadeDestino" name="cidadeDestino" >
-                                       <option size="35" value="">Escolha a sua Cidade</option>
+                                       <option value="">Escolha a sua Cidade</option>
                                     </select>
-                                 </td>
+                              </td>
+
                               </tr>
-                           </table>
+                           </table><br>
+
                            <table>
                               <!--Contato -->
-                              <h2>
-                                 Contato
-                              </h2>
+                              <h2>Contato</h2><br>
                               <tr>
-                                 <td>
-                                    <b>
-                                    E-mail
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Telefone Resiencial
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Telefone Celular
-                                    </b>
-                                 </td>
+                              <td><b>E-mail</b></td>
+                              <td><b>Telefne Residencial</b></td>
+                              <td><b>Telefone Celular</b></td>
                               </tr>
                               <tr>
-                                 <td>
-                                    <input type="email" 
-                                       id="email" 
-                                       name="email" 
-                                       style="text-transform:uppercase"
-                                       size="40" 
-                                       class="form-control" 
-                                       placeholder="E-mail" 
-                                       tabindex="1" 
-                                       type="email">
-                                 </td>
-                                 <td>
-                                    <input type="text" 
-                                       id="telefone1" 
-                                       name="telefone1" 
-                                       maxlength="15"
-                                       size="20" 
-                                       maxlength="12"                                            
-                                       class="form-control" 
-                                       placeholder="Telefone Residencial" 
-                                       tabindex="1" type="text"
-                                       onkeyup="validar(this,'num');"
-                                       onkeypress="telefoneMascara(this)"
-                                       onkeypress="mascara(this, '## ####-####')">
-                                 </td>
-                                 <td>
-                                    <input type="text" 
-                                       id="telefone2" 
-                                       name="telefone2" 
-                                       size="20" 
-                                       maxlength="14"
-                                       class="form-control"                                     
-                                       placeholder="Telefone Celular"
-                                       tabindex="1" type="text"
-                                       onkeyup="validar(this,'num');"
-                                       onkeypress="telefoneMascara(this)"
-                                       onkeypress="mascara(this, '## ####-####')">
-                                 </td>
+                                 <td><input type="email" id="email" name="email" style="text-transform:uppercase"size="40" class="form-control" placeholder="E-mail" tabindex="1" type="email"></td>
+                                 <td><input type="text" id="telefone1" name="telefone1" maxlength="15"size="40" maxlength="12"class="form-control" placeholder="Telefone Residencial" tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
+                                 <td><input type="text" id="telefone2" name="telefone2" size="40" maxlength="14"class="form-control"placeholder="Telefone Celular"tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
                               </tr>
-                           </table>
+                           </table><br>
+
                            <table>
                               <!--Login/Senha -->
-                              <h2>
-                                 Login/Senha
-                              </h2>
-                              <select class="form-control" id="perfil" name="perfil"
-                                 disabled>
-                                 <option value="1">
-                                    Pessoa Física
-                                 </option>
-                              </select>
+                              <h2>Login/Senha</h2><br>
+
                               <tr>
-                                 <td>
-                                    <b>
-                                    Usuário
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Senha
-                                    </b>
-                                 </td>
-                                 <td>
-                                    <b>
-                                    Confirmar Senha
-                                    </b>
-                                 </td>
+                              <td><b>Usuário</b></td>
+                              <td><b>Senha</b></td>
+                              <td><b>Confirmar Senha</b></td>
+                              <td><b>Perfil</b></td>
                               </tr>
                               <tr>
-                                 <td>
-                                    <input type="text" id="login" name="" size="30" class="form-control" placeholder="Usuário" tabindex="1" type="text">
-                                 </td>
-                                 <td>
-                                    <input type="password" 
-                                       size="25" 
-                                       class="form-control" 
-                                       id="senha"
-                                       placeholder="Senha" 
-                                       tabindex="1" 
-                                       type="text">
-                                 </td>
-                                 <td>
-                                    <input type="password" 
-                                       id="confirmaSenha" 
-                                       name="" 
-                                       size="25" 
-                                       class="form-control" 
-                                       placeholder="Confirme  sua senha" 
-                                       tabindex="1" 
-                                       type="text"
-                                       onChange="verificacaoSenha()">
-                                 </td>
+                              <td><input type="text" id="login" name="" size="40" class="form-control" placeholder="Usuário" tabindex="1" type="text"></td>
+                              <td><input type="password" size="40" class="form-control" id="senha"placeholder="Senha" tabindex="1" type="text"></td>
+                              <td><input type="password" id="confirmaSenha" name="" size="40" class="form-control" placeholder="Confirme  sua senha" tabindex="1" type="text"onChange="verificacaoSenha()"></td>
+                              <td><select class="form-control" id="perfil" name="perfil">
+                              <option value="1">Pessoa Física</option>
+                              </select></td>
+
                               </tr>
                            </table>
                            <br>
-                           <br>
-                           <input type="submit" id="btnIncluir" onClick="consultaAJAXPF()">
-                           <br>
-                           <br>
-                           <br>
-                           <br>
+                           <input class="btn btn-success btn-login-submit" value="Confirmar" type="submit" id="btnIncluir" onClick="consultaAJAXPF()">
+                           <input class="btn btn-success btn-login-submit" value="Limpar" type="reset" id="btnLimpar">
+
                         </form>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
-                        <br>
                      </div>
                   </nav>
                </div>
