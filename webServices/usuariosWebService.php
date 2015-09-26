@@ -43,10 +43,12 @@
 		}	
 		
 		echo(json_encode($resultado ));	
-		die;			
+		die;
 	}
 
-	if ($_GET["editSave"] == "incluirUsuarioAdmin"){			
+
+	if ($_GET["editSave"] == "adicionarUsuario"){	
+
 		//Classe de Usuário
 		$usuario = new Usuario();	
 
@@ -82,26 +84,32 @@
 			);			
 		}	
 		
-		echo(json_encode($resultado ));			
+		/*if ($resultado){
+			echo json_encode(array('success'=>true));
+		} else {
+			echo json_encode(array('msg'=>'Erro ao inserir dados.'));
+		}*/
+		echo(json_encode($resultado));	
 	}
-	
-	else if ($_GET["editSave"] == "alterarUsuario"){			
+	if ($_GET["editSave"] == "alterarUsuario"){
 		//Classe de Usuário
-		$usuario = new Usuario();	
+		$usuario = new Usuario();
 
 		//Atributos da classe Usuário/Valores
 		$usuario->setId($_REQUEST['id']);
 		 
 		$usuario->setStatus($_REQUEST['idStatus']); 
 		$usuario->setPerfil($_REQUEST['idPerfil']); 
-		$usuario->setNomeCompleto($_REQUEST['nomeCompleto']); 
-		$usuario->setRazaoSocial($_REQUEST['razaoSocial']); 
-		$usuario->setnomeFantasia($_REQUEST['nomeFantasia']); 
-		$usuario->setTipoEmpresa($_REQUEST['tipoEmpresa']); 
+
+		$usuario->setNomeCompleto($_REQUEST['nomeCompleto']);
 		$usuario->setRg($_REQUEST['rg']); 
 		$usuario->setOrgaoExpedidor($_REQUEST['orgaoExpedidor']); 
 		$usuario->setCpf($_REQUEST['cpf']); 
-		$usuario->setCnpj($_REQUEST['cnpj']); 
+
+		$usuario->setRazaoSocial($_REQUEST['razaoSocial']);  
+		$usuario->setnomeFantasia($_REQUEST['nomeFantasia']);
+		$usuario->setTipoEmpresa($_REQUEST['tipoEmpresa']);
+		$usuario->setCnpj($_REQUEST['cnpj']);
 
 		$usuario->setEmail($_REQUEST['email']); 
 		$usuario->setTelefone1($_REQUEST['telefone1']); 
@@ -123,11 +131,9 @@
 			);			
 		}	
 		
-		echo(json_encode($resultado ));				
+		echo(json_encode($resultado ));						
 	}
-
-	else if ($_GET["editSave"] == "deletarUsuario"){
-
+	if ($_GET["editSave"] == "removerUsuario"){
 		//Classe de Usuário
 		$usuario = new Usuario();	
 
@@ -138,17 +144,50 @@
 			$resultado[] = array(				
 				'oka'	=>  'oks',						
 			);			
-		}	
+		}		
 	}
-
-	else if ($_GET["editSave"] == "carregarUsuario"){
-
+	if ($_GET["editSave"] == "carrefarUsuario"){
 		if (UsuarioSql::carregarLista()){
 			$resultado[] = array(				
 				'oka'	=>  'oks',						
 			);			
 		}	
-	}		
+	}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ?>
 	
 	

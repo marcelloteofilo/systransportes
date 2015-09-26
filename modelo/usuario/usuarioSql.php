@@ -76,6 +76,8 @@
   
   	  //Update para a tabela de Usuários do banco de dados
 	  $sql = "update usuarios set idStatus=$idStatus,idPerfil=$idPerfil,nomeCompleto='$nomeCompleto',razaoSocial='$razaoSocial',nomeFantasia='$nomeFantasia',tipoEmpresa='$tipoEmpresa',rg='$rg',orgaoExpedidor='$orgaoExpedidor',cpf='$cpf',cnpj='$cnpj',email='$email',telefone1='$telefone1',telefone2='$telefone2',logradouro='$logradouro',bairro='$bairro',numero='$numero',complemento='$complemento',codCidade=$codCidade,cep='$cep',login='$login',senha='$senha'  where id=$id";
+      echo($sql);
+      
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);

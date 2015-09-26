@@ -20,7 +20,7 @@ $result = mysql_query("SELECT * FROM `usuarios` WHERE `login` = '$login' AND `se
 	session_destroy();
 	unset ($_SESSION['login']);
 	unset ($_SESSION['senha']);
-	header('location: login.html');
+	header('location: login.php');
 	
 	}
 
