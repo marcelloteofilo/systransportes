@@ -196,9 +196,7 @@
             <td><input class="form-control" type="text" id="numero" name="numero" size="23" maxlength="5" placeholder="Número" type="text" onkeyup="validar(this,'num');"></td>
             <td><input class="form-control" type="text" id="bairro" name="bairro" style="text-transform:uppercase" size="23" placeholder="Bairro" type="text" onkeyup="validar(this,'text');"></td>
           </tr>
-        </table>
-        <br>
-        <table>
+        
           <tr>
             <td><b>Complemento</b></td>
             <td><b>Estado</b></td>
