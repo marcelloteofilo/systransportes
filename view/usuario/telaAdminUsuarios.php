@@ -95,41 +95,46 @@
   <body style="background:#F3F8F7">
     
     <!-- TABELA ADMIN PESSOA FÍSICA-->
-    <table id="dg" title="Cadastro de Usuários" class="easyui-datagrid" style=" width:1200px;height:450px"
+    <center>
+    <table id="dg" title="Cadastro de Usuários" class="easyui-datagrid" style=" width:1250px;height:495px"
       url="../../webServices/usuariosWebService.php?editSave=carrefarUsuario"
-      toolbar="#toolbar" pagination="true"
+      toolbar="#toolbar" pagination="true" 
       rownumbers="true" fitColumns="true" singleSelect="true">
       <thead>
+
         <tr>
-          <th field="idStatus" width="45"  editor="{type:'numberbox',options:{required:true}}">Status</th>
-          <th field="idPerfil" width="45"  editor="{type:'numberbox',options:{required:true}}">Status</th>
-          <th field="nomeCompleto" width="70" editor="text">Nome.C</th>
-          <th field="rg" width="50" editor="text">RG</th>
-          <th field="orgaoExpedidor" width="50" editor="text">Orgão.E</th>
-          <th field="cpf" width="50" editor="text">CPF</th>
-          <th field="razaoSocial" width="70" editor="text">Razão.S</th>
-          <th field="nomeFantasia" width="50" editor="text">Nome.F</th>
-          <th field="tipoEmpresa" width="50" editor="text">Tipo.E</th>
-          <th field="cnpj" width="50" editor="text">CNPJ</th>
-          <th field="email" width="50" editor="{type:'validatebox',options:{validType:'email'}}">E-mail</th>
-          <th field="telefone1" width="50" editor="{type:'validatebox',options:{required:true}}">Tel.1</th>
-          <th field="telefone2" width="50" editor="text">Tel.2</th>
-          <th field="logradouro" width="50" editor="{type:'validatebox',options:{required:true}}">Lograd.</th>
-          <th field="bairro" width="50" editor="{type:'validatebox',options:{required:true}}">Bairro</th>
-          <th field="numero" width="30" editor="{type:'validatebox',options:{required:true}}">Nm</th>
-          <th field="complemento" width="50" editor="text">Compl.</th>
-          <th field="codCidade" width="65" editor="{type:'validatebox',options:{required:true}}">Cod.Cidade</th>
-          <th field="cep" width="50" editor="{type:'validatebox',options:{required:true}}">CEP</th>
-          <th field="login" width="50" editor="{type:'validatebox',options:{required:true}}">Login</th>
-          <th field="senha" width="50" editor="{type:'validatebox',options:{required:true}}">Senha</th>
+          <th field="idStatus" width="45">Status</th>
+          <th field="idPerfil" width="45">Perfil</th>
+          <th field="nomeCompleto" width="70">Nome.C</th>
+          <th field="rg" width="50">RG</th>
+          <th field="orgaoExpedidor" width="50">Orgão.E</th>
+          <th field="cpf" width="50">CPF</th>
+          <th field="razaoSocial" width="70">Razão.S</th>
+          <th field="nomeFantasia" width="50">Nome.F</th>
+          <th field="tipoEmpresa" width="50">Tipo.E</th>
+          <th field="cnpj" width="50">CNPJ</th>
+          <th field="email" width="50">E-mail</th>
+          <th field="telefone1" width="50">Tel.1</th>
+          <th field="telefone2" width="50">Tel.2</th>
+          <th field="logradouro" width="50">Lograd.</th>
+          <th field="bairro" width="50">Bairro</th>
+          <th field="numero" width="30">Nm</th>
+          <th field="complemento" width="50">Compl.</th>
+          <th field="codCidade" width="65">Cod.Cidade</th>
+          <th field="cep" width="50">CEP</th>
+          <th field="login" width="50">Login</th>
+          <th field="senha" width="50">Senha</th>
         </tr>
-      </thead>
+      </thead>   
     </table>
+
     <div id="toolbar">
       <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Usuário</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Editar Usuário</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Usuário</a>
+      
     </div>
+  </center>
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
 
     <!-- DIALOG ADMIN PESSOA FÍSICA -->
@@ -166,7 +171,7 @@
             <td><input class="form-control" type="text" id="nomeFantasia" name="nomeFantasia" size="23" maxlength="14" placeholder="Nome Fantasia" type="text" onkeyup="validar(this,'text');"></td>
             <td><input class="form-control" type="text" id="cnpj" name="cnpj" size="23" maxlength="9" placeholder="CNPJ" type="text"></td>
             <td><select class="form-control" id="tipoEmpresa" name="tipoEmpresa">
-                <option value="0"> --- Selecione o tipo --- </option>
+                <option value=""> --- Selecione o tipo --- </option>
                 <option value="Empresa Privada">Empresa Privada</option>
                 <option value="Empresa Publica">Empresa Publica</option>
                 </select>
