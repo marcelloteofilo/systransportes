@@ -215,13 +215,13 @@
                                                                 
                                                                 <ul class="ds-btn">
                                                                     <li>
-                                                                    <a class="btn btn-success btn-login-submit" href="usuarioCadastroPF.html#cadastropf">
+                                                                    <a class="btn btn-success btn-login-submit" href="usuarioCadastroPF.php#cadastropf">
                                                                     <span>Pessoa Física<br><small>Cadastre-se como PF</small></span></a> 
                                                                     </li>
 																	<br>
 
                                                                     <li>
-                                                                    <a class="btn btn-success btn-login-submit" href="usuarioCadastroPJ.html#cadastropj">
+                                                                    <a class="btn btn-success btn-login-submit" href="usuarioCadastroPJ.php#cadastropj">
                                                                     <span>Pessoa Jurídica<br><small>Cadastre-se como PJ</small></span></a> 
                                                                     </li>
                                                                 </ul>    
