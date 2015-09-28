@@ -84,6 +84,17 @@
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<div class="offer offer-info">
+				<div class="offer-content">
+					<h3 class="lead">
+						Cheque
+					</h3>						
+					<p>And a little description.</p>
+					<a class="btn btn-lg btn-block btn-default" href="cheque/telaAdminCheque.php">Acesse</a>	
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			<div class="offer offer-danger">
 				<div class="shape">
 					<div class="shape-text">
