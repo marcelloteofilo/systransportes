@@ -46,7 +46,7 @@
 			realizaConsulta=true;				
 		}			
 		if (realizaConsulta){
-			var jsonParametros = {consultaCotacao: 'sim', argumento: argumento};			
+			var jsonParametros = {editSave: 'consultaCotacao', argumento: argumento};			
 			if (aguardaDigitar){
 				clearTimeout(aguardaDigitar);						
 				aguardaDigitar = setInterval(function(){acessoWebService(jsonParametros, webServiceCotacao);},1000);				
@@ -59,7 +59,7 @@
 	//CONSULTA COTACAO POR CODIGO
 	function consultaCotacao(idCotacao) {	
 		if (idCotacao>0){
-			var jsonParametros = {consultaCotacao: 'sim', idCotacao: idCotacao};					
+			var jsonParametros = {editSave: 'consultaCotacao', idCotacao: idCotacao};					
 			acessoWebService(jsonParametros, webServiceCotacao);								
 		}
 	}
@@ -138,7 +138,7 @@
 		
 		if (acao=='incluir')
 		{
-			jsonParametros = {incluirCotacao: 'sim',
+			jsonParametros = {editSave: 'incluirCotacao',
 			idUsuario: idUsuario,
 			descricao: descricao.value,
 			valorFrete: valorFrete,
@@ -156,7 +156,7 @@
 		}		
 		if (acao=='alterar')
 		{
-			jsonParametros = {alterarCotacao: 'sim',
+			jsonParametros = {editSave: 'alterarCotacao',
 			idCotacao: idCotacao.value,
 			idUsuario: idUsuario,
 			descricao: descricao.value,
@@ -173,13 +173,13 @@
 		}		
 		if (acao=='cancelar')
 		{
-			jsonParametros = {statusCotacao: 'sim', 
+			jsonParametros = {editSave: 'statusCotacao', 
 			status: 0,
 			idCotacao: idCotacao.value};	
 		}		
 		if (acao=='aprovar')
 		{
-			jsonParametros = {aprovarCotacao: 'sim',
+			jsonParametros = {editSave: 'aprovarCotacao',
 			idCotacao: idCotacao.value,
 			aprovadoCliente: 1};	
 		}		

@@ -5,8 +5,8 @@
 	extract ($_REQUEST);
 	extract ($_SESSION);	
 	
-	//CARREGA OBJETO COTAÇÃO SE FOR ALTERAR OU INCLUIR
-	if (isset($_GET["incluirCotacao"]) || isset($_GET["alterarCotacao"])) {			
+	//CARREGA OBJETO COTAÇÃO SE FOR ALTERAR OU INCLUIR	
+	if ($_GET["editSave"] == "incluirCotacao" || $_GET["editSave"] == "alterarCotacao") {				
 		$cotacao = new Cotacao();	
 		if (isset($_GET["alterarCotacao"]))
 		$cotacao->setId($idCotacao); 
@@ -64,8 +64,8 @@
 			$status = 1;
 		$cotacao->setStatus($status); 	
 	}
-		
-	if (isset($_GET["incluirCotacao"])){
+	
+    if ($_GET["editSave"] == "incluirCotacao"){		
 		if (CotacaoSql::adicionar($cotacao)){
 			$resultado[] = array(				
 				'resultado'	=>  'ok',						
@@ -74,7 +74,7 @@
 		echo( json_encode( $resultado ) );				
 	}			
 	
-	if (isset($_GET["ultimaCotacao"])){
+	if ($_GET["editSave"] == "ultimaCotacao"){	
 		$ultimoIdCotacao = CotacaoSql::ultimo();		
 		$resultado[] = array(				
 			'resultado'	=>  $ultimoIdCotacao,						
@@ -82,7 +82,7 @@
 		echo( json_encode( $resultado ) );				
 	}			
 	
-	if (isset($_GET["alterarCotacao"])){
+	if ($_GET["editSave"] == "alterarCotacao"){	
 		if (CotacaoSql::alterar($cotacao)){
 			$resultado[] = array(				
 				'resultado'	=>  'ok',						
@@ -91,7 +91,7 @@
 		echo( json_encode( $resultado ) );				
 	}			
 	
-	if (isset($_GET["statusCotacao"])){
+	if ($_GET["editSave"] == "statusCotacao"){	
 		$cotacao = new Cotacao();				
 		$cotacao->setId($idCotacao); 	
 		$cotacao->setStatus($status); 	
@@ -103,7 +103,7 @@
 		echo( json_encode( $resultado ) );				
 	}			
 	
-	if (isset($_GET["aprovarCotacao"])){
+	if ($_GET["editSave"] == "aprovarCotacao"){	
 		$cotacao = new Cotacao();				
 		$cotacao->setId($idCotacao);
 		if (isset($_GET["aprovadoCliente"])){ 		
@@ -123,7 +123,7 @@
 	}			
 	
 	//CONSULTAR COTACOES
-	if (isset($_GET["consultaCotacao"])) {			
+	if ($_GET["editSave"] == "consultaCotacao"){		
 		$resultadoConsulta ='consulta'; 
 		$cotacao = new Cotacao();		
 		if (isset($_GET["idCotacao"])){ 
