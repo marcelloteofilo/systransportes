@@ -83,17 +83,19 @@
 				</div>
 			</div>
 		</div>
+
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-info">
+			<div class="offer offer-warning">
 				<div class="offer-content">
 					<h3 class="lead">
-						Cheque
+						Relatorio de Despesas
 					</h3>						
-					<p>And a little description.</p>
-					<a class="btn btn-lg btn-block btn-default" href="cheque/telaAdminCheque.php">Acesse</a>	
+					<p>Depesas da SysTransportes</p>
+					<a class="btn btn-lg btn-block btn-default" href="despesas/telaAdminDespesas.php">Acesse</a>	
 				</div>
 			</div>
 		</div>
+
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			<div class="offer offer-danger">
 				<div class="shape">
