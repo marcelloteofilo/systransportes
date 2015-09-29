@@ -2,70 +2,71 @@
   require_once("/../banco.php");  
   require_once("cte.php");  
 
- class UsuarioSql {  
+ class CteSql {  
   
-     public static function adicionar(Usuario $usuario) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao();     
+     public static function adicionar(Cte $cte) {
+      
+      	$conexao = Conexao::getInstance()->getConexao();    	  
 	  
-	  //Atributo da tabela usuário
-	  $idPerfil = mysql_real_escape_string($cte->getPerfil(), $conexao);      
-	  $idStatus = mysql_real_escape_string($cte->getStatus(), $conexao);      
-	  $nomeCompleto = mysql_real_escape_string($cte->getNomeCompleto(), $conexao);      
-	  $razaoSocial = mysql_real_escape_string($cte->getRazaoSocial(), $conexao);      
-	  $nomeFantasia = mysql_real_escape_string($cte->getnomeFantasia(), $conexao);      
-	  $tipoEmpresa = mysql_real_escape_string($cte->getTipoEmpresa(), $conexao);     
-	  $rg = mysql_real_escape_string($usuario->cte(), $conexao);      
-	     
+	 	$id 					= mysql_real_escape_string($cte->getId(), $conexao);  
+	  	$cotacao 				= mysql_real_escape_string($cte->getCotacao(), $conexao); 
+	  	$manifesto 				= mysql_real_escape_string($cte->getManifesto(), $conexao);
+	  	$faturamento 			= mysql_real_escape_string($cte->getFaturamento(), $conexao);
+	  	$remetente 				= mysql_real_escape_string($cte->getRemetente(), $conexao); 
+	  	$destinatario 			= mysql_real_escape_string($cte->getDestinatario(), $conexao);                
+	  	$emissao 				= mysql_real_escape_string($cte->getEmissao(), $conexao);   
+	  	$status 				= mysql_real_escape_string($cte->getStatus(), $conexao); 
+	  	$dataEntrega 			= mysql_real_escape_string($cte->getDataEntrega(), $conexao); 
+	  	$horaEntrega 			= mysql_real_escape_string($cte->getHoraEntrega(), $conexao);    
   
-  	  //Insert para a tabela de Usuários do banco de dados
-	  $sql = "insert into cte (idStatus ,idPerfil, nomeCompleto, razaoSocial, nomeFantasia, tipoEmpresa, rg, orgaoExpedidor, cpf, cnpj, email, telefone1, telefone2, logradouro, bairro, numero, complemento, cep, codCidade, login, senha) values ($idStatus, $idPerfil, '$nomeCompleto', '$razaoSocial', '$nomeFantasia', '$tipoEmpresa', '$rg', '$orgaoExpedidor', '$cpf','$cnpj', '$email', '$telefone1', '$telefone2', '$logradouro', '$bairro', '$numero', '$complemento', '$cep',$codCidade, '$login', '$senha')";	  
-      $resultado = @mysql_query($sql, $conexao);
+	  	$sql = "insert into cte (id ,idCotacao, idManifesto, idFaturamento, idRemetente, idDestinatario, 
+	  				emissao, status, dataEntrega, HoraEntrega) values ($id, $cotacao, $manifesto, $faturamento,
+	  					$remetente, $destinatario, '$emissao', '$status', '$dataEntrega','$horaEntrega')";	  
 
-      return ($resultado === true);
+      	$resultado = @mysql_query($sql, $conexao);
+
+      	return ($resultado === true);
     }
 
      public static function alterar(Cte $cte) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao();     
-	  
-	  //Atributo da tabela usuário
-	  $id = mysql_real_escape_string($cte->getId(), $conexao); 
-	  $idPerfil = mysql_real_escape_string($cte->getPerfil(), $conexao);      
-	  $idStatus = mysql_real_escape_string($cte->getStatus(), $conexao);      
-	  $nomeCompleto = mysql_real_escape_string($cte->getNomeCompleto(), $conexao);      
-	  $razaoSocial = mysql_real_escape_string($cte->getRazaoSocial(), $conexao);      
-	  $nomeFantasia = mysql_real_escape_string($cte->getnomeFantasia(), $conexao);      
-	  $tipoEmpresa = mysql_real_escape_string($cte->getTipoEmpresa(), $conexao);     
-	 
-  
-  	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update cte set idStatus=$idStatus,idPerfil=$idPerfil,nomeCompleto='$nomeCompleto',razaoSocial='$razaoSocial',nomeFantasia='$nomeFantasia',tipoEmpresa='$tipoEmpresa',rg='$rg',orgaoExpedidor='$orgaoExpedidor',cpf='$cpf',cnpj='$cnpj',email='$email',telefone1='$telefone1',telefone2='$telefone2',logradouro='$logradouro',bairro='$bairro',numero='$numero',complemento='$complemento',codCidade=$codCidade,cep='$cep',login='$login',senha='$senha'  where id=$id";
-      echo($sql);
-      
-      $resultado = @mysql_query($sql, $conexao);
 
-      return ($resultado === true);
+      	$conexao = Conexao::getInstance()->getConexao();     
+	  
+	  	$id 					= mysql_real_escape_string($cte->getId(), $conexao);  
+	  	$cotacao 				= mysql_real_escape_string($cte->getCotacao(), $conexao); 
+	  	$manifesto 				= mysql_real_escape_string($cte->getManifesto(), $conexao);
+	  	$faturamento 			= mysql_real_escape_string($cte->getFaturamento(), $conexao);
+	  	$remetente 				= mysql_real_escape_string($cte->getRemetente(), $conexao); 
+	  	$destinatario 			= mysql_real_escape_string($cte->getDestinatario(), $conexao);                
+	  	$emissao 				= mysql_real_escape_string($cte->getEmissao(), $conexao);   
+	  	$status 				= mysql_real_escape_string($cte->getStatus(), $conexao); 
+	  	$dataEntrega 			= mysql_real_escape_string($cte->getDataEntrega(), $conexao); 
+	  	$horaEntrega 			= mysql_real_escape_string($cte->getHoraEntrega(), $conexao);      
+	 
+	  	$sql = "update cte set id=$id, idContacao=$contacao, idManifesto=$manifesto, idFaturamento=faturamento,
+	  		 		idRemetente=$remetente, idDestinatario=$destinatario, emissao='$emissao', status='$status', 
+	  		 			dataEntrega='$dataEntrega', horaEntrega='$horaEntrega' where id=$id";
+      
+      	$resultado = @mysql_query($sql, $conexao);
+
+      	return ($resultado === true);
     }
 
     public static function deletar(Cte $cte) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao();     
+     
+      	$conexao = Conexao::getInstance()->getConexao();     
 	  
-	  //Atributo da tabela usuário
-	  $id = mysql_real_escape_string($cte->getId(), $conexao);
+	  	$id = mysql_real_escape_string($cte->getId(), $conexao);
 
-  	  //Delet para a tabela de Usuários do banco de dados
-	  $sql = "delete from cte where id=$id";
+	  	$sql = "delete from cte where id=$id";
       
-      $resultado = @mysql_query($sql, $conexao);
+      	$resultado = @mysql_query($sql, $conexao);
 
-      return ($resultado === true);
-
+      	return ($resultado === true);
     }
 	
     public static function carregarLista() {
-      //Conexão com o banco
+      
       $conexao = Conexao::getInstance()->getConexao();     
 
 		$rs = mysql_query('select * from cte');
@@ -76,5 +77,35 @@
 		echo json_encode($result);
     }
 
+    public static function carregarLista() {
+
+		$conexao = Conexao::getInstance()->getConexao();
+
+		$rs = mysql_query('select * from cte');
+
+		$result = array();
+			
+		while($row = mysql_fetch_array($rs)) {
+
+			$objCte = new Cte();
+			$objCte->setId($row['id']);
+			$objCte->setCotacao($row['idContacao']);
+			$objCte->setManifesto($row['idManifesto']);
+			$objCte->setFaturamento($row['idFaturamento']);
+			$objCte->setRemetente($row['idRemetente']);
+			$objCte->setDestinatario($row['idDestinatario']);
+			$objCte->setEmissao($row['emissao']);
+			$objCte->setStatus($row['status']);
+			$objCte->setDataEntrega($row['dataEntrega']);
+			$objCte->setHoraEntrega($row['horaEntrega']);
+			$result[] = $objCte;
+		}
+
+		return $result;
+	}
+	
+	}
+  
   }
+
 ?>
