@@ -1,5 +1,5 @@
 <?php
-  class Usuario {
+  class Cte {
 
   //Atributos
   private $id;    
@@ -11,8 +11,7 @@
   private $emissao;
   private $status;
   private $dataEntrega;
-
-
+  private $horaEntrega;
    
       
   public function setId($l) {
@@ -44,6 +43,7 @@
     }   
     return $this->manifesto;
   } 
+
   public function setFaturamento($faturamento) {
        $this->faturamento = trim($faturamento);
   }
@@ -54,6 +54,7 @@
     }   
     return $this->faturamento;
   } 
+
   public function setRemetente($remetente) {
        $this->remetente = trim($remetente);
   }
@@ -64,6 +65,7 @@
     }   
     return $this->remetente;
   } 
+
   public function setDestinatario($destinatario) {
        $this->destinatario = trim($destinatario);
   }
@@ -74,6 +76,7 @@
     }   
     return $this->destinatario;
   } 
+
   public function setEmissao($emissao) {
     $this->id = trim($emissao);
   }
@@ -81,6 +84,7 @@
   public function getEmissao() {
     return $this->emissao;
   }
+
   public function setStatus($status) {
     $this->id = trim($status);
   }
@@ -88,6 +92,7 @@
   public function getStatus() {
     return $this->status;
   }
+
 	public function setDataEntrega($dataEntrega) {
     $this->id = trim($dataEntrega);
   }
@@ -95,7 +100,15 @@
   public function getDataEntrega() {
     return $this->dataEntrega;
   }
-	
+
+  public function setHoraEntrega($horaEntrega) {
+    $this->id = trim($horaEntrega);
+  }
+    
+  public function getHoraEntrega() {
+    return $this->horaEntrega;
+  }	
 
   }
+
 ?>
