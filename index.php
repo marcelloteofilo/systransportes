@@ -5,7 +5,7 @@ session_start();
 		session_destroy();
 		unset($_SESSION['login']);
 		unset($_SESSION['senha']);
-		header('location: view/usuario/login.php#login');
+		//header('location: view/usuario/login.php#login');
 	}
 	$logado = $_SESSION['login'];
 ?>
