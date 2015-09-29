@@ -1,192 +1,87 @@
 <?php
-	require_once("../modelo/usuario/usuarioSql.php");   	
+	require_once("../modelo/cte/cteSql.php");   	
 	session_start();   	
 	
 	extract ($_REQUEST);
 	extract ($_SESSION);	
 
-	//CONSULTA USUÁRIO
-	if (isset($_GET["incluirUsuario"])) {			
-	//if ($_GET["editSave"] == "incluirUsuario"){		
-		//Classe de Usuário
-		$usuario = new Usuario();	
+	if ($_GET["editSave"] == "incluirCte") {			
+		$cte = new Cte();	
 
-		//Atributos da classe Usuário/Valores 
-		$usuario->setPerfil($perfil);
-		$usuario->setStatus($status); 
-		$usuario->setNomeCompleto($nomeCompleto); 
-		$usuario->setRazaoSocial($razaoSocial); 
-		$usuario->setnomeFantasia($nomeFantasia); 
-		$usuario->setTipoEmpresa($tipoEmpresa); 
-		$usuario->setRg($rg); 
-		$usuario->setOrgaoExpedidor($orgaoExpedidor); 
-		$usuario->setCpf($cpf); 
-		$usuario->setCnpj($cnpj); 
-
-		$usuario->setEmail($email); 
-		$usuario->setTelefone1($telefone1); 
-		$usuario->setTelefone2($telefone2); 
-		$usuario->setLogradouro($logradouro); 
-		$usuario->setBairro($bairro); 
-		$usuario->setComplemento($complemento); 
-		$usuario->setNumero($numero); 
-		$usuario->setCep($cep); 
-		$usuario->setCodCidade($codCidade); 
-
-		$usuario->setLogin($login); 
-		$usuario->setSenha($senha); 				
+		$cte->setId($id); 
+		$cte->setCotacao($cotacao); 
+		$cte->setManifesto($manifesto); 
+		$cte->setFaturamento($faturamento); 
+		$cte->setRemetente($remetente); 
+		$cte->setDestinatario($destinatario); 
+		$cte->setStatus($status); 
+		$cte->setDataEntrega($dataEntrega); 
+		$cte->setHoraEntrega($horaEntrega);			
 		
-		if (UsuarioSql::adicionar($usuario)){
+		if (CteSql::adicionar($cte)) {
 			$resultado[] = array(				
-				'oka'	=>  'oks',						
+					'oka'	=>  'oks',						
 			);			
-		}	
-		
+		}			
 		echo(json_encode($resultado ));	
-		die;
 	}
 
 
-	if ($_GET["editSave"] == "adicionarUsuario"){	
+	if ($_GET["editSave"] == "alterarCte") {	
+		$cte = new Cte();	
 
-		//Classe de Usuário
-		$usuario = new Usuario();	
+		$cte->setId($id); 
+		$cte->setCotacao($cotacao); 
+		$cte->setManifesto($manifesto); 
+		$cte->setFaturamento($faturamento); 
+		$cte->setRemetente($remetente); 
+		$cte->setDestinatario($destinatario); 
+		$cte->setStatus($status); 
+		$cte->setDataEntrega($dataEntrega); 
+		$cte->setHoraEntrega($horaEntrega);			
 
-		//Atributos da classe Usuário/Valores 
-		$usuario->setStatus($_REQUEST['idStatus']); 
-		$usuario->setPerfil($_REQUEST['idPerfil']); 
-		$usuario->setNomeCompleto($_REQUEST['nomeCompleto']); 
-		$usuario->setRazaoSocial($_REQUEST['razaoSocial']); 
-		$usuario->setnomeFantasia($_REQUEST['nomeFantasia']); 
-		$usuario->setTipoEmpresa($_REQUEST['tipoEmpresa']); 
-		$usuario->setRg($_REQUEST['rg']); 
-		$usuario->setOrgaoExpedidor($_REQUEST['orgaoExpedidor']); 
-		$usuario->setCpf($_REQUEST['cpf']); 
-		$usuario->setCnpj($_REQUEST['cnpj']); 
-
-		$usuario->setEmail($_REQUEST['email']); 
-		$usuario->setTelefone1($_REQUEST['telefone1']); 
-		$usuario->setTelefone2($_REQUEST['telefone2']); 
-		$usuario->setLogradouro($_REQUEST['logradouro']); 
-		$usuario->setBairro($_REQUEST['bairro']); 
-		$usuario->setComplemento($_REQUEST['numero']); 
-		$usuario->setNumero($_REQUEST['complemento']); 
-		$usuario->setCep($_REQUEST['cep']); 
-		$usuario->setCodCidade($_REQUEST['codCidade']); 
-
-		$usuario->setLogin($_REQUEST['login']); 
-		$usuario->setSenha($_REQUEST['senha']); 				
-		
-
-		if (UsuarioSql::adicionar($usuario)){
+		if (CteSql::alterar($cte)) {
 			$resultado[] = array(				
-				'oka'	=>  'oks',						
+					'oka'	=>  'oks',						
 			);			
-		}	
-		
-		/*if ($resultado){
-			echo json_encode(array('success'=>true));
-		} else {
-			echo json_encode(array('msg'=>'Erro ao inserir dados.'));
-		}*/
+		}
 		echo(json_encode($resultado));	
 	}
-	if ($_GET["editSave"] == "alterarUsuario"){
-		//Classe de Usuário
-		$usuario = new Usuario();
 
-		//Atributos da classe Usuário/Valores
-		$usuario->setId($_REQUEST['id']);
-		 
-		$usuario->setStatus($_REQUEST['idStatus']); 
-		$usuario->setPerfil($_REQUEST['idPerfil']); 
 
-		$usuario->setNomeCompleto($_REQUEST['nomeCompleto']);
-		$usuario->setRg($_REQUEST['rg']); 
-		$usuario->setOrgaoExpedidor($_REQUEST['orgaoExpedidor']); 
-		$usuario->setCpf($_REQUEST['cpf']); 
+	if ($_GET["editSave"] == "deletarCte") {	
+		$cte = new Cte();
 
-		$usuario->setRazaoSocial($_REQUEST['razaoSocial']);  
-		$usuario->setnomeFantasia($_REQUEST['nomeFantasia']);
-		$usuario->setTipoEmpresa($_REQUEST['tipoEmpresa']);
-		$usuario->setCnpj($_REQUEST['cnpj']);
+		$cheque->setId($_REQUEST['id']);  
 
-		$usuario->setEmail($_REQUEST['email']); 
-		$usuario->setTelefone1($_REQUEST['telefone1']); 
-		$usuario->setTelefone2($_REQUEST['telefone2']); 
-		$usuario->setLogradouro($_REQUEST['logradouro']); 
-		$usuario->setBairro($_REQUEST['bairro']); 
-		$usuario->setComplemento($_REQUEST['numero']); 
-		$usuario->setNumero($_REQUEST['complemento']); 
-		$usuario->setCep($_REQUEST['cep']); 
-		$usuario->setCodCidade($_REQUEST['codCidade']); 
+		if (ChequeSql::deletar($cte)) {
+			$resultado[] = array(				
+				'ok'	=>  'ok',						
+			);			
+		}			
+		echo(json_encode($resultado));				
+	}
 
-		$usuario->setLogin($_REQUEST['login']); 
-		$usuario->setSenha($_REQUEST['senha']); 				
+	if ($_GET["editSave"] == "carregarCte") {			
 		
+		$listaCtes = CteSql::carregarLista();
 
-		if (UsuarioSql::alterar($usuario)){
+		for ($i=0; $i<count($listaCheques); $i++) {
 			$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);			
+				'id' => $listaCtes[$i]->getId(),	
+				'idCotacao' => $listaCtes[$i]->getCotacao(),
+				'idManifesto' => $listaCtes[$i]->getManifesto(),
+				'idFaturamento' => $listaCtes[$i]->getFaturamento(),
+				'idRemetente' => $listaCtes[$i]->getRemetente(),
+				'idDestinatario' => $listaCtes[$i]->getDestinatario(),
+				'emissao' => $listaCtes[$i]->getEmissao(),
+				'status' => $listaCtes[$i]->getStatus(),
+				'dataEntrega' => $listaCtes[$i]->getDataEntrega(),	
+				'HoraEntrega' => $listaCtes[$i]->getHoraEntrega(),				
+			);
 		}	
-		
-		echo(json_encode($resultado ));						
+		echo(json_encode($resultado));		
 	}
-	if ($_GET["editSave"] == "removerUsuario"){
-		//Classe de Usuário
-		$usuario = new Usuario();	
-
-		//Atributos da classe Usuário/Valores
-		$usuario->setId($_REQUEST['id']);
-
-		if (UsuarioSql::deletar($usuario)){
-			$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);			
-		}		
-	}
-	if ($_GET["editSave"] == "carrefarUsuario"){
-		if (UsuarioSql::carregarLista()){
-			$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);			
-		}	
-	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
 	
