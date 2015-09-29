@@ -68,16 +68,16 @@
 
 		for ($i=0; $i<count($listaCheques); $i++) {
 			$resultado[] = array(				
-				'id' => $listaCtes[$i]->getId(),	
-				'idCotacao' => $listaCtes[$i]->getCotacao(),
-				'idManifesto' => $listaCtes[$i]->getManifesto(),
-				'idFaturamento' => $listaCtes[$i]->getFaturamento(),
-				'idRemetente' => $listaCtes[$i]->getRemetente(),
-				'idDestinatario' => $listaCtes[$i]->getDestinatario(),
-				'emissao' => $listaCtes[$i]->getEmissao(),
-				'status' => $listaCtes[$i]->getStatus(),
-				'dataEntrega' => $listaCtes[$i]->getDataEntrega(),	
-				'HoraEntrega' => $listaCtes[$i]->getHoraEntrega(),				
+				'id' 				=> $listaCtes[$i]->getId(),	
+				'idCotacao' 		=> $listaCtes[$i]->getCotacao(),
+				'idManifesto' 		=> $listaCtes[$i]->getManifesto(),
+				'idFaturamento' 	=> $listaCtes[$i]->getFaturamento(),
+				'idRemetente' 		=> $listaCtes[$i]->getRemetente(),
+				'idDestinatario' 	=> $listaCtes[$i]->getDestinatario(),
+				'emissao' 			=> $listaCtes[$i]->getEmissao(),
+				'status' 			=> $listaCtes[$i]->getStatus(),
+				'dataEntrega' 		=> $listaCtes[$i]->getDataEntrega(),	
+				'HoraEntrega' 		=> $listaCtes[$i]->getHoraEntrega(),				
 			);
 		}	
 		echo(json_encode($resultado));		

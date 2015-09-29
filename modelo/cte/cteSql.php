@@ -4,11 +4,10 @@
 
  class CteSql {  
   
-     public static function adicionar(Cte $cte) {
+    public static function adicionar(Cte $cte) {
       
       	$conexao = Conexao::getInstance()->getConexao();    	  
 	  
-	 	$id 					= mysql_real_escape_string($cte->getId(), $conexao);  
 	  	$cotacao 				= mysql_real_escape_string($cte->getCotacao(), $conexao); 
 	  	$manifesto 				= mysql_real_escape_string($cte->getManifesto(), $conexao);
 	  	$faturamento 			= mysql_real_escape_string($cte->getFaturamento(), $conexao);
@@ -19,8 +18,8 @@
 	  	$dataEntrega 			= mysql_real_escape_string($cte->getDataEntrega(), $conexao); 
 	  	$horaEntrega 			= mysql_real_escape_string($cte->getHoraEntrega(), $conexao);    
   
-	  	$sql = "insert into cte (id ,idCotacao, idManifesto, idFaturamento, idRemetente, idDestinatario, 
-	  				emissao, status, dataEntrega, HoraEntrega) values ($id, $cotacao, $manifesto, $faturamento,
+	  	$sql = "insert into cte (idCotacao, idManifesto, idFaturamento, idRemetente, idDestinatario, 
+	  				emissao, status, dataEntrega, HoraEntrega) values ($cotacao, $manifesto, $faturamento,
 	  					$remetente, $destinatario, '$emissao', '$status', '$dataEntrega','$horaEntrega')";	  
 
       	$resultado = @mysql_query($sql, $conexao);
@@ -28,7 +27,7 @@
       	return ($resultado === true);
     }
 
-     public static function alterar(Cte $cte) {
+    public static function alterar(Cte $cte) {
 
       	$conexao = Conexao::getInstance()->getConexao();     
 	  
@@ -45,7 +44,7 @@
 	 
 	  	$sql = "update cte set id=$id, idContacao=$contacao, idManifesto=$manifesto, idFaturamento=faturamento,
 	  		 		idRemetente=$remetente, idDestinatario=$destinatario, emissao='$emissao', status='$status', 
-	  		 			dataEntrega='$dataEntrega', horaEntrega='$horaEntrega' where id=$id";
+	  		 			dataEntrega='$dataEntrega', horaEntrega='$HoraEntrega' where id=$id";
       
       	$resultado = @mysql_query($sql, $conexao);
 
@@ -63,18 +62,6 @@
       	$resultado = @mysql_query($sql, $conexao);
 
       	return ($resultado === true);
-    }
-	
-    public static function carregarLista() {
-      
-      $conexao = Conexao::getInstance()->getConexao();     
-
-		$rs = mysql_query('select * from cte');
-		$result = array();
-		while($row = mysql_fetch_object($rs)){
-			array_push($result, $row);
-		}
-		echo json_encode($result);
     }
 
     public static function carregarLista() {
@@ -97,7 +84,7 @@
 			$objCte->setEmissao($row['emissao']);
 			$objCte->setStatus($row['status']);
 			$objCte->setDataEntrega($row['dataEntrega']);
-			$objCte->setHoraEntrega($row['horaEntrega']);
+			$objCte->setHoraEntrega($row['HoraEntrega']);
 			$result[] = $objCte;
 		}
 
@@ -105,7 +92,5 @@
 	}
 	
 	}
-  
-  }
 
 ?>
