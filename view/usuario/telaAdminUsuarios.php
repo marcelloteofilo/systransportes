@@ -123,7 +123,6 @@
           <th field="codCidade" width="65">Cod.Cidade</th>
           <th field="cep" width="50">CEP</th>
           <th field="login" width="50">Login</th>
-          <th field="senha" width="50">Senha</th>
         </tr>
       </thead>   
     </table>

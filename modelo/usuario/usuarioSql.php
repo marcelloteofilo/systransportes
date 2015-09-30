@@ -101,7 +101,10 @@
 	
     public static function carregarLista() {
       //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao();     
+      $conexao = Conexao::getInstance()->getConexao(); 
+
+
+      /*    
 
 		$rs = mysql_query('select * from usuarios');
 		$result = array();
@@ -109,6 +112,46 @@
 			array_push($result, $row);
 		}
 		echo json_encode($result);
+		*/
+
+		//$rs = mysql_query('select * from usuarios');
+		$rs = mysql_query('select usuarios.id, usuarios.idPerfil, usuarios.idStatus, usuariostatus.descricao as status, usuarioperfil.descricao, usuarios.codCidade, cidades.descricao as cidade, cidades.uf as uf, usuarios.nomeCompleto , usuarios.razaoSocial , usuarios.nomeFantasia , usuarios.tipoEmpresa , usuarios.rg , usuarios.orgaoExpedidor , usuarios.cpf , usuarios.email , usuarios.telefone1 , usuarios.telefone2 , usuarios.logradouro , usuarios.bairro , usuarios.numero , usuarios.complemento , usuarios.cep , usuarios.login , usuarios.senha from usuarios inner join usuarioperfil on usuarios.idPerfil = usuarioperfil.id inner join cidades on cidades.codigo = usuarios.codCidade inner join usuariostatus on usuariostatus.id = usuarios.idStatus'); 
+
+
+			$result = array();
+
+			while($row = mysql_fetch_array($rs)){
+				$usuario = new Usuario();
+				$usuario->setId($row["id"]);
+				$usuario->setPerfil($row["idPerfil"]);
+				$usuario->setStatus($row["idStatus"]);
+
+				//$usuario->getCodCidade()->setCodCidade($row["cidade"]);
+
+				$usuario->setNomeCompleto($row["nomeCompleto"]);
+				$usuario->setRazaoSocial($row["razaoSocial"]);
+				$usuario->setnomeFantasia($row["nomeFantasia"]);
+				$usuario->setTipoEmpresa($row["tipoEmpresa"]);
+				$usuario->setRg($row["rg"]);
+				$usuario->setOrgaoExpedidor($row["orgaoExpedidor"]);
+				$usuario->setCpf($row["cpf"]);
+				$usuario->setCnpj($row["cnpj"]);
+				$usuario->setEmail($row["email"]);
+				$usuario->setTelefone1($row["telefone1"]);
+				$usuario->setTelefone2($row["telefone2"]);
+				$usuario->setLogradouro($row["logradouro"]);
+				$usuario->setBairro($row["bairro"]);
+				$usuario->setNumero($row["numero"]);
+				$usuario->setComplemento($row["complemento"]);
+				$usuario->setCep($row["cep"]);
+				$usuario->setLogin($row["login"]);
+				$usuario->setSenha($row["senha"]);
+
+				$result[] = $usuario;
+				//array_push($result, $objVeiculo);
+			}
+			return $result;
+
     }
 
   }

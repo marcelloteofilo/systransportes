@@ -35,7 +35,7 @@
 	  $descricao = mysql_real_escape_string($u->getDescricao(), $conexao);   	
 	  $status = mysql_real_escape_string($u->getStatus(), $conexao);   
 	  $sql = "insert into cotacoes (idUsuario, codCidadeOrigem, codCidadeDestino, valorCarga, valorFrete, altura, distancia, largura, peso, comprimento, quantidadeCaixa, prazo, descricao, status) values ($idUsuario, $codCidadeOrigem, $codCidadeDestino, $valorCarga, $valorFrete, $altura, $distancia, $largura, $peso, $comprimento, $quantidadeCaixas, $prazo, '$descricao', $status)";	 	  	  
-      
+    
       $resultado = @mysql_query($sql, $conexao);
       return ($resultado === true);
     }

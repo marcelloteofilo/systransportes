@@ -84,7 +84,7 @@
    <body style="background:#F3F8F7">
  
       <center>
-         <table id="dg" title="Cadastro de Veículos" style="width:1250px;height:450px; border:1px solid #ccc;"
+         <table id="dg" title="Cadastro de Veículos" style="width:1250px;height:400px; border:1px solid #ccc;"
             toolbar="#toolbar" pagination="true" idField="id"
             rownumbers="true" fitColumns="true" resizable="true">
             <thead>

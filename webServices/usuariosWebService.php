@@ -147,11 +147,44 @@
 		}		
 	}
 	if ($_GET["editSave"] == "carrefarUsuario"){
-		if (UsuarioSql::carregarLista()){
+		
+
+		/*if (UsuarioSql::carregarLista()){
 			$resultado[] = array(				
 				'oka'	=>  'oks',						
 			);			
-		}	
+		}*/
+
+		$listaUsuario = usuarioSql::carregarLista();
+		
+		for ($i=0; $i<count($listaUsuario); $i++ ){											
+			$resultado[] = array(				
+				'idStatus'	=>  $listaUsuario[$i]->getStatus(),					
+				'idPerfil'	=>   $listaUsuario[$i]->getPerfil(),				
+				'nomeCompleto'	=>  $listaUsuario[$i]->getNomeCompleto(),				
+				'rg'	=>   $listaUsuario[$i]->getRg(),				
+				'orgaoExpedidor'	=>  $listaUsuario[$i]->getOrgaoExpedidor(),
+				'cpf'	=>  $listaUsuario[$i]->getCpf(),
+				'razaoSocial'	=>  $listaUsuario[$i]->getRazaoSocial(),					
+				'nomeFantasia'	=>   $listaUsuario[$i]->getnomeFantasia(),				
+				'tipoEmpresa'	=>   $listaUsuario[$i]->getTipoEmpresa(),				
+				'cnpj'	=>  $listaUsuario[$i]->getCnpj(),
+				'email'	=>  $listaUsuario[$i]->getEmail(),
+				'telefone1'	=>  $listaUsuario[$i]->getTelefone1(),					
+				'telefone2'	=>   $listaUsuario[$i]->getTelefone2(),				
+				'logradouro'	=>  $listaUsuario[$i]->getLogradouro(),				
+				'bairro'	=>   $listaUsuario[$i]->getBairro(),				
+				'numero'	=>  $listaUsuario[$i]->getNumero(),
+				'complemento'	=>  $listaUsuario[$i]->getComplemento(),
+				'codCidade'	=>  $listaUsuario[$i]->getCodCidade(),					
+				'cep'	=>   $listaUsuario[$i]->getCep(),				
+				'login'	=>  $listaUsuario[$i]->getLogin(),				
+					
+			);
+		}
+		echo( json_encode( $resultado ) );	
+		return $resultado;
+
 	}
 
 

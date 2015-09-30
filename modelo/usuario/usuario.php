@@ -26,6 +26,7 @@
   private $uf;
   private $cidade;
   private $codCidade;
+  private $objetoCodCidade;
 
   private $login;
   private $senha;
@@ -184,21 +185,6 @@
     return $this->cep;
   }   
 
-  //uf
-  public function setUf($uf) {
-    $this->uf = trim($uf);
-  }
-  public function getUf() {
-    return $this->uf;
-  } 
-
-  //cidade
-  public function setCidade($cidade) {
-    $this->cidade = trim($cidade);
-  }
-  public function getCidade() {
-    return $this->cidade;
-  } 
 
   //codCidade
   public function setCodCidade($codCidade) {
@@ -206,7 +192,23 @@
   }
   public function getCodCidade() {
     return $this->codCidade;
-  } 
+  }
+
+  /*public function setCodCidade($cidade) {
+       $this->cidade = trim($cidade);
+  }
+  
+  public function getCodCidade() {     
+    if($this->cidade == null){
+      $this->cidade = new Cidade();
+    }   
+    return $this->cidade;
+  }*/
+
+
+
+
+
 
 
   //login
