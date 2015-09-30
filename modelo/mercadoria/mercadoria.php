@@ -1,61 +1,54 @@
-<?php     require_once("/../modelo/cotacao/cotacaoSql.php");
+<?php
 
-	class Mercadoria
-	{
-		//Atributos
-		private $id;
-		private $descricaoMercadoria;
-		private $peso;
-		private $objCotacao;
+require_once("/../modelo/cotacao/cotacao.php");
 
+class Mercadoria {
 
-		//Id Mercadoria
-		public function setId($l)
-		{
-			$this -> id = trim($l);
-		}
+    //Atributos
+    private $id;
+    private $descricaoMercadoria;
+    private $peso;
+    private $objCotacao;
 
-		public function getId()
-		{
-		  return $this -> id;
-		}
+    //Id Mercadoria
+    public function setId($l) {
+        $this->id = trim($l);
+    }
 
-		//Descricao Mercadoria
-		public function setDescricaoMercadoria($descricaoMercadoria)
-		{
-			$this -> descricaoMercadoria = trim($descricaoMercadoria);
-		}
+    public function getId() {
+        return $this->id;
+    }
 
-		public function getDescricaoMercadoria()
-		{
-			return $this -> descricaoMercadoria;
-		}
+    //Descricao Mercadoria
+    public function setDescricaoMercadoria($descricaoMercadoria) {
+        $this->descricaoMercadoria = trim($descricaoMercadoria);
+    }
 
-		//peso Mercadoria
-		public function setPeso($peso)
-		{
-			$this -> peso = trim($peso);
-		}
+    public function getDescricaoMercadoria() {
+        return $this->descricaoMercadoria;
+    }
 
-		public function getPeso()
-		{
-			return $this -> peso;
-		}
+    //peso Mercadoria
+    public function setPeso($peso) {
+        $this->peso = trim($peso);
+    }
 
-		//Id Cotacao
-		public function setObjCotacao($objCotacao)
-		{
-		   $this->objCotacao = trim($objCotacao);
-		}
+    public function getPeso() {
+        return $this->peso;
+    }
 
-		public function getObjCotacao()
-		{
-			if($this->objCotacao == null)
-			{
-				$this->objCotacao = new Cotacao();
-			}
-			return $this->objCotacao;
-		}
-	}
+    //Id Cotacao
+    public function setObjCotacao($objCotacao) {
+        $this->objCotacao = trim($objCotacao);
+    }
+
+    public function getObjCotacao() {
+        if ($this->objCotacao == null) {
+            $this->objCotacao = new Cotacao();
+        }
+        return $this->objCotacao;
+    }
+
+}
 
 ?>

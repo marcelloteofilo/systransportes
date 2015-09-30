@@ -103,31 +103,32 @@
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
 
-
-      /*    
-
 		$rs = mysql_query('select * from usuarios');
 		$result = array();
 		while($row = mysql_fetch_object($rs)){
 			array_push($result, $row);
 		}
+
 		echo json_encode($result);
-		*/
+		
 
 		//$rs = mysql_query('select * from usuarios');
-		$rs = mysql_query('select usuarios.id, usuarios.idPerfil, usuarios.idStatus, usuariostatus.descricao as status, usuarioperfil.descricao, usuarios.codCidade, cidades.descricao as cidade, cidades.uf as uf, usuarios.nomeCompleto , usuarios.razaoSocial , usuarios.nomeFantasia , usuarios.tipoEmpresa , usuarios.rg , usuarios.orgaoExpedidor , usuarios.cpf , usuarios.email , usuarios.telefone1 , usuarios.telefone2 , usuarios.logradouro , usuarios.bairro , usuarios.numero , usuarios.complemento , usuarios.cep , usuarios.login , usuarios.senha from usuarios inner join usuarioperfil on usuarios.idPerfil = usuarioperfil.id inner join cidades on cidades.codigo = usuarios.codCidade inner join usuariostatus on usuariostatus.id = usuarios.idStatus'); 
-
+		/*$rs = mysql_query('select usuarios.id, usuarioperfil.descricao as perfilstatus, usuariostatus.descricao as statususuario, usuariostatus.descricao as status,
+		 usuarioperfil.descricao, usuarios.codCidade, cidades.descricao as cidade, cidades.uf as uf, 
+		 usuarios.nomeCompleto , usuarios.razaoSocial , usuarios.nomeFantasia , usuarios.tipoEmpresa , usuarios.rg , 
+		 usuarios.orgaoExpedidor , usuarios.cpf , usuarios.cnpj , usuarios.email , usuarios.telefone1 , usuarios.telefone2 , 
+		 usuarios.logradouro , usuarios.bairro , usuarios.numero , usuarios.complemento , usuarios.cep , 
+		 usuarios.login , usuarios.senha from usuarios inner join usuarioperfil on usuarios.idPerfil = usuarioperfil.id inner join cidades on cidades.codigo = usuarios.codCidade inner join usuariostatus on usuariostatus.id = usuarios.idStatus'); 
+		
 
 			$result = array();
 
 			while($row = mysql_fetch_array($rs)){
 				$usuario = new Usuario();
 				$usuario->setId($row["id"]);
-				$usuario->setPerfil($row["idPerfil"]);
-				$usuario->setStatus($row["idStatus"]);
-
+				//$usuario->setPerfil($row["perfilstatus"]);
+				//$usuario->setStatus($row["statususuario"]);
 				//$usuario->getCodCidade()->setCodCidade($row["cidade"]);
-
 				$usuario->setNomeCompleto($row["nomeCompleto"]);
 				$usuario->setRazaoSocial($row["razaoSocial"]);
 				$usuario->setnomeFantasia($row["nomeFantasia"]);
@@ -150,7 +151,7 @@
 				$result[] = $usuario;
 				//array_push($result, $objVeiculo);
 			}
-			return $result;
+			return $result;*/
 
     }
 

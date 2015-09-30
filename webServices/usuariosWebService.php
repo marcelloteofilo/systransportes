@@ -149,13 +149,13 @@
 	if ($_GET["editSave"] == "carrefarUsuario"){
 		
 
-		/*if (UsuarioSql::carregarLista()){
+		if (UsuarioSql::carregarLista()){
 			$resultado[] = array(				
 				'oka'	=>  'oks',						
 			);			
-		}*/
+		}
 
-		$listaUsuario = usuarioSql::carregarLista();
+		/*$listaUsuario = usuarioSql::carregarLista();
 		
 		for ($i=0; $i<count($listaUsuario); $i++ ){											
 			$resultado[] = array(				
@@ -183,7 +183,7 @@
 			);
 		}
 		echo( json_encode( $resultado ) );	
-		return $resultado;
+		return $resultado;*/
 
 	}
 

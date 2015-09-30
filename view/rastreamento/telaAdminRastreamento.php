@@ -14,15 +14,14 @@
         <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
         <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
         <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
-        <script type="text/javascript" src="../../js/scriptsMercadoria.js"></script>
+        <script type="text/javascript" src="../../js/scriptsRastreamento.js"></script>
         <script type="text/javascript" src="../../js/jquery.validate.min.js"></script>
-       
-<script>
 
-        <!-- SCRIPT DO GRAFICO -->
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+        <script>
+<!-- SCRIPT DO GRAFICO -->
+                < script type = "text/javascript" src = "https://www.google.com/jsapi" ></script>
         <script type="text/javascript">
-            google.load("visualization", "1", {packages: ["corechart"]});
+                    google.load("visualization", "1", {packages: ["corechart"]});
             google.setOnLoadCallback(drawChart);
             function drawChart() {
 
@@ -59,27 +58,6 @@
         </div>
     </header>
     <br><br>
-
-    <script>
-        jQuery.validator.setDefaults({
-            debug: true,
-            success: "valid"
-        });
-        $("#dg").validate({
-            rules: {
-                field: {
-                        required: peso,
-                        number: true
-                        }
-                mensages:
-                        {
-                        required: "Informe o peso",
-                        number: "Deve conter apenas números" 
-                        }
-            }
-        });
-    </script>
-    
 </head>
 
 
@@ -89,17 +67,15 @@
     <table id="dg" style="width:1190px; height:450px; border:1px solid #ccc;" idField="id">
         <thead>
             <tr>
-                <th align ="center" field="idCotacoes"width="10" editor="{type:'validatebox',options:{required:true}}">Id Cotacao</th>
-                <th onkeyup="validar(this,'num');" align ="center" field="descricao" width="60" editor="{type:'validatebox',options:{required:true}}">Descricao</th>
-                <th onkeyup="validar(this,'text');"onblur="" id="peso" name="peso" align ="center" field="peso" width="10" editor="{type:'validatebox',options:{required:true}}">Peso</th>
+                <th onkeyup="validar(this, 'text');"onblur="" id="rota" name="rota" align ="center" field="rota" width="10" editor="{type:'validatebox',options:{required:true}}">Rota</th>
             </tr>
         </thead>
     </table>
 
     <div id="toolbar" align="center">
-        <a href="#" class="easyui-linkbutton" iconCls="icon-users-add-icon" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Criar Mercadoria</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Salvar</a>
+        <!--<a href="#" class="easyui-linkbutton" iconCls="icon-users-add-icon" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Criar Rastreamento</a>-->
+        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
+        <!--<a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Salvar</a>-->
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Deletar</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

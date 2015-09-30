@@ -103,8 +103,8 @@
       <thead>
 
         <tr>
-          <th field="idStatus" width="45">Status</th>
-          <th field="idPerfil" width="45">Perfil</th>
+          <!-- <th field="idStatus" width="45">Status</th> -->
+          <!-- <th field="idPerfil" width="45">Perfil</th>  -->
           <th field="nomeCompleto" width="70">Nome.C</th>
           <th field="rg" width="50">RG</th>
           <th field="orgaoExpedidor" width="50">Orgão.E</th>
@@ -120,7 +120,7 @@
           <th field="bairro" width="50">Bairro</th>
           <th field="numero" width="30">Nm</th>
           <th field="complemento" width="50">Compl.</th>
-          <th field="codCidade" width="65">Cod.Cidade</th>
+          <!-- <th field="codCidade" width="65">Cod.Cidade</th> -->
           <th field="cep" width="50">CEP</th>
           <th field="login" width="50">Login</th>
         </tr>
