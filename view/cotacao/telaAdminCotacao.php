@@ -1,114 +1,294 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
-   <head>
-      <meta charset="utf-8">
-      <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
-      <title>SysTransportes</title>
-      <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
- 
-	  <!-- 
-	  
-	  -->
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title>SysTransportes</title>
+    <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css">
+    <!-- CSS CRUD -->
+    <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
+    <link rel="stylesheet" type="text/css" href="../../css/icon.css">
+    <link rel="stylesheet" type="text/css" href="../../css/demo.css">
+    <!-- JS CRUD -->
+    <script type="text/javascript" src="../../js/jquery-1.6.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
+    <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
+    <!-- JS CRUD -->
+    <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
+    <script type="text/javascript" src="../../js/validacaoCampo.js"></script> 
 
-	  <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css">
-      <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
-      <link rel="stylesheet" type="text/css" href="../../css/icon.css">
-      <link rel="stylesheet" type="text/css" href="../../css/demo.css">
-      <script type="text/javascript" src="../../js/jquery-1.6.min.js"></script>
-      <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
-      <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
-      <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
-	  
-      <script type="text/javascript">
-         $(function(){
-             $("div.easyui-layout").layout();
-             $('#dg').edatagrid({
-                 url: '../../webServices/cotacaoWebService.php?editSave=consultaCotacao',
-                 saveUrl: '../../webServices/cotacaoWebService.php?editSave=incluirCotacao',
-                 updateUrl: '../../webServices/cotacaoWebService.php?editSave=alterarCotacao',
-                 destroyUrl: '../../webServices/cotacaoWebService.php?editSave=statusCotacao',
-                 fitColumns: true
-
-             });
-             var dg = $('#dg');
-             dg.edatagrid();    // create datagrid
-             dg.edatagrid('enableFilter');    // enable filter
-         });
-      </script>
-	  
-	<!-- SCRIPT DO GRAFICO -->
-	<script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
-      google.load("visualization", "1", {packages:["corechart"]});
-      google.setOnLoadCallback(drawChart);
-      function drawChart() {
-
-        var data = google.visualization.arrayToDataTable([
-          ['status', 'valor'],
-          ['Habilitado',     200],
-          ['Desabilitado',      10]
-        ]);
-
-        var options = {
-          title: 'Status de Clientes'
-        };
-
-        var chart = new google.visualization.PieChart(document.getElementById('piechart'));
-
-        chart.draw(data, options);
+      var url;
+      function newUser(){
+        $('#dlg').dialog('open').dialog('setTitle','Novo Usuário');
+        $('#fm').form('clear');
+        url = '../../webServices/usuariosWebService.php?editSave=adicionarUsuario';
+      }
+      function editCotacao(){
+        var row = $('#dg').datagrid('getSelected');
+        if (row){
+          $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
+          $('#fm').form('load',row);
+          url = '../../webServices/usuariosWebService.php?editSave=consultaCotacao&id='+row.id;
+        }
+      }
+      function saveUser(){
+        $('#fm').form('submit',{
+          url: url,
+            onSubmit: function(){
+            return $(this).form('validate');
+          },
+          success: function(result){
+            var result = eval('('+result+')');
+            if (result.success){
+              $('#dlg').dialog('close');    // close the dialog
+              $('#dg').datagrid('reload');  // reload the user data
+            } else {
+              $.messager.show({
+                title: 'Erro',
+                msg: result.msg
+              });
+            }
+          }
+        });
+      }
+      function removeUser(){
+        var row = $('#dg').datagrid('getSelected');
+        if (row){
+          $.messager.confirm('Confirm','Tem certeza que deseja remover o Cliente?',function(r){
+            if (r){
+              $.post('../../webServices/usuariosWebService.php?editSave=removerUsuario',{id:row.id},function(result){
+                if (result.success){
+                  $('#dg').datagrid('reload');  // reload the user data
+                } else {
+                  $.messager.show({ // show error message
+                    title: 'Error',
+                    msg: result.msg
+                  });
+                }
+              },'json');
+            }
+          });
+        }
       }
     </script>
-	<!-- FIM SCRIPT DO GRAFICO -->
-	  
+    <!-- FIM SCRIPT ADMIN -->
 
-      <header class="navbar-fixed-top navbar" style="background:#0EB493;"> 
-         <div class="container">
-             <nav class="collapse navbar-collapse navbar-right" role="navigation">
-               <ul  class="nav navbar-nav">
-                  <li class="current"><a href="../../index.php">Início</a></li>
-                  <li><a href="#graficos">Graficos</a></li>
-                  <li><a href="../telaAdminSystem.php">Admin</a></li>
+    <header class="navbar-fixed-top navbar" style="background:#0EB493;">
+      <div class="container">
+        <nav class="collapse navbar-collapse navbar-right" role="navigation">
+          <ul  class="nav navbar-nav">
+            <li class="current"><a href="../../index.php">Início</a></li>
+            <li><a href="../telaAdminSystem.php">Admin</a></li>
+          </ul>
+        </nav>
+        <div class="navbar-header">
+          <a  class="navbar-brand" href="#">SysTransportes</a>     
+        </div>
+      </div>
+    </header>
+    <br><br>
+  </head>
+  <body style="background:#F3F8F7">
+    
+    <!-- TABELA ADMIN PESSOA FÍSICA-->
+    <center>
+    <table id="dg" title="Cadastro de Usuários" class="easyui-datagrid" style=" width:1250px;height:495px"
+      url="../../webServices/cotacaoWebService.php?editSave=consultaCotacao"
+      toolbar="#toolbar" pagination="true" 
+      rownumbers="true" fitColumns="true" singleSelect="true">
+      <thead>
+        <tr>
+          <th field="nomeUsuario" width="70" editor="{type:'validatebox',options:{required:true}}">Usuario</th>
+          <th field="cidadeOrigem" width="80" editor="{type:'validatebox',options:{required:true}}">Origem</th>
+          <th field="cidadeDestino" width="80" editor="{type:'validatebox',options:{required:true}}">Destino</th>
+          <th field="valorCarga" width="50" editor="{type:'validatebox',options:{required:true}}">Valor</th>
+          <th field="valorFrete" width="50" editor="{type:'validatebox',options:{required:true}}">Frete</th>
+		  <th field="altura" width="50" editor="{type:'validatebox',options:{required:true}}">Altura</th>
+		  <th field="peso" width="50" editor="{type:'validatebox',options:{required:true}}">Peso</th>
+		  <th field="comprimento" width="50" editor="{type:'validatebox',options:{required:true}}">Comprimento</th>
+		  <th field="prazo" width="20" editor="{type:'validatebox',options:{required:true}}">Prazo</th>
+		  <th field="exibeStatus" width="90" editor="{type:'validatebox',options:{required:true}}">Status</th>
+        </tr>
+      </thead>   
+    </table>
 
-               </ul>
-            </nav>
-			<div class="navbar-header">
-			 	<a  class="navbar-brand" href="#">SysTransportes</a>		 
-             </div>
-		</div>
-	  </header>
-	  <br><br>
-	   
-   </head>
-   
-   
-   <body style="background:#F3F8F7">
- 
-      <center>
-         <table id="dg" title="Cadastro de Cotações" style="width:1250px;height:450px; border:1px solid #ccc;"
-            toolbar="#toolbar" pagination="true" idField="id"
-            rownumbers="true" fitColumns="true" resizable="true">
-            <thead>
-               <tr>
-                  <th field="idUsuario" width="50" editor="{type:'validatebox',options:{required:true}}">idUsuario</th>
-                  <th field="codCidadeOrigem" width="70" editor="{type:'validatebox',options:{required:true}}">Origem</th>
-                  <th field="codCidadeDestino" width="50" editor="{type:'validatebox',options:{required:true}}">Destino</th>
-                  <th field="valorCarga" width="50" editor="{type:'validatebox',options:{required:true}}">Valor</th>
-                  <th field="valorFrete" width="50" editor="{type:'validatebox',options:{required:true}}">Frete</th>
-				  <th field="altura" width="50" editor="{type:'validatebox',options:{required:true}}">Altura</th>
-				  <th field="peso" width="50" editor="{type:'validatebox',options:{required:true}}">Peso</th>
-				  <th field="comprimento" width="50" editor="{type:'validatebox',options:{required:true}}">Comprimento</th>
-				  <th field="prazo" width="50" editor="{type:'validatebox',options:{required:true}}">Prazo</th>
-				  <th field="status" width="50" editor="{type:'validatebox',options:{required:true}}">status</th>
-               </tr>
-            </thead>
-         </table>
-         <div id="toolbar">            
-            <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Editar/Salvar</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Aprovar</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">Cancelar</a>
-         </div>
-         </div>
-      </center>
-	
-   </body>
+    <div id="toolbar">
+      <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Usuário</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editCotacao()" title="Alterar Dados do Usuário">Editar Usuário</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Usuário</a>
+      
+    </div>
+  </center>
+    <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
+
+    <!-- DIALOG ADMIN PESSOA FÍSICA -->
+    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:610px;padding:10px 20px"
+      closed="true" buttons="#dlg-buttons">
+      <div class="ftitle"></div>
+      <form id="fm" method="post" novalidate>
+
+        <table>
+          <!--Dados Pessoais -->
+          <h2>Dados Pessoais</h2>
+          <!--Dados Pessoa Física -->
+          <tr>
+            <td><b>Nome Completo</b></td>
+            <td><b>CPF(Somente numeros)</b></td>
+            <td><b>RG</b></td>
+            <td><b>Orgão Expedidor</b></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" id="nomeCompleto" name="nomeCompleto" size="23" style="text-transform:uppercase"  placeholder="Nome Completo" type="text" onkeyup="validar(this,'text');"></td>
+            <td><input class="form-control" type="text" id="cpf" name="cpf" size="23" maxlength="14" placeholder="CPF" type="text" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"></td>
+            <td><input class="form-control" type="text" id="rg" name="rg" size="23" maxlength="9" placeholder="RG" type="text" onkeypress="javascript: mascara(this, Rg);"></td>
+            <td><input class="form-control" type="text" id="orgaoExpedidor" name="orgaoExpedidor" style="text-transform:uppercase" size="23" maxlength="8" placeholder="Orgão Expedidor" type="text" onkeyup="validar(this,'text');"></td>
+          </tr>
+          <!--Dados Pessoa Jurídica -->
+          <tr>
+            <td><b>Razão Social</b></td>
+            <td><b>Nome Fantasia</b></td>
+            <td><b>CNPJ</b></td>
+            <td><b>Tipo de Empresa</b></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" id="razaoSocial" name="razaoSocial" size="23" style="text-transform:uppercase"  placeholder="Razão Social" type="text" onkeyup="validar(this,'text');"></td>
+            <td><input class="form-control" type="text" id="nomeFantasia" name="nomeFantasia" size="23" maxlength="14" placeholder="Nome Fantasia" type="text" onkeyup="validar(this,'text');"></td>
+            <td><input class="form-control" type="text" id="cnpj" name="cnpj" size="23" maxlength="9" placeholder="CNPJ" type="text"></td>
+            <td><select class="form-control" id="tipoEmpresa" name="tipoEmpresa">
+                <option value=""> --- Selecione o tipo --- </option>
+                <option value="Empresa Privada">Empresa Privada</option>
+                <option value="Empresa Publica">Empresa Publica</option>
+                </select>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <table>
+          <!--Endereço -->
+          <h2>Endereço</h2>
+          <tr>
+            <td><b>CEP</b></td>
+            <td><b>Logradouro</b></td>
+            <td><b>Número</b></td>
+            <td><b>Bairro</b></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" id="cep" name="cep" size="23" maxlength="9" placeholder="CEP" type="text" onkeypress="mascaraCep(this, '#####-###')" onkeyup="validar(this,'num');"></td>
+            <td>
+              <input class="form-control" type="text" id="logradouro" name="logradouro" size="23" placeholder="Logradouro" type="text" style="text-transform:uppercase">
+            </td>
+            <td><input class="form-control" type="text" id="numero" name="numero" size="23" maxlength="5" placeholder="Número" type="text" onkeyup="validar(this,'num');"></td>
+            <td><input class="form-control" type="text" id="bairro" name="bairro" style="text-transform:uppercase" size="23" placeholder="Bairro" type="text" onkeyup="validar(this,'text');"></td>
+          </tr>
+        
+          <tr>
+            <td><b>Complemento</b></td>
+            <td><b>Estado</b></td>
+            <td><b>Cidade</b></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" id="complemento" name="complemento" size="23" style="text-transform:uppercase" placeholder="Complemento" type="text"></td>
+            <td>
+              <select class="form-control" tabindex="3"  id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0','Escolha a Cidade!')" >
+                <option value="">Escolha o seu Estado</option>
+                <option value="PE">PE</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AM">AM</option>
+                <option value="AP">AP</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MG">MG</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PI">PI</option>
+                <option value="PR">PR</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="RS">RS</option>
+                <option value="SC">SC</option>
+                <option value="SE">SE</option>
+                <option value="SP">SP</option>
+                <option value="TO">TO</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" tabindex="4" id="cidadeDestino" name="cidadeDestino" >
+                <option size="35" value="">Escolha a sua Cidade</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+        <br>
+        <table>
+          <!--Contato -->
+          <h2>Contato</h2>
+          <tr>
+            <td><b>E-mail</b></td>
+            <td><b>Telefone Resiencial</b></td>
+            <td><b>Telefone Celular</b></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="email" id="email" name="email" style="text-transform:uppercase" size="23" placeholder="E-mail" type="email"></td>
+            <td><input class="form-control" type="text" id="telefone1" name="telefone1" maxlength="15" size="23" maxlength="12" placeholder="Telefone Residencial" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
+            <td><input class="form-control" type="text" id="telefone2" name="telefone2" size="23" maxlength="14" placeholder="Telefone Celular" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
+          </tr>
+        </table>
+        <br>
+        <table>
+          <!--Login/Senha -->    
+          <h2>Login/Senha</h2>
+          </tr>
+          <td><b>Usuário</b></td>
+          <td><b>Senha</b></td>
+          <td><b>Perfil</b></td>
+          <td><b>Status</b></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" id="login" name="login" size="30" placeholder="Usuário" type="text"></td>
+            <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha" type="text"></td>
+            <td>
+              <select class="form-control" id="idPerfil" name="idPerfil">
+                <option value="1">Pessoa Física</option>
+                <option value="2">Pessoa Jurídica</option>
+                <option value="3">Atendente</option>
+                <option value="4">Motorista</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" id="idStatus" name="idStatus">
+                <option value="1">Habilitado</option>
+                <option value="2">Desabilitado</option>
+              </select>
+            </td>
+            </td>
+            <td>
+              <select class="form-control" id="codCidade" name="codCidade">
+                <option value="2600104">COD CIDADE TESTE</option>
+              </select>
+            </td>
+          </tr>
+        </table>
+      </form>
+    </div>
+    <div id="dlg-buttons">
+      <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">Salvar</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
+    </div>
+    <br><br>
+    <!-- FIM DIALOG ADMIN PESSOA FÍSICA -->
+
+  </body>
 </html>

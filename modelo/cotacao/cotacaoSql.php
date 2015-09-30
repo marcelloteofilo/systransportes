@@ -90,7 +90,7 @@
 	public static function consultar(Cotacao $busca) {
       $conexao = Conexao::getInstance()->getConexao();	
 	  $idCotacao = mysql_real_escape_string($busca->getId(), $conexao);      	  
-      $sql = "Select cotacoes.id, cotacoes.idUsuario, cotacoes.codCidadeOrigem, origem.descricao as cidadeOrigem, origem.uf as ufOrigem, cotacoes.codCidadeDestino, destino.descricao as cidadeDestino, destino.uf as ufDestino, cotacoes.valorCarga, cotacoes.valorFrete, cotacoes.altura, cotacoes.largura, cotacoes.peso, cotacoes.comprimento, cotacoes.prazo, cotacoes.quantidadeCaixa, cotacoes.descricao, cotacoes.prazo, cotacoes.aprovadoCliente, cotacoes.aprovadoAtendente, cotacoes.status, cotacoes.aprovadoCliente, cotacoes.distancia, cotacoes.aprovadoAtendente, cotacoes.status from cotacoes inner join usuarios on cotacoes.idUsuario= usuarios.id inner join  cidades as origem on origem.codigo=cotacoes.codCidadeOrigem inner join  cidades as destino on destino.codigo=cotacoes.codCidadeDestino where (1=1)";
+      $sql = "Select cotacoes.id, cotacoes.idUsuario, usuarios.nome as nomeUsu, cotacoes.codCidadeOrigem, origem.descricao as cidadeOrigem, origem.uf as ufOrigem, cotacoes.codCidadeDestino, destino.descricao as cidadeDestino, destino.uf as ufDestino, cotacoes.valorCarga, cotacoes.valorFrete, cotacoes.altura, cotacoes.largura, cotacoes.peso, cotacoes.comprimento, cotacoes.prazo, cotacoes.quantidadeCaixa, cotacoes.descricao, cotacoes.prazo, cotacoes.aprovadoCliente, cotacoes.aprovadoAtendente, cotacoes.status, cotacoes.aprovadoCliente, cotacoes.distancia, cotacoes.aprovadoAtendente, cotacoes.status from cotacoes inner join usuarios on cotacoes.idUsuario= usuarios.id inner join  cidades as origem on origem.codigo=cotacoes.codCidadeOrigem inner join  cidades as destino on destino.codigo=cotacoes.codCidadeDestino where (1=1)";
 	  
 	  if ($busca->getId())  
 		$sql .= " and cotacoes.id = $idCotacao";  		      	  
@@ -101,6 +101,7 @@
           $u = new Cotacao();          
           $u->setId($linha["id"]);          		  
 		  $u->getObjUsuario()->setId($linha["idUsuario"]);		  
+		  $u->getObjUsuario()->setNomeCompleto($linha["nomeUsu"]);		  
 		  $u->getObjCidadeOrigem()->setCodigo($linha["codCidadeOrigem"]);		  
 		  $u->getObjCidadeOrigem()->setDescricao($linha["cidadeOrigem"]);		  
 		  $u->getObjCidadeOrigem()->setUf($linha["ufOrigem"]);		  
@@ -119,7 +120,22 @@
 		  $u->setDescricao($linha["descricao"]);          		    		  
 		  $u->setAprovadoCliente($linha["aprovadoCliente"]);          		    		  
 		  $u->setAprovadoAtendente($linha["aprovadoAtendente"]);          		    		  
-		  $u->setStatus($linha["status"]);          		    		  		 	
+		  $idStatus = $linha["status"];
+		  $u->setStatus($idStatus);    
+		  $exibeStatus = "";
+		  if ($idStatus =='0'){					
+			$exibeStatus = 'CANCELADO';
+		  }								
+		  if ($idStatus =='1'){					
+			$exibeStatus = 'EM ABERTO';
+		   }								
+		  if ($idStatus =='2'){					
+			$exibeStatus = 'AGUARDANDO CLIENTE';
+		  }									
+		  if ($idStatus =='3'){					
+			$exibeStatus = 'APROVADO';
+		  }								
+		  $u->setExibeStatus($exibeStatus);    		  
           $retorno[] = $u;
 
 
