@@ -3,11 +3,11 @@
 
   //Atributos
   private $id;    
+  private $idUsuario;
+  private $idVeiculo;
   private $cotacao;
   private $manifesto;
   private $faturamento;
-  private $remetente;
-  private $destinatario;
   private $emissao;
   private $status;
   private $dataEntrega;
@@ -21,6 +21,26 @@
   public function getId() {
     return $this->id;
   }
+   public function setUsuario($usuario) {
+       $this->usuario = trim($usuario);
+  }
+  
+  public function getUsuario() {     
+    if($this->usuario == null){
+      $this->usuario = new Usuario();
+    }   
+    return $this->usuario;
+  } 
+  public function setVeiculo($veiculo) {
+       $this->veiculo = trim($veiculo);
+  }
+  
+  public function getVeiculo() {     
+    if($this->veiculo == null){
+      $this->veiculo = new Veiculo();
+    }   
+    return $this->veiculo;
+  } 
 
   public function setCotacao($cotacao) {
        $this->cotacao = trim($cotacao);
@@ -54,29 +74,6 @@
     }   
     return $this->faturamento;
   } 
-
-  public function setRemetente($remetente) {
-       $this->remetente = trim($remetente);
-  }
-  
-  public function getRemetente() {     
-    if($this->remetente == null){
-      $this->remetente = new Usuario();
-    }   
-    return $this->remetente;
-  } 
-
-  public function setDestinatario($destinatario) {
-       $this->destinatario = trim($destinatario);
-  }
-  
-  public function getDestinatario() {     
-    if($this->destinatario == null){
-      $this->destinatario = new Usuario();
-    }   
-    return $this->destinatario;
-  } 
-
   public function setEmissao($emissao) {
     $this->id = trim($emissao);
   }

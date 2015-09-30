@@ -17,12 +17,14 @@
     <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
     <!-- JS CRUD -->
     <script type="text/javascript" src="../../js/validacaoCampo.js"></script> 
+    <script type="text/javascript" src="../../js/scriptsMotoristas.js"></script>
+    <script type="text/javascript" src="../../js/scriptsVeiculos.js"></script>
 
     <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
       var url;
       function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','Novo Usuário');
+        $('#dlg').dialog('open').dialog('setTitle','Nova CTE');
         $('#fm').form('clear');
         url = '../../webServices/cteWebService.php?editSave=adicionarCte';
       }
@@ -95,18 +97,19 @@
     
     <!-- TABELA ADMIN PESSOA FÍSICA-->
     <center>
-    <table id="dg" title="Cadastro de Usuários" class="easyui-datagrid" style=" width:1250px;height:495px"
-      url="../../webServices/cteWebService.php?editSave=carrefarUsuario"
+    <table id="dg" title="Cadastro de CTES" class="easyui-datagrid" style=" width:1250px;height:495px"
+      url="../../webServices/cteWebService.php?editSave=carregarCte"
       toolbar="#toolbar" pagination="true" 
       rownumbers="true" fitColumns="true" singleSelect="true">
       <thead>
 
         <tr>
-          <th field="idStatus" width="45">Cotação</th>
-          <th field="idPerfil" width="45">Emissão</th>
-          <th field="nomeCompleto" width="70">Data Entrega</th>
-          <th field="rg" width="50">Status</th>
-
+          <th field="idStatus" width="20">Veículo</th>
+          <th field="idUsuario" width="20">Motorista</th>
+          <th field="emissao" width="20">Emissão</th>
+          <th field="dataEntrega" width="20">Data Entrega</th>
+          <th field="horaEntrega" width="20">Hora Entrega</th>
+          <th field="Status" width="20">Status</th>
         </tr>
       </thead>   
     </table>
@@ -121,21 +124,28 @@
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
 
     <!-- DIALOG ADMIN PESSOA FÍSICA -->
-    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:610px;padding:10px 20px"
+    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:500px;height:300px;padding:10px 20px"
       closed="true" buttons="#dlg-buttons">
       <div class="ftitle"></div>
       <form id="fm" method="post" novalidate>
 
         <table>
           <tr>
-            <td><b>Cotação</b></td>
             <td><b>Emissão</b></td>
             <td><b>Data da Entrega</b></td>
+            <td><b>Hora da Entrega</b></td>
+            <td><b>Motorista</b></td>
+            <td><b>Veiculo</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="descricaoCotacao" name="descricaoCotacao" size="23" style="text-transform:uppercase"  placeholder="Nome Completo" type="text" onkeyup="validar(this,'text');"></td>
-            <td><input class="form-control" type="text" id="emissao" name="emissao" size="23" maxlength="14" placeholder="CPF" type="text" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"></td>
-            <td><input class="form-control" type="text" id="dataEntrega" name="dataEntrega" size="23" maxlength="9" placeholder="RG" type="text" onkeypress="javascript: mascara(this, Rg);"></td>
+            <td><input class="form-control" type="text" id="emissao" name="emissao" size="30" maxlength="14" placeholder="Emissao" type="text" ></td>
+            <td><input class="form-control" type="text" id="dataEntrega" name="dataEntrega" size="30" maxlength="14" placeholder="Data da Entrega" type="text" ></td>
+            <td><input class="form-control" type="text" id="horaEntrega" name="horaEntrega" size="30" maxlength="9" placeholder="Hora da Entrega" type="text" onkeypress="javascript: mascara(this, Hora);"></td>
+          </tr>
+          <tr>
+             <td><b>Status</b></td>
+             <td><b>Motorista</b></td>
+             <td><b>Veículo</b></td>
           </tr>
           <tr>
             <td>
@@ -147,10 +157,20 @@
                 <option value="entregue">Entregue</option>
                 </select>
             </td>
+            <td>
+              <select class="form-control" tabindex="4" id="idUsuario" name="idUsuario" >
+                <option size="35" value="">Escolha o Motorista</option>
+              </select>
+            </td>
+            <td>
+              <select class="form-control" tabindex="4" id="idVeiculo" name="idVeiculo" >
+                <option size="35" value="">Escolha o Veículo</option>
+              </select>
+            </td>
           </tr>
         </table>
     <div id="dlg-buttons">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">Salvar</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="save()">Salvar</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
     </div>
     <br><br>
