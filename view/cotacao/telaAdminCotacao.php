@@ -18,21 +18,32 @@
     <!-- JS CRUD -->
     <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
     <script type="text/javascript" src="../../js/validacaoCampo.js"></script> 
+	<script type="text/javascript" src="../../js/scriptsCotacoes.js"> </script>		
 
     <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
-      var url;
-      function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','Novo Usuário');
-        $('#fm').form('clear');
-        url = '../../webServices/usuariosWebService.php?editSave=adicionarUsuario';
-      }
-      function editCotacao(){
+      var url;      
+	  var acao;      
+      function aprovarCotacao(){
         var row = $('#dg').datagrid('getSelected');
         if (row){
-          $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
+          $('#dlg').dialog('open').dialog('setTitle','Aprovar Cotação');
           $('#fm').form('load',row);
-          url = '../../webServices/usuariosWebService.php?editSave=consultaCotacao&id='+row.id;
+		  acao = 'aprovar';
+		  $("#btnAprovar").show(400);			   												
+		  $("#btnCancelar").hide("slow");
+          url = '../../webServices/usuariosWebService.php?editSave=consultaCotacao&acao=aprovar&acao&id='+row.id;
+        }
+      }
+	  function cancelarCotacao(){
+        var row = $('#dg').datagrid('getSelected');
+        if (row){
+          $('#dlg').dialog('open').dialog('setTitle','Cancelar Cotação');
+          $('#fm').form('load',row);
+		  acao = 'cancelar';
+		  $("#btnCancelar").show(400);			   												
+		  $("#btnAprovar").hide("slow");
+          url = '../../webServices/usuariosWebService.php?editSave=consultaCotacao&acao=cancelar&acao&id='+row.id;
         }
       }
       function saveUser(){
@@ -54,26 +65,7 @@
             }
           }
         });
-      }
-      function removeUser(){
-        var row = $('#dg').datagrid('getSelected');
-        if (row){
-          $.messager.confirm('Confirm','Tem certeza que deseja remover o Cliente?',function(r){
-            if (r){
-              $.post('../../webServices/usuariosWebService.php?editSave=removerUsuario',{id:row.id},function(result){
-                if (result.success){
-                  $('#dg').datagrid('reload');  // reload the user data
-                } else {
-                  $.messager.show({ // show error message
-                    title: 'Error',
-                    msg: result.msg
-                  });
-                }
-              },'json');
-            }
-          });
-        }
-      }
+      }      
     </script>
     <!-- FIM SCRIPT ADMIN -->
 
@@ -116,11 +108,9 @@
       </thead>   
     </table>
 
-    <div id="toolbar">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Usuário</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editCotacao()" title="Alterar Dados do Usuário">Editar Usuário</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Usuário</a>
-      
+    <div id="toolbar">	 
+      <a href="#" class="easyui-linkbutton" iconCls="icon-ok"  plain="true" onclick="aprovarCotacao()" title="Adicionar Usuário">Aprovar Cotação</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" plain="true" onclick="cancelarCotacao()" title="Alterar Dados do Usuário">Cancelar Cotação</a>     
     </div>
   </center>
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
@@ -136,156 +126,56 @@
           <h2>Dados Pessoais</h2>
           <!--Dados Pessoa Física -->
           <tr>
-            <td><b>Nome Completo</b></td>
-            <td><b>CPF(Somente numeros)</b></td>
-            <td><b>RG</b></td>
-            <td><b>Orgão Expedidor</b></td>
+		    <td><b>Numero Cotacao</b></td>            
+            <td><b>Cliente</b></td>            
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="nomeCompleto" name="nomeCompleto" size="23" style="text-transform:uppercase"  placeholder="Nome Completo" type="text" onkeyup="validar(this,'text');"></td>
-            <td><input class="form-control" type="text" id="cpf" name="cpf" size="23" maxlength="14" placeholder="CPF" type="text" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"></td>
-            <td><input class="form-control" type="text" id="rg" name="rg" size="23" maxlength="9" placeholder="RG" type="text" onkeypress="javascript: mascara(this, Rg);"></td>
-            <td><input class="form-control" type="text" id="orgaoExpedidor" name="orgaoExpedidor" style="text-transform:uppercase" size="23" maxlength="8" placeholder="Orgão Expedidor" type="text" onkeyup="validar(this,'text');"></td>
-          </tr>
+			<td><input class="form-control" type="text" id="id" name="id" size="2" maxlength="4" placeholder="id" type="text"></td>
+            <td><input class="form-control" type="text" id="nomeuSUARIO" name="nomeUsuario" size="23" style="text-transform:uppercase"  placeholder="Nome Completo" type="text" onkeyup="validar(this,'text');"></td>
+          </tr>		  		   
+
+          <!--Dados Pessoa Física -->
           <!--Dados Pessoa Jurídica -->
           <tr>
-            <td><b>Razão Social</b></td>
-            <td><b>Nome Fantasia</b></td>
-            <td><b>CNPJ</b></td>
-            <td><b>Tipo de Empresa</b></td>
+            <td><b>Cidade Origem</b></td>
+            <td><b>Uf</b></td>
+            <td><b>Cidade Destino</b></td>
+            <td><b>Uf</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="razaoSocial" name="razaoSocial" size="23" style="text-transform:uppercase"  placeholder="Razão Social" type="text" onkeyup="validar(this,'text');"></td>
-            <td><input class="form-control" type="text" id="nomeFantasia" name="nomeFantasia" size="23" maxlength="14" placeholder="Nome Fantasia" type="text" onkeyup="validar(this,'text');"></td>
-            <td><input class="form-control" type="text" id="cnpj" name="cnpj" size="23" maxlength="9" placeholder="CNPJ" type="text"></td>
-            <td><select class="form-control" id="tipoEmpresa" name="tipoEmpresa">
-                <option value=""> --- Selecione o tipo --- </option>
-                <option value="Empresa Privada">Empresa Privada</option>
-                <option value="Empresa Publica">Empresa Publica</option>
-                </select>
-            </td>
+            <td><input class="form-control" type="text" id="cidadeOrigem" name="cidadeOrigem" size="23" style="text-transform:uppercase"  placeholder="cidadeOrigem" type="text" onkeyup="validar(this,'text');"></td>
+            <td><input class="form-control" type="text" id="ufOrigem" name="ufOrigem" size="2" maxlength="2" placeholder="ufOrigem" type="text" ></td>
+            <td><input class="form-control" type="text" id="cidadeDestino" name="cidadeDestino" size="2" style="text-transform:uppercase"  placeholder="cidadeDestino" type="text" ></td>
+            <td><input class="form-control" type="text" id="ufDestino" name="ufDestino" size="2" maxlength="2" placeholder="ufDestino" type="text" ></td>
           </tr>
         </table>
-        <br>
-        <table>
-          <!--Endereço -->
-          <h2>Endereço</h2>
-          <tr>
-            <td><b>CEP</b></td>
-            <td><b>Logradouro</b></td>
-            <td><b>Número</b></td>
-            <td><b>Bairro</b></td>
-          </tr>
-          <tr>
-            <td><input class="form-control" type="text" id="cep" name="cep" size="23" maxlength="9" placeholder="CEP" type="text" onkeypress="mascaraCep(this, '#####-###')" onkeyup="validar(this,'num');"></td>
-            <td>
-              <input class="form-control" type="text" id="logradouro" name="logradouro" size="23" placeholder="Logradouro" type="text" style="text-transform:uppercase">
-            </td>
-            <td><input class="form-control" type="text" id="numero" name="numero" size="23" maxlength="5" placeholder="Número" type="text" onkeyup="validar(this,'num');"></td>
-            <td><input class="form-control" type="text" id="bairro" name="bairro" style="text-transform:uppercase" size="23" placeholder="Bairro" type="text" onkeyup="validar(this,'text');"></td>
-          </tr>
-        
-          <tr>
-            <td><b>Complemento</b></td>
-            <td><b>Estado</b></td>
-            <td><b>Cidade</b></td>
-          </tr>
-          <tr>
-            <td><input class="form-control" type="text" id="complemento" name="complemento" size="23" style="text-transform:uppercase" placeholder="Complemento" type="text"></td>
-            <td>
-              <select class="form-control" tabindex="3"  id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0','Escolha a Cidade!')" >
-                <option value="">Escolha o seu Estado</option>
-                <option value="PE">PE</option>
-                <option value="AC">AC</option>
-                <option value="AL">AL</option>
-                <option value="AM">AM</option>
-                <option value="AP">AP</option>
-                <option value="BA">BA</option>
-                <option value="CE">CE</option>
-                <option value="DF">DF</option>
-                <option value="ES">ES</option>
-                <option value="GO">GO</option>
-                <option value="MA">MA</option>
-                <option value="MG">MG</option>
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="PA">PA</option>
-                <option value="PB">PB</option>
-                <option value="PI">PI</option>
-                <option value="PR">PR</option>
-                <option value="RJ">RJ</option>
-                <option value="RN">RN</option>
-                <option value="RO">RO</option>
-                <option value="RR">RR</option>
-                <option value="RS">RS</option>
-                <option value="SC">SC</option>
-                <option value="SE">SE</option>
-                <option value="SP">SP</option>
-                <option value="TO">TO</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" tabindex="4" id="cidadeDestino" name="cidadeDestino" >
-                <option size="35" value="">Escolha a sua Cidade</option>
-              </select>
-            </td>
-          </tr>
-        </table>
+        <br>        
         <br>
         <table>
           <!--Contato -->
-          <h2>Contato</h2>
+          <h2>Dados da Carga</h2>
           <tr>
-            <td><b>E-mail</b></td>
-            <td><b>Telefone Resiencial</b></td>
-            <td><b>Telefone Celular</b></td>
+            <td><b>Valor</b></td>
+            <td><b>Frete</b></td>
+            <td><b>Altura</b></td>
+			<td><b>Peso</b></td>
+			<td><b>Comprimento</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="email" id="email" name="email" style="text-transform:uppercase" size="23" placeholder="E-mail" type="email"></td>
-            <td><input class="form-control" type="text" id="telefone1" name="telefone1" maxlength="15" size="23" maxlength="12" placeholder="Telefone Residencial" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
-            <td><input class="form-control" type="text" id="telefone2" name="telefone2" size="23" maxlength="14" placeholder="Telefone Celular" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
+            <td><input class="form-control" type="valorCarga" id="valor" name="valorCarga" style="text-transform:uppercase" size="23" placeholder="valorCarga" type="valorCarga"></td>
+            <td><input class="form-control" type="text" id="valorFrete" name="valorFrete" maxlength="15" size="23" maxlength="12" placeholder="valorFrete" type="text" ></td>
+            <td><input class="form-control" type="text" id="altura" name="altura" size="23" maxlength="14" placeholder="altura" type="text" ></td>
+			<td><input class="form-control" type="text" id="peso" name="peso" size="23" maxlength="14" placeholder="peso" type="text" ></td>
+			<td><input class="form-control" type="text" id="comprimento" name="comprimento" size="23" maxlength="14" placeholder="comprimento" type="text" ></td>
           </tr>
         </table>
-        <br>
-        <table>
-          <!--Login/Senha -->    
-          <h2>Login/Senha</h2>
-          </tr>
-          <td><b>Usuário</b></td>
-          <td><b>Senha</b></td>
-          <td><b>Perfil</b></td>
-          <td><b>Status</b></td>
-          </tr>
-          <tr>
-            <td><input class="form-control" type="text" id="login" name="login" size="30" placeholder="Usuário" type="text"></td>
-            <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha" type="text"></td>
-            <td>
-              <select class="form-control" id="idPerfil" name="idPerfil">
-                <option value="1">Pessoa Física</option>
-                <option value="2">Pessoa Jurídica</option>
-                <option value="3">Atendente</option>
-                <option value="4">Motorista</option>
-              </select>
-            </td>
-            <td>
-              <select class="form-control" id="idStatus" name="idStatus">
-                <option value="1">Habilitado</option>
-                <option value="2">Desabilitado</option>
-              </select>
-            </td>
-            </td>
-            <td>
-              <select class="form-control" id="codCidade" name="codCidade">
-                <option value="2600104">COD CIDADE TESTE</option>
-              </select>
-            </td>
-          </tr>
-        </table>
+        <br>        
       </form>
     </div>
     <div id="dlg-buttons">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">Salvar</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
+      <a href="#" class="easyui-linkbutton" id="btnAprovar" iconCls="icon-ok" onclick="atendenteCotacaoAprovar()">Aprovar Cotação</a>
+	  <a href="#" class="easyui-linkbutton" id="btnCancelar" iconCls="icon-cancel" onclick="atendenteCotacaoCancelar()">Cancelar Cotação</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-undo" width="200" onclick="javascript:$('#dlg').dialog('close')">Voltar Tela Anterior</a>
     </div>
     <br><br>
     <!-- FIM DIALOG ADMIN PESSOA FÍSICA -->
