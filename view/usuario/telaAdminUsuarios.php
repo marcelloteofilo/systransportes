@@ -74,6 +74,7 @@
           });
         }
       }
+
     </script>
     <!-- FIM SCRIPT ADMIN -->
 
@@ -103,8 +104,8 @@
       <thead>
 
         <tr>
-          <!-- <th field="idStatus" width="45">Status</th> -->
-          <!-- <th field="idPerfil" width="45">Perfil</th>  -->
+          <th field="idStatus" width="57">Status</th>
+          <th field="idPerfil" width="35">Perfil</th>
           <th field="nomeCompleto" width="70">Nome.C</th>
           <th field="rg" width="50">RG</th>
           <th field="orgaoExpedidor" width="50">Orgão.E</th>
@@ -118,9 +119,10 @@
           <th field="telefone2" width="50">Tel.2</th>
           <th field="logradouro" width="50">Lograd.</th>
           <th field="bairro" width="50">Bairro</th>
+          <th field="estado" width="20">UF</th>
+          <th field="cidade" width="50">Cidade</th>
           <th field="numero" width="30">Nm</th>
           <th field="complemento" width="50">Compl.</th>
-          <!-- <th field="codCidade" width="65">Cod.Cidade</th> -->
           <th field="cep" width="50">CEP</th>
           <th field="login" width="50">Login</th>
         </tr>
@@ -204,7 +206,7 @@
           <tr>
             <td><input class="form-control" type="text" id="complemento" name="complemento" size="23" style="text-transform:uppercase" placeholder="Complemento" type="text"></td>
             <td>
-              <select class="form-control" tabindex="3"  id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0','Escolha a Cidade!')" >
+              <select class="form-control" id="estado" name="estado">
                 <option value="">Escolha o seu Estado</option>
                 <option value="PE">PE</option>
                 <option value="AC">AC</option>
@@ -235,11 +237,7 @@
                 <option value="TO">TO</option>
               </select>
             </td>
-            <td>
-              <select class="form-control" tabindex="4" id="cidadeDestino" name="cidadeDestino" >
-                <option size="35" value="">Escolha a sua Cidade</option>
-              </select>
-            </td>
+            <td><input class="form-control" type="text" id="cidade" name="cidade" style="text-transform:uppercase" size="23" placeholder="Cidade"></td>
           </tr>
         </table>
         <br>
@@ -268,28 +266,23 @@
           <td><b>Status</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="login" name="login" size="30" placeholder="Usuário" type="text"></td>
-            <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha" type="text"></td>
+            <td><input class="form-control" type="text" id="login" name="login" size="30" placeholder="Usuário"></td>
+            <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
             <td>
-              <select class="form-control" id="idPerfil" name="idPerfil">
-                <option value="1">Pessoa Física</option>
-                <option value="2">Pessoa Jurídica</option>
-                <option value="3">Atendente</option>
-                <option value="4">Motorista</option>
+              <select class="form-control" id="idPerfil" name="idPerfil" onClick="validaPerfil()">
+                <option value="PF">Pessoa Física</option>
+                <option value="PJ">Pessoa Jurídica</option>
+                <option value="Atendente">Atendente</option>
+                <option value="Motorista">Motorista</option>
               </select>
             </td>
             <td>
-              <select class="form-control" id="idStatus" name="idStatus">
-                <option value="1">Habilitado</option>
-                <option value="2">Desabilitado</option>
+              <select class="form-control" id="idStatus" name="idStatus" onClick="validaStatus()" >
+                <option value="Habilitado">Habilitado</option>
+                <option value="Desabilitado">Desabilitado</option>
               </select>
             </td>
-            </td>
-            <td>
-              <select class="form-control" id="codCidade" name="codCidade">
-                <option value="2600104">COD CIDADE TESTE</option>
-              </select>
-            </td>
+
           </tr>
         </table>
       </form>

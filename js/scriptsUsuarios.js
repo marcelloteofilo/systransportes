@@ -21,15 +21,17 @@
 		var bairro = document.getElementById('bairro').value;
 		var numero = document.getElementById('numero').value;								
 		var complemento = document.getElementById('complemento').value;																
-		var cep = document.getElementById('cep').value;			
-		var codCidade = document.getElementById('cidadeDestino').value;
-		codCidade = codCidade.substring(0,7);
+		var cep = document.getElementById('cep').value;		
+		var estado = document.getElementById('estado').value;	
+		var cidade = document.getElementById('cidade').value;		
+		//var codCidade = document.getElementById('cidadeDestino').value;
+		//codCidade = codCidade.substring(0,7);
 
 		var login = document.getElementById('login').value;								
 		var senha = document.getElementById('senha').value;							
 		
 		//jsonParametros = {incluirUsuario: 'sim',  status,perfil,nomeCompleto,razaoSocial,nomeFantasia,tipoEmpresa,rg,orgaoExpedidor,cpf,cnpj,email,telefone1,telefone2,logradouro,bairro,numero,complemento,cep,codCidade,login,senha};
-		jsonParametros = {incluirUsuario: 'sim',  status,perfil,nomeCompleto,rg,orgaoExpedidor,cpf,email,telefone1,telefone2,logradouro,bairro,numero,complemento,cep,codCidade,login,senha};
+		jsonParametros = {incluirUsuario: 'sim',  status,perfil,nomeCompleto,rg,orgaoExpedidor,cpf,email,telefone1,telefone2,logradouro,bairro,numero,complemento,cep,estado,cidade,login,senha};
 
 		var $xhr = $.getJSON(servicoHttp, jsonParametros);		
 		
@@ -67,14 +69,16 @@
 		var bairro = document.getElementById('bairro').value;
 		var numero = document.getElementById('numero').value;								
 		var complemento = document.getElementById('complemento').value;																
-		var cep = document.getElementById('cep').value;			
-		var codCidade = document.getElementById('cidadeDestino').value;
-		codCidade = codCidade.substring(0,7);
+		var cep = document.getElementById('cep').value;	
+		var estado = document.getElementById('estado').value;	
+		var cidade = document.getElementById('cidade').value;			
+		//var codCidade = document.getElementById('cidadeDestino').value;
+		//codCidade = codCidade.substring(0,7);
 
 		var login = document.getElementById('login').value;								
 		var senha = document.getElementById('senha').value;							
 		
-		jsonParametros = {incluirUsuario: 'sim',  status,perfil,razaoSocial,nomeFantasia,tipoEmpresa,cnpj,email,telefone1,telefone2,logradouro,bairro,numero,complemento,cep,codCidade,login,senha};
+		jsonParametros = {incluirUsuario: 'sim',  status,perfil,razaoSocial,nomeFantasia,tipoEmpresa,cnpj,email,telefone1,telefone2,logradouro,bairro,numero,complemento,cep,estado,cidade,login,senha};
 	
 		var $xhr = $.getJSON(servicoHttp, jsonParametros);		
 		

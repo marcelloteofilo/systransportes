@@ -23,10 +23,8 @@
   private $bairro;
   private $numero;
   private $complemento;
-  private $uf;
+  private $estado;
   private $cidade;
-  private $codCidade;
-  private $objetoCodCidade;
 
   private $login;
   private $senha;
@@ -186,29 +184,21 @@
   }   
 
 
-  //codCidade
-  public function setCodCidade($codCidade) {
-    $this->codCidade = trim($codCidade);
+  //cidade
+  public function setCidade($cidade) {
+    $this->cidade = trim($cidade);
   }
-  public function getCodCidade() {
-    return $this->codCidade;
-  }
-
-  /*public function setCodCidade($cidade) {
-       $this->cidade = trim($cidade);
-  }
-  
-  public function getCodCidade() {     
-    if($this->cidade == null){
-      $this->cidade = new Cidade();
-    }   
+  public function getCidade() {
     return $this->cidade;
-  }*/
+  }
 
-
-
-
-
+  //estado
+  public function setEstado($estado) {
+    $this->estado = trim($estado);
+  }
+  public function getEstado() {
+    return $this->estado;
+  }
 
 
   //login

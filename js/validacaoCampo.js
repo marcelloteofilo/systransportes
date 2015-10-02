@@ -173,3 +173,91 @@ function MascaraCNPJ(cnpj){
 
 }
 
+function validaPerfil(){
+
+  var perfilUsuario = document.getElementById('idPerfil').value;
+  
+  if(perfilUsuario == "PF"){
+    //Habilita
+    document.getElementById('nomeCompleto').disabled = false;
+    document.getElementById('cpf').disabled = false;
+    document.getElementById('rg').disabled = false;
+    document.getElementById('orgaoExpedidor').disabled = false; 
+    //Desabilita
+    document.getElementById('razaoSocial').disabled = true;
+    document.getElementById('nomeFantasia').disabled = true;
+    document.getElementById('cnpj').disabled = true;
+    document.getElementById('tipoEmpresa').disabled = true;  
+  }
+  else{
+    //Habilita
+    document.getElementById('nomeCompleto').disabled = true;
+    document.getElementById('cpf').disabled = true;
+    document.getElementById('rg').disabled = true;
+    document.getElementById('orgaoExpedidor').disabled = true;  
+    //Desabilita
+    document.getElementById('razaoSocial').disabled = false;
+    document.getElementById('nomeFantasia').disabled = false;
+    document.getElementById('cnpj').disabled = false;
+    document.getElementById('tipoEmpresa').disabled = false; 
+  }
+}
+
+function validaStatus(){
+  
+  var statusUsuario = document.getElementById('idStatus').value;
+  
+  if(statusUsuario == "Habilitado"){
+    //Habilita
+    document.getElementById('nomeCompleto').disabled = false;
+    document.getElementById('cpf').disabled = false;
+    document.getElementById('rg').disabled = false;
+    document.getElementById('orgaoExpedidor').disabled = false; 
+    
+    document.getElementById('razaoSocial').disabled = false;
+    document.getElementById('nomeFantasia').disabled = false;
+    document.getElementById('cnpj').disabled = false;
+    document.getElementById('tipoEmpresa').disabled = false; 
+    
+    document.getElementById('email').disabled = false;
+    document.getElementById('telefone1').disabled = false;
+    document.getElementById('telefone2').disabled = false;
+    document.getElementById('logradouro').disabled = false;  
+    document.getElementById('bairro').disabled = false;
+    document.getElementById('numero').disabled = false;
+    document.getElementById('complemento').disabled = false;
+    document.getElementById('cep').disabled = false;
+    document.getElementById('estado').disabled = false;
+    document.getElementById('cidade').disabled = false;
+    document.getElementById('idPerfil').disabled = false;
+    document.getElementById('login').disabled = false;
+    document.getElementById('senha').disabled = false;
+  }
+  else{
+      //Desabilita
+    document.getElementById('nomeCompleto').disabled = true;
+    document.getElementById('cpf').disabled = true;
+    document.getElementById('rg').disabled = true;
+    document.getElementById('orgaoExpedidor').disabled = true;  
+    
+    document.getElementById('razaoSocial').disabled = true;
+    document.getElementById('nomeFantasia').disabled = true;
+    document.getElementById('cnpj').disabled = true;
+    document.getElementById('tipoEmpresa').disabled = true;  
+    
+    document.getElementById('email').disabled = true;
+    document.getElementById('telefone1').disabled = true;
+    document.getElementById('telefone2').disabled = true;
+    document.getElementById('logradouro').disabled = true; 
+    document.getElementById('bairro').disabled = true;
+    document.getElementById('numero').disabled = true;
+    document.getElementById('complemento').disabled = true;
+    document.getElementById('cep').disabled = true;
+    document.getElementById('estado').disabled = true;
+    document.getElementById('cidade').disabled = true;
+    document.getElementById('idPerfil').disabled = true;
+    document.getElementById('login').disabled = true;
+    document.getElementById('senha').disabled = true;
+  } 
+}
+

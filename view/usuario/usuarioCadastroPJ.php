@@ -193,7 +193,7 @@
                               <tr>
                               <td><input type="text"id="complemento" name="" size="40" style="text-transform:uppercase"class="form-control"placeholder="Complemento"tabindex="1" type="text"></td>
                               <td>
-                                    <select tabindex="3" class="form-control" id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0','Escolha a Cidade!')" >
+                                    <select tabindex="3" class="form-control" id="estado" name="estado" >
                                        <option value="">Escolha o seu Estado</option>
                                        <option value="PE">PE</option>
                                        <option value="AC">AC</option>
@@ -224,11 +224,8 @@
                                        <option value="TO">TO</option>
                                     </select>
                               </td>
-                              <td>
-                                    <select tabindex="4" class="form-control" id="cidadeDestino" name="cidadeDestino" >
-                                       <option value="">Escolha a sua Cidade</option>
-                                    </select>
-                              </td>
+                              <td><input type="text"id="cidade" name="cidade" size="40" style="text-transform:uppercase"class="form-control"placeholder="Cidade"tabindex="1"></td>
+
 
                               </tr>
                            </table><br>

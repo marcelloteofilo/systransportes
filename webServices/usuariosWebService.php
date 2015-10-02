@@ -31,7 +31,8 @@
 		$usuario->setComplemento($complemento); 
 		$usuario->setNumero($numero); 
 		$usuario->setCep($cep); 
-		$usuario->setCodCidade($codCidade); 
+		$usuario->setEstado($estado); 
+		$usuario->setCidade($cidade);
 
 		$usuario->setLogin($login); 
 		$usuario->setSenha($senha); 				
@@ -97,7 +98,7 @@
 
 		//Atributos da classe Usuário/Valores
 		$usuario->setId($_REQUEST['id']);
-		 
+
 		$usuario->setStatus($_REQUEST['idStatus']); 
 		$usuario->setPerfil($_REQUEST['idPerfil']); 
 
@@ -118,8 +119,9 @@
 		$usuario->setBairro($_REQUEST['bairro']); 
 		$usuario->setComplemento($_REQUEST['numero']); 
 		$usuario->setNumero($_REQUEST['complemento']); 
-		$usuario->setCep($_REQUEST['cep']); 
-		$usuario->setCodCidade($_REQUEST['codCidade']); 
+		$usuario->setCep($_REQUEST['cep']);
+		$usuario->setEstado($_REQUEST['estado']); 
+		$usuario->setCidade($_REQUEST['cidade']);  
 
 		$usuario->setLogin($_REQUEST['login']); 
 		$usuario->setSenha($_REQUEST['senha']); 				
@@ -133,6 +135,7 @@
 		
 		echo(json_encode($resultado ));						
 	}
+	
 	if ($_GET["editSave"] == "removerUsuario"){
 		//Classe de Usuário
 		$usuario = new Usuario();	
@@ -149,13 +152,13 @@
 	if ($_GET["editSave"] == "carrefarUsuario"){
 		
 
-		if (UsuarioSql::carregarLista()){
+		/*if (UsuarioSql::carregarLista()){
 			$resultado[] = array(				
 				'oka'	=>  'oks',						
 			);			
-		}
+		}*/
 
-		/*$listaUsuario = usuarioSql::carregarLista();
+		$listaUsuario = usuarioSql::carregarLista();
 		
 		for ($i=0; $i<count($listaUsuario); $i++ ){											
 			$resultado[] = array(				
@@ -176,14 +179,15 @@
 				'bairro'	=>   $listaUsuario[$i]->getBairro(),				
 				'numero'	=>  $listaUsuario[$i]->getNumero(),
 				'complemento'	=>  $listaUsuario[$i]->getComplemento(),
-				'codCidade'	=>  $listaUsuario[$i]->getCodCidade(),					
+				'estado'	=>  $listaUsuario[$i]->getEstado(),
+				'cidade'	=>  $listaUsuario[$i]->getCidade(),
 				'cep'	=>   $listaUsuario[$i]->getCep(),				
 				'login'	=>  $listaUsuario[$i]->getLogin(),				
 					
 			);
 		}
 		echo( json_encode( $resultado ) );	
-		return $resultado;*/
+		return $resultado;
 
 	}
 
