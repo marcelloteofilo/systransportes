@@ -150,7 +150,7 @@
           <!--Dados Pessoa Física -->
           <tr>
             <td><b>Nome Completo</b></td>
-            <td><b>CPF(Somente numeros)</b></td>
+            <td><b>CPF</b></td>
             <td><b>RG</b></td>
             <td><b>Orgão Expedidor</b></td>
           </tr>
@@ -250,9 +250,9 @@
             <td><b>Telefone Celular</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="email" id="email" name="email" style="text-transform:uppercase" size="23" placeholder="E-mail" type="email"></td>
-            <td><input class="form-control" type="text" id="telefone1" name="telefone1" maxlength="15" size="23" maxlength="12" placeholder="Telefone Residencial" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
-            <td><input class="form-control" type="text" id="telefone2" name="telefone2" size="23" maxlength="14" placeholder="Telefone Celular" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
+            <td><input class="form-control" type="email" id="email" name="email" style="text-transform:uppercase" size="23" placeholder="E-mail@domínio.com" type="email"></td>
+            <td><input class="form-control" type="text" id="telefone1" name="telefone1" maxlength="15" size="23" maxlength="12" placeholder="(00)00000-0000" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
+            <td><input class="form-control" type="text" id="telefone2" name="telefone2" size="23" maxlength="14" placeholder="(00)00000-0000" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
           </tr>
         </table>
         <br>
