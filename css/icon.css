@@ -19,6 +19,13 @@
 .icon-add-icon{
 	background:url('icons/add_icon.png') no-repeat center center;
 }
+.icon-Actions-edit-delete-icon{
+	background:url('icons/Actions_edit_delete_icon.png') no-repeat center center;
+}
+.icon-App-clean-icon{
+	background:url('icons/App_clean_icon.png') no-repeat center center;
+}
+
 
 
 

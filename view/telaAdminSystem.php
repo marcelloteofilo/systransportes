@@ -6,6 +6,7 @@
       <title>SysTransportes</title>
       <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
 	  <link rel="stylesheet" type="text/css" href="../css/paginaTemplate.css">
+	  <script type="text/javascript" src="../js/scriptsUsuarios.js"></script>
 	  
       <header class="navbar-fixed-top navbar" style="background:#0EB493;"> 
          <div class="container">
@@ -24,8 +25,7 @@
    </head>
    
    <body style="background:#F3F8F7">
- 
- 
+
   <div class="container">
 	<div class="row">
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">

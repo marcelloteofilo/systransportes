@@ -232,20 +232,8 @@ function validaPerfil(){
 
   var perfilUsuario = document.getElementById('idPerfil').value;
   
-  if(perfilUsuario == "PF"){
-    //Habilita
-    document.getElementById('nomeCompleto').disabled = false;
-    document.getElementById('cpf').disabled = false;
-    document.getElementById('rg').disabled = false;
-    document.getElementById('orgaoExpedidor').disabled = false; 
-    //Desabilita
-    document.getElementById('razaoSocial').disabled = true;
-    document.getElementById('nomeFantasia').disabled = true;
-    document.getElementById('cnpj').disabled = true;
-    document.getElementById('tipoEmpresa').disabled = true;  
-  }
-  else{
-    //Habilita
+  if(perfilUsuario == "PJ"){
+ //Habilita
     document.getElementById('nomeCompleto').disabled = true;
     document.getElementById('cpf').disabled = true;
     document.getElementById('rg').disabled = true;
@@ -255,6 +243,19 @@ function validaPerfil(){
     document.getElementById('nomeFantasia').disabled = false;
     document.getElementById('cnpj').disabled = false;
     document.getElementById('tipoEmpresa').disabled = false; 
+  }
+  else{
+        //Habilita
+    document.getElementById('nomeCompleto').disabled = false;
+    document.getElementById('cpf').disabled = false;
+    document.getElementById('rg').disabled = false;
+    document.getElementById('orgaoExpedidor').disabled = false; 
+    //Desabilita
+    document.getElementById('razaoSocial').disabled = true;
+    document.getElementById('nomeFantasia').disabled = true;
+    document.getElementById('cnpj').disabled = true;
+    document.getElementById('tipoEmpresa').disabled = true;  
+   
   }
 }
 
