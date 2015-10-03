@@ -187,6 +187,50 @@
 		
 	}
 	
+	//VALIDA DIGITAÇÃO DO CAMPO DE CONSULTAS DA COTAÇÃO
+	function atendenteCotacaoAprovar(acao) {		
+		
+		var idCotacao = document.getElementById('id');									
+		jsonParametros = {editSave: 'aprovarCotacao',
+		idCotacao: idCotacao.value,
+		aprovadoAtendente: 1};		
+
+		var $xhr = $.getJSON(webServiceCotacao, jsonParametros);			
+			
+		$xhr.done(function(resultadoXml) {
+			alert('Operação Realizada Com Sucesso!');
+			$('#dlg').dialog('close');
+		});
+
+		$xhr.fail(function(data) {
+			alert(data.responseText);			
+		});		
+		 
+		
+	}
+	
+	//VALIDA DIGITAÇÃO DO CAMPO DE CONSULTAS DA COTAÇÃO
+	function atendenteCotacaoCancelar(acao) {		
+		
+		var idCotacao = document.getElementById('id');									
+		jsonParametros = {editSave: 'statusCotacao', 
+		status: 0,
+		idCotacao: idCotacao.value};					
+
+		var $xhr = $.getJSON(webServiceCotacao, jsonParametros);			
+			
+		$xhr.done(function(resultadoXml) {
+			alert('Operação Realizada Com Sucesso!');
+			$('#dlg').dialog('close');
+		});
+
+		$xhr.fail(function(data) {
+			alert(data.responseText);			
+		});		
+		 
+		
+	}
+	
 	
 	
 	//ACESSO AO WEBSERVICE

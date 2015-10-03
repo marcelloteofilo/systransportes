@@ -10,12 +10,9 @@
 		
 		$despesas = new despesas();	
 
-		
-		$despesas->setDescricao($_REQUEST['descricao']); 
-		$despesas->setValor($_REQUEST['valor']); 
-		$despesas->setData($_REQUEST['data']); 
-		
-		
+		$despesas->setDescricao($descricao);
+		$despesas->setValor($valor); 
+		$despesas->setData($data);
 		
 		if (DespesasSql::adicionar($despesas)){
 			$resultado[] = array(				
@@ -27,9 +24,9 @@
 	}
 	
 	if ($_GET["editSave"] == "alterarDespesas"){	
+		
 		$despesas = new despesas();	
 
-		
 		$despesas->setId($_REQUEST['id']); 
 		$despesas->setDescricao($_REQUEST['descricao']); 
 		$despesas->setValor($_REQUEST['valor']); 

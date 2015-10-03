@@ -20,6 +20,7 @@
 	private $aprovadoCliente;
 	private $aprovadoAtendente;
 	private $status;
+	private $exibeStatus;
         
     public function setId($l) {
       $this->id = trim($l);
@@ -165,8 +166,17 @@
     }
     
     public function getStatus() {
-      return $this->status;
+      return $this->status;    
+	}		
+	
+	public function setExibeStatus($l) {
+      $this->exibeStatus = trim($l);
+    }
+    
+    public function getExibeStatus() {
+      return $this->exibeStatus;
     }		
+	
 	
   }
 ?>

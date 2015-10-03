@@ -123,7 +123,7 @@
 	}			
 	
 	//CONSULTAR COTACOES
-	if ($_GET["editSave"] == "consultaCotacao"){		
+	if ($_GET["editSave"] == "consultaCotacao"){			
 		$resultadoConsulta ='consulta'; 
 		$cotacao = new Cotacao();		
 		if (isset($_GET["idCotacao"])){ 
@@ -134,9 +134,9 @@
 		if ($listaCotacoes==null){	
 			$resultado[] = array(				
 				'resultado'	=>  'Nada Encontrado!',						
-			);							
-		}else{				
-			for ($i=0; $i<count($listaCotacoes); $i++ ){							
+			);				
+		}else{							
+			for ($i=0; $i<count($listaCotacoes); $i++ ){										
 				$valorCarga = number_format($listaCotacoes[$i]->getValorCarga(), 2, ',', '.');				
 				$valorFrete = number_format($listaCotacoes[$i]->getValorFrete(), 2, ',', '.');				
 				$altura = number_format($listaCotacoes[$i]->getAltura(), 2, ',', '.');				
@@ -146,6 +146,7 @@
 				$resultado[] = array(				
 					'id'	=>  $listaCotacoes[$i]->getId(),					
 					'idUsuario'	=>   $listaCotacoes[$i]->getObjUsuario()->getId(),				
+					'nomeUsuario'	=>   $listaCotacoes[$i]->getObjUsuario()->getNomeCompleto(),				
 					'codCidadeOrigem'	=>   $listaCotacoes[$i]->getObjCidadeOrigem()->getCodigo(),				
 					'cidadeOrigem'	=>  $listaCotacoes[$i]->getObjCidadeOrigem()->getDescricao(),				
 					'ufOrigem'	=>  $listaCotacoes[$i]->getObjCidadeOrigem()->getUf(),				
@@ -164,6 +165,7 @@
 					'aprovadoCliente'	=>  $listaCotacoes[$i]->getAprovadoCliente(),					
 					'aprovadoAtendente'	=>  $listaCotacoes[$i]->getAprovadoAtendente(),					
 					'status'	=>  $listaCotacoes[$i]->getStatus(),									
+					'exibeStatus'	=>  $listaCotacoes[$i]->getExibeStatus(),									
 					'resultado'	=>  $resultadoConsulta,									
 				);
 			}

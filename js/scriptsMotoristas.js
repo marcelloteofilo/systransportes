@@ -1,16 +1,14 @@
 	//CONSULTA CIDADES	
-	function consultaCidades(listaCidades, ufEscolhida, codCidadeSelecionada, cidadeSelecionada) {	
-		var servicoHttp = "../../webServices/cidadeWebService.php";				
+	function consultaCidades(listaMotoristas) {	
+		var servicoHttp = "../../webServices/motoristaWebService.php";				
 		
-		var caixaUfEscolhida = document.getElementById(ufEscolhida); 
-		var caixalistaCidades = document.getElementById(listaCidades);												
-		var valorCidade = "";
 		
-		if(codCidadeSelecionada>0){
-			valorCidade = codCidadeSelecionada+cidadeSelecionada;
-		}
+		var caixalistaMotoristas = document.getElementById(listaMotoristas);												
 		
-		jsonParametros = {consultaCidades: 'sim',  consultaUf: caixaUfEscolhida.value};
+		
+		
+		
+		jsonParametros = {CarregarMotoristas: 'sim'};
 	
 		var $xhr = $.getJSON(servicoHttp, jsonParametros);		
 		

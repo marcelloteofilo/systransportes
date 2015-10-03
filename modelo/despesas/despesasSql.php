@@ -15,7 +15,7 @@
 			$valor 		= mysql_real_escape_string($despesas->getValor(), $conexao);
 			$data 		= mysql_real_escape_string($despesas->getData(), $conexao);
 
-			$dataFormatada = explode("-", $data);
+			$dataFormatada = explode("/", $data);
 			$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
 
 			
@@ -37,7 +37,7 @@
 			$valor 		= mysql_real_escape_string($despesas->getValor(), $conexao);
 			$data 		= mysql_real_escape_string($despesas->getData(), $conexao);
 
-			$dataFormatada = explode("-", $data);
+			$dataFormatada = explode("/", $data);
 			$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
 			
 			
@@ -79,7 +79,7 @@
       			$objDespesas->setValor($row['valor']);
 
       			$dataFormatada = explode("-", $row['data']);
-				$dataBrasileira = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
+				$dataBrasileira = $dataFormatada[2]."/".$dataFormatada[1]."/".$dataFormatada[0];
 
 
       			$objDespesas->setData($dataBrasileira);

@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
+
    <head>
       <meta charset="utf-8">
       <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
@@ -10,7 +11,7 @@
       <meta name="viewport" content="width=device-width, initial-scale=1">
       <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
       <!-- CSS
-         <!-- Fontawesome Icon font -->
+      <!-- Fontawesome Icon font -->
       <link rel="stylesheet" href="../../css/font-awesome.min.css">
       <!-- Twitter Bootstrap css -->
       <link rel="stylesheet" href="../../css/bootstrap.min.css">
@@ -29,7 +30,8 @@
       <script type="text/javascript" src="../../js/scriptsUsuarios.js"></script>
       <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
       <script type="text/javascript" src="../../js/validacaoCampo.js"></script> 
-      <!-- Essential jQuery Plugins -->
+	  
+	  <!-- Essential jQuery Plugins -->
       <!-- Main jQuery -->
       <script src="../../js/jquery-1.11.1.min.js"></script>
       <!-- Single Page Nav -->
@@ -52,7 +54,7 @@
       <script src="../../js/wow.min.js"></script>
       <!-- Custom Functions -->
       <script src="../../js/custom.js"></script>
-      <script>
+	  <script>
          var wow = new WOW ({
              boxClass:     'wow',      // animated element css class (default is wow)
              animateClass: 'animated', // animation css class (default is animated)
@@ -63,6 +65,8 @@
          );
          wow.init();
       </script> 
+
+	  
    </head>
    <body id="body">
       <!-- preloader -->
@@ -70,9 +74,7 @@
          <img src="../../img/preloader.gif" alt="Preloader">
       </div>
       <!-- end preloader -->
-      <!-- 
-         Fixed Navigation
-         ==================================== -->
+
       <header id="navigation" class="navbar-fixed-top navbar">
          <div class="container">
             <div class="navbar-header">
@@ -104,12 +106,9 @@
             <!-- /main nav -->
          </div>
       </header>
-      <!--
-         End Fixed Navigation
-         ==================================== -->
-      <!--
-         Home Slider
-         ==================================== -->
+      <!-- End Fixed Navigation -->
+	  
+      <!-- Home Slider -->
       <section id="slider">
          <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
             <!-- Wrapper for slides -->
@@ -133,24 +132,33 @@
             <!-- End Wrapper for slides -->
          </div>
       </section>
-      <!--
-         End Home SliderEnd
-         ==================================== -->
-      <!--
-         Features
-         ==================================== -->
-      <section id="cadastropj" class="features">
+      <!-- End Home SliderEnd -->
+	  
+      <!-- Features -->
+      <section id="cadastro" class="features">
          <div class="container">
             <div class="row">
                <div class="navbar-wrapper">
                   <nav class="navbar">
+                     
                      <div class="container">
-
                         <form>
                            <table>
                               <!--Dados Pessoais -->
-                              <h2>Dados Pessoa Jurídica</h2><br>
+                              <h2>Dados Pessoais</h2>
                               <tr>
+                              <td><b>Nome Completo</b></td>
+                              <td><b>CPF(Somente numeros)</b></td>
+                              <td><b>CPF(Somente numeros)</b></td>
+                              <td><b>Orgão Expedidor</b></td>
+                              </tr>
+                              <tr>                           
+                              <td><input type="text" style="text-transform:uppercase" id="nomeCompleto" name="" size="40" class="form-control" placeholder="Nome Completo" tabindex="1" type="text" onkeyup="validar(this,'text');"></td>
+                              <td><input type="text" id="cpf" name="" size="40" class="form-control" maxlength="14" placeholder="CPF" tabindex="1" type="text" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"></td>
+                              <td><input type="text" id="rg" name="" size="40" class="form-control" maxlength="9" placeholder="RG" tabindex="1" type="text" onkeypress="javascript: mascara(this, Rg);"></td>
+                              <td><input type="text" id="orgaoExpedidor" style="text-transform:uppercase" name="" size="40" maxlength="8" class="form-control" placeholder="Orgão Expedidor" tabindex="1" type="text" onkeyup="validar(this,'text');"></td>
+                              </tr>
+							         <tr>
                               <td><b>Razão Social</b></td>
                               <td><b>Nome Fantasia</b></td>
                               <td><b>CNPJ</b></td>
@@ -225,8 +233,6 @@
                                     </select>
                               </td>
                               <td><input type="text"id="cidade" name="cidade" size="40" style="text-transform:uppercase"class="form-control"placeholder="Cidade"tabindex="1"></td>
-
-
                               </tr>
                            </table><br>
 
@@ -259,15 +265,17 @@
                               <td><input type="text" id="login" name="" size="40" class="form-control" placeholder="Usuário" tabindex="1" type="text"></td>
                               <td><input type="password" size="40" class="form-control" id="senha"placeholder="Senha" tabindex="1" type="text"></td>
                               <td><input type="password" id="confirmaSenha" name="" size="40" class="form-control" placeholder="Confirme  sua senha" tabindex="1" type="text"onChange="verificacaoSenha()"></td>
-                              <td><select class="form-control" id="perfil" name="perfil">
-                              <option value="2">Pessoa Jurídica</option>
+                              <td><select class="form-control" id="idPerfil" name="idPerfil" onClick="validaPerfilUsuario()">
+                              <option value="1">Pessoa Física</option>
+							         <option value="2">Pessoa Jurídica</option>
                               </select></td>
 
                               </tr>
                            </table>
                            <br>
-                           <input class="btn btn-success btn-login-submit" value="Confirmar" type="submit" id="btnIncluir" onClick="consultaAJAXPJ()">
+                           <input class="btn btn-success btn-login-submit" value="Confirmar" type="submit" id="btnIncluir" onClick="consultaAJAX()">
                            <input class="btn btn-success btn-login-submit" value="Limpar" type="reset" id="btnLimpar">
+
                         </form>
                      </div>
                   </nav>
@@ -275,7 +283,5 @@
             </div>
          </div>
       </section>
-      <!-- Essential jQuery Plugins
-         ================================================== -->
    </body>
 </html>

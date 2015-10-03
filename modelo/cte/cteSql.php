@@ -11,16 +11,16 @@
 	  	$cotacao 				= mysql_real_escape_string($cte->getCotacao(), $conexao); 
 	  	$manifesto 				= mysql_real_escape_string($cte->getManifesto(), $conexao);
 	  	$faturamento 			= mysql_real_escape_string($cte->getFaturamento(), $conexao);
-	  	$remetente 				= mysql_real_escape_string($cte->getRemetente(), $conexao); 
-	  	$destinatario 			= mysql_real_escape_string($cte->getDestinatario(), $conexao);                
+	  	$usuario 				= mysql_real_escape_string($cte->getUsuario(), $conexao); 
+	  	$veiculo      			= mysql_real_escape_string($cte->getVeiculo(), $conexao);                
 	  	$emissao 				= mysql_real_escape_string($cte->getEmissao(), $conexao);   
 	  	$status 				= mysql_real_escape_string($cte->getStatus(), $conexao); 
 	  	$dataEntrega 			= mysql_real_escape_string($cte->getDataEntrega(), $conexao); 
 	  	$horaEntrega 			= mysql_real_escape_string($cte->getHoraEntrega(), $conexao);    
   
-	  	$sql = "insert into cte (idCotacao, idManifesto, idFaturamento, idRemetente, idDestinatario, 
+	  	$sql = "insert into cte (idCotacao, idManifesto, idFaturamento, idUsuario, idVeiculo, 
 	  				emissao, status, dataEntrega, HoraEntrega) values ($cotacao, $manifesto, $faturamento,
-	  					$remetente, $destinatario, '$emissao', '$status', '$dataEntrega','$horaEntrega')";	  
+	  					$usuario, $veiculo, '$emissao', '$status', '$dataEntrega','$horaEntrega')";	  
 
       	$resultado = @mysql_query($sql, $conexao);
 
@@ -35,15 +35,15 @@
 	  	$cotacao 				= mysql_real_escape_string($cte->getCotacao(), $conexao); 
 	  	$manifesto 				= mysql_real_escape_string($cte->getManifesto(), $conexao);
 	  	$faturamento 			= mysql_real_escape_string($cte->getFaturamento(), $conexao);
-	  	$remetente 				= mysql_real_escape_string($cte->getRemetente(), $conexao); 
-	  	$destinatario 			= mysql_real_escape_string($cte->getDestinatario(), $conexao);                
+	  	$usuario 				= mysql_real_escape_string($cte->getUsuario(), $conexao); 
+	  	$veiculo      			= mysql_real_escape_string($cte->getVeiculo(), $conexao);                
 	  	$emissao 				= mysql_real_escape_string($cte->getEmissao(), $conexao);   
 	  	$status 				= mysql_real_escape_string($cte->getStatus(), $conexao); 
 	  	$dataEntrega 			= mysql_real_escape_string($cte->getDataEntrega(), $conexao); 
 	  	$horaEntrega 			= mysql_real_escape_string($cte->getHoraEntrega(), $conexao);      
 	 
 	  	$sql = "update cte set id=$id, idContacao=$contacao, idManifesto=$manifesto, idFaturamento=faturamento,
-	  		 		idRemetente=$remetente, idDestinatario=$destinatario, emissao='$emissao', status='$status', 
+	  		 		idUsuario=$usuario, idVeiculo=$veiculo, emissao='$emissao', status='$status', 
 	  		 			dataEntrega='$dataEntrega', horaEntrega='$HoraEntrega' where id=$id";
       
       	$resultado = @mysql_query($sql, $conexao);

@@ -173,6 +173,61 @@ function MascaraCNPJ(cnpj){
 
 }
 
+function mascaraData(campoData){
+              var data = campoData.value;
+              if (data.length == 2){
+                  data = data + '/';
+                  document.forms[0].data.value = data;
+      return true;              
+              }
+              if (data.length == 5){
+                  data = data + '/';
+                  document.forms[0].data.value = data;
+                  return true;
+              }
+}
+
+
+
+function validaPerfilUsuario(){
+
+  var perfilUsuario = document.getElementById('idPerfil').value;
+  
+  if(perfilUsuario == "1"){
+    //Habilita
+    document.getElementById('nomeCompleto').disabled = false;
+    document.getElementById('cpf').disabled = false;
+    document.getElementById('rg').disabled = false;
+    document.getElementById('orgaoExpedidor').disabled = false; 
+    //Desabilita
+    document.getElementById('razaoSocial').disabled = true;
+    document.getElementById('nomeFantasia').disabled = true;
+    document.getElementById('cnpj').disabled = true;
+    document.getElementById('tipoEmpresa').disabled = true;
+    document.getElementById('razaoSocial').value =""; 
+    document.getElementById('nomeFantasia').value =""; 
+    document.getElementById('cnpj').value =""; 
+    document.getElementById('tipoEmpresa').value ="";   
+  }
+  else{
+    //Habilita
+    document.getElementById('nomeCompleto').disabled = true;
+    document.getElementById('cpf').disabled = true;
+    document.getElementById('rg').disabled = true;
+    document.getElementById('orgaoExpedidor').disabled = true; 
+    document.getElementById('nomeCompleto').value ="";   
+    document.getElementById('cpf').value ="";   
+    document.getElementById('rg').value ="";   
+    document.getElementById('orgaoExpedidor').value ="";   
+ 
+    //Desabilita
+    document.getElementById('razaoSocial').disabled = false;
+    document.getElementById('nomeFantasia').disabled = false;
+    document.getElementById('cnpj').disabled = false;
+    document.getElementById('tipoEmpresa').disabled = false; 
+  }
+}
+
 function validaPerfil(){
 
   var perfilUsuario = document.getElementById('idPerfil').value;
@@ -260,4 +315,3 @@ function validaStatus(){
     document.getElementById('senha').disabled = true;
   } 
 }
-
