@@ -114,7 +114,7 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                <!-- single slide -->
-               <div class="item active" style="background-image: url(../../img/volvo_fh_1.jpg);">
+               <div class="item active" style="background-image: url(../../img/caminhao003.jpg);">
                   <div class="carousel-caption">
                      <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Bem<span> Vindo!!</span>!</h2>
                      <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">Ao</span> SysTransportes.</h3>
@@ -145,11 +145,11 @@
                         <form>
                            <table>
                               <!--Dados Pessoais -->
-                              <h2>Dados Pessoais</h2>
+                              <h2>Dados Cadastrais</h2><br>
                               <tr>
                               <td><b>Nome Completo</b></td>
-                              <td><b>CPF(Somente numeros)</b></td>
-                              <td><b>CPF(Somente numeros)</b></td>
+                              <td><b>CPF</b></td>
+                              <td><b>RG</b></td>
                               <td><b>Orgão Expedidor</b></td>
                               </tr>
                               <tr>                           
@@ -175,6 +175,14 @@
                               <option value="Empresa Publica">Empresa Publica</option>
                               </select></td>
                               </tr>
+                              <tr>
+                              <td><b>Tipo de Perfil</b></td>
+                           </tr>
+                              <td><select class="form-control" id="idPerfil" name="idPerfil" onClick="validaPerfilUsuario()">
+                              <option value="1">Pessoa Física</option>
+                              <option value="2">Pessoa Jurídica</option>
+                              </select></td>
+
                            </table><br>
 
                            <table>
@@ -245,9 +253,9 @@
                               <td><b>Telefone Celular</b></td>
                               </tr>
                               <tr>
-                                 <td><input type="email" id="email" name="email" style="text-transform:uppercase"size="40" class="form-control" placeholder="E-mail" tabindex="1" type="email"></td>
-                                 <td><input type="text" id="telefone1" name="telefone1" maxlength="15"size="40" maxlength="12"class="form-control" placeholder="Telefone Residencial" tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
-                                 <td><input type="text" id="telefone2" name="telefone2" size="40" maxlength="14"class="form-control"placeholder="Telefone Celular"tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
+                                 <td><input type="email" id="email" name="email" style="text-transform:uppercase"size="40" class="form-control" placeholder="E-mail@domínio.com" tabindex="1" type="email"></td>
+                                 <td><input type="text" id="telefone1" name="telefone1" maxlength="15"size="40" maxlength="12"class="form-control" placeholder="(00)0000-0000" tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
+                                 <td><input type="text" id="telefone2" name="telefone2" size="40" maxlength="14"class="form-control"placeholder="(00)0000-0000"tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
                               </tr>
                            </table><br>
 
@@ -259,17 +267,11 @@
                               <td><b>Usuário</b></td>
                               <td><b>Senha</b></td>
                               <td><b>Confirmar Senha</b></td>
-                              <td><b>Perfil</b></td>
                               </tr>
                               <tr>
                               <td><input type="text" id="login" name="" size="40" class="form-control" placeholder="Usuário" tabindex="1" type="text"></td>
                               <td><input type="password" size="40" class="form-control" id="senha"placeholder="Senha" tabindex="1" type="text"></td>
                               <td><input type="password" id="confirmaSenha" name="" size="40" class="form-control" placeholder="Confirme  sua senha" tabindex="1" type="text"onChange="verificacaoSenha()"></td>
-                              <td><select class="form-control" id="idPerfil" name="idPerfil" onClick="validaPerfilUsuario()">
-                              <option value="1">Pessoa Física</option>
-							         <option value="2">Pessoa Jurídica</option>
-                              </select></td>
-
                               </tr>
                            </table>
                            <br>

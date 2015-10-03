@@ -216,7 +216,7 @@
                                                                 <ul class="ds-btn">
                                                                     <li>
                                                                     <a class="btn btn-success btn-login-submit" href="usuarioCadastro.php#cadastro">
-                                                                    <b>Pessoa Física/Jurídica<br><small>Cadastre-se como PF/PJ</small></b></a> 
+                                                                    <b>Pessoa Física/Jurídica<br><small>Cadastre-se ao site!</small></b></a> 
                                                                     </li>
                                                                 </ul>    
                                                         </div>
