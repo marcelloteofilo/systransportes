@@ -20,11 +20,24 @@
              </div>
 		</div>
 	  </header>
-	  <br><br>
+	  <br>
 	   
    </head>
    
+
+<script type="text/javascript">
+
+</script>
+
+
+
    <body style="background:#F3F8F7">
+
+
+
+
+
+
 
   <div class="container">
 	<div class="row">
@@ -34,7 +47,7 @@
 					<h3   class="lead">
 						Usuários
 					</h3>
-					<p>And a little description.</p>
+					<p>Cads. usuários SysTransportes</p>
 					<a class="btn btn-lg btn-block btn-default" href="usuario/telaAdminUsuarios.php">Acesse</a>			
 				</div>
 			</div>
@@ -76,6 +89,39 @@
 			<div class="offer offer-warning">
 				<div class="offer-content">
 					<h3 class="lead">
+						Rastreamento
+					</h3>						
+					<p>And a little description.</p>
+					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<div class="offer offer-new1">
+				<div class="offer-content">
+					<h3 class="lead">
+						CTE's
+					</h3>						
+					<p>And a little description.</p>
+					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<div class="offer offer-new6">
+				<div class="offer-content">
+					<h3 class="lead">
+						Cheque
+					</h3>						
+					<p>And a little description.</p>
+					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
+				</div>
+			</div>
+		</div>
+		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+			<div class="offer offer-new3">
+				<div class="offer-content">
+					<h3 class="lead">
 						Financeiro
 					</h3>						
 					<p>And a little description.</p>
@@ -85,7 +131,7 @@
 		</div>
 
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-warning">
+			<div class="offer offer-new4">
 				<div class="offer-content">
 					<h3 class="lead">
 						Relatorio de Despesas
@@ -100,12 +146,12 @@
 			<div class="offer offer-danger">
 				<div class="shape">
 					<div class="shape-text">
-						top							
+						New							
 					</div>
 				</div>
 				<div class="offer-content">
 					<h3 class="lead">
-						A danger-radius
+						Exclusivo
 					</h3>						
 					<p>And a little description.</p>
 					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	

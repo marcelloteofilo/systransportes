@@ -54,9 +54,9 @@ transition: all 0.4s ease-in-out;
 .offer-success .shape{
 	border-color: transparent #5cb85c transparent transparent;
 }
-.offer-default {	border-color: #999999; }
+.offer-default {	border-color: #2E8B57; }
 .offer-default .shape{
-	border-color: transparent #999999 transparent transparent;
+	border-color: transparent #2E8B57 transparent transparent;
 }
 .offer-primary {	border-color: #428bca; }
 .offer-primary .shape{
@@ -70,6 +70,32 @@ transition: all 0.4s ease-in-out;
 .offer-warning .shape{
 	border-color: transparent #f0ad4e transparent transparent;
 }
+
+.offer-new1 {  border-color: #A020F0; }
+.offer-new1 .shape{
+  border-color: transparent #A020F0 transparent transparent;
+}
+.offer-new2 {  border-color: #FFFF00; }
+.offer-new2 .shape{
+  border-color: transparent #FFFF00 transparent transparent;
+}
+.offer-new3 {  border-color: #FF7F00; }
+.offer-new3 .shape{
+  border-color: transparent #FF7F00 transparent transparent;
+}
+.offer-new4 {  border-color: #009ACD; }
+.offer-new4 .shape{
+  border-color: transparent #009ACD transparent transparent;
+}
+.offer-new5 {  border-color: #2F4F4F; }
+.offer-new5 .shape{
+  border-color: transparent #2F4F4F transparent transparent;
+}
+.offer-new6 {  border-color: #7AC5CD; }
+.offer-new6 .shape{
+  border-color: transparent #7AC5CD transparent transparent;
+}
+
 
 .shape-text{
 	color:#fff; font-size:12px; font-weight:bold; position:relative; right:-40px; top:2px; white-space: nowrap;
