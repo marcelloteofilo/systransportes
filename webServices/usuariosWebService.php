@@ -161,7 +161,8 @@
 		$listaUsuario = usuarioSql::carregarLista();
 		
 		for ($i=0; $i<count($listaUsuario); $i++ ){											
-			$resultado[] = array(				
+			$resultado[] = array(
+			    'id'	=>  $listaUsuario[$i]->getId(),					
 				'idStatus'	=>  $listaUsuario[$i]->getStatus(),					
 				'idPerfil'	=>   $listaUsuario[$i]->getPerfil(),				
 				'nomeCompleto'	=>  $listaUsuario[$i]->getNomeCompleto(),				
@@ -182,7 +183,8 @@
 				'estado'	=>  $listaUsuario[$i]->getEstado(),
 				'cidade'	=>  $listaUsuario[$i]->getCidade(),
 				'cep'	=>   $listaUsuario[$i]->getCep(),				
-				'login'	=>  $listaUsuario[$i]->getLogin(),				
+				'login'	=>  $listaUsuario[$i]->getLogin(),		
+				'senha'	=>  $listaUsuario[$i]->getLogin(),						
 					
 			);
 		}

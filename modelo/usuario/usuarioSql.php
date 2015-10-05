@@ -117,7 +117,7 @@
 		*/
 
 		//$rs = mysql_query('select * from usuarios');
-		$rs = mysql_query('select usuarios.id, usuarioperfil.id as perfilstatus, usuariostatus.descricao as statususuario, usuariostatus.descricao as status,
+		$rs = mysql_query('select usuarios.id, usuarioperfil.descricao as perfilstatus, usuariostatus.descricao as statususuario, usuariostatus.descricao as status,
 		 usuarioperfil.id,  usuarios.estado, usuarios.cidade,
 		 usuarios.nomeCompleto , usuarios.razaoSocial , usuarios.nomeFantasia , usuarios.tipoEmpresa , usuarios.rg , 
 		 usuarios.orgaoExpedidor , usuarios.cpf , usuarios.cnpj , usuarios.email , usuarios.telefone1 , usuarios.telefone2 , 

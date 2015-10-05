@@ -29,6 +29,7 @@
       }
       function editUser(){
         var row = $('#dg').datagrid('getSelected');
+        <?php $teste = <script> row.idStatus </script>;  ?>
         if (row){
           $('#dlg').dialog('open').dialog('setTitle','Editar Usuário');
           $('#fm').form('load',row);
@@ -270,16 +271,16 @@
             <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
             <td>
               <select class="form-control" id="idPerfil" name="idPerfil" onClick="validaPerfil()">
-                <option value="1"<?php echo $idPerfil == 1 ?'selected':'';?>>Pessoa Física</option>
-                <option value="2"<?php echo $idPerfil == 2 ?'selected':'';?>>Pessoa Jurídica</option>
-                <option value="3"<?php echo $idPerfil == 3 ?'selected':'';?>>Atendente</option>
-                <option value="4"<?php echo $idPerfil == 4 ?'selected':'';?>>Motorista</option>
+                <option value="1">Pessoa Física</option>
+                <option value="2">Pessoa Jurídica</option>
+                <option value="3">Atendente</option>
+                <option value="4">Motorista</option>
               </select>
             </td>
             <td>
               <select class="form-control" id="idStatus" name="idStatus" onClick="validaStatus()" >
-                <option value="1">Habilitado</option>
-                <option value="2">Desabilitado</option>
+                <option value="1" <script type="text/javascript"> </script>  >Habilitado</option>
+                <option value="2" <?php echo $resultado['idStatus'] == 2 ?'selected':'';?>>Desabilitado</option>
               </select>
             </td>
 
