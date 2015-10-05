@@ -120,7 +120,7 @@
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
 
     <!-- DIALOG ADMIN PESSOA FÍSICA -->
-    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:610px;padding:10px 20px"
+    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:600px;height:220px;padding:10px 20px"
       closed="true" buttons="#dlg-buttons">
       <div class="ftitle"></div>
       <form id="fm" method="post" novalidate>

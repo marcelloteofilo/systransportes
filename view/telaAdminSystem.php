@@ -58,8 +58,8 @@
 					<h3 class="lead">
 						Cotações
 					</h3>						
-					<p>And a little description.</p>
-					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
+					<p>Cads. cotações SysTransportes</p>
+					<a class="btn btn-lg btn-block btn-default" href="cotacao/telaAdminCotacao.php">Acesse</a>	
 				</div>
 			</div>
 		</div>
@@ -69,7 +69,7 @@
 					<h3 class="lead">
 						Veiculos
 					</h3>						
-					<p>And a little description.</p>
+					<p>Cads. veiculos SysTransportes</p>
 					<a class="btn btn-lg btn-block btn-default" href="veiculo/telaAdminVeiculos.php">Acesse</a>	
 				</div>
 			</div>
@@ -80,7 +80,7 @@
 					<h3 class="lead">
 						Mercadoria
 					</h3>						
-					<p>And a little description.</p>
+					<p>Cads. mercadorias SysTransportes</p>
 					<a class="btn btn-lg btn-block btn-default" href="mercadoria/telaAdminMercadorias.php">Acesse</a>	
 				</div>
 			</div>
@@ -91,8 +91,8 @@
 					<h3 class="lead">
 						Rastreamento
 					</h3>						
-					<p>And a little description.</p>
-					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
+					<p>Cads. rast. SysTransportes</p>
+					<a class="btn btn-lg btn-block btn-default" href="rastreamento/telaAdminRastreamento.php">Acesse</a>	
 				</div>
 			</div>
 		</div>
@@ -102,8 +102,8 @@
 					<h3 class="lead">
 						CTE's
 					</h3>						
-					<p>And a little description.</p>
-					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
+					<p>Cads. CTE's SysTransportes</p>
+					<a class="btn btn-lg btn-block btn-default" href="cte/telaAdminCte.php">Acesse</a>	
 				</div>
 			</div>
 		</div>
@@ -113,13 +113,18 @@
 					<h3 class="lead">
 						Cheque
 					</h3>						
-					<p>And a little description.</p>
-					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
+					<p>Cads. cheques SysTransportes</p>
+					<a class="btn btn-lg btn-block btn-default" href="cheque/telaAdminCheque.php">Acesse</a>	
 				</div>
 			</div>
 		</div>
 		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
 			<div class="offer offer-new3">
+								<div class="shape">
+					<div class="shape-text">
+						New							
+					</div>
+				</div>
 				<div class="offer-content">
 					<h3 class="lead">
 						Financeiro
@@ -141,23 +146,6 @@
 				</div>
 			</div>
 		</div>
-
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-danger">
-				<div class="shape">
-					<div class="shape-text">
-						New							
-					</div>
-				</div>
-				<div class="offer-content">
-					<h3 class="lead">
-						Exclusivo
-					</h3>						
-					<p>And a little description.</p>
-					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
-				</div>
-			</div>
-		</div>	
 	</div>
 </div>
 
