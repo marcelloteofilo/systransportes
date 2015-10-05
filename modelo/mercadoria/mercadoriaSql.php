@@ -3,8 +3,7 @@
 require_once ("/../banco.php");
 require_once ("mercadoria.php");
 
-class MercadoriaSql
-{
+class MercadoriaSql {
 
     //Método responsável em adicionar um determinado veículo
     public static function adicionar(Mercadoria $mercadoria) {
@@ -14,15 +13,14 @@ class MercadoriaSql
 
         //Atributos da classe Mercadoria sendo definidas em uma variável, obtidas em um método para realização da
         //obtenção do valor e logo em seguida, realizando a chamada do banco
-        
-        $idCotacao = CotacaoSql::ultimo();
-        //$idCotacao = mysql_real_escape_string($mercadoria->getObjCotacao()->getId(), $conexao);
+
+        $idCotacao = mysql_real_escape_string($mercadoria->getObjCotacao()->getId(), $conexao);
         $descricao = mysql_real_escape_string($mercadoria->getDescricaoMercadoria(), $conexao);
         $peso = mysql_real_escape_string($mercadoria->getPeso(), $conexao);
 
         //Inserção na tabela de Mercadoria relacionada ao banco de dados systransporte
         $sql = "insert into mercadorias (idCotacoes, descricao, peso) values ('$idCotacao', '$descricao', '$peso')";
-        $resultado = mysql_query($sql, $conexao);
+        $resultado = @mysql_query($sql, $conexao);
         return ($resultado === true);
     }
 
@@ -74,12 +72,6 @@ class MercadoriaSql
         echo json_encode($resultado);
     }
 
-    public static function ultimoIdCotacao() {
-        //Conexão com o banco
-        
-        $ultimo = CotacaoSql::ultimo();
-        echo json_encode($ultimo);
-    }
 }
 
 ?>

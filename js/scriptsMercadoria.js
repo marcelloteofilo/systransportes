@@ -1,78 +1,129 @@
+//$(function()
+//{
+//	$('#dg').edatagrid(
+//	{
+//		url : '../../webServices/mercadoriasWebService.php?editSave=carregarMercadoria',
+//		saveUrl : '../../webServices/mercadoriasWebService.php?editSave=incluirMercadoria',
+//		updateUrl : '../../webServices/mercadoriasWebService.php?editSave=alterarMercadoria',
+//		destroyUrl : '../../webServices/mercadoriasWebService.php?editSave=deletarMercadoria',
+//		
+//		title: "Cadastro de Mercadorias",
+//		//style: "width:1220px, height:450px, border:1px solid #ccc",
+//		toolbar: "#toolbar",
+//		pagination: "true",
+//		rownumbers: "true", 
+//		fitColumns: "true",
+//		resizable: "true",
+//	});
+//	var dg = $('#dg');
+//	dg.edatagrid();
+//	dg.edatagrid('enableFilter');
+//});
 
-var webServiceCotacao = '../../webServices/mercadoriaWebService.php';
-var cotacaoSql = '../../cotacao/cotacaoSql.php';
-
-// Muda a cor da caixa de texto e coloca tudo em maiúsculo
-$(function focus_Blur(me, cor)
+var url;
+function newMercadoria()
 {
-    me.style.background = cor;
-    me.style.color = "black";
-    var minusculo = new String(me.value);
-    var maiusculo = minusculo.toUpperCase();
-    me.value = maiusculo;
-});
+    $('#dlg').dialog('open').dialog('setTitle', 'Nova Mercadoria');
+    $('#fm').form('clear');
+    url = '../../webServices/mercadoriasWebService.php?editSave=incluirMercadoria';
+}
 
-
-
-$(function ()
+function editMercadoria()
 {
-    $('#dg').edatagrid(
+    var row = $('#dg').datagrid('getSelected');
+    if (row) {
+        $('#dlg').dialog('open').dialog('setTitle', 'Editar Mercadoria');
+        $('#fm').form('load', row);
+        url = '../../webServices/mercadoriasWebService.php?editSave=alterarMercadoria&id=' + row.id;
+    }
+    else
+    {
+        $.messager.show(
+                {
+                    title: 'Erro!',
+                    msg: 'Selecione item da tabela!!!'//result.msg
+                });
+    }
+}
+
+function saveMercadoria()
+{
+    $('#fm').form('submit',
             {
-                url: '../../webServices/mercadoriasWebService.php?editSave=carregarMercadoria',
-                saveUrl: '../../webServices/mercadoriasWebService.php?editSave=incluirMercadoria',
-                updateUrl: '../../webServices/mercadoriasWebService.php?editSave=alterarMercadoria',
-                destroyUrl: '../../webServices/mercadoriasWebService.php?editSave=deletarMercadoria',
-                title: "Cadastro de Mercadorias",
-                //style: "width:1220px, height:450px, border:1px solid #ccc",
-                toolbar: "#toolbar",
-                pagination: "true",
-                rownumbers: "true",
-                fitColumns: "true",
-                resizable: "true",
+                url: url,
+                onSubmit: function ()
+                {
+                    if ('')
+                    {
+                        $.messager.confirm('', 'Cadastro efetuado com sucesso!', function (r) {
+                            if (r)
+                            {
+                                $.post('../../webServices/mercadoriasWebService.php?editSave=incluirMercadoria', {id: row.id},
+                                function (result)
+                                {
+//                                            if (!result.success)
+//                                            {
+//                                                $.messager.show(
+//                                                        {// show error message
+//                                                            title: 'Error',
+//                                                            msg: result.msg
+//                                                        });
+//                                            }
+                                }
+                                , 'json');
+                            }
+                        });
+                    }
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.success) {
+//                                    $('#dlg').dialog('close');		// close the dialog
+//                                    $('#dg').datagrid('load');	// reload the user data
+                    } else {
+                        $('#dlg').dialog('close');
+                        $('#dg').datagrid('load');	// reload the user data
+                    }
+                }
             });
-    var dg = $('#dg');
-    dg.edatagrid();
-    dg.edatagrid('enableFilter');
-});
+}
 
-
-//VALIDA DIGITAÇÃO DO CAMPO DE CONSULTAS DA COTAÇÃO
-function crudMercadoria(acao)
+function removeMercadoria()
 {
-    //VALIDAR ANTES DE INCLUIR
-    if (document.getElementById('descricao').value.length === 0) {
-        alert('Por Favor, informe a descricao!');
-        document.getElementById('descricao').focus();
-        return;
-    }
-    if (document.getElementById('peso').value.length === 0) {
-        alert('Por Favor, informe o peso da mercadoria!');
-        document.getElementById('peso').focus();
-        return;
-    }
+    var row = $('#dg').datagrid('getSelected');
+    if (row) {
+        $.messager.confirm('Confirmar', 'Tem certeza que deseja remover?', function (r) {
+            if (r) {
+                $.post('../../webServices/mercadoriasWebService.php?editSave=deletarMercadoria', {id: row.id}, function (result) {
+                    if (result.success)
+                    {
+                        $('#dlg').dialog('close');
 
-    var descricao = document.getElementById('descricao');
-    var peso = document.getElementById('peso');
-
-    if (acao === 'incluir')
+                    } else {
+                        $('#dg').datagrid('reload');	// reload the user data
+                    }
+                }, 'json');
+            }
+        });
+    }
+    else
     {
-        jsonParametros = {incluirMercadoria: 'sim',
-            idCotacao: idCotacao,
-            descricao: descricao.value,
-            peso: peso
-        };
+        $.messager.show(
+                {
+                    title: 'Erro!',
+                    msg: 'Selecione item da tabela!!!'//result.msg
+                });
     }
-    if (acao === 'alterar')
-    {
-        jsonParametros = {alterarMercadoria: 'sim',
-            id: id.value,
-            idCotacao: idCotacao,
-            descricao: descricao.value,
-            peso: peso
-        };
-    }
-    //acessoWebService(jsonParametros, webServiceCotacao);
+}
 
+function consultaMercadoria()
+{
+//                var row = $('#dg').datagrid('getSelected');
+//                if (row) 
+//                {
+//
+//                }
 }
 
 //Consulta ajax
@@ -82,10 +133,10 @@ function consultaAJAXMercadoria( )
 
     var idCotacao = document.getElementById('idCotacao').value;
     var descricaoMercadoria = document.getElementById('descricao').value;
-    var peso = document.getElementById('peso').value;
+    var pesoMercadoria = document.getElementById('peso').value;
 
 
-    jsonParametros = {incluirMercadoria: 'sim',  idCotacoes, descricao, peso};
+    jsonParametros = {incluirMercadoria: 'sim', idCotacao: 'idCotacao', descricaoMercadoria: 'descricao', pesoMercadoria: 'peso'};
 
     var $xhr = $.getJSON(servicoHttp, jsonParametros);
 
