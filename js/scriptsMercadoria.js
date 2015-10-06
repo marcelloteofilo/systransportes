@@ -20,6 +20,8 @@
 //	dg.edatagrid('enableFilter');
 //});
 
+//Josenaldo
+
 var url;
 function newMercadoria()
 {
