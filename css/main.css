@@ -3,6 +3,11 @@
 /*	Basic Style 
 /* =================================== */
 
+tr.itens:hover {
+    background-color: #61C1D6;
+	cursor:  pointer;
+}
+
 
 
 

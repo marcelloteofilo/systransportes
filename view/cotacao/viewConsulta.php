@@ -107,36 +107,7 @@
       </header>
       <!--
          End Fixed Navigation
-         ==================================== -->
-      <!--
-         Home Slider
-         ==================================== -->
-      <section id="slider">
-         <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
-            <!-- Wrapper for slides -->
-            <div class="carousel-inner" role="listbox">
-               <!-- single slide -->
-               <div class="item active" style="background-image: url(../../img/volvo_fh_1.jpg);">
-                  <div class="carousel-caption">
-                     <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Bem<span> Vindo!!</span>!</h2>
-                     <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">Ao</span> SysTransportes.</h3>
-                     <p data-wow-duration="1000ms" class="wow slideInRight animated">We are a team of professionals</p>
-                     <ul class="social-links text-center">
-                        <li><a href=""><i class="fa fa-twitter fa-lg"></i></a></li>
-                        <li><a href=""><i class="fa fa-facebook fa-lg"></i></a></li>
-                        <li><a href=""><i class="fa fa-google-plus fa-lg"></i></a></li>
-                        <li><a href=""><i class="fa fa-dribbble fa-lg"></i></a></li>
-                     </ul>
-                  </div>
-               </div>
-               <!-- end single slide -->
-            </div>
-            <!-- End Wrapper for slides -->
-         </div>
-      </section>
-      <!--
-         End Home SliderEnd
-         ==================================== -->
+         ==================================== -->      
       <!--
          Features
          ==================================== -->
@@ -144,12 +115,7 @@
          <div class="container">
             <div class="row">
                <div class="navbar-wrapper">
-                  <nav class="navbar">
-				  <br><br><br><br><br><br><br><br>
-				  
-				  
-				  
-				
+                  <nav class="navbar">			
 				
 			        <div class="navbar-wrapper">
             <div class="container-fluid">
@@ -175,7 +141,7 @@
 									<input type="image" src='../../img/incluirBtn.png' id="btnIncluir" onClick="irPara('viewCadastro.php','incluir')">
 									<input type="image" src='../../img/visualizarBtn.png' id="btnVisualizar" onClick="irPara('viewCadastro.php','visualizar')">
 									<input type="image" src='../../img/alterarBtn.png' id="btnAlterar" onClick="irPara('viewCadastro.php','alterar')">
-									<input type="image" src='../../img/aprovarBtn.png' id="btnAprovar" onClick="irPara('viewCadastro.php', 'aprovar')">
+									<input type="image" src='../../img/aprovarBtn.png' id="btnAprovar" onClick="irPara('../coleta/viewCadastro.php', 'aprovar')">
 									<input type="image" src='../../img/cancelarBtn.png' id="btnCancelar" onClick="irPara('viewCadastro.php','cancelar')">
 									<input type="image" src='../../img/sairBtn.png' id="btnSair" onClick="irPara('../../index.php','index')">
                                                            
