@@ -80,7 +80,7 @@
 					<h3 class="lead">
 						Mercadoria
 					</h3>						
-					<p>Cads. mercadorias SysTransportes</p>
+					<p>Cads. mercad. SysTransportes</p>
 					<a class="btn btn-lg btn-block btn-default" href="mercadoria/telaAdminMercadorias.php">Acesse</a>	
 				</div>
 			</div>
