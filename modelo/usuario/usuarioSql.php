@@ -38,7 +38,7 @@
 	  $senha = mysql_real_escape_string($usuario->getSenha(), $conexao);    
   
   	  //Insert para a tabela de Usuários do banco de dados
-	  $sql = "insert into usuarios (idStatus ,idPerfil, nomeCompleto, razaoSocial, nomeFantasia, tipoEmpresa, rg, orgaoExpedidor, cpf, cnpj, email, telefone1, telefone2, logradouro, bairro, numero, complemento, cep, estado, cidade, login, senha) values ($idStatus, $idPerfil, '$nomeCompleto', '$razaoSocial', '$nomeFantasia', '$tipoEmpresa', '$rg', '$orgaoExpedidor', '$cpf','$cnpj', '$email', '$telefone1', '$telefone2', '$logradouro', '$bairro', '$numero', '$complemento', '$cep','$estado', '$cidade', '$login', '$senha')";	  
+	  $sql = "insert into usuarios (status ,perfil, nomeCompleto, razaoSocial, nomeFantasia, tipoEmpresa, rg, orgaoExpedidor, cpf, cnpj, email, telefone1, telefone2, logradouro, bairro, numero, complemento, cep, estado, cidade, login, senha) values ('$idStatus', '$idPerfil', '$nomeCompleto', '$razaoSocial', '$nomeFantasia', '$tipoEmpresa', '$rg', '$orgaoExpedidor', '$cpf','$cnpj', '$email', '$telefone1', '$telefone2', '$logradouro', '$bairro', '$numero', '$complemento', '$cep','$estado', '$cidade', '$login', '$senha')";	  
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);
@@ -79,8 +79,7 @@
 	  $senha = mysql_real_escape_string($usuario->getSenha(), $conexao);    
   
   	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update usuarios set idStatus=$idStatus,idPerfil=$idPerfil,nomeCompleto='$nomeCompleto',razaoSocial='$razaoSocial',nomeFantasia='$nomeFantasia',tipoEmpresa='$tipoEmpresa',rg='$rg',orgaoExpedidor='$orgaoExpedidor',cpf='$cpf',cnpj='$cnpj',email='$email',telefone1='$telefone1',telefone2='$telefone2',logradouro='$logradouro',bairro='$bairro',numero='$numero',complemento='$complemento',estado='$estado',cidade='$cidade',cep='$cep',login='$login',senha='$senha'  where id=$id";
-      echo($sql);
+	  $sql = "update usuarios set status='$idStatus',perfil='$idPerfil',nomeCompleto='$nomeCompleto',razaoSocial='$razaoSocial',nomeFantasia='$nomeFantasia',tipoEmpresa='$tipoEmpresa',rg='$rg',orgaoExpedidor='$orgaoExpedidor',cpf='$cpf',cnpj='$cnpj',email='$email',telefone1='$telefone1',telefone2='$telefone2',logradouro='$logradouro',bairro='$bairro',numero='$numero',complemento='$complemento',estado='$estado',cidade='$cidade',cep='$cep',login='$login',senha='$senha'  where id=$id";
       
       $resultado = @mysql_query($sql, $conexao);
 
@@ -96,7 +95,7 @@
 
   	  //Delet para a tabela de Usuários do banco de dados
 	  $sql = "delete from usuarios where id=$id";
-      
+      echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);
@@ -116,15 +115,15 @@
 		echo json_encode($result);
 		*/
 
-		//$rs = mysql_query('select * from usuarios');
-		$rs = mysql_query('select usuarios.id, usuarioperfil.descricao as perfilstatus, usuariostatus.descricao as statususuario, usuariostatus.descricao as status,
+		$rs = mysql_query('select * from usuarios');
+		/*$rs = mysql_query('select usuarios.id, usuarioperfil.descricao as perfilstatus, usuariostatus.descricao as statususuario, usuariostatus.descricao as status,
 		 usuarioperfil.id,  usuarios.estado, usuarios.cidade,
 		 usuarios.nomeCompleto , usuarios.razaoSocial , usuarios.nomeFantasia , usuarios.tipoEmpresa , usuarios.rg , 
 		 usuarios.orgaoExpedidor , usuarios.cpf , usuarios.cnpj , usuarios.email , usuarios.telefone1 , usuarios.telefone2 , 
 		 usuarios.logradouro , usuarios.bairro , usuarios.numero , usuarios.complemento , usuarios.cep , 
 		 usuarios.login , usuarios.senha from usuarios 
 		 inner join usuarioperfil on usuarios.idPerfil = usuarioperfil.id 
-		 inner join usuariostatus on usuariostatus.id = usuarios.idStatus'); 		
+		 inner join usuariostatus on usuariostatus.id = usuarios.idStatus'); */		
 
 			$result = array();
 
@@ -132,8 +131,8 @@
 				$usuario = new Usuario();
 				$usuario->setId($row["id"]);
 
-				$usuario->setPerfil($row["perfilstatus"]);
-				$usuario->setStatus($row["statususuario"]);
+				$usuario->setPerfil($row["perfil"]);
+				$usuario->setStatus($row["status"]);
 				$usuario->setEstado($row["estado"]);
 				$usuario->setCidade($row["cidade"]);
 				$usuario->setNomeCompleto($row["nomeCompleto"]);

@@ -1,7 +1,7 @@
 	function consultaAJAX( ) {	
 		var servicoHttp = "../../webServices/usuariosWebService.php";				
 
-		var status = 1;												
+		var status = "Habilitado";												
 		var perfil = document.getElementById('idPerfil').value;										
 
 		var nomeCompleto = document.getElementById('nomeCompleto').value;								

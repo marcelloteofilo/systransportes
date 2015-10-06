@@ -43,8 +43,8 @@
 			);			
 		}	
 		
-		echo(json_encode($resultado ));	
-		die;
+		//echo(json_encode($resultado ));	
+		//die;
 	}
 
 
@@ -73,7 +73,9 @@
 		$usuario->setComplemento($_REQUEST['numero']); 
 		$usuario->setNumero($_REQUEST['complemento']); 
 		$usuario->setCep($_REQUEST['cep']); 
-		$usuario->setCodCidade($_REQUEST['codCidade']); 
+		$usuario->setEstado($_REQUEST['estado']); 
+		$usuario->setCidade($_REQUEST['cidade']); 
+
 
 		$usuario->setLogin($_REQUEST['login']); 
 		$usuario->setSenha($_REQUEST['senha']); 				
@@ -90,10 +92,11 @@
 		} else {
 			echo json_encode(array('msg'=>'Erro ao inserir dados.'));
 		}*/
-		echo(json_encode($resultado));	
+		//echo(json_encode($resultado));	
 	}
 	if ($_GET["editSave"] == "alterarUsuario"){
-		//Classe de Usuário
+		
+	
 		$usuario = new Usuario();
 
 		//Atributos da classe Usuário/Valores
@@ -129,11 +132,12 @@
 
 		if (UsuarioSql::alterar($usuario)){
 			$resultado[] = array(				
-				'oka'	=>  'oks',						
+				'oka'	=>  true,						
 			);			
 		}	
 		
-		echo(json_encode($resultado ));						
+		//echo(json_encode($resultado ));
+
 	}
 	
 	if ($_GET["editSave"] == "removerUsuario"){
@@ -163,8 +167,8 @@
 		for ($i=0; $i<count($listaUsuario); $i++ ){											
 			$resultado[] = array(
 			    'id'	=>  $listaUsuario[$i]->getId(),					
-				'idStatus'	=>  $listaUsuario[$i]->getStatus(),					
-				'idPerfil'	=>   $listaUsuario[$i]->getPerfil(),				
+				'status'	=>  $listaUsuario[$i]->getStatus(),					
+				'perfil'	=>   $listaUsuario[$i]->getPerfil(),				
 				'nomeCompleto'	=>  $listaUsuario[$i]->getNomeCompleto(),				
 				'rg'	=>   $listaUsuario[$i]->getRg(),				
 				'orgaoExpedidor'	=>  $listaUsuario[$i]->getOrgaoExpedidor(),
@@ -188,44 +192,12 @@
 					
 			);
 		}
+			//var_dump($resultado);
+		//die;
 		echo( json_encode( $resultado ) );	
 		return $resultado;
 
 	}
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 ?>
 	

@@ -179,8 +179,8 @@
                               <td><b>Tipo de Perfil</b></td>
                            </tr>
                               <td><select class="form-control" id="idPerfil" name="idPerfil" onClick="validaPerfilUsuario()">
-                              <option value="1">Pessoa Física</option>
-                              <option value="2">Pessoa Jurídica</option>
+                              <option value="Pessoa Fisica">Pessoa Física</option>
+                              <option value="Pessoa Juridica">Pessoa Jurídica</option>
                               </select></td>
 
                            </table><br>

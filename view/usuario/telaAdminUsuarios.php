@@ -29,7 +29,6 @@
       }
       function editUser(){
         var row = $('#dg').datagrid('getSelected');
-        <?php $teste = <script> row.idStatus </script>;  ?>
         if (row){
           $('#dlg').dialog('open').dialog('setTitle','Editar Usuário');
           $('#fm').form('load',row);
@@ -105,8 +104,8 @@
       <thead>
 
         <tr>
-          <th field="idStatus" width="57">Status</th>
-          <th field="idPerfil" width="35">Perfil</th>
+          <th field="status" width="57">Status</th>
+          <th field="perfil" width="55">Perfil</th>
           <th field="nomeCompleto" width="70">Nome.C</th>
           <th field="rg" width="50">RG</th>
           <th field="orgaoExpedidor" width="50">Orgão.E</th>
@@ -271,16 +270,16 @@
             <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
             <td>
               <select class="form-control" id="idPerfil" name="idPerfil" onClick="validaPerfil()">
-                <option value="1">Pessoa Física</option>
-                <option value="2">Pessoa Jurídica</option>
-                <option value="3">Atendente</option>
-                <option value="4">Motorista</option>
+                <option value="Pessoa Fisica">Pessoa Física</option>
+                <option value="Pessoa Juridica">Pessoa Jurídica</option>
+                <option value="Atendente">Atendente</option>
+                <option value="Motorista">Motorista</option>
               </select>
             </td>
             <td>
               <select class="form-control" id="idStatus" name="idStatus" onClick="validaStatus()" >
-                <option value="1" <script type="text/javascript"> </script>  >Habilitado</option>
-                <option value="2" <?php echo $resultado['idStatus'] == 2 ?'selected':'';?>>Desabilitado</option>
+                <option value="Habilitado" >Habilitado</option>
+                <option value="Desabilitado" >Desabilitado</option>
               </select>
             </td>
 
