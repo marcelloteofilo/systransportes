@@ -82,9 +82,10 @@
 		
 
 		if (UsuarioSql::adicionar($usuario)){
-			$resultado[] = array(				
+			echo json_encode(array('success'=>true));
+			/*$resultado[] = array(				
 				'oka'	=>  'oks',						
-			);			
+			);*/			
 		}	
 		
 		/*if ($resultado){
@@ -131,9 +132,11 @@
 		
 
 		if (UsuarioSql::alterar($usuario)){
-			$resultado[] = array(				
-				'oka'	=>  true,						
-			);			
+			echo json_encode(array('success'=>true));
+	
+			/*$resultado[] = array(				
+				'result'	=>  true,						
+			);	*/		
 		}	
 		
 		//echo(json_encode($resultado ));
@@ -148,9 +151,10 @@
 		$usuario->setId($_REQUEST['id']);
 
 		if (UsuarioSql::deletar($usuario)){
-			$resultado[] = array(				
+			echo json_encode(array('success'=>true));
+			/*$resultado[] = array(				
 				'oka'	=>  'oks',						
-			);			
+			);*/			
 		}		
 	}
 	if ($_GET["editSave"] == "carrefarUsuario"){
