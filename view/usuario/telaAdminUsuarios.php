@@ -44,13 +44,16 @@
           success: function(result){
             var result = eval('('+result+')');
             if (result.success){
+              //$('#dlg').dialog('close');    // close the dialog
+              //$('#dg').datagrid('reload');  // reload the user data
+            } 
+            else {
               $('#dlg').dialog('close');    // close the dialog
-              $('#dg').datagrid('reload');  // reload the user data
-            } else {
-              $.messager.show({
+              $('#dg').datagrid('reload'); 
+              /*$.messager.show({
                 title: 'Erro',
                 msg: result.msg
-              });
+              });*/
             }
           }
         });
