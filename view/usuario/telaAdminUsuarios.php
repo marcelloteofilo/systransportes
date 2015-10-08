@@ -28,35 +28,61 @@
         url = '../../webServices/usuariosWebService.php?editSave=adicionarUsuario';
       }
       function editUser(){
-        var row = $('#dg').datagrid('getSelected');
-        if (row){
-          $('#dlg').dialog('open').dialog('setTitle','Editar Usuário');
-          $('#fm').form('load',row);
-          url = '../../webServices/usuariosWebService.php?editSave=alterarUsuario&id='+row.id;
-        }
+ var row = $('#dg').datagrid('getSelected');
+    if (row) {
+        $('#dlg').dialog('open').dialog('setTitle', 'Editar Mercadoria');
+        $('#fm').form('load', row);
+        url = '../../webServices/usuariosWebService.php?editSave=alterarUsuario&id='+row.id;
+    }
+    else
+    {
+        $.messager.show(
+                {
+                    title: 'Erro!',
+                    msg: 'Selecione item da tabela!!!'//result.msg
+                });
+    }
       }
       function saveUser(){
-        $('#fm').form('submit',{
-          url: url,
-            onSubmit: function(){
-            return $(this).form('validate');
-          },
-          success: function(result){
-            var result = eval('('+result+')');
-            if (result.success){
-              //$('#dlg').dialog('close');    // close the dialog
-              //$('#dg').datagrid('reload');  // reload the user data
-            } 
-            else {
-              $('#dlg').dialog('close');    // close the dialog
-              $('#dg').datagrid('reload'); 
-              /*$.messager.show({
-                title: 'Erro',
-                msg: result.msg
-              });*/
-            }
-          }
-        });
+      $('#fm').form('submit',
+            {
+                url: url,
+                onSubmit: function ()
+                {
+                    if ('')
+                    {
+                        $.messager.confirm('', 'Cadastro efetuado com sucesso!', function (r) {
+                            if (r)
+                            {
+                                $.post('../../webServices/usuariosWebService.php?editSave=adicionarUsuario', {id: row.id},
+                                function (result)
+                                {
+//                                            if (!result.success)
+//                                            {
+//                                                $.messager.show(
+//                                                        {// show error message
+//                                                            title: 'Error',
+//                                                            msg: result.msg
+//                                                        });
+//                                            }
+                                }
+                                , 'json');
+                            }
+                        });
+                    }
+                    return $(this).form('validate');
+                },
+                success: function (result) {
+                    var result = eval('(' + result + ')');
+                    if (result.success) {
+                                    $('#dlg').dialog('close');    // close the dialog
+//                                    $('#dg').datagrid('load');  // reload the user data
+                    } else {
+                        //$('#dlg').dialog('close');
+                        $('#dg').datagrid('load');  // reload the user data
+                    }
+                }
+            });
       }
       function removeUser(){
         var row = $('#dg').datagrid('getSelected');
@@ -64,15 +90,22 @@
           $.messager.confirm('Confirm','Tem certeza que deseja remover o Cliente?',function(r){
             if (r){
               $.post('../../webServices/usuariosWebService.php?editSave=removerUsuario',{id:row.id},function(result){
-                if (result.success){
-                  $('#dg').datagrid('reload');  // reload the user data
-                } else {
-                  $.messager.show({ // show error message
-                    title: 'Error',
-                    msg: result.msg
-                  });
-                }
-              },'json');
+                if (result.success)
+                    {
+                        $('#dlg').dialog('close');
+
+                    } else {
+                        $('#dg').datagrid('reload');  // reload the user data
+                    }
+                }, 'json');
+            }
+            else{
+
+              $.messager.show(
+                {
+                    title: 'Erro!',
+                    msg: 'Selecione item da tabela!!!'//result.msg
+                });
             }
           });
         }
