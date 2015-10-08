@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <?php	
 	extract ($_REQUEST);
+	$dataDia = date("d/m/Y");	 
 ?>
 <html lang="en" class="no-js">
   <head>
@@ -22,6 +23,7 @@
     <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
     <script type="text/javascript" src="../../js/validacaoCampo.js"></script> 
 	<script type="text/javascript" src="../../js/scriptsColeta.js"> </script>		
+	<script type="text/javascript" src="../../js/validacoes.js"> </script>	
 
     <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
@@ -77,7 +79,9 @@
     <br><br>
   </head>
   <body style="background:#F3F8F7">
-    
+	<input type="hidden" name="consultas" id="consultas" value="">						 		  
+	<input type="hidden" name="idRemetente" id="idRemetente" value="">						 		  
+	<input type="hidden" name="idDestinatario" id="idDestinatario" value="">						 		  
     <div class="navbar-wrapper">
 			<nav class="navbar">
 				<div class="container">                        
@@ -95,7 +99,7 @@
 									  <table style="border: 1px solid;">
 											<tr>
 												<td colspan="2" style="border: 1px solid;">
-													<b><font size="3" >Remetente:</font></b> - <a  href="#" onClick="aprovarCotacao();"><font color="blue"><b>Incluir/Consultar</b></a></font>
+													<b><font size="3" >*Remetente:</font></b> - <a  href="#" onClick="consultarRemetente();"><font color="blue"><b>Incluir/Consultar</b></a></font>
 												</td>																	
 											</tr>																				
 											<tr>								
@@ -104,7 +108,7 @@
 											</tr>								
 											<tr>
 												<td>							
-													<input type="text" size="9" tabindex="9" type="text" id="cnpjRemetente" name="cnpjRemetente" readonly> 													
+													<input type="text" size="16" tabindex="9" type="text" id="cnpjRemetente" name="cnpjRemetente" readonly> 													
 												</td>																	
 												<td>							
 													<input type="text" size="27" tabindex="19" type="text" id="nomeRemetente" name="nomeRemetente" readonly> 													
@@ -119,7 +123,7 @@
 									  <table style="border: 1px solid;">
 											<tr>
 												<td colspan="2"  style="border: 1px solid;">
-													<b><font size="3">Destinatário</font></b> - <a  href="#" onClick="testando();"><font color="blue"><b>Incluir/Consultar</b></a></font>
+													<b><font size="3">*Destinatário</font></b> - <a  href="#" onClick="consultarDestinatario();"><font color="blue"><b>Incluir/Consultar</b></a></font>
 												</td>																	
 											</tr>																				
 											<tr>								
@@ -128,7 +132,7 @@
 											</tr>								
 											<tr>								
 												<td>							
-													<input type="text" size="9" tabindex="9" type="text" id="cnpjDestinatario" name="cnpjDestinatario" readonly> 													
+													<input type="text" size="16" tabindex="9" type="text" id="cnpjDestinatario" name="cnpjDestinatario" readonly> 													
 												</td>																	
 												<td>							
 													<input type="text" size="27" tabindex="19" type="text" id="nomeDestinatario" name="nomeDestinatario" readonly> 													
@@ -170,10 +174,10 @@
 											<input type="text" size="7" tabindex="12" type="text" id="frete" name="frete" readonly>
 										</td>								
 										<td>								
-											<input type="text" size="7" tabindex="7" type="text" onfocus="focus_Blur(this, 'yellow');"onblur="focus_Blur(this, 'white');" value="0,00" id="dataAgenda" name="dataAgenda"  onKeyPress="return(MascaraMoeda(this,'.',',',event))">
+											<input type="text" tabindex="7" type="text" onfocus="focus_Blur(this, 'yellow');" onblur="focus_Blur(this, 'white');" value="<?php echo($dataDia);?>" id="dataAgenda" name="dataAgenda"  onfocus="focus_Blur(this, 'yellow');stopTabCheck(this);" onKeyPress="mascaraData(this); startTabCheck();" onBlur="mensagemDataCte(this)" onkeyup="exibeValor(this, 10, 0)" maxlength="10" size="10">
 										</td>					
 										<td style="border-right: 1px solid;">													
-											<input type="text" size="7" tabindex="8" type="text" onfocus="focus_Blur(this, 'yellow');"onblur="focus_Blur(this, 'white');" value="0,00"  id="horaAgenda" name="horaAgenda"  onKeyPress="return(MascaraMoeda(this,'.',',',event))">
+											<input type="text" size="7" tabindex="8" type="text" onfocus="focus_Blur(this, 'yellow');"onblur="focus_Blur(this, 'white');" value=""  id="horaAgenda" name="horaAgenda"  onKeyPress="return(MascaraMoeda(this,'.',',',event))">
 										</td>  																								
 									</tr>
 							</table>	
@@ -208,7 +212,7 @@
             </nav>
         </div>
 
-    <!-- DIALOG ADMIN PESSOA FÍSICA -->
+    <!-- CONSULTAR CLIENTES -->
     <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:580px;height:410px;padding:10px 20px"
       closed="true" buttons="#dlg-buttons">      
 					<center>					  
@@ -220,7 +224,7 @@
 						</tr>
 						<tr class="cabecalho_tabelas">
 							<td colspan="2">						
-								<input type="text" size="70" tabindex="1" type="text" onfocus="focus_Blur(this, 'yellow');"onblur="focus_Blur(this, 'white');" name="tempConsulta" id="tempConsulta" onKeyUp="consultaRemetente(this)">			
+								<input type="text" size="70" tabindex="1" type="text" onfocus="focus_Blur(this, 'yellow');"onblur="focus_Blur(this, 'white');" name="tempConsulta" id="tempConsulta" onKeyUp="consultaRemetente(this)">
 							</td>						
 						</tr>				
 						<tr class="cabecalho_tabelas" style="border: 1px solid;" id="nomesConsulta">
@@ -228,10 +232,97 @@
 						</tr>
 					  </table>					  	  						  					
 					</center>				  											
-    <div id="dlg-buttons">
-      <a href="#" class="easyui-linkbutton" id="btnAprovar" iconCls="icon-ok" onclick="atendenteCotacaoAprovar()">Aprovar Cotação</a>
-	  <a href="#" class="easyui-linkbutton" id="btnCancelar" iconCls="icon-cancel" onclick="atendenteCotacaoCancelar()">Cancelar Cotação</a>
+    <div id="dlg-buttons">      
+	  <a href="#" class="easyui-linkbutton" iconCls="icon-ok" width="200" id="btnRemetente" onclick="incluirRemetente();">Cadastrar Remetente</a>
+	  <a href="#" class="easyui-linkbutton" iconCls="icon-ok" width="200" id="btnDestinatario" onclick="incluirDestinatario();">Cadastrar Destinatario</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-undo" width="200" onclick="javascript:$('#dlg').dialog('close')">Voltar Tela Anterior</a>
+    </div>
+    <br><br>
+    <!-- FIM DIALOG ADMIN PESSOA FÍSICA -->
+	
+	<!-- DIALOG CADASTRAR -->
+    <div id="dlg_cadastrar" class="easyui-dialog" style="background:#F3F8F7; width:720px;height:280px;padding:10px 20px"
+      closed="true" buttons="#dlg-buttons">   
+		<table>        
+          <!--Dados Pessoa Jurídica -->
+          <tr>
+            <td><b>Razão Social</b></td>
+            <td><b>Nome Fantasia</b></td>
+            <td><b>CNPJ</b></td>            
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" id="razaoSocial" name="razaoSocial" size="33" style="text-transform:uppercase"  placeholder="Razão Social" type="text"></td>
+            <td><input class="form-control" type="text" id="nomeFantasia" name="nomeFantasia" size="33" maxlength="14" placeholder="Nome Fantasia" type="text" ></td>
+            <td><input class="form-control" type="text" id="cnpj" name="cnpj" size="23" maxlength="9" placeholder="CNPJ" type="text"></td>            
+          </tr>
+        </table>
+        <br>
+        <table>          
+          <tr>            
+            <td><b>Logradouro</b></td>            
+            <td><b>Bairro</b></td>
+			<td><b>Cidade</b></td>
+          </tr>
+          <tr>
+			<td>
+              <input class="form-control" type="text" id="logradouro" name="logradouro" size="43" placeholder="Logradouro" type="text" style="text-transform:uppercase">
+            </td>            
+            <td><input class="form-control" type="text" id="bairro" name="bairro" style="text-transform:uppercase" size="33" placeholder="Bairro" type="text" onkeyup="validar(this,'text');"></td>          
+		  <td><input class="form-control" type="text" id="cidade" name="cidade" style="text-transform:uppercase" size="33" placeholder="Cidade"></td>        
+		  </tr>
+		 </TABLE>
+		 <table>
+          <tr>
+			<td><b>Estado</b></td>
+			<td><b>Número</b></td>
+            <td><b>Complemento</b></td>            
+			<td><b>CEP</b></td>
+          </tr>
+				 
+          <tr>
+		  <td>
+              <select class="form-control" id="estado" name="estado">                
+                <option value="PE">PE</option>
+                <option value="AC">AC</option>
+                <option value="AL">AL</option>
+                <option value="AM">AM</option>
+                <option value="AP">AP</option>
+                <option value="BA">BA</option>
+                <option value="CE">CE</option>
+                <option value="DF">DF</option>
+                <option value="ES">ES</option>
+                <option value="GO">GO</option>
+                <option value="MA">MA</option>
+                <option value="MG">MG</option>
+                <option value="MS">MS</option>
+                <option value="MT">MT</option>
+                <option value="PA">PA</option>
+                <option value="PB">PB</option>
+                <option value="PI">PI</option>
+                <option value="PR">PR</option>
+                <option value="RJ">RJ</option>
+                <option value="RN">RN</option>
+                <option value="RO">RO</option>
+                <option value="RR">RR</option>
+                <option value="RS">RS</option>
+                <option value="SC">SC</option>
+                <option value="SE">SE</option>
+                <option value="SP">SP</option>
+                <option value="TO">TO</option>
+              </select>
+            </td>            
+			<td><input class="form-control" type="text" id="numero" name="numero" size="8" maxlength="5" placeholder="Número" type="text" onkeyup="validar(this,'num');"></td>
+            <td><input class="form-control" type="text" id="complemento" name="complemento" size="43" style="text-transform:uppercase" placeholder="Complemento" type="text"></td>
+            
+			<td><input class="form-control" type="text" id="cep" name="cep" size="" maxlength="9" placeholder="CEP" type="text" onkeypress="mascaraCep(this, '#####-###')" onkeyup="validar(this,'num');"></td>
+            <td>
+          </tr>
+        </table>	  
+														
+    <div id="dlg-buttons">      
+	  <a href="#" class="easyui-linkbutton" iconCls="icon-ok" width="200" id="btnSalvarRemetente" onclick="">Salvar Remetente</a>
+	  <a href="#" class="easyui-linkbutton" iconCls="icon-ok" width="200" id="btnSalvarDestinatario" onclick="">Salvar Destinatario</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-undo" width="200" onclick="javascript:$('#dlg_cadastrar').dialog('close')">Voltar Tela Anterior</a>
     </div>
     <br><br>
     <!-- FIM DIALOG ADMIN PESSOA FÍSICA -->

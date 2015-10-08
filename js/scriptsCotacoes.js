@@ -200,6 +200,7 @@
 		$xhr.done(function(resultadoXml) {
 			alert('Operação Realizada Com Sucesso!');
 			$('#dlg').dialog('close');
+			location.reload();
 		});
 
 		$xhr.fail(function(data) {
