@@ -171,8 +171,8 @@
 		var cep = document.getElementById('cep');						
 				
 		jsonParametros = {editSave: 'adicionarUsuario',
-		idStatus: 1;
-		idPerfil: 1;
+		idStatus: 1,
+		idPerfil: 1,
 		nomeCompleto: "",
 		razaoSocial: razaoSocial.value,
 		nomeFantasia: nomeFantasia.value,
@@ -193,56 +193,24 @@
 		numero: numero.value,
 		login: "*",		
 		senha: "*",
-		cep: cep.value};	
+		cep: cep.value};			
 		
 		acessoWebService(jsonParametros, '../../webServices/usuarioWebService.php');
 		
 	}
-	
-	//VALIDA DIGITAÇÃO DO CAMPO DE CONSULTAS DA COTAÇÃO
-	function atendenteCotacaoAprovar(acao) {		
 		
-		var idCotacao = document.getElementById('id');									
-		jsonParametros = {editSave: 'aprovarCotacao',
-		idCotacao: idCotacao.value,
-		aprovadoAtendente: 1};		
-
-		var $xhr = $.getJSON(webServiceCotacao, jsonParametros);			
+	//ACESSO AO WEBSERVICE
+	function acessoWebService(jsonParametros, nomeWebService) {			
+		var $xhr = $.getJSON(nomeWebService, jsonParametros);			
 			
 		$xhr.done(function(resultadoXml) {
-			alert('Operação Realizada Com Sucesso!');
-			$('#dlg').dialog('close');
-			location.reload();
+			alert('ok');
 		});
 
 		$xhr.fail(function(data) {
 			alert(data.responseText);			
-		});		
-		 
+		});	
 		
-	}
-	
-	//VALIDA DIGITAÇÃO DO CAMPO DE CONSULTAS DA COTAÇÃO
-	function atendenteCotacaoCancelar(acao) {		
-		
-		var idCotacao = document.getElementById('id');									
-		jsonParametros = {editSave: 'statusCotacao', 
-		status: 0,
-		idCotacao: idCotacao.value};					
-
-		var $xhr = $.getJSON(webServiceCotacao, jsonParametros);			
-			
-		$xhr.done(function(resultadoXml) {
-			alert('Operação Realizada Com Sucesso!');
-			$('#dlg').dialog('close');
-		});
-
-		$xhr.fail(function(data) {
-			alert(data.responseText);			
-		});		
-		 
-		
-	}
-	
+	}			
 	
 	
