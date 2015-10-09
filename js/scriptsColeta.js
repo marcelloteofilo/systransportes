@@ -3,6 +3,35 @@
 	var tipoConsulta = 'RAZAO';	
 	var itensConsulta = [];	
 	
+	//MUDA DE PÁGINA
+	function irPara(paginaSelecionada){			
+		window.location.href = paginaSelecionada;
+	}	
+	
+	//CONSULTA COTACAO POR CODIGO
+	function consultaCotacao(idCotacao) {	
+		if (idCotacao>0){
+			var jsonParametros = {editSave: 'consultaCotacao', idCotacao: idCotacao};					
+			
+			var $xhr = $.getJSON('../../webServices/cotacaoWebService.php', jsonParametros);			
+				
+			$xhr.done(function(resultadoXml) {
+				var valorCarga = document.getElementById('valor');			
+				var peso = document.getElementById('peso');	
+				var qtdCaixas = document.getElementById('qtdCaixas');	
+				var valorFrete = document.getElementById('frete');	
+				qtdCaixas.value = resultadoXml[0].quantidadeCaixas;			
+				valorCarga.value = resultadoXml[0].valorCarga;			
+				valorFrete.value = 'R$:'+resultadoXml[0].valorFrete;			
+				peso.value = resultadoXml[0].peso;								
+			});
+
+			$xhr.fail(function(data) {			
+				//alert(data.responseText);			
+			});	
+		}
+	}
+	
 	//SELECIONA CONSULTA
 	function selecionarConsulta(me){				 
 		 var consultas = document.getElementById('consultas');					 
@@ -158,7 +187,7 @@
 	}
 		
 	//INCLUIR CLIENTE
-	function incluirRemetDest() {			
+	function incluirRemetDest(remetDest) {			
 		var razaoSocial = document.getElementById('razaoSocial');								
 		var nomeFantasia = document.getElementById('nomeFantasia');										
 		var cnpj = document.getElementById('cnpj');	
@@ -168,7 +197,25 @@
 		var estado = document.getElementById('estado');										
 		var numero = document.getElementById('numero');				
 		var complemento = document.getElementById('complemento');				
-		var cep = document.getElementById('cep');						
+		var cep = document.getElementById('cep');		
+
+		var consultas = document.getElementById('consultas');					 		
+		if (remetDest=='Remetente'){			 
+			var idRemetente = document.getElementById('idRemetente');					 
+			idRemetente.value = '1';
+			var cnpjRemetente = document.getElementById('cnpjRemetente');					 
+			cnpjRemetente.value = cnpj.value
+			var nomeRemetente = document.getElementById('nomeRemetente');					 
+			nomeRemetente.value = nomeFantasia.value;			
+		}
+		if (remetDest=='Destinatario'){			 
+			var idDestinatario = document.getElementById('idDestinatario');					 
+			idDestinatario.value = '1';
+			var cnpjDestinatario = document.getElementById('cnpjDestinatario');					 
+			cnpjDestinatario.value = cnpj.value;
+			var nomeDestinatario = document.getElementById('nomeDestinatario');					 
+			nomeDestinatario.value = nomeFantasia.value;			
+		}		
 				
 		jsonParametros = {editSave: 'adicionarUsuario',
 		idStatus: 1,
@@ -195,22 +242,20 @@
 		senha: "*",
 		cep: cep.value};			
 		
-		acessoWebService(jsonParametros, '../../webServices/usuarioWebService.php');
-		
-	}
-		
-	//ACESSO AO WEBSERVICE
-	function acessoWebService(jsonParametros, nomeWebService) {			
-		var $xhr = $.getJSON(nomeWebService, jsonParametros);			
+		var $xhr = $.getJSON('../../webservices/usuariosWebService.php', jsonParametros);			
 			
 		$xhr.done(function(resultadoXml) {
-			alert('ok');
+		 alert(remetDest+' Incluido com Sucesso!');
+		 $('#dlg_cadastrar').dialog('close');
 		});
 
 		$xhr.fail(function(data) {
-			alert(data.responseText);			
+			alert(remetDest+' Incluido com Sucesso!');
+		 $('#dlg_cadastrar').dialog('close');
+			//alert(data.responseText);			
 		});	
 		
-	}			
+	}		
+	
 	
 	

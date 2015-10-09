@@ -13,13 +13,13 @@
     <!-- CSS CRUD -->
     <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../css/icon.css">
-    <link rel="stylesheet" type="text/css" href="../../css/demo.css">
+    <link rel="stylesheet" type="text/css" href="../../css/demo.css">	
     <!-- JS CRUD -->
     <script type="text/javascript" src="../../js/jquery-1.6.min.js"></script>
     <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
     <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
-    <!-- JS CRUD -->
+    <!-- JS CRUD -->	
     <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
     <script type="text/javascript" src="../../js/validacaoCampo.js"></script> 
 	<script type="text/javascript" src="../../js/scriptsColeta.js"> </script>		
@@ -78,7 +78,7 @@
     </header>
     <br><br>
   </head>
-  <body style="background:#F3F8F7">
+  <body style="background:#F3F8F7" onload="consultaCotacao(<?php echo($idCotacao);?>)">
 	<input type="hidden" name="consultas" id="consultas" value="">						 		  
 	<input type="hidden" name="idRemetente" id="idRemetente" value="">						 		  
 	<input type="hidden" name="idDestinatario" id="idDestinatario" value="">						 		  
@@ -203,7 +203,7 @@
 							<input name="pesquisaDestino" type="hidden" id="txtDestino" class="field" value="Rio de Janeiro" />
 							<center><sup><b>*</sup>Campos Obrigatórios</b></center>
 							<input type="image" src='../../img/<?php echo($acao);?>Btn.png' id="gravarBtn" onClick="crudCotacao('<?php echo($acao);?>')">
-							<input type="image" src='../../img/sairBtn.png' id="btnSair" onClick="irPara('viewConsulta.php','consultar')">
+							<input type="image" src='../../img/sairBtn.png' id="btnSair" onClick="irPara('../cotacao/viewConsulta.php')">
 							</br>							
 							</center>
 						</div>
@@ -320,8 +320,8 @@
         </table>	  
 														
     <div id="dlg-buttons">      
-	  <a href="#" class="easyui-linkbutton" iconCls="icon-ok" width="200" id="btnSalvarRemetente" onclick="">Salvar Remetente</a>
-	  <a href="#" class="easyui-linkbutton" iconCls="icon-ok" width="200" id="btnSalvarDestinatario" onclick="">Salvar Destinatario</a>
+	  <a href="#" class="easyui-linkbutton" iconCls="icon-ok" width="200" id="btnSalvarRemetente" onclick="incluirRemetDest('Remetente');">Salvar Remetente</a>
+	  <a href="#" class="easyui-linkbutton" iconCls="icon-ok" width="200" id="btnSalvarDestinatario" onclick="incluirRemetDest('Destinatario');">Salvar Destinatario</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-undo" width="200" onclick="javascript:$('#dlg_cadastrar').dialog('close')">Voltar Tela Anterior</a>
     </div>
     <br><br>
