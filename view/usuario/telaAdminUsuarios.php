@@ -100,26 +100,19 @@
       <thead>
 
         <tr>
-          <th field="status" width="57">Status</th>
-          <th field="perfil" width="55">Perfil</th>
+          <th field="status" width="50">Status</th>
+          <th field="perfil" width="70">Perfil</th>
           <th field="nomeCompleto" width="70">Nome.C</th>
           <th field="rg" width="50">RG</th>
-          <th field="orgaoExpedidor" width="50">Orgão.E</th>
-          <th field="cpf" width="50">CPF</th>
+          <th field="cpf" width="75">CPF</th>
           <th field="razaoSocial" width="70">Razão.S</th>
-          <th field="nomeFantasia" width="50">Nome.F</th>
-          <th field="tipoEmpresa" width="50">Tipo.E</th>
+          <th field="nomeFantasia" width="70">Nome.F</th>
           <th field="cnpj" width="50">CNPJ</th>
           <th field="email" width="50">E-mail</th>
-          <th field="telefone1" width="50">Tel.1</th>
-          <th field="telefone2" width="50">Tel.2</th>
-          <th field="logradouro" width="50">Lograd.</th>
-          <th field="bairro" width="50">Bairro</th>
+          <th field="telefone1" width="75">Tel.1</th>
           <th field="estado" width="20">UF</th>
           <th field="cidade" width="50">Cidade</th>
-          <th field="numero" width="30">Nm</th>
-          <th field="complemento" width="50">Compl.</th>
-          <th field="cep" width="50">CEP</th>
+          <th field="cep" width="55">CEP</th>
           <th field="login" width="50">Login</th>
         </tr>
       </thead>   
