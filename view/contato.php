@@ -168,7 +168,7 @@
 
                 <div class="resume">
                     <header class="page-header">
-                        <h1 class="page-title">Contato SysTransportes</h1>
+                        <h1 class="page-title">CONTATO SYSTRANSPORTES</h1>
                         <small> <i class="fa fa-clock-o"></i> Ultima atualização em: <time>Sabado, Outubro 05, 2015</time></small>
                     </header>
                     <div class="row">

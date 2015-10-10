@@ -121,7 +121,7 @@
             <!-- Wrapper for slides -->
             <div class="carousel-inner" role="listbox">
                <!-- single slide -->
-               <div class="item active" style="background-image: url(../../img/volvo_fh_1.jpg);">
+               <div class="item active" style="background-image: url(../../img/Axor_2540.jpg);">
                   <div class="carousel-caption">
                      <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Bem<span> Vindo!!</span>!</h2>
                      <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">Ao</span> SysTransportes.</h3>
