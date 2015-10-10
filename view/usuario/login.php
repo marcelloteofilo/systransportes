@@ -177,18 +177,26 @@
                                                 <form id="login-form" action="logar.php" method="post"role="form" style="display: block;">
                                                     
                                                     <div class="form-group">
+                                                      <div class="input-group">
+                                                        <span class="input-group-addon">
+                                                          <i class="glyphicon glyphicon-user"></i>
+                                                        </span> 
                                                         <input type="text" size="30" class="form-control" placeholder="Digíte seu usuário de acesso"
                                                         type="text" onfocus="focus_Blur(this, '#E0FFFF');" onblur="focus_Blur(this, 'white');"
                                                         value="" id="login" name="login">
-                                                    
+                                                    </div>
                                                     </div>
                                                     
                                                     <div class="form-group">
+                                                      <div class="input-group">
+                                                      <span class="input-group-addon">
+                                                        <i class="glyphicon glyphicon-lock"></i>
+                                                      </span>
                                                         <input type="password" size="30" class="form-control" placeholder="Digíte sua senha"
                                                         type="text" onfocus="focus_Blur(this, '#E0FFFF');" onblur="focus_Blur(this, 'white');"
                                                         value="" id="senha" name="senha">
                                                     </div>
-                                                    
+                                                    </div>
                                                     <div class="form-group">
                                                         <center>
                                                             <input type="submit" name="" id="" value="Acessar" class="btn btn-success btn-login-submit" class="btn btn-default">

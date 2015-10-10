@@ -1,17 +1,15 @@
 <?php
-session_start();
-if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-    session_destroy();
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('');
-    $logado = 'Visitante';
-} else {
-    $logado = $_SESSION['login'];
-}
-?>
-
-
+    session_start();
+    if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+        session_destroy();
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('');
+        $logado = 'Visitante';
+    } else {
+        $logado = $_SESSION['login'];
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <!--<![endif]-->
@@ -31,7 +29,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <!-- Google Font -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <!-- CSS
-           ================================================== -->
+            ================================================== -->
         <!-- Fontawesome Icon font -->
         <link rel="stylesheet" href="css/font-awesome.min.css"/>
         <!-- Twitter Bootstrap css -->
@@ -44,11 +42,11 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <link rel="stylesheet" href="css/main.css"/>
         <!-- media-queries -->
         <link rel="stylesheet" href="css/media-queries.css"/>
+        <link rel="stylesheet" href="css/index.css"/>
         <!-- Modernizer Script for old Browsers -->
         <script src="js/modernizr-2.6.2.min.js"></script>
-
         <!-- Essential jQuery Plugins
-   ================================================== -->
+            ================================================== -->
         <!-- Main jQuery -->
         <script src="js/jquery-1.11.1.min.js"></script>
         <!-- Single Page Nav -->
@@ -80,25 +78,25 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                     }
             );
             wow.init();
+            
+            
         </script>
         <!-- Custom Functions -->
         <script src="js/custom.js"></script>
-
     </head>
     <body id="body">
         <!-- preloader -->
-
         <!-- end preloader -->
         <!-- 
-           Fixed Navigation
-           ==================================== -->
+            Fixed Navigation
+            ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
             <div class="container">
                 <div class="navbar-header">
                     <!-- responsive nav button -->
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-bars fa-2x"></i>
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars fa-2x"></i>
                     </button>
                     <!-- /responsive nav button -->
                     <!-- logo -->
@@ -127,11 +125,11 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
             </div>
         </header>
         <!--
-           End Fixed Navigation
-           ==================================== -->
+            End Fixed Navigation
+            ==================================== -->
         <!--
-           Home Slider
-           ==================================== -->
+            Home Slider
+            ==================================== -->
         <section id="slider">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Wrapper for slides -->
@@ -155,36 +153,51 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                 <!-- End Wrapper for slides -->
             </div>
         </section>
-        <!--
-           End Home SliderEnd
-           ==================================== -->
-        <!--
-           Features
-           ==================================== -->
+
         <section id="features" class="features">
             <div class="container">
-                <div class="row">
-                    <div class="navbar-wrapper">
-                        <nav class="navbar">
-                            <div class="container">
-                                <br><br><br><br><br><br>
-                                <hr>
-                                <center>
-                                    <h1 class="brand-name">SysTransporte</h1>
-                                    <h2>Nosso Trabalho é com <strong>Rapidez e Confiança!</strong></br>
-                                    </h2>
-                                </center>
-                                <hr>
-                                <h4>
-                                    A SysTransporte posiciona-se no segmento de logística com uma estratégia de negócios que visa a agregação de valor aos seus Clientes, 
-                                    gerenciando parte ou todas as atividades da cadeia de suprimentos relacionadas à gestão de materiais e/ou sua distribuição, oferecendo
-                                    serviços qualificados em conformidade e adequação às exigências e necessidades do transporte, com preços competitivos e atendimento diferenciado.
-                                </h4>
-                                <br><br><br><br><br><br>
+                <hr>
+                <center>
+                    <h1 class="brand-name">SysTransporte</h1>
+                    <h2>Nosso Trabalho é com <strong>Rapidez e Confiança!</strong></br>
+                    </h2>
+                </center>
+                <hr>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-badge primary"><i class="glyphicon glyphicon-globe"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title"><b>Missão</b></h4>
                             </div>
-                        </nav>
-                    </div>
-                </div>
+                            <div class="timeline-body">
+                                <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-badge success"><i class="glyphicon glyphicon-eye-open"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title"><b>Visão</b></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                            </div>
+                        </div>
+                    </li>
+                    <li>
+                        <div class="timeline-badge warning"><i class="glyphicon glyphicon-asterisk"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-heading">
+                                <h4 class="timeline-title"><b>Valores</b></h4>
+                            </div>
+                            <div class="timeline-body">
+                                <p>Mussum ipsum cacilds, vidis litro abertis. Consetis adipiscings elitis. Pra lá , depois divoltis porris, paradis. Paisis, filhis, espiritis santis. Mé faiz elementum girarzis, nisi eros vermeio, in elementis mé pra quem é amistosis quis leo. Manduma pindureta quium dia nois paga. Sapien in monti palavris qui num significa nadis i pareci latim. Interessantiss quisso pudia ce receita de bolis, mais bolis eu num gostis.</p>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
             </div>
         </section>
     </body>

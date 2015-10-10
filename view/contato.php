@@ -167,7 +167,6 @@
                 <div class="resume">
                     <header class="page-header">
                         <h1 class="page-title">CONTATO SYSTRANSPORTES</h1>
-                        <small> <i class="fa fa-clock-o"></i> Ultima atualização em: <time>Sabado, Outubro 05, 2015</time></small>
                     </header>
                     <div class="row">
                         <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
