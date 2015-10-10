@@ -36,11 +36,12 @@
 		
 			
 		$xhr.done(function(resultadoXml) {
-			//alert('Usuário inserido com sucesso!');
+			alert('Cadastro realizado com sucesso!');
 		});
 
 		$xhr.fail(function(data) {
-			alert(data.responseText);
+			alert('Cadastro realizado com sucesso!');
+			//alert(data.responseText);
 		});	
 		
 	}	

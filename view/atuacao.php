@@ -1,15 +1,15 @@
 <?php
-session_start();
-if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-    session_destroy();
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('');
-    $logado = 'Visitante';
-} else {
-    $logado = $_SESSION['login'];
-}
-?>
+    session_start();
+    if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+        session_destroy();
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('');
+        $logado = 'Visitante';
+    } else {
+        $logado = $_SESSION['login'];
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <!--<![endif]-->
@@ -29,7 +29,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <!-- Google Font -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <!-- CSS
-           ================================================== -->
+            ================================================== -->
         <!-- Fontawesome Icon font -->
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <!-- Twitter Bootstrap css -->
@@ -40,12 +40,13 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <link rel="stylesheet" href="../css/animate.css">
         <!-- Main Stylesheet -->
         <link rel="stylesheet" href="../css/main.css">
+        <link rel="stylesheet" href="../css/atuacao.css">
         <!-- media-queries -->
         <link rel="stylesheet" href="../css/media-queries.css">
         <!-- Modernizer Script for old Browsers -->
         <script src="../js/modernizr-2.6.2.min.js"></script>
         <!-- Essential jQuery Plugins
- ================================================== -->
+            ================================================== -->
         <!-- Main jQuery -->
         <script src="../js/jquery-1.11.1.min.js"></script>
         <!-- Single Page Nav -->
@@ -79,9 +80,6 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         </script> 
         <!-- Custom Functions -->
         <script src="../js/custom.js"></script>
-
-
-
     </head>
     <body id="body">
         <!-- preloader -->
@@ -90,15 +88,15 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         </div>
         <!-- end preloader -->
         <!-- 
-           Fixed Navigation
-           ==================================== -->
+            Fixed Navigation
+            ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
             <div class="container">
                 <div class="navbar-header">
                     <!-- responsive nav button -->
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-bars fa-2x"></i>
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars fa-2x"></i>
                     </button>
                     <!-- /responsive nav button -->
                     <!-- logo -->
@@ -112,7 +110,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                 <!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li class="current"><a href="#body">Início</a></li>
+                        <li class="current"><a href="../index.php">Início</a></li>
                         <li><a href="empresa.php#empresa">Empresa</a></li>
                         <li><a href="atuacao.php#atuacao">Atuação</a></li>
                         <li><a href="../view/cotacao/viewConsulta.php#viewConsulta">Cotação Online</a></li>
@@ -127,17 +125,17 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
             </div>
         </header>
         <!--
-           End Fixed Navigation
-           ==================================== -->
+            End Fixed Navigation
+            ==================================== -->
         <!--
-           Home Slider
-           ==================================== -->
+            Home Slider
+            ==================================== -->
         <section id="slider">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <!-- single slide -->
-                    <div class="item active" style="background-image: url(../img/volvo_fh_1.jpg);">
+                    <div class="item active" style="background-image: url(../img/Pack_Shot_Estrela.jpg);">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Bem<span> Vindo!!</span>!</h2>
                             <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">Ao</span> SysTransportes.</h3>
@@ -156,45 +154,52 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
             </div>
         </section>
         <!--
-           End Home SliderEnd
-           ==================================== -->
+            End Home SliderEnd
+            ==================================== -->
         <!--
-           Features
-           ==================================== -->
+            Features
+            ==================================== -->
         <section id="atuacao" class="features">
             <div class="container">
                 <div class="row">
-                    <div class="navbar-wrapper">
-                        <nav class="navbar">
-                            <div class="container">
-                                <br><br><br><br><br><br>
-                                <hr>
-                                <center>
-                                    <div class="col-lg-12">
-
-                                        <hr>
-                                        <h2 class="intro-text text-center">Nossa <strong> frota</strong> e nossa <strong>logística</strong></h2>
-                                        <hr>
-                                    </div>
-                                </center>
-                                <h3>Frota</h3>
-                                <p>
-                                    Com uma frota própria, nossos veículos são rastreados e monitorados via satélite, permitindo ao cliente
-                                    segurança e informação no acompanhamento da sua carga. Entrega eficiente desde grandes cargas a pequenas encomendas.
-                                </p>
-
-                                <h3>Logística</h3>
-                                <p>
-                                    Nosso maior compromisso é evitar avarias e entregar as encomendas no prazo correto, atendendo sempre as necessidade de
-                                    nosso clientes. Trabalhamos com coleta e distribuição de cargas.
-                                </p>
-
-                                <div class="clearfix"></div>
-                                <br><br><br><br><br><br>
-                            </div>
-                        </nav>
+                    <nav class="navbar">
+                        <center>
+                            <hr>
+                            <h2 class="intro-text text-center">Nossa <strong> frota</strong> e nossa <strong>logística</strong></h2>
+                            <hr>
+                </div>
+                </center>
+                <h3>Frota</h3>
+                <p>
+                Com uma frota própria, nossos veículos são rastreados e monitorados via satélite, permitindo ao cliente
+                segurança e informação no acompanhamento da sua carga. Entrega eficiente desde grandes cargas a pequenas encomendas.
+                </p>
+                <h3>Logística</h3>
+                <p>
+                Nosso maior compromisso é evitar avarias e entregar as encomendas no prazo correto, atendendo sempre as necessidade de
+                nosso clientes. Trabalhamos com coleta e distribuição de cargas.
+                </p>
+                </nav>
+                <div class="col-md-4 col-sm-6">
+                    <div class="block-text rel zmin">
+                        <a title="" href="#">Marcos</a>
+                        <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
                     </div>
                 </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="block-text rel zmin">
+                        <a title="" href="#">Josenaldo</a>
+                        <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+                    </div>
+                </div>
+                <div class="col-md-4 col-sm-6">
+                    <div class="block-text rel zmin">
+                        <a title="" href="#">Thiago</a>
+                        <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+                    </div>
+                </div>
+            </div>
+            </div>
             </div>
         </section>
     </body>

@@ -112,7 +112,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                 <!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li class="current"><a href="#body">Início</a></li>
+                        <li class="current"><a href="../index.php">Início</a></li>
                         <li><a href="empresa.php#empresa">Empresa</a></li>
                         <li><a href="atuacao.php#atuacao">Atuação</a></li>
                         <li><a href="../view/cotacao/viewConsulta.php#viewConsulta">Cotação Online</a></li>
@@ -137,7 +137,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <!-- single slide -->
-                    <div class="item active" style="background-image: url(../img/volvo_fh_1.jpg);">
+                    <div class="item active" style="background-image: url(../img/bg_transporte_de_cargas.jpg);">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Bem<span> Vindo!!</span>!</h2>
                             <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">Ao</span> SysTransportes.</h3>
@@ -167,7 +167,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                     <div class="navbar-wrapper">
                         <nav class="navbar">
                             <div class="container">
-                                <br><br><br><br><br><br>
+                                
                                 <hr>
                                 <center>
                                     <h1 class="brand-name">SOBRE A SYSTRANSPORTES</h1>
@@ -176,12 +176,44 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                                 <h4>
                                     A SysTransportes é uma empresa criada em 2015 para prestar serviço de transporte rodoviário de cargas. O time SysTransportes é composto por profissionais experientes do mercado de transporte rodoviário. Prestamos serviços de entregas aos clientes de nossos clientes com atendimento exclusivo, informação em tempo real e comprometimento. Investimos em estrutura de ponta, tecnologia e segurançapara garantir nosso crescimento e consolidação como futura maior e melhor empresa de nosso segmento de atuação.
                                 </h4>
-                                <br><br><br><br><br><br>
+                                <br><br>
                             </div>
                         </nav>
                     </div>
                 </div>
             </div>
+
+
+
+<div class="container">
+
+    <div class="col-md-4 well text-center">
+        <a href="#">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
+        <h3>Marcos</h3>
+        <em>Gerente Executivo</em>
+    </div>
+
+    <div class="col-md-4 well text-center">
+        <a href="#">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
+        <h3>Thiago</h3>
+        <em>Coordenador de Setores</em>
+    </div>
+
+    <div class="col-md-4 well text-center">
+        <a href="#">
+        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
+        <h3>Josenaldo</h3>
+        <em>Coordenador de Produção</em>
+    </div>
+
+
+
+</div> <!-- /container -->
+
+
+
         </section>
         <!-- Essential jQuery Plugins
            ================================================== -->

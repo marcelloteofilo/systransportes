@@ -1,15 +1,15 @@
 <?php
-session_start();
-if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-    session_destroy();
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('');
-    $logado = 'Visitante';
-} else {
-    $logado = $_SESSION['login'];
-}
-?>
+    session_start();
+    if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+        session_destroy();
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('');
+        $logado = 'Visitante';
+    } else {
+        $logado = $_SESSION['login'];
+    }
+    ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <!--<![endif]-->
@@ -29,7 +29,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <!-- Google Font -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <!-- CSS
-           ================================================== -->
+            ================================================== -->
         <!-- Fontawesome Icon font -->
         <link rel="stylesheet" href="../css/font-awesome.min.css">
         <!-- Twitter Bootstrap css -->
@@ -42,10 +42,11 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <link rel="stylesheet" href="../css/main.css">
         <!-- media-queries -->
         <link rel="stylesheet" href="../css/media-queries.css">
+        <link rel="stylesheet" href="../css/contato.css">
         <!-- Modernizer Script for old Browsers -->
         <script src="../js/modernizr-2.6.2.min.js"></script>
         <!-- Essential jQuery Plugins
- ================================================== -->
+            ================================================== -->
         <!-- Main jQuery -->
         <script src="../js/jquery-1.11.1.min.js"></script>
         <!-- Single Page Nav -->
@@ -79,9 +80,6 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         </script> 
         <!-- Custom Functions -->
         <script src="../js/custom.js"></script>
-
-
-
     </head>
     <body id="body">
         <!-- preloader -->
@@ -90,15 +88,15 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         </div>
         <!-- end preloader -->
         <!-- 
-           Fixed Navigation
-           ==================================== -->
+            Fixed Navigation
+            ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
             <div class="container">
                 <div class="navbar-header">
                     <!-- responsive nav button -->
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                        <span class="sr-only">Toggle navigation</span>
-                        <i class="fa fa-bars fa-2x"></i>
+                    <span class="sr-only">Toggle navigation</span>
+                    <i class="fa fa-bars fa-2x"></i>
                     </button>
                     <!-- /responsive nav button -->
                     <!-- logo -->
@@ -112,7 +110,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                 <!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li class="current"><a href="#body">Início</a></li>
+                        <li class="current"><a href="../index.php">Início</a></li>
                         <li><a href="empresa.php#empresa">Empresa</a></li>
                         <li><a href="atuacao.php#atuacao">Atuação</a></li>
                         <li><a href="../view/cotacao/viewConsulta.php#viewConsulta">Cotação Online</a></li>
@@ -127,17 +125,17 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
             </div>
         </header>
         <!--
-           End Fixed Navigation
-           ==================================== -->
+            End Fixed Navigation
+            ==================================== -->
         <!--
-           Home Slider
-           ==================================== -->
+            Home Slider
+            ==================================== -->
         <section id="slider">
             <div id="carousel-example-generic" class="carousel slide" data-ride="carousel">
                 <!-- Wrapper for slides -->
                 <div class="carousel-inner" role="listbox">
                     <!-- single slide -->
-                    <div class="item active" style="background-image: url(../img/volvo_fh_1.jpg);">
+                    <div class="item active" style="background-image: url(../img/Exposafra_03.jpg);">
                         <div class="carousel-caption">
                             <h2 data-wow-duration="500ms" data-wow-delay="500ms" class="wow bounceInDown animated">Bem<span> Vindo!!</span>!</h2>
                             <h3 data-wow-duration="500ms" class="wow slideInLeft animated"><span class="color">Ao</span> SysTransportes.</h3>
@@ -156,48 +154,68 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
             </div>
         </section>
         <!--
-           End Home SliderEnd
-           ==================================== -->
+            End Home SliderEnd
+            ==================================== -->
         <!--
-           Features
-           ==================================== -->
+            Features
+            ==================================== -->
         <section id="contato" class="features">
             <div class="container">
-                <div class="row">
-                    <div class="navbar-wrapper">
-                        <nav class="navbar">
-                            <div class="container">
-                                <br><br>
-                                <hr>
-                                <h2 class="intro-text text-center"><strong>Formulario</strong> para contato </h2>
-                                <hr>
-                                <p>
-                                    SysTransportes tem um enorme prazer de levar suas mecadorias para onde voçê precisar e com grande sastifação que nossa empresa faz isso e da melhor forma possivel e contamos com seu feedback para melhorar nosso trabalho.
-                                </p>
-                                <form role="form">
+                <div class="row info" style="text-align:center;"></div>
+                
+
+
+
+                <div class="resume">
+                    <header class="page-header">
+                        <h1 class="page-title">Contato SysTransportes</h1>
+                        <small> <i class="fa fa-clock-o"></i> Ultima atualização em: <time>Sabado, Outubro 05, 2015</time></small>
+                    </header>
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-12 col-md-offset-1 col-md-10 col-lg-offset-2 col-lg-8">
+                            <div class="panel panel-default">
+                                <div class="panel-heading resume-heading">
                                     <div class="row">
-                                        <div class="form-group col-lg-4">
-                                            <label>Nome</label>
-                                            <input type="text" class="form-control">
+                                        <div class="col-lg-12">
+                                            <div class="col-xs-12 col-sm-4">
+                                                <figure>
+                                                    <img class="img-circle img-responsive" alt="" src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R">
+                                                </figure>
+                                                <div class="row">
+                                                    <div class="col-xs-12 social-btns">
+                                                        
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <div class="col-xs-12 col-sm-8">
+                                                <ul class="list-group">
+                                                    <li class="list-group-item"><b>Empresa:</b> SysTransportes</li>
+                                                    <li class="list-group-item"><b>Departamento:</b> Rastreamento de Cargas Online</li>
+                                                    <li class="list-group-item"><b>Matriz:</b> Rua: Ari Barroso, 1002 - Blumenau - SC
+CEP: 89065-130</li>
+                                                    <li class="list-group-item"><i class="fa fa-phone"></i>(81) 1111-1111 / (81) 2222-2222</li>
+                                                    <li class="list-group-item"><i class="fa fa-envelope"></i> systransportes@gmail.com</li>
+                                                </ul>
+                                            </div>
                                         </div>
-
-
-                                        <div class="form-group col-lg-12">
-                                            <label>Descrição</label>
-                                            <textarea class="form-control" rows="6"></textarea>
-                                        </div>
-                                        <div class="form-group col-lg-12">
-                                            <input type="hidden" name="save" value="contact">
-                                            <button type="submit" class="btn btn-default">Enviar</button>
-                                        </div>
                                     </div>
-                                    <br>
-                                    </div>
-                                    </nav>
-                                    </div>
-                                    </div>
-                                    </div>
-                                    </section>
-
-                                    </body>
-                                    </html>
+                                </div>
+                                <div class="bs-callout bs-callout-danger">
+                                    <h4>Resumo</h4>
+                                    <p>
+                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
+                                        te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
+                                    </p>
+                                    <p>
+                                        Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis. 
+                                        Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
+                                    </p>
+                                </div>                                
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </body>
+</html>

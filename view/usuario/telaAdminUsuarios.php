@@ -258,7 +258,7 @@
             <td><input class="form-control" type="text" id="login" name="login" size="30" placeholder="Usuário"></td>
             <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
             <td>
-              <select class="form-control" id="idPerfil" name="idPerfil" onClick="validaPerfil()">
+              <select class="form-control" id="idPerfil" name="idPerfil" onclick="validaPerfil()">
                 <option value="Pessoa Fisica">Pessoa Física</option>
                 <option value="Pessoa Juridica">Pessoa Jurídica</option>
                 <option value="Atendente">Atendente</option>
@@ -266,7 +266,7 @@
               </select>
             </td>
             <td>
-              <select class="form-control" id="idStatus" name="idStatus" onClick="validaStatus()" >
+              <select class="form-control" id="idStatus" name="idStatus" >
                 <option value="Habilitado" >Habilitado</option>
                 <option value="Desabilitado" >Desabilitado</option>
               </select>

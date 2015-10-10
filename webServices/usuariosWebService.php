@@ -40,11 +40,11 @@
 		if (UsuarioSql::adicionar($usuario)){
 			$resultado[] = array(				
 				'oka'	=>  'oks',						
-			);			
+			);
 		}	
 		
 		//echo(json_encode($resultado ));	
-		//die;
+		die;
 	}
 
 
