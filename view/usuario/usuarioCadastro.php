@@ -70,9 +70,7 @@
    </head>
    <body id="body">
       <!-- preloader -->
-      <div id="preloader">
-         <img src="../../img/preloader.gif" alt="Preloader">
-      </div>
+
       <!-- end preloader -->
 
       <header class="navbar-fixed-top navbar" style="background:#0EB493;">

@@ -29,15 +29,7 @@
 
 </script>
 
-
-
    <body style="background:#F3F8F7">
-
-
-
-
-
-
 
   <div class="container">
 	<div class="row">

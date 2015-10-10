@@ -107,9 +107,7 @@ require_once '../../modelo/cotacao/cotacaoSql.php';
      <!--onload="consultaCotacao('<php echo($idCotacao); ?>')"-->
     <body>
         <!-- preloader -->
-        <div id="preloader">
-            <img src="../../img/preloader.gif" alt="Preloader">
-        </div>
+
         <!-- end preloader -->
         <!-- 
            Fixed Navigation

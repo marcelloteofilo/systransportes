@@ -68,10 +68,10 @@
 	  
    </head>
    <body id="body">
-      <!-- preloader -->
+      <!-- preloader 
       <div id="preloader">
          <img src="../../img/preloader.gif" alt="Preloader">
-      </div>
+      </div> -->
       <!-- end preloader -->
       <!-- 
          Fixed Navigation
