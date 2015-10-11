@@ -102,9 +102,10 @@
 
     }
 	
-    public static function carregarLista() {
+    public static function carregarLista(Usuario $busca) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
+	  $nomeCliente = mysql_real_escape_string($busca->getNomeCompleto(), $conexao);	        
 
 		/*$rs = mysql_query('select * from usuarios');
 		$result = array();
@@ -113,26 +114,16 @@
 		}
 
 		echo json_encode($result);
-		*/
-
-		$rs = mysql_query('select * from usuarios');
-		/*$rs = mysql_query('select usuarios.id, usuarioperfil.descricao as perfilstatus, usuariostatus.descricao as statususuario, usuariostatus.descricao as status,
-		 usuarioperfil.id,  usuarios.estado, usuarios.cidade,
-		 usuarios.nomeCompleto , usuarios.razaoSocial , usuarios.nomeFantasia , usuarios.tipoEmpresa , usuarios.rg , 
-		 usuarios.orgaoExpedidor , usuarios.cpf , usuarios.cnpj , usuarios.email , usuarios.telefone1 , usuarios.telefone2 , 
-		 usuarios.logradouro , usuarios.bairro , usuarios.numero , usuarios.complemento , usuarios.cep , 
-		 usuarios.login , usuarios.senha from usuarios 
-		 inner join usuarioperfil on usuarios.idPerfil = usuarioperfil.id 
-		 inner join usuariostatus on usuariostatus.id = usuarios.idStatus'); */		
-
-			$result = array();
-
-			while($row = mysql_fetch_array($rs)){
+		*/		
+		$sql = 'select * from usuarios';
+		 if ($busca->getNomeCompleto())  
+			$sql .= "  where nomeCompleto like '$nomeCliente%'";  	    
+		$resultado = @mysql_query($sql, $conexao);	      
+		if ($resultado) {
+			$retorno = array();
+			while ($row = mysql_fetch_array($resultado)) {
 				$usuario = new Usuario();
 				$usuario->setId($row["id"]);
-
-				$usuario->setPerfil($row["perfil"]);
-				$usuario->setStatus($row["status"]);
 				$usuario->setEstado($row["estado"]);
 				$usuario->setCidade($row["cidade"]);
 				$usuario->setNomeCompleto($row["nomeCompleto"]);
@@ -152,13 +143,12 @@
 				$usuario->setComplemento($row["complemento"]);
 				$usuario->setCep($row["cep"]);
 				$usuario->setLogin($row["login"]);
-				$usuario->setSenha($row["senha"]);
-
-				$result[] = $usuario;
-				//array_push($result, $objVeiculo);
-			}
-			return $result;
-
+				$usuario->setSenha($row["senha"]);				
+				$retorno[] = $usuario;
+         }
+        return ($retorno);
+      } else
+        return null;
     }
 
   }

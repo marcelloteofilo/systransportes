@@ -4,7 +4,7 @@
   //Atributos
   private $id;    
   private $status;
-  private $perfil;
+  private $perfil;  
   private $nomeCompleto;  
   private $razaoSocial;  
   private $nomeFantasia; 
@@ -41,10 +41,10 @@
 
   //Status
   public function setStatus($Status) {
-    $this->Status = trim($Status);
+    $this->status = trim($Status);
   }
   public function getStatus() {
-    return $this->Status;
+    return $this->status;
   } 
 
   //Perfil

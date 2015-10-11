@@ -157,16 +157,13 @@
 			);*/			
 		}		
 	}
-	if ($_GET["editSave"] == "carrefarUsuario"){
+	if ($_GET["editSave"] == "carrefarUsuario"){		
+
 		
-
-		/*if (UsuarioSql::carregarLista()){
-			$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);			
-		}*/
-
-		$listaUsuario = usuarioSql::carregarLista();
+		$usuario = new Usuario();
+		if (isset($_GET["nomeCompleto"]))
+			$usuario->setNomeCompleto($nomeCompleto); 		
+		$listaUsuario = usuarioSql::carregarLista($usuario);
 		
 		for ($i=0; $i<count($listaUsuario); $i++ ){											
 			$resultado[] = array(

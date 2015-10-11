@@ -3,6 +3,77 @@
 	var tipoConsulta = 'RAZAO';	
 	var itensConsulta = [];	
 	
+	
+	
+	//VALIDA DIGITAÇÃO DO CAMPO DE CONSULTAS DA COTAÇÃO
+	function incluirColeta() {	
+		//VALIDAR ANTES DE INCLUIR
+		if (document.getElementById('idRemetente').value.length == 0){
+			alert ('Por Favor, informe o Remetente!');		 
+			document.getElementById('idRemetente').focus();
+			return;
+		}	   	
+		if (document.getElementById('idDestinatario').value.length == 0){
+			alert ('Por Favor, informe o Remetente!');		 
+			document.getElementById('idDestinatario').focus();
+			return;
+		}	   	
+		if (document.getElementById('dataAgendada').value.length == 0){
+			alert ('Por Favor, informe uma Data para Coletar a Mercadoria!');		 
+			document.getElementById('dataAgendada').focus();
+			return;
+		}	   	
+		if (document.getElementById('horaAgendada').value.length == 0){
+			alert ('Por Favor, informe a Hora para Coletar!');		 
+			document.getElementById('horaAgendada').focus();
+			return;
+		}
+		
+		var idCotacao = document.getElementById('idCotacao');								
+		var idDestinatario = document.getElementById('idDestinatario');										
+		var idRemetente = document.getElementById('idRemetente');	
+		var dataAgendada = document.getElementById('dataAgendada');	
+		var horaAgendada = document.getElementById('horaAgendada');	
+		var obs = document.getElementById('obs');	
+		
+		jsonParametros = {editSave: 'incluirColeta',
+			idCotacao: idCotacao.value,
+			idDestinatario: idDestinatario.value,
+			idRemetente: idRemetente.value,
+			idMotorista: '0',
+			placaVeiculo : 'aaa-0000',
+			dataAgendada: dataAgendada.value,
+			horaAgendada: horaAgendada.value,
+			obs: obs.value,
+			status: '1'};	
+	
+		var $xhr = $.getJSON('../../webServices/coletaWebService.php', jsonParametros);			
+				
+		$xhr.done(function(resultadoXml) {
+			
+			jsonParametros = {editSave: 'aprovarCotacao',
+			idCotacao: idCotacao.value,
+			aprovadoCliente: 1};				
+			
+			var $xhr = $.getJSON('../../webServices/cotacaoWebService.php', jsonParametros);			
+					
+			$xhr.done(function(resultadoXml) {
+				alert('Coleta Agendada Com Sucesso!');
+				irPara('../cotacao/viewConsulta.php');				
+			});
+
+			$xhr.fail(function(data) {			
+				alert(data.responseText);			
+			});				
+		});
+
+		$xhr.fail(function(data) {			
+			alert(data.responseText);			
+		});			
+	}
+	
+	
+	
 	//MUDA DE PÁGINA
 	function irPara(paginaSelecionada){			
 		window.location.href = paginaSelecionada;
@@ -27,7 +98,7 @@
 			});
 
 			$xhr.fail(function(data) {			
-				//alert(data.responseText);			
+				alert(data.responseText);			
 			});	
 		}
 	}
@@ -40,17 +111,17 @@
 			var idRemetente = document.getElementById('idRemetente');					 
 			idRemetente.value = itensConsulta[posicaoArray].id;
 			var cnpjRemetente = document.getElementById('cnpjRemetente');					 
-			cnpjRemetente.value = itensConsulta[posicaoArray].cnpj;
+			cnpjRemetente.value = itensConsulta[posicaoArray].cpf;
 			var nomeRemetente = document.getElementById('nomeRemetente');					 
-			nomeRemetente.value = itensConsulta[posicaoArray].nome;			
+			nomeRemetente.value = itensConsulta[posicaoArray].nomeCompleto;			
 		}
 		if (consultas.value=='DESTINATARIO'){			 
 			var idDestinatario = document.getElementById('idDestinatario');					 
 			idDestinatario.value = itensConsulta[posicaoArray].id;
 			var cnpjDestinatario = document.getElementById('cnpjDestinatario');					 
-			cnpjDestinatario.value = itensConsulta[posicaoArray].cnpj;
+			cnpjDestinatario.value = itensConsulta[posicaoArray].cpf;
 			var nomeDestinatario = document.getElementById('nomeDestinatario');					 
-			nomeDestinatario.value = itensConsulta[posicaoArray].nome;			
+			nomeDestinatario.value = itensConsulta[posicaoArray].nomeCompleto;			
 		}
 				
 		$('#dlg').dialog('close');					
@@ -145,7 +216,7 @@
 			trInserida.appendChild(tdRazao);				
 			document.getElementById("labConsultas").appendChild(trInserida);														
 			//PREENCHE A TABELA			
-			$.getJSON('../../webServices/usuariosWebService.php?editSave=consultaUsuarios&search=',{'nomeCliente': me.value, ajax: 'true'}, function(j){					
+			$.getJSON('../../webServices/usuariosWebService.php?editSave=carrefarUsuario&search=',{'nomeCompleto': me.value, ajax: 'true'}, function(j){					
 				//	REMOVE LINHA DE ESPERA				
 				try{	   			
 				for (var z = 0; z < 10; z++) {				
@@ -159,7 +230,7 @@
 					for (var i = 0; i < j.length; i++) {									
 						var trInserida = document.createElement("tr");
 						trInserida.id = "trInserida"+i;						
-						trInserida.innerHTML = '<td colspan="2"><table width="100%"><tr  onclick="selecionarConsulta(this);"  class="itens" id="'+i+'"><td width="110">'+j[i].cnpj+'</td><td width="300">'+j[i].nome+'</td></tr></table></td>';
+						trInserida.innerHTML = '<td colspan="2"><table width="100%"><tr  onclick="selecionarConsulta(this);"  class="itens" id="'+i+'"><td width="110">'+j[i].cpf+'</td><td width="300">'+j[i].nomeCompleto+'</td></tr></table></td>';
 						document.getElementById("labConsultas").appendChild(trInserida);						
 						//CARREGA OBJETOS															
 						itensConsulta[i] = j[i];

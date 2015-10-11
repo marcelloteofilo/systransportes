@@ -297,7 +297,7 @@
 				if (resultadoXml[i].status =='3'){
 					trLinha.style.background = 'GREEN';					
 					trLinha.style.color = 'white';					
-					status = 'AUTORIZADO';
+					status = 'COLETA AGENDADA';
 				}								
 				trLinha.name = resultadoXml[i].id;
 				trLinha.id = i;				

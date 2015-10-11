@@ -81,6 +81,7 @@
   <body style="background:#F3F8F7" onload="consultaCotacao(<?php echo($idCotacao);?>)">
 	<input type="hidden" name="consultas" id="consultas" value="">						 		  
 	<input type="hidden" name="idRemetente" id="idRemetente" value="">						 		  
+	<input type="hidden" name="idColeta" id="idColeta" value="<?php echo($idCotacao);?>">						 		  
 	<input type="hidden" name="idDestinatario" id="idDestinatario" value="">						 		  
     <div class="navbar-wrapper">
 			<nav class="navbar">
@@ -174,10 +175,10 @@
 											<input type="text" size="7" tabindex="12" type="text" id="frete" name="frete" readonly>
 										</td>								
 										<td>								
-											<input type="text" tabindex="7" type="text" onfocus="focus_Blur(this, 'yellow');" onblur="focus_Blur(this, 'white');" value="<?php echo($dataDia);?>" id="dataAgenda" name="dataAgenda"  onfocus="focus_Blur(this, 'yellow');stopTabCheck(this);" onKeyPress="mascaraData(this); startTabCheck();" onBlur="mensagemDataCte(this)" onkeyup="exibeValor(this, 10, 0)" maxlength="10" size="10">
+											<input type="text" tabindex="7" type="text" onfocus="focus_Blur(this, 'yellow');" onblur="focus_Blur(this, 'white');" value="<?php echo($dataDia);?>" id="dataAgendada" name="dataAgendada"  onfocus="focus_Blur(this, 'yellow');stopTabCheck(this);" onKeyPress="mascaraData(this); startTabCheck();" onBlur="mensagemDataCte(this)" onkeyup="exibeValor(this, 10, 0)" maxlength="10" size="10">
 										</td>					
-										<td style="border-right: 1px solid;">													
-											<input type="text" size="7" tabindex="8" type="text" onfocus="focus_Blur(this, 'yellow');"onblur="focus_Blur(this, 'white');" value=""  id="horaAgenda" name="horaAgenda"  onKeyPress="return(MascaraMoeda(this,'.',',',event))">
+										<td style="border-right: 1px solid;">				
+											<input type="text" size="7" tabindex="12" id="horaAgendada" name="horaAgendada"  onfocus="focus_Blur(this, 'yellow');" onblur="focus_Blur(this, 'white');">
 										</td>  																								
 									</tr>
 							</table>	
@@ -190,7 +191,7 @@
 								</tr>
 								<tr>			
 									<td>
-										<textarea name="descricao"  id="descricao" cols="80" rows="5"  tabindex="13" title="Informações sobre a Coleta"></textarea>		
+										<textarea name="obs"  id="obs" cols="80" rows="5"  tabindex="13" title="Informações sobre a Coleta"></textarea>		
 									</td>														
 								</tr>	
 							</table>
@@ -202,7 +203,7 @@
 							<input name="pesquisaOrigem" type="hidden" id="txtOrigem" class="field" value="S&atilde;o Paulo" />
 							<input name="pesquisaDestino" type="hidden" id="txtDestino" class="field" value="Rio de Janeiro" />
 							<center><sup><b>*</sup>Campos Obrigatórios</b></center>
-							<input type="image" src='../../img/<?php echo($acao);?>Btn.png' id="gravarBtn" onClick="crudCotacao('<?php echo($acao);?>')">
+							<input type="image" src='../../img/<?php echo($acao);?>Btn.png' id="gravarBtn" onClick="incluirColeta()">
 							<input type="image" src='../../img/sairBtn.png' id="btnSair" onClick="irPara('../cotacao/viewConsulta.php')">
 							</br>							
 							</center>
