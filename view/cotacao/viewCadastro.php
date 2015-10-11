@@ -125,11 +125,11 @@ if (isset($_POST['cadastrar'])) {
                     </button>
                     <!-- /responsive nav button -->
                     <!-- logo -->
-                    <a class="navbar-brand" href="#body">
-                        <h1 id="logo">
-                            <img src="../../img/Xing-50.png" alt="Systransportes">
-                        </h1>
-                    </a>
+                <a class="navbar-brand" href="#body">
+                  <h1 id="logo">
+                     <img src="../../img/logo.png" alt="Brandi">
+                  </h1>
+               </a>
                     <!-- /logo -->
                 </div>
                 <!-- main nav -->

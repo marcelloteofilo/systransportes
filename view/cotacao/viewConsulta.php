@@ -72,7 +72,7 @@
       <!-- 
          Fixed Navigation
          ==================================== -->
-      <header id="navigation" class="navbar-fixed-top navbar">
+      <header class="navbar-fixed-top navbar" style="background:#0EB493;">
          <div class="container">
             <div class="navbar-header">
                <!-- responsive nav button -->
@@ -81,10 +81,10 @@
                <i class="fa fa-bars fa-2x"></i>
                </button>
                <!-- /responsive nav button -->
-               <!-- logo -->
+               <!-- logo -->  
                <a class="navbar-brand" href="#body">
                   <h1 id="logo">
-                     <img src="../../img/Xing-50.png" alt="Brandi">
+                     <img src="../../img/logo.png" alt="Brandi">
                   </h1>
                </a>
                <!-- /logo -->
@@ -136,12 +136,12 @@
 								
 									</table>
 									<br><br>
-									<input type="image" src='../../img/incluirBtn.png' id="btnIncluir" onClick="irPara('viewCadastro.php','incluir')">
-									<input type="image" src='../../img/visualizarBtn.png' id="btnVisualizar" onClick="irPara('viewCadastro.php','visualizar')">
-									<input type="image" src='../../img/alterarBtn.png' id="btnAlterar" onClick="irPara('viewCadastro.php','alterar')">
-									<input type="image" src='../../img/aprovarBtn.png' id="btnAprovar" onClick="irPara('../coleta/viewCadastro.php', 'aprovar')">
-									<input type="image" src='../../img/cancelarBtn.png' id="btnCancelar" onClick="irPara('viewCadastro.php','cancelar')">
-									<input type="image" src='../../img/sairBtn.png' id="btnSair" onClick="irPara('../../index.php','index')">
+									<input type="submit" class="btn btn-success btn-login-submit" value="Incluir" id="btnIncluir" onClick="irPara('viewCadastro.php','incluir')">
+									<input type="submit" class="btn btn-success btn-login-submit" value="Visualizar" id="btnVisualizar" onClick="irPara('viewCadastro.php','visualizar')">
+									<input type="submit" class="btn btn-success btn-login-submit" value="Alterar" id="btnAlterar" onClick="irPara('viewCadastro.php','alterar')">
+									<input type="submit" class="btn btn-success btn-login-submit" value="Aprovar" id="btnAprovar" onClick="irPara('../coleta/viewCadastro.php', 'aprovar')">
+									<input type="submit" class="btn btn-success btn-login-submit" value="Cancelar" id="btnCancelar" onClick="irPara('viewCadastro.php','cancelar')">
+									<input type="submit" class="btn btn-success btn-login-submit" value="Sair" onClick="irPara('../../index.php','index')">
                                                            
 							</center>
                         </div>
