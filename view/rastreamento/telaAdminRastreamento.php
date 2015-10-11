@@ -19,9 +19,9 @@
 
         <script>
 <!-- SCRIPT DO GRAFICO -->
-                < script type = "text/javascript" src = "https://www.google.com/jsapi" ></script>
+            < script type = "text/javascript" src = "https://www.google.com/jsapi" ></script>
         <script type="text/javascript">
-                    google.load("visualization", "1", {packages: ["corechart"]});
+                google.load("visualization", "1", {packages: ["corechart"]});
             google.setOnLoadCallback(drawChart);
             function drawChart() {
 
@@ -42,18 +42,18 @@
         </script>
         <!-- FIM SCRIPT DO GRAFICO -->
 
-    <header class="navbar-fixed-top navbar" style="background:#0EB493;"> 
+    <header class="navbar-fixed-top navbar" style="background:#0EB493;">
         <div class="container">
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul  class="nav navbar-nav">
-                    <li class="current"><a href="../../php.html">Início</a></li>
+                    <li class="current"><a href="../../index.php">Início</a></li>
                     <li><a href="#graficos">Graficos</a></li>
                     <li><a href="../telaAdminSystem.php">Admin</a></li>
 
                 </ul>
             </nav>
             <div class="navbar-header">
-                <a  class="navbar-brand" href="#">SysTransportes</a>		 
+                <a  class="navbar-brand" href="#">SysTransportes</a>
             </div>
         </div>
     </header>
@@ -67,7 +67,8 @@
     <table id="dg" style="width:1190px; height:450px; border:1px solid #ccc;" idField="id">
         <thead>
             <tr>
-                <th onkeyup="validar(this, 'text');"onblur="" id="rota" name="rota" align ="center" field="rota" width="10" editor="{type:'validatebox',options:{required:true}}">Rota</th>
+                <th field="idCte" width="5">Id CTE</th>
+                <th field="localizacao" width="100">Localização</th>
             </tr>
         </thead>
     </table>
@@ -75,11 +76,11 @@
     <div id="toolbar" align="center">
         <!--<a href="#" class="easyui-linkbutton" iconCls="icon-users-add-icon" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Criar Rastreamento</a>-->
         <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-        <!--<a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Salvar</a>-->
+        <!--<a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Salvar</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
         <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Deletar</a>
         &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">Cancelar</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">Cancelar</a>-->
     </div>
 </center>
 

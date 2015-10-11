@@ -28,7 +28,7 @@ function consultaAJAXRastreamento( )
 
     var rotaRastreamento = document.getElementById('rota').value;
 
-    jsonParametros = {incluirRastreamento: 'sim', rota};
+    jsonParametros = {incluirRastreamento: 'sim', rotaRastreamento: 'rota'};
 
     var $xhr = $.getJSON(servicoHttp, jsonParametros);
 
