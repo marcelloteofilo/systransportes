@@ -1,26 +1,3 @@
-//$(function()
-//{
-//	$('#dg').edatagrid(
-//	{
-//		url : '../../webServices/mercadoriasWebService.php?editSave=carregarMercadoria',
-//		saveUrl : '../../webServices/mercadoriasWebService.php?editSave=incluirMercadoria',
-//		updateUrl : '../../webServices/mercadoriasWebService.php?editSave=alterarMercadoria',
-//		destroyUrl : '../../webServices/mercadoriasWebService.php?editSave=deletarMercadoria',
-//		
-//		title: "Cadastro de Mercadorias",
-//		//style: "width:1220px, height:450px, border:1px solid #ccc",
-//		toolbar: "#toolbar",
-//		pagination: "true",
-//		rownumbers: "true", 
-//		fitColumns: "true",
-//		resizable: "true",
-//	});
-//	var dg = $('#dg');
-//	dg.edatagrid();
-//	dg.edatagrid('enableFilter');
-//});
-
-//Josenaldo
 
 var url;
 function newMercadoria()
@@ -41,70 +18,44 @@ function editMercadoria()
     else
     {
         $.messager.show(
-                {
-                    title: 'Erro!',
-                    msg: 'Selecione item da tabela!!!'//result.msg
-                });
+            {
+                title: 'Erro!',
+                msg: 'Selecione item da tabela!!!'//result.msg
+            });
     }
 }
 
 function saveMercadoria()
 {
-    $('#fm').form('submit',
-            {
-                url: url,
-                onSubmit: function ()
-                {
-                    if ('')
-                    {
-                        $.messager.confirm('', 'Cadastro efetuado com sucesso!', function (r) {
-                            if (r)
-                            {
-                                $.post('../../webServices/mercadoriasWebService.php?editSave=incluirMercadoria', {id: row.id},
-                                function (result)
-                                {
-//                                            if (!result.success)
-//                                            {
-//                                                $.messager.show(
-//                                                        {// show error message
-//                                                            title: 'Error',
-//                                                            msg: result.msg
-//                                                        });
-//                                            }
-                                }
-                                , 'json');
-                            }
-                        });
-                    }
-                    return $(this).form('validate');
-                },
-                success: function (result) {
-                    var result = eval('(' + result + ')');
-                    if (result.success) {
-//                                    $('#dlg').dialog('close');		// close the dialog
-//                                    $('#dg').datagrid('load');	// reload the user data
-                    } else {
-                        $('#dlg').dialog('close');
-                        $('#dg').datagrid('load');	// reload the user data
-                    }
-                }
-            });
+    $('#fm').form('submit', {
+        url: url,
+        onSubmit: function ()
+        {
+            return $(this).form('validate');
+        },
+        success: function (result) {
+            $('#dlg').dialog('close');    // close the dialog
+            $('#dg').datagrid('reload');  // reload the user data
+        }
+    });
 }
 
 function removeMercadoria()
 {
     var row = $('#dg').datagrid('getSelected');
     if (row) {
-        $.messager.confirm('Confirmar', 'Tem certeza que deseja remover?', function (r) {
-            if (r) {
-                $.post('../../webServices/mercadoriasWebService.php?editSave=deletarMercadoria', {id: row.id}, function (result) {
-                    if (result.success)
-                    {
-                        $('#dlg').dialog('close');
+        $.messager.confirm('Confirm', 'Tem certeza que deseja remover?', function (r) {
+            $('#dg').datagrid('reload');
 
-                    } else {
-                        $('#dg').datagrid('reload');	// reload the user data
-                    }
+            if (r) {
+                $.post('../../webServices/mercadoriasWebService.php?editSave=deletarMercadoria', {id: row.id}, function (resultado) {
+//                    if (resultado.success)
+//                    {
+//                        $('#dlg').dialog('close');
+//
+//                    } else {
+//                        $('#dg').datagrid('reload');	// reload the user data
+//                    }
                 }, 'json');
             }
         });
@@ -112,17 +63,17 @@ function removeMercadoria()
     else
     {
         $.messager.show(
-                {
-                    title: 'Erro!',
-                    msg: 'Selecione item da tabela!!!'//result.msg
-                });
+            {
+                title: 'Erro!',
+                msg: 'Selecione item da tabela!!!'//result.msg
+            });
     }
 }
 
 function consultaMercadoria()
 {
 //                var row = $('#dg').datagrid('getSelected');
-//                if (row) 
+//                if (row)
 //                {
 //
 //                }
@@ -131,14 +82,15 @@ function consultaMercadoria()
 //Consulta ajax
 function consultaAJAXMercadoria( )
 {
+    //var document = "../view/mercadoria/telaAdminMercadorias.php";
     var servicoHttp = "../webServices/mercadoriasWebService.php";
 
     var idCotacao = document.getElementById('idCotacao').value;
-    var descricaoMercadoria = document.getElementById('descricao').value;
-    var pesoMercadoria = document.getElementById('peso').value;
+    var descricaoMercadoria = document.getElementById('descricaoMercadoria').value;
+    var pesoMercadoria = document.getElementById('pesoMercadoria').value;
 
 
-    jsonParametros = {incluirMercadoria: 'sim', idCotacao: 'idCotacao', descricaoMercadoria: 'descricao', pesoMercadoria: 'peso'};
+    var jsonParametros = {incluirMercadoria: 'sim', idCotacao: 'idCotacoes', descricao: 'descricao', pesoMercadoria: 'peso'};
 
     var $xhr = $.getJSON(servicoHttp, jsonParametros);
 

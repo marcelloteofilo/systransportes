@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (!isset($_SESSION['login']) == true and  !isset($_SESSION['senha']) == true) {
+if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) {
     session_destroy();
     unset($_SESSION['login']);
     unset($_SESSION['senha']);
@@ -15,10 +15,11 @@ if (!isset($_SESSION['login']) == true and  !isset($_SESSION['senha']) == true) 
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
         <link rel="stylesheet" type="text/css" href="../../css/icon.css">
         <link rel="stylesheet" type="text/css" href="../../css/demo.css">
-        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <!--<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">-->
 
         <style type="text/css">
             #fm{
@@ -48,31 +49,32 @@ if (!isset($_SESSION['login']) == true and  !isset($_SESSION['senha']) == true) 
         <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
         <script type="text/javascript" src="../../js/scriptsMercadoria.js"></script>
 
+        <!--
         <script type="text/javascript">
             function id(el)
             {
-                return document.getElementById(el);
+                return this.document.getElementById(el);
             }
             window.onload = function ()
             {
-                id('#enviar').onclick = function ()
+                id('dlg-buttons.enviar').click() = function ()
                 {
-                    if (id('descricao').value === "")
+                    if (id('descricaoMercadoria').value === "")
                     {
-                        alerta('Informe a descricao!');
+                        alerta('Informe a descricao da mercadoria!');
                     }
-                    if (id('peso').value === "")
+                    if (id('pesoMercadoria').value === "")
                     {
-                        alerta('Informe o peso!');
+                        alerta('Informe o peso da mercadoria!');
                     }
                 }
 
             }
         </script>
-
+        -->
     </head>
 
-    <header class="navbar-fixed-top navbar" style="background:#0EB493;"> 
+    <header class="navbar-fixed-top navbar" style="background:#0EB493;">
         <div class="container">
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul  class="nav navbar-nav">
@@ -82,7 +84,7 @@ if (!isset($_SESSION['login']) == true and  !isset($_SESSION['senha']) == true) 
                 </ul>
             </nav>
             <div class="navbar-header">
-                <a  class="navbar-brand" href="#">SysTransportes</a>		 
+                <a  class="navbar-brand" href="#">SysTransportes</a>
             </div>
         </div>
     </header>
@@ -90,15 +92,15 @@ if (!isset($_SESSION['login']) == true and  !isset($_SESSION['senha']) == true) 
 
     <body style="background:#F3F8F7">
     <center>
-        <table id="dg" 
-               title="Cadastro de Mercadorias" 
-               class="easyui-datagrid" 
-               style=" width:1250px;height:495px" 
-               url="../../webServices/mercadoriasWebService.php?editSave=carregarMercadoria" 
-               toolbar="#toolbar" 
+        <table id="dg"
+               title="Cadastro de Mercadorias"
+               class="easyui-datagrid"
+               style=" width:1250px;height:495px"
+               url="../../webServices/mercadoriasWebService.php?editSave=carregarMercadoria"
+               toolbar="#toolbar"
                pagination="true"
-               rownumbers="true" 
-               fitColumns="true" 
+               rownumbers="true"
+               fitColumns="true"
                singleSelect="true">
             <thead>
                 <tr>
@@ -112,11 +114,11 @@ if (!isset($_SESSION['login']) == true and  !isset($_SESSION['senha']) == true) 
         </table>
 
         <div id="toolbar">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" 
+            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
                onclick="newMercadoria()" title="Adicionar Mercadoria">Nova Mercadoria</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" 
+            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
                onclick="editMercadoria()" title="Alterar Dados da Mercadoria">Editar Mercadoria</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" 
+            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
                onclick="removeMercadoria()" title="Remover Dados da Mercadoria">Remover Mercadoria</a>
         </div>
 
@@ -131,8 +133,7 @@ if (!isset($_SESSION['login']) == true and  !isset($_SESSION['senha']) == true) 
                 </div>
                 <div class="fitem">
                     <label>Descrição:</label>
-                    <input name="descricao" class="easyui-validatebox" required="true" onkeyup="validar(this, 'text');
-                            validarCaracteresEspeciais(this, 'text');">
+                    <input name="descricao" class="easyui-validatebox" required="true" onkeyup="validar(this, 'text');">
                 </div>
                 <div class="fitem">
                     <label>Peso:</label>

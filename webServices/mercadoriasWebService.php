@@ -1,70 +1,70 @@
 <?php
-	require_once("../modelo/mercadoria/mercadoriaSql.php");
-	session_start();
 
-	extract ($_REQUEST);
-	extract ($_SESSION);
+require_once("../modelo/mercadoria/mercadoriaSql.php");
+session_start();
+extract($_REQUEST);
+extract($_SESSION);
 
+if ($_GET["editSave"] == "incluirMercadoria") {
+    //Classe de Mercadoria
+    $mercadoria = new Mercadoria();
 
-	if ($_GET["editSave"] == "incluirMercadoria"){
-		//Classe de Mercadoria
-		$mercadoria = new Mercadoria();
+    //Atributos da classe Mercadoria/Valores
+    $mercadoria->getObjCotacao()->setId($_REQUEST['idCotacoes']);
+    $mercadoria->setDescricaoMercadoria($_REQUEST['descricao']);
+    $mercadoria->setPeso($_REQUEST['peso']);
 
-		//Atributos da classe Mercadoria/Valores
-		$mercadoria -> getObjCotacao() -> setId($_REQUEST['idCotacoes']);
-		$mercadoria -> setDescricaoMercadoria($_REQUEST['descricao']);
-		$mercadoria -> setPeso($_REQUEST['peso']);
+    if (mercadoriaSql::adicionar($mercadoria)) {
 
-		if (mercadoriaSql::adicionar($mercadoria)){
-			$resultado[] = array(
-				'oka'	=>  'oks',
-			);
-		}
+        echo json_encode(array('success' => true));
 
-		echo(json_encode($resultado ));
-	}
+        $resultado[] = array(
+            'oka' => 'oks',
+        );
+    }
 
-	if ($_GET["editSave"] == "alterarMercadoria"){
-		$mercadoria = new Mercadoria();
+    echo(json_encode($resultado));
+}
 
-		//Atributos da classe Mercadoria/Valores
-		$mercadoria->setId($_REQUEST['id']);
-		$mercadoria->getObjCotacao() -> setId($_REQUEST['idCotacoes']);
-		$mercadoria->setDescricaoMercadoria($_REQUEST['descricao']);
-		$mercadoria->setPeso($_REQUEST['peso']);
+if ($_GET["editSave"] == "alterarMercadoria") {
+    $mercadoria = new Mercadoria();
 
-		if (mercadoriaSql::alterar($mercadoria)){
-			$resultado[] = array(
-				'oka'	=>  'oks',
-			);
-		}
+    //Atributos da classe Mercadoria/Valores
+    $mercadoria->setId($_REQUEST['id']);
+    $mercadoria->getObjCotacao()->setId($_REQUEST['idCotacoes']);
+    $mercadoria->setDescricaoMercadoria($_REQUEST['descricao']);
+    $mercadoria->setPeso($_REQUEST['peso']);
 
-		echo(json_encode($resultado ));
-	}
+    if (mercadoriaSql::alterar($mercadoria)) {
+        $resultado[] = array(
+            'oka' => 'oks',
+        );
+    }
 
-
-	if ($_GET["editSave"] == "deletarMercadoria"){
-		$mercadoria = new Mercadoria();
-
-		$mercadoria->setId($_REQUEST['id']);
-
-		if (mercadoriaSql::remover($mercadoria)){
-			$resultado[] = array(
-				'ok'	=>  'ok',
-			);
-		}
-		echo( json_encode( $resultado ) );
-	}
+    echo(json_encode($resultado));
+}
 
 
-	if ($_GET["editSave"] == "carregarMercadoria")
-	{
+if ($_GET["editSave"] == "deletarMercadoria") {
+    $mercadoria = new Mercadoria();
 
-		if (mercadoriaSql::carregarLista())
-		{
-			$resultado[] = array(
-				'oka'	=>  'oks',
-			);
-		}
-	}
+    $mercadoria->setId($_REQUEST['id']);
+
+    if (mercadoriaSql::remover($mercadoria)) {
+        $resultado[] = array(
+            'ok' => 'ok',
+        );
+    }
+    echo( json_encode($resultado) );
+}
+
+
+if ($_GET["editSave"] == "carregarMercadoria") {
+
+    if (mercadoriaSql::carregarLista()) {
+        $resultado[] = array(
+            'oka' => 'oks',
+        );
+    }
+}
 ?>

@@ -15,11 +15,11 @@ class MercadoriaSql {
         //obtenção do valor e logo em seguida, realizando a chamada do banco
 
         $idCotacao = mysql_real_escape_string($mercadoria->getObjCotacao()->getId(), $conexao);
-        $descricao = mysql_real_escape_string($mercadoria->getDescricaoMercadoria(), $conexao);
-        $peso = mysql_real_escape_string($mercadoria->getPeso(), $conexao);
+        $descricaoMercadoria = mysql_real_escape_string($mercadoria->getDescricaoMercadoria(), $conexao);
+        $pesoMercadoria = mysql_real_escape_string($mercadoria->getPeso(), $conexao);
 
         //Inserção na tabela de Mercadoria relacionada ao banco de dados systransporte
-        $sql = "insert into mercadorias (idCotacoes, descricao, peso) values ('$idCotacao', '$descricao', '$peso')";
+        $sql = "insert into mercadorias (idCotacoes, descricao, peso) values ('$idCotacao', '$descricaoMercadoria', '$pesoMercadoria')";
         $resultado = @mysql_query($sql, $conexao);
         return ($resultado === true);
     }
@@ -34,11 +34,11 @@ class MercadoriaSql {
         $id = mysql_real_escape_string($mercadoria->getId(), $conexao);
         $idCotacao = mysql_real_escape_string($mercadoria->getObjCotacao()->getId(), $conexao);
         $descricaoMercadoria = mysql_real_escape_string($mercadoria->getDescricaoMercadoria(), $conexao);
-        $peso = mysql_real_escape_string($mercadoria->getPeso(), $conexao);
+        $pesoMercadoria = mysql_real_escape_string($mercadoria->getPeso(), $conexao);
 
 
         ///Alteração na tabela de Mercadoria relacionada ao banco de dados systransporte
-        $sql = "update mercadorias set idCotacoes='$idCotacao', descricao='$descricaoMercadoria', peso = '$peso' where id = $id ";
+        $sql = "update mercadorias set idCotacoes='$idCotacao', descricao='$descricaoMercadoria', peso = '$pesoMercadoria' where id = $id ";
         $resultado = @mysql_query($sql, $conexao);
 
         return ($resultado === true);
