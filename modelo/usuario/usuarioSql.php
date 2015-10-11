@@ -119,11 +119,14 @@
 		 if ($busca->getNomeCompleto())  
 			$sql .= "  where nomeCompleto like '$nomeCliente%'";  	    
 		$resultado = @mysql_query($sql, $conexao);	      
+		
 		if ($resultado) {
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {
 				$usuario = new Usuario();
 				$usuario->setId($row["id"]);
+				$usuario->setPerfil($row["perfil"]);
+				$usuario->setStatus($row["status"]);
 				$usuario->setEstado($row["estado"]);
 				$usuario->setCidade($row["cidade"]);
 				$usuario->setNomeCompleto($row["nomeCompleto"]);
