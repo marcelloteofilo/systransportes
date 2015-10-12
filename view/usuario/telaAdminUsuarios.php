@@ -100,20 +100,19 @@
       <thead>
 
         <tr>
-          <th field="status" width="50">Status</th>
-          <th field="perfil" width="70">Perfil</th>
-          <th field="nomeCompleto" width="70">Nome.C</th>
+          <th field="status" width="46">Status</th>
+          <th field="perfil" width="64">Perfil</th>
+          <th field="nomeCompleto" width="70">Nome Completo</th>
           <th field="rg" width="50">RG</th>
-          <th field="cpf" width="75">CPF</th>
-          <th field="razaoSocial" width="70">Razão.S</th>
-          <th field="nomeFantasia" width="70">Nome.F</th>
+          <th field="cpf" width="72">CPF</th>
+          <th field="razaoSocial" width="70">Razão Social</th>
+          <th field="nomeFantasia" width="70">Nome Fantasia</th>
           <th field="cnpj" width="50">CNPJ</th>
-          <th field="email" width="50">E-mail</th>
-          <th field="telefone1" width="75">Tel.1</th>
+          <th field="email" width="100">E-mail</th>
+          <th field="telefone1" width="70">Telelefone Res.</th>
           <th field="estado" width="20">UF</th>
           <th field="cidade" width="50">Cidade</th>
-          <th field="cep" width="55">CEP</th>
-          <th field="login" width="50">Login</th>
+          <th field="cep" width="50">CEP</th>
         </tr>
       </thead>   
     </table>
@@ -259,8 +258,8 @@
             <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
             <td>
               <select class="form-control" id="idPerfil" name="idPerfil" onclick="validaPerfil()">
-                <option value="Pessoa Fisica">Pessoa Física</option>
-                <option value="Pessoa Juridica">Pessoa Jurídica</option>
+                <option value="Pessoa Fisica">Pessoa Fisica</option>
+                <option value="Pessoa Juridica">Pessoa Juridica</option>
                 <option value="Atendente">Atendente</option>
                 <option value="Motorista">Motorista</option>
               </select>
