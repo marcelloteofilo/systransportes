@@ -19,7 +19,7 @@ class MercadoriaSql {
         $pesoMercadoria = mysql_real_escape_string($mercadoria->getPeso(), $conexao);
 
         //Inserção na tabela de Mercadoria relacionada ao banco de dados systransporte
-        $sql = "insert into mercadorias (idCotacoes, descricao, peso) values ('$idCotacao', '$descricaoMercadoria', '$pesoMercadoria')";
+        $sql = "insert into mercadorias (idCotacoes, descricaoMercadoria, pesoMercadoria) values ('$idCotacao', '$descricaoMercadoria', '$pesoMercadoria')";
         $resultado = @mysql_query($sql, $conexao);
         return ($resultado === true);
     }
@@ -38,7 +38,7 @@ class MercadoriaSql {
 
 
         ///Alteração na tabela de Mercadoria relacionada ao banco de dados systransporte
-        $sql = "update mercadorias set idCotacoes='$idCotacao', descricao='$descricaoMercadoria', peso = '$pesoMercadoria' where id = $id ";
+        $sql = "update mercadorias set idCotacoes='$idCotacao', descricaoMercadoria='$descricaoMercadoria', pesoMercadoria = '$pesoMercadoria' where id = $id ";
         $resultado = @mysql_query($sql, $conexao);
 
         return ($resultado === true);

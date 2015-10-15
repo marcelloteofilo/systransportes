@@ -90,7 +90,7 @@ function consultaAJAXMercadoria( )
     var pesoMercadoria = document.getElementById('pesoMercadoria').value;
 
 
-    var jsonParametros = {incluirMercadoria: 'sim', idCotacao: 'idCotacoes', descricao: 'descricao', pesoMercadoria: 'peso'};
+    var jsonParametros = {incluirMercadoria: 'sim', idCotacao: 'idCotacoes', descricao: 'descricaoMercadoria', pesoMercadoria: 'pesoMercadoria'};
 
     var $xhr = $.getJSON(servicoHttp, jsonParametros);
 

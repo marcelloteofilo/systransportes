@@ -11,8 +11,8 @@ if ($_GET["editSave"] == "incluirMercadoria") {
 
     //Atributos da classe Mercadoria/Valores
     $mercadoria->getObjCotacao()->setId($_REQUEST['idCotacoes']);
-    $mercadoria->setDescricaoMercadoria($_REQUEST['descricao']);
-    $mercadoria->setPeso($_REQUEST['peso']);
+    $mercadoria->setDescricaoMercadoria($_REQUEST['descricaoMercadoria']);
+    $mercadoria->setPeso($_REQUEST['pesoMercadoria']);
 
     if (mercadoriaSql::adicionar($mercadoria)) {
 
@@ -32,8 +32,8 @@ if ($_GET["editSave"] == "alterarMercadoria") {
     //Atributos da classe Mercadoria/Valores
     $mercadoria->setId($_REQUEST['id']);
     $mercadoria->getObjCotacao()->setId($_REQUEST['idCotacoes']);
-    $mercadoria->setDescricaoMercadoria($_REQUEST['descricao']);
-    $mercadoria->setPeso($_REQUEST['peso']);
+    $mercadoria->setDescricaoMercadoria($_REQUEST['descricaoMercadoria']);
+    $mercadoria->setPeso($_REQUEST['pesoMercadoria']);
 
     if (mercadoriaSql::alterar($mercadoria)) {
         $resultado[] = array(

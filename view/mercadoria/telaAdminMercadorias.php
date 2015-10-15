@@ -105,8 +105,8 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
             <thead>
                 <tr>
                     <th field="idCotacoes" width="50">Cotação</th>
-                    <th field="descricao" width="50">Descricao</th>
-                    <th field="peso" width="50">Peso</th>
+                    <th field="descricaoMercadoria" width="50">Descricao</th>
+                    <th field="pesoMercadoria" width="50">Peso</th>
                 </tr>
             </thead>
 
@@ -133,11 +133,11 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
                 </div>
                 <div class="fitem">
                     <label>Descrição:</label>
-                    <input name="descricao" class="easyui-validatebox" required="true" onkeyup="validar(this, 'text');">
+                    <input name="descricaoMercadoria" class="easyui-validatebox" required="true" onkeyup="validar(this, 'text');">
                 </div>
                 <div class="fitem">
                     <label>Peso:</label>
-                    <input name="peso" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
+                    <input name="pesoMercadoria" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
                 </div>
             </form>
         </div>
