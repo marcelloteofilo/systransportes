@@ -18,10 +18,12 @@
 			$capacidadeM3 		= mysql_real_escape_string($veiculo->getCapacidadeM3(), $conexao);
 			$ano 				= mysql_real_escape_string($veiculo->getAno(), $conexao);
 			$tipo 				= mysql_real_escape_string($veiculo->getTipo(), $conexao);
+			$uf 				= mysql_real_escape_string($veiculo->getUf(), $conexao);
+			$cidade 			= mysql_real_escape_string($veiculo->getCidade(), $conexao);
 
 			//Inserção na tabela de veiculo relacionada ao banco de dados systransporte
-		    $sql    = "insert into veiculos (placa, capacidadeKg, capacidadeM3, ano, tipo) values ('$placa',
-								  '$capacidadeKg', '$capacidadeM3', '$ano', '$tipo')";			
+		    $sql    = "insert into veiculos (placa, capacidadeKg, capacidadeM3, ano, tipo,uf,cidade) values ('$placa',
+								  '$capacidadeKg', '$capacidadeM3', '$ano', '$tipo','$uf','$cidade')";			
 		    $resultado = @mysql_query($sql, $conexao);
 		    return ($resultado === true);
 		}
@@ -39,73 +41,60 @@
 			$capacidadeM3 		= mysql_real_escape_string($veiculo->getCapacidadeM3(), $conexao);
 			$ano 				= mysql_real_escape_string($veiculo->getAno(), $conexao);
 			$tipo 				= mysql_real_escape_string($veiculo->getTipo(), $conexao);
+			$uf 				= mysql_real_escape_string($veiculo->getUf(), $conexao);
+			$cidade 			= mysql_real_escape_string($veiculo->getCidade(), $conexao);
 
 			///Alteração na tabela de veiculo relacionada ao banco de dados systransporte
 			$sql  = "update veiculos set placa='$placa', capacidadeKg='$capacidadeKg', capacidadeM3='$capacidadeM3',
-								  ano='$ano', tipo='$tipo' where id = $id ";			
+								  ano='$ano', tipo='$tipo',uf='$uf',cidade='$cidade' where id = $id ";			
 		    $resultado = @mysql_query($sql, $conexao);
 
 		    return ($resultado === true);
 		}
 
-		//Método responsável em remover um determinado veículo
 		public static function remover(Veiculo $veiculo) {
-			//Criando a conexão com o banco de dados
 			$conexao = Conexao::getInstance()->getConexao();
 
-			//Atributo da classe veiculo sendo definida em uma variável, obtida em um método para realização da
-			//obtenção do valor e logo em seguida, realizando a chamada do banco de dados
 			$id 				= mysql_real_escape_string($veiculo->getIdVeiculo(), $conexao);
 
-			//Remoção na tabela de veiculo relacionada ao banco de dados systransporte
 			$sql       			= "delete from veiculos where id = '$id' ";			
 		    $resultado = @mysql_query($sql, $conexao);
 
 		    return ($resultado === true);
 		}
 
-		/*//Método responsável em pesquisar um determinado veículo
-		public static function pesquisar(Veiculo $veiculo) {
-			//Criando a conexão com o banco de dados
-			$conexao 			= Conexao :: getInstance() -> getConexao();
-
-			//Atributo da classe veiculo sendo definida em uma variável, obtida em um método para realização da
-			//obtenção do valor e logo em seguida, realizando a chamada do banco de dados
-			$placa 				= mysql_real_escape_string($veiculo->getPlaca(), $conexao);
-
-			//Pesquisa na tabela de veiculo relacionada ao banco de dados systransporte
-			$sql       			= "select * from veiculos where placa like '%".$placa."%'";			
-			$resultado = @mysql_query($sql, $conexao);
-
-			//Validação com o intúito de verificar se o veículo foi ou não pesquisado
-			if ($resultado) {
-				echo "O veículo pesquisado foi o de placa: " + $resultado;
-			} else {
-				echo "O veículo de placa " + $resultado + " não foi identificado";
-			}
-			
-			//Responsável por fechar a conexão com o banco de dados
-			mysql_close();
-				
-			//Retorno do método pesquisar
-			return ($resultado === true);
-		}*/
-
 		public static function carregarLista() {
 	      //Conexão com o banco
-	      $conexao = Conexao::getInstance()->getConexao();     
+      $conexao = Conexao::getInstance()->getConexao(); 
+		  $sql = 'select * from veiculos';
+		  
+		  $resultado = @mysql_query($sql, $conexao);
 
-			$rs = mysql_query('select * from veiculos');
-			$result = array();
-			while($row = mysql_fetch_object($rs)){
-				array_push($result, $row);
-			}
-			echo json_encode($result);
-        }
+		if ($resultado) {
+			$retorno = array();
+			while ($row = mysql_fetch_array($resultado)) {
+				$veiculo = new Veiculo();
+				$veiculo->setIdVeiculo($row["id"]);
+				$veiculo->setPlaca($row["placa"]);
+				$veiculo->setCapacidadeKg($row["capacidadeKg"]);
+				$veiculo->setCapacidadeM3($row["capacidadeM3"]);
+				$veiculo->setAno($row["ano"]);
+				$veiculo->setTipo($row["tipo"]);
+				$veiculo->setUf($row["uf"]);
+				$veiculo->setCidade($row["cidade"]);			
+				$retorno[] = $veiculo;
+         	}
+        return ($retorno);
+      } 
+      else
+        return null;
+      }
+    }
+
       
 
 
-    }
+    
 		
 	
 ?>

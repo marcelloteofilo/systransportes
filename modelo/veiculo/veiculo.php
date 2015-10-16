@@ -7,6 +7,8 @@
 		private $capacidadeM3;
 		private $ano;
 		private $tipo;
+		private $uf;
+		private $cidade;
 
 		//Método responsável para definir o id do veículo
 		public function setIdVeiculo($idVeiculo) {
@@ -66,6 +68,26 @@
 		//Método responsável para obter o tipo do veículo
 		public function getTipo() {
 			return $this -> tipo;
+		}
+
+		//Método responsável para definir o tiufpo do veículo
+		public function setUf($uf) {
+			$this -> uf = trim($uf);
+		}
+
+		//Método responsável para obter o uf do veículo
+		public function getUf() {
+			return $this -> uf;
+		}
+
+		//Método responsável para definir o cidade do veículo
+		public function setCidade($cidade) {
+			$this -> cidade = trim($cidade);
+		}
+
+		//Método responsável para obter o cidade do veículo
+		public function getCidade() {
+			return $this -> cidade;
 		}
 	}
 ?>
