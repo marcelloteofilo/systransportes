@@ -258,8 +258,8 @@
             <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
             <td>
               <select class="form-control" id="idPerfil" name="idPerfil" onclick="validaPerfil()">
-                <option value="Pessoa Fisica">Pessoa Fisica</option>
-                <option value="Pessoa Juridica">Pessoa Juridica</option>
+                <option value="PF">Pessoa Fisica</option>
+                <option value="PJ">Pessoa Juridica</option>
                 <option value="Atendente">Atendente</option>
                 <option value="Motorista">Motorista</option>
               </select>
