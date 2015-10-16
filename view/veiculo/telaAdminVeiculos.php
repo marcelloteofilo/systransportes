@@ -110,7 +110,7 @@
     </table>
 
     <div id="toolbar">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-users-add-icon" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Veiculo</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-car-icon" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Veiculo</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Editar Veiculo</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Veiculo</a>
       
