@@ -256,15 +256,15 @@
             <td><input required="required" class="form-control" type="text" id="login" name="login" size="30" placeholder="Usuário"></td>
             <td><input required="required" class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
             <td>
-              <select required="required" class="form-control" id="idPerfil" name="idPerfil" onclick="validaPerfil()">
-                <option value="PF">PF</option>
-                <option value="PJ">PJ</option>
+              <select required="required" class="form-control" id="perfil" name="perfil" onclick="validaPerfil()">
+                <option value="Pessoa Fisica">Pessoa Física</option>
+                <option value="Pessoa Juridica">Pessoa Jurídica</option>
                 <option value="Atendente">Atendente</option>
                 <option value="Motorista">Motorista</option>
               </select>
             </td>
             <td>
-              <select required="required" class="form-control" id="idStatus" name="idStatus" >
+              <select required="required" class="form-control" id="status" name="status" >
                 <option value="Habilitado" >Habilitado</option>
                 <option value="Desabilitado" >Desabilitado</option>
               </select>
