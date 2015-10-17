@@ -70,7 +70,7 @@
 
 	  
    </head>
-   <body id="body">
+   <body id="body" onload="validaPerfilUsuario()">
       <!-- preloader -->
 
       <!-- end preloader -->

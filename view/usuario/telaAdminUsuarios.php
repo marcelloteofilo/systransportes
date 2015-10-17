@@ -72,6 +72,17 @@
           });
         }
       }
+      
+      /*$(function(){
+      $("div.easyui-layout").layout();
+      $('#dg').edatagrid({
+        //url:'../../webServices/usuariosWebService.php?editSave=carrefarUsuario',
+        fitColumns: true
+      });
+      var dg = $('#dg');
+      dg.edatagrid();    // create datagrid
+      dg.edatagrid('enableFilter');    // enable filter
+      });*/
 
     </script>
     <!-- FIM SCRIPT ADMIN -->
@@ -131,11 +142,11 @@
 
     <!-- DIALOG ADMIN PESSOA FÍSICA -->
     <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:610px;padding:10px 20px"
-      closed="true" buttons="#dlg-buttons">
+      closed="true" buttons="#dlg-buttons" >
       <div class="ftitle"></div>
       <form id="fm" method="post" novalidate>
 
-        <table>
+        <table >
           <!--Dados Pessoais -->
           <h2>Dados Pessoais</h2>
           <!--Dados Pessoa Física -->
