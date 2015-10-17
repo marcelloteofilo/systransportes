@@ -65,7 +65,7 @@
       </script>
 	  
    </head>
-   <body onload="consultaCotacoes('false')">
+   <body>
       <!-- preloader -->
 
       <!-- end preloader -->
