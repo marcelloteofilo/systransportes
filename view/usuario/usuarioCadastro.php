@@ -24,6 +24,8 @@
       <!-- media-queries -->
       <link rel="stylesheet" href="../../css/media-queries.css">
       <!-- Modernizer Script for old Browsers -->
+      <link rel="stylesheet" href="../../css/usuario.css">
+      
       <script src="../../js/modernizr-2.6.2.min.js"></script>
       <script type="text/javascript" src="../../js/jquery.js"> </script>      
       <script type="text/javascript" src="../../js/jquery-ui.js"></script>
@@ -169,10 +171,10 @@
                               <td><b>Bairro</b></td>
                               </tr>
                               <tr>
-                              <td><input type="text" id="cep" name="" size="40" class="form-control"maxlength="9"placeholder="CEP" tabindex="1"type="text" onkeypress="mascaraCep(this, '#####-###')" onkeyup="validar(this,'num');"></td>
-                              <td><input type="text" id="logradouro" name="" size="40" class="form-control" placeholder="Logradouro" tabindex="1" type="text"style="text-transform:uppercase"></td>
-                              <td><input type="text" id="numero" name="" size="40" maxlength="5"class="form-control"placeholder="Número" tabindex="1"type="text"onkeyup="validar(this,'num');"></td>
-                              <td><input type="text" id="bairro" name="" style="text-transform:uppercase" size="40" class="form-control"placeholder="Bairro" tabindex="1" type="text"onkeyup="validar(this,'text');"></td>
+                              <td><input required="required" type="text" id="cep" name="" size="40" class="form-control"maxlength="9"placeholder="CEP" tabindex="1"type="text" onkeypress="mascaraCep(this, '#####-###')" onkeyup="validar(this,'num');"></td>
+                              <td><input required="required" type="text" id="logradouro" name="" size="40" class="form-control" placeholder="Logradouro" tabindex="1" type="text"style="text-transform:uppercase"></td>
+                              <td><input required="required" type="text" id="numero" name="" size="40" maxlength="5"class="form-control"placeholder="Número" tabindex="1"type="text"onkeyup="validar(this,'num');"></td>
+                              <td><input required="required" type="text" id="bairro" name="" style="text-transform:uppercase" size="40" class="form-control"placeholder="Bairro" tabindex="1" type="text"onkeyup="validar(this,'text');"></td>
                               </tr>
 
                               <tr>
@@ -183,7 +185,7 @@
                               <tr>
                               <td><input type="text"id="complemento" name="" size="40" style="text-transform:uppercase"class="form-control"placeholder="Complemento"tabindex="1" type="text"></td>
                               <td>
-                                    <select tabindex="3" class="form-control" id="estado" name="estado" >
+                                    <select required="required" tabindex="3" class="form-control" id="estado" name="estado" >
                                        <option value="">Escolha o seu Estado</option>
                                        <option value="PE">PE</option>
                                        <option value="AC">AC</option>
@@ -214,7 +216,7 @@
                                        <option value="TO">TO</option>
                                     </select>
                               </td>
-                              <td><input type="text"id="cidade" name="cidade" size="40" style="text-transform:uppercase"class="form-control"placeholder="Cidade"tabindex="1"></td>
+                              <td><input required="required" type="text"id="cidade" name="cidade" size="40" style="text-transform:uppercase"class="form-control"placeholder="Cidade"tabindex="1"></td>
                               </tr>
                            </table><br>
 
@@ -227,9 +229,9 @@
                               <td><b>Telefone Celular</b></td>
                               </tr>
                               <tr>
-                                 <td><input type="email" id="email" name="email" style="text-transform:uppercase"size="40" class="form-control" placeholder="E-mail@domínio.com" tabindex="1" type="email"></td>
-                                 <td><input type="text" id="telefone1" name="telefone1" maxlength="15"size="40" maxlength="12"class="form-control" placeholder="(00)0000-0000" tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
-                                 <td><input type="text" id="telefone2" name="telefone2" size="40" maxlength="14"class="form-control"placeholder="(00)0000-0000"tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
+                                 <td><input required="required" type="email" id="email" name="email" style="text-transform:uppercase"size="40" class="form-control" placeholder="E-mail@domínio.com" tabindex="1" type="email"></td>
+                                 <td><input required="required" type="text" id="telefone1" name="telefone1" maxlength="15"size="40" maxlength="12"class="form-control" placeholder="(00)0000-0000" tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
+                                 <td><input required="required" type="text" id="telefone2" name="telefone2" size="40" maxlength="14"class="form-control"placeholder="(00)0000-0000"tabindex="1" type="text"onkeyup="validar(this,'num');"onkeypress="telefoneMascara(this)"onkeypress="mascara(this, '## ####-####')"></td>
                               </tr>
                            </table><br>
 
@@ -243,9 +245,22 @@
                               <td><b>Confirmar Senha</b></td>
                               </tr>
                               <tr>
-                              <td><input type="text" id="login" name="" size="40" class="form-control" placeholder="Usuário" tabindex="1" type="text"></td>
-                              <td><input type="password" size="40" class="form-control" id="senha"placeholder="Senha" tabindex="1" type="text"></td>
-                              <td><input type="password" id="confirmaSenha" name="" size="40" class="form-control" placeholder="Confirme  sua senha" tabindex="1" type="text"onChange="verificacaoSenha()"></td>
+                              <td>
+                              <div class="form-group"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span> 
+                              <input required="required" type="text" id="login" name="" size="40" class="form-control" placeholder="Usuário" tabindex="1" type="text">
+                              </div></div>
+                              </td>
+                              
+                              <td>
+                                 <div class="form-group"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span> 
+                                 <input required="required" type="password" size="40" class="form-control" id="senha"placeholder="Senha" tabindex="1" type="text">
+                                 </div></div>
+                              </td>
+                              <td>
+                                 <div class="form-group"><div class="input-group"><span class="input-group-addon"><i class="glyphicon glyphicon-saved"></i></span> 
+                                 <input required="required" type="password" id="confirmaSenha" name="" size="40" class="form-control" placeholder="Confirme  sua senha" tabindex="1" type="text"onChange="verificacaoSenha()">
+                                 </div></div>
+                              </td>
                               </tr>
                            </table>
                            <br>

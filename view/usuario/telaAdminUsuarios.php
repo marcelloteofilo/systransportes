@@ -10,6 +10,7 @@
     <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../css/icon.css">
     <link rel="stylesheet" type="text/css" href="../../css/demo.css">
+    <link rel="stylesheet" type="text/css" href="../../css/usuario.css">
     <!-- JS CRUD -->
     <script type="text/javascript" src="../../js/jquery-1.6.min.js"></script>
     <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
@@ -178,12 +179,10 @@
             <td><b>Bairro</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="cep" name="cep" size="23" maxlength="9" placeholder="CEP" type="text" onkeypress="mascaraCep(this, '#####-###')" onkeyup="validar(this,'num');"></td>
-            <td>
-              <input class="form-control" type="text" id="logradouro" name="logradouro" size="23" placeholder="Logradouro" type="text" style="text-transform:uppercase">
-            </td>
-            <td><input class="form-control" type="text" id="numero" name="numero" size="23" maxlength="5" placeholder="Número" type="text" onkeyup="validar(this,'num');"></td>
-            <td><input class="form-control" type="text" id="bairro" name="bairro" style="text-transform:uppercase" size="23" placeholder="Bairro" type="text" onkeyup="validar(this,'text');"></td>
+            <td><input required="required" class="form-control" type="text" id="cep" name="cep" size="23" maxlength="9" placeholder="CEP" type="text" onkeypress="mascaraCep(this, '#####-###')" onkeyup="validar(this,'num');"></td>
+            <td><input required="required" class="form-control" type="text" id="logradouro" name="logradouro" size="23" placeholder="Logradouro" type="text" style="text-transform:uppercase"></td>
+            <td><input required="required" class="form-control" type="text" id="numero" name="numero" size="23" maxlength="5" placeholder="Número" type="text" onkeyup="validar(this,'num');"></td>
+            <td><input required="required" class="form-control" type="text" id="bairro" name="bairro" style="text-transform:uppercase" size="23" placeholder="Bairro" type="text" onkeyup="validar(this,'text');"></td>
           </tr>
         
           <tr>
@@ -194,7 +193,7 @@
           <tr>
             <td><input class="form-control" type="text" id="complemento" name="complemento" size="23" style="text-transform:uppercase" placeholder="Complemento" type="text"></td>
             <td>
-              <select class="form-control" id="estado" name="estado">
+              <select required="required" class="form-control" id="estado" name="estado">
                 <option value="">Escolha o seu Estado</option>
                 <option value="PE">PE</option>
                 <option value="AC">AC</option>
@@ -225,7 +224,7 @@
                 <option value="TO">TO</option>
               </select>
             </td>
-            <td><input class="form-control" type="text" id="cidade" name="cidade" style="text-transform:uppercase" size="23" placeholder="Cidade"></td>
+            <td><input required="required" class="form-control" type="text" id="cidade" name="cidade" style="text-transform:uppercase" size="23" placeholder="Cidade"></td>
           </tr>
         </table>
         <br>
@@ -238,9 +237,9 @@
             <td><b>Telefone Celular</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="email" id="email" name="email" style="text-transform:uppercase" size="23" placeholder="E-mail@domínio.com" type="email"></td>
-            <td><input class="form-control" type="text" id="telefone1" name="telefone1" maxlength="15" size="23" maxlength="12" placeholder="(00)00000-0000" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
-            <td><input class="form-control" type="text" id="telefone2" name="telefone2" size="23" maxlength="14" placeholder="(00)00000-0000" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
+            <td><input required="required" class="form-control" type="email" id="email" name="email" style="text-transform:uppercase" size="23" placeholder="E-mail@domínio.com" type="email"></td>
+            <td><input required="required" class="form-control" type="text" id="telefone1" name="telefone1" maxlength="15" size="23" maxlength="12" placeholder="(00)00000-0000" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
+            <td><input required="required" class="form-control" type="text" id="telefone2" name="telefone2" size="23" maxlength="14" placeholder="(00)00000-0000" type="text" onkeyup="validar(this,'num');" onkeypress="telefoneMascara(this)" onkeypress="mascara(this, '## ####-####')"></td>
           </tr>
         </table>
         <br>
@@ -254,18 +253,18 @@
           <td><b>Status</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="login" name="login" size="30" placeholder="Usuário"></td>
-            <td><input class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
+            <td><input required="required" class="form-control" type="text" id="login" name="login" size="30" placeholder="Usuário"></td>
+            <td><input required="required" class="form-control" type="text" size="30" id="senha" name="senha" placeholder="Senha"></td>
             <td>
-              <select class="form-control" id="idPerfil" name="idPerfil" onclick="validaPerfil()">
-                <option value="PF">Pessoa Fisica</option>
-                <option value="PJ">Pessoa Juridica</option>
+              <select required="required" class="form-control" id="idPerfil" name="idPerfil" onclick="validaPerfil()">
+                <option value="PF">PF</option>
+                <option value="PJ">PJ</option>
                 <option value="Atendente">Atendente</option>
                 <option value="Motorista">Motorista</option>
               </select>
             </td>
             <td>
-              <select class="form-control" id="idStatus" name="idStatus" >
+              <select required="required" class="form-control" id="idStatus" name="idStatus" >
                 <option value="Habilitado" >Habilitado</option>
                 <option value="Desabilitado" >Desabilitado</option>
               </select>

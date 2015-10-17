@@ -49,7 +49,6 @@
 
 
 function validaCadastroBotao(){
-
 		var aprovado = true;
 		
 		var perfil = document.getElementById('idPerfil').value;										
