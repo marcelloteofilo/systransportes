@@ -111,9 +111,9 @@
     </table>
 
     <div id="toolbar">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Usuário</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Editar Usuário</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Usuário</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-Money-icon" plain="true" onclick="newUser()" title="Adicionar Despesa">Novo Despesa</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="editUser()" title="Alterar Dados do Despesa">Editar Despesa</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeUser()" title="Remover Dados do Despesa">Remover Despesa</a>
       
     </div>
   </center>
@@ -170,25 +170,11 @@
           </tr>
 
        </table>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
       </form>
     </div>
     <div id="dlg-buttons">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-ok" onclick="saveUser()">Salvar</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Salvar</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
     </div>
     <br><br>
     <!-- FIM DIALOG ADMIN PESSOA FÍSICA -->
