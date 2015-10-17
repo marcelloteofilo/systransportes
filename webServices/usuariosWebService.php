@@ -54,8 +54,8 @@
 		$usuario = new Usuario();	
 
 		//Atributos da classe Usuário/Valores 
-		$usuario->setStatus($_REQUEST['idStatus']); 
-		$usuario->setPerfil($_REQUEST['idPerfil']); 
+		$usuario->setStatus($_REQUEST['status']); 
+		$usuario->setPerfil($_REQUEST['perfil']); 
 		$usuario->setNomeCompleto($_REQUEST['nomeCompleto']); 
 		$usuario->setRazaoSocial($_REQUEST['razaoSocial']); 
 		$usuario->setnomeFantasia($_REQUEST['nomeFantasia']); 
@@ -103,8 +103,8 @@
 		//Atributos da classe Usuário/Valores
 		$usuario->setId($_REQUEST['id']);
 
-		$usuario->setStatus($_REQUEST['idStatus']); 
-		$usuario->setPerfil($_REQUEST['idPerfil']); 
+		$usuario->setStatus($_REQUEST['status']); 
+		$usuario->setPerfil($_REQUEST['perfil']); 
 
 		$usuario->setNomeCompleto($_REQUEST['nomeCompleto']);
 		$usuario->setRg($_REQUEST['rg']); 
