@@ -193,7 +193,7 @@ function validaPerfilUsuario(){
 
   var perfilUsuario = document.getElementById('idPerfil').value;
   
-  if(perfilUsuario == "Pessoa Fisica"){
+  if(perfilUsuario == "PF"){
     //Habilita
     document.getElementById('nomeCompleto').disabled = false;
     document.getElementById('cpf').disabled = false;
@@ -232,7 +232,7 @@ function validaPerfil(){
 
   var perfilUsuario = document.getElementById('idPerfil').value;
   
-  if(perfilUsuario == "Pessoa Juridica"){
+  if(perfilUsuario == "PJ"){
  //Habilita
     document.getElementById('nomeCompleto').disabled = true;
     document.getElementById('cpf').disabled = true;

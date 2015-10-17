@@ -249,7 +249,7 @@
                               </tr>
                            </table>
                            <br>
-                           <input href="../../index.php" class="btn btn-success btn-login-submit" value="Confirmar" type="submit" id="btnIncluir" onClick="consultaAJAX()">
+                           <input href="../../index.php" class="btn btn-success btn-login-submit" value="Confirmar" type="submit" id="btnIncluir" onClick="validaCadastroBotao()">
                            <input class="btn btn-success btn-login-submit" value="Limpar" type="reset" id="btnLimpar">
 
                         </form>

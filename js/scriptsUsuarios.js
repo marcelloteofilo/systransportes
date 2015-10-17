@@ -1,4 +1,4 @@
-	function consultaAJAX( ) {	
+	function consultaAJAX() {	
 		var servicoHttp = "../../webServices/usuariosWebService.php";				
 
 		var status = "Habilitado";												
@@ -36,11 +36,11 @@
 		
 			
 		$xhr.done(function(resultadoXml) {
-			alert('Cadastro realizado com sucesso!');
+			//alert('Cadastro realizado com sucesso!');
 		});
 
 		$xhr.fail(function(data) {
-			alert('Cadastro realizado com sucesso!');
+			//alert('Cadastro realizado com sucesso!');
 			//alert(data.responseText);
 		});	
 		
@@ -48,8 +48,10 @@
 
 
 
-/*function validaCadastro(){
+function validaCadastroBotao(){
 
+		var aprovado = true;
+		
 		var perfil = document.getElementById('idPerfil').value;										
 
 		var nomeCompleto = document.getElementById('nomeCompleto').value;								
@@ -77,29 +79,38 @@
 		var login = document.getElementById('login').value;								
 		var senha = document.getElementById('senha').value;
 
-
-		var valores = [email, telefone1,telefone2,logradouro,bairro,numero,cep,estado,cidade,login,senha];
-		var contNotNull=0;
-
-		for (i = 0; i < valores.lenght; i++) {
-		   	if(valores[i] != null){
-		   		contNotNull = contNotNull+1;
-			}	 
+		if(email == ""){aprovado = false;}
+		if(telefone1 == ""){aprovado = false;}
+		if(telefone2 == ""){aprovado = false;}
+		if(logradouro == ""){aprovado = false;}
+		if(bairro == ""){aprovado = false;}
+		if(cep == ""){aprovado = false;}
+		if(estado == ""){aprovado = false;}
+		if(cidade == ""){aprovado = false;}
+		if(login == ""){aprovado = false;}
+		if(senha == ""){aprovado = false;}
+		
+		if(perfil == "PF"){
+			if(nomeCompleto == "" || orgaoExpedidor == "" || cpf == "" || rg == ""){
+				aprovado = false;
+			}
 		}
-	
-		if(contNotNull == valores.lenght){
-
-			if(perfil == "Pessoa Fisica"){
-				if(nomeCompleto != null && orgaoExpedidor != null && cpf != null && rg != null){
-
-
-				}
-				else{
-
-				}
+		else if(perfil == "PJ"){
+			if(razaoSocial == "" || nomeFantasia == "" || tipoEmpresa == "" || cnpj == ""){
+				aprovado = false;
+			}
+		}	
+		
+		if(aprovado == true){
+			consultaAJAX();
+			if(perfil == "PF"){
+				alert("Parabéns "+nomeCompleto+"! Seu cadastro foi realizado com sucesso!");
+			}
+			else{
+				alert("Parabéns "+razaoSocial+"! Seu cadastro foi realizado com sucesso!");
 			}
 		}
 		else{
-
+			alert("Atenção! Favor verificar o preenchimento de todos os campos obrigatorios!");
 		}
-}*/
+}
