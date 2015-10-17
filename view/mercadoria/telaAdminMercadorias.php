@@ -16,6 +16,7 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css">
         <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
         <link rel="stylesheet" type="text/css" href="../../css/icon.css">
         <link rel="stylesheet" type="text/css" href="../../css/demo.css">
@@ -79,7 +80,6 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul  class="nav navbar-nav">
                     <li class="current"><a href="../../index.php">Início</a></li>
-                    <li><a href="#graficos">Graficos</a></li>
                     <li><a href="../telaAdminSystem.php">Admin</a></li>
                 </ul>
             </nav>
@@ -114,11 +114,11 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
         </table>
 
         <div id="toolbar">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true"
+            <a href="#" class="easyui-linkbutton" iconCls="icon-box-icon" plain="true"
                onclick="newMercadoria()" title="Adicionar Mercadoria">Nova Mercadoria</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true"
+            <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true"
                onclick="editMercadoria()" title="Alterar Dados da Mercadoria">Editar Mercadoria</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true"
+            <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true"
                onclick="removeMercadoria()" title="Remover Dados da Mercadoria">Remover Mercadoria</a>
         </div>
 
@@ -142,8 +142,8 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
             </form>
         </div>
         <div id="dlg-buttons">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-ok" id="enviar" onclick="saveMercadoria()">Salvar</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-cancel" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" id="enviar" onclick="saveMercadoria()">Salvar</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
         </div>
     </center>
 
