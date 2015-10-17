@@ -19,6 +19,7 @@
     <!-- JS CRUD -->
     <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
     <script type="text/javascript" src="../../js/validacaoCampo.js"></script> 
+    <script type="text/javascript" src="../../js/scriptsUsuarios.js"></script>
 
     <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
