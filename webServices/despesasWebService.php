@@ -15,12 +15,10 @@
 		$despesas->setData($data);
 		
 		if (DespesasSql::adicionar($despesas)){
-			$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);			
+			echo json_encode(array('success'=>true));		
 		}	
 		
-		echo(json_encode($resultado ));			
+		//echo(json_encode($resultado ));			
 	}
 	
 	if ($_GET["editSave"] == "alterarDespesas"){	
@@ -33,12 +31,10 @@
 		$despesas->setData($_REQUEST['data']); 			
 		
 		if (DespesasSql::alterar($despesas)){
-			$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);			
+			echo json_encode(array('success'=>true));		
 		}	
 		
-		echo(json_encode($resultado ));						
+		//echo(json_encode($resultado ));						
 	}	
 
 	
@@ -48,16 +44,16 @@
 		$despesas->setId($_REQUEST['id']);  
 
 		if (DespesasSql::remover($despesas)){
-			$resultado[] = array(				
-				'ok'	=>  'ok',						
-			);			
+			echo json_encode(array('success'=>true));		
 		}			
-		echo( json_encode( $resultado ) );				
+		//echo( json_encode( $resultado ) );				
 	}
 
 	if ($_GET["editSave"] == "carregarDespesas") {			
-		
-			$listaDespesas = DespesasSql::carregarLista();
+			
+			$despesas = new despesas();	
+
+			$listaDespesas = DespesasSql::carregarLista($despesas);
 			for ($i=0; $i<count($listaDespesas); $i++ ){											
 				$resultado[] = array(				
 					'id'	=>  $listaDespesas[$i]->getId(),					
