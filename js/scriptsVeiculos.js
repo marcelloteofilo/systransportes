@@ -32,7 +32,7 @@
 	}*/
 
 
-		function consultaAJAX( ) {	
+	function consultaAJAX( ) {	
 		var servicoHttp = "../../webServices/veiculoWebService.php";				
 
 		var placa = document.getElementById('placa').value;										

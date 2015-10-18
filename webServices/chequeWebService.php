@@ -14,11 +14,8 @@
 		$cheque->setVencimento($_REQUEST['vencimento']);
 
 		if (ChequeSql::adicionar($cheque)) {
-			$resultado[] = array(
-					'oka' => 'oks',
-			);
+			echo json_encode(array('success'=>true));
 		}
-		echo(json_encode($resultado));
 	}
 
 	if ($_GET["editSave"] == "alterarCheque") {	
@@ -31,11 +28,8 @@
 		$cheque->setVencimento($_REQUEST['vencimento']); 				
 		
 		if (ChequeSql::alterar($cheque)) {
-			$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);			
+			echo json_encode(array('success'=>true));		
 		}			
-		echo(json_encode($resultado));						
 	}	
 
 	if ($_GET["editSave"] == "deletarCheque") {	
@@ -44,11 +38,8 @@
 		$cheque->setId($_REQUEST['id']);  
 
 		if (ChequeSql::remover($cheque)) {
-			$resultado[] = array(				
-				'ok'	=>  'ok',						
-			);			
+			echo json_encode(array('success'=>true));			
 		}			
-		echo(json_encode($resultado));				
 	}
 
 	if ($_GET["editSave"] == "carregarCheque") {			
@@ -64,7 +55,8 @@
 				'vencimento' => $listaCheques[$i]->getVencimento(),					
 			);
 		}	
-		echo(json_encode($resultado));		
+		echo(json_encode($resultado));
+		return $resultado;		
 	}
 
 ?>

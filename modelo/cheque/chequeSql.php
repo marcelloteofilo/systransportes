@@ -1,5 +1,5 @@
 <?php
-	require_once("banco.php");
+    require_once("/../banco.php");  
 	require_once("cheque.php");
 
 	class ChequeSQL {
@@ -18,13 +18,14 @@
 			$valor = mysql_real_escape_string($cheque->getValor(), $conexao);
 			$vencimento = mysql_real_escape_string($cheque->getVencimento(), $conexao);
 
-			$dataFormatada = explode("-", $vencimento);
-			$novaData = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
+			//$dataFormatada = explode("-", $vencimento);
+			//$novaData = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
 
 			//Inserção na tabela de cheque relacionada ao banco de dados systransporte
 			$sql = "insert into cheques (parcela, numero, valor, vencimento) 
-				values ('$parcela', '$numero', $valor, '$novaData')";
+				values ('$parcela', '$numero', '$valor', '$vencimento')";
 
+			echo($sql);
 			$resultado =@mysql_query($sql, $conexao);
 
 			return ($resultado === true); 
@@ -44,12 +45,12 @@
 			$valor = mysql_real_escape_string($cheque->getValor(), $conexao);
 			$vencimento = mysql_real_escape_string($cheque->getVencimento(), $conexao);
 			
-			$dataFormatada = explode("-", $vencimento);
-			$novaData = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];			
+			//$dataFormatada = explode("-", $vencimento);
+			//$novaData = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];			
 
 			///Alteração na tabela de cheque relacionada ao banco de dados systransporte
 			$sql = "update cheques set parcela='$parcela', numero='$numero',
-				 valor=$valor, vencimento='$novaData' where id=$id";
+				 valor=$valor, vencimento='$vencimento' where id=$id";
 
 			$resultado =@mysql_query($sql, $conexao);
 

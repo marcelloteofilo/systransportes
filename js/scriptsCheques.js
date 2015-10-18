@@ -1,33 +1,3 @@
-//Caixa de consultas 
- $(function() {
-	var dialogCheque;
-	dialogGeral = $( "#dialogCheque-form" ).dialog({
-	autoOpen: false,
-	height: 370,
-	width: 950,
-	modal: true,
-	});   	  		 	
-});		
-
-//Exibe Cheque
-function exibeCheque(me) {					
-	$("#btnIncluir").show(50);			   												
-	$("#btnAlterar").hide(50);	
-
-	var dialogCheque;        					
-	dialogCheque = $( "#dialogCheque-form" ).dialog({});   					
-	dialogCheque.dialog( "open" );			
-}
-
-// Muda a cor da caixa de texto e coloca tudo em maiúsculo
-function focus_Blur(me, cor) {	 
-	me.style.background = cor;	 
-	me.style.color = "black";	
-	var minusculo = new String(me.value);
-	var maiusculo = minusculo.toUpperCase();
-	me.value = maiusculo;	  
-}	
-
 //Consulta ajax
 function consultaAJAXCheque( ) {	
 	var servicoHttp = "../webServices/chequeWebService.php";				
@@ -43,11 +13,11 @@ function consultaAJAXCheque( ) {
 		
 			
 	$xhr.done(function(resultadoXml) {
-		alert('Cheque inserido com sucesso!');
+		//alert('Cheque inserido com sucesso!');
 	});
 
 	$xhr.fail(function(data) {
-		alert(data.responseText);
+		//alert(data.responseText);
 	});	
 		
 }
