@@ -42,8 +42,8 @@ if (isset($_POST['cadastrar'])) {
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SysTransportes</title>
         <meta name="description" content="Blue One Page Creative HTML5 Template">
-        <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
-        <meta name="author" content="Muhammad Morshed">
+        <!-- <meta name="keywords" content="one page, single page, onepage, responsive, parallax, creative, business, html5, css3, css3 animation">
+        <meta name="author" content="Muhammad Morshed"> -->
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
         <script src="http://maps.google.com/maps/api/js?sensor=false"></script>
@@ -404,10 +404,12 @@ if (isset($_POST['cadastrar'])) {
                                                         <input name="pesquisaDestino" type="hidden" id="txtDestino" class="field" value="Rio de Janeiro" />
                                                         <center><sup><b>*</sup>Campos Obrigatórios</b></center>
                                                         <!--<input type="image" src='../../img/<php echo($acao); ?>Btn.png' id="gravarBtn" onClick="crudCotacao('<php echo($acao); ?>')">
-                                                        <input type="image" src='../../img/sairBtn.png' id="btnSair" onClick="irPara('viewConsulta.php', 'consultar')">-->
-                                                        </br>
-                                                        <input type="submit" onClick="crudCotacao('<?php echo($acao); ?>');
-                                                                irPara('viewConsulta.php', 'consultar')" name="cadastrar">
+                                                        <input type="image" src='../../img/sairBtn.png' id="btnSair" onClick="irPara('viewConsulta.php', 'consultar')">
+                                                        <input type="submit" onClick="crudCotacao('<php echo($acao); ?>');" name="cadastrar">-->
+                                                        <br />
+                                                        <input type="submit" class="btn btn-success btn-login-submit" value="Enviar cotação" id="Cadastrar" onClick="crudCotacao('<?php echo($acao); ?>');" name="cadastrar">
+                                                        <input type="submit" class="btn btn-success btn-login-submit" value="Sair" id="btnSair" onClick="irPara('viewConsulta.php', 'consultar')">
+                                                        <!--<input type="submit" class="btn btn-success btn-login-submit" value="Cancelar" id="Cancelar" onClick="irPara('viewConsulta.php', 'cancelar')">-->
                                                     </form>
                                                     <!-- *************************** Form para mercadoria *************************** -->
                                                 </center>
