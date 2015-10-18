@@ -10,11 +10,14 @@
     <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
     <link rel="stylesheet" type="text/css" href="../../css/icon.css">
     <link rel="stylesheet" type="text/css" href="../../css/demo.css">
+    <link rel="stylesheet" type="text/css" href="../../css/usuario.css">
     <!-- JS CRUD -->
     <script type="text/javascript" src="../../js/jquery-1.6.min.js"></script>
     <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
     <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
+    <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
+    <script type="text/javascript" src="../../js/validacoes.js"></script>
     <!-- JS CRUD -->
 
     <!-- SCRIPT ADMIN -->
@@ -137,10 +140,10 @@
             <td><b>Ano</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="placa" name="placa" size="23" style="text-transform:uppercase"  placeholder="Placa"></td>
-            <td><input class="form-control" type="text" id="capacidadeKg" name="capacidadeKg" size="23" style="text-transform:uppercase"  placeholder="Cap. Quilogramas"></td>
-            <td><input class="form-control" type="text" id="capacidadeM3" name="capacidadeM3" size="23" style="text-transform:uppercase"  placeholder="Cap. Metros³"></td>
-            <td><input class="form-control" type="text" id="ano" name="ano" size="23" style="text-transform:uppercase"  placeholder="Ano"></td>
+            <td><input required="required" class="form-control" type="text" id="placa" name="placa" size="23" style="text-transform:uppercase"  placeholder="Placa" maxlength="8" OnKeyPress="formatar(this, '###-####')"></td>
+            <td><input required="required" class="form-control" type="text" id="capacidadeKg" name="capacidadeKg" size="23" style="text-transform:uppercase"  placeholder="Cap. Quilogramas" value="0,00" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+            <td><input required="required" class="form-control" type="text" id="capacidadeM3" name="capacidadeM3" size="23" style="text-transform:uppercase"  placeholder="Cap. Metros³" value="0,00" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+            <td><input required="required" class="form-control" type="text" id="ano" name="ano" size="23" style="text-transform:uppercase"  placeholder="Ano" maxlength="4" onkeyup="validar(this,'num');"></td>
           </tr>
           <!--Dados Pessoa Jurídica -->
           <tr>
@@ -149,9 +152,15 @@
             <td><b>Cidade</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="tipo" name="tipo" size="23" style="text-transform:uppercase"  placeholder="Tipo" type="text"></td>
+            <td>
+                <select required="required" class="form-control" id="tipo" name="tipo">
+                  <option value="">Tipo de Caminhão</option>
+                  <option value="Tipo 1">Tipo 1</option>
+                  <option value="Tipo 2">Tipo 2</option>
+                </select>
+            </td>
           <td>
-              <select class="form-control" id="uf" name="uf">
+              <select required="required" class="form-control" id="uf" name="uf">
                 <option value="">Escolha o seu Estado</option>
                 <option value="PE">PE</option>
                 <option value="AC">AC</option>
@@ -182,7 +191,7 @@
                 <option value="TO">TO</option>
               </select>
             </td>
-            <td><input class="form-control" type="text" id="cidade" name="cidade" style="text-transform:uppercase" size="23" placeholder="Cidade"></td>
+            <td><input required="required" class="form-control" type="text" id="cidade" name="cidade" style="text-transform:uppercase" size="23" placeholder="Cidade"></td>
 
           </tr>
         </table>
