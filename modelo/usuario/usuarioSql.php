@@ -154,5 +154,21 @@
         return null;
     }
 
+
+     /*public static function carregarListaPesquisa() {
+        //Conexão com o banco
+        $conexao = Conexao::getInstance()->getConexao();
+        //$cpf = mysql_real_escape_string($usuario->getCpf(), $conexao);
+
+        //$rs = mysql_query('select * from usuarios where cpf=$cpf');
+        $rs = mysql_query('select * from usuarios where cpf=088.673.464-90');
+
+        $resultado = array();
+        while ($row = mysql_fetch_object($rs)) {
+            array_push($resultado, $row);
+        }
+        echo json_encode($resultado);
+    }*/
+
   }
 ?>

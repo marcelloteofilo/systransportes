@@ -72,6 +72,13 @@
           });
         }
       }
+
+
+      /*function pesquisaUser(){
+        $('#dlgPesquisa').dialog('open').dialog('setTitle','Pesquisa Usuário');
+        $('#fm2').form('clear');
+        url = '../../webServices/usuariosWebService.php?editSave=pesquisaUsuario';
+      }*/
       
       /*$(function(){
       $("div.easyui-layout").layout();
@@ -135,10 +142,37 @@
       <a href="#" class="easyui-linkbutton" iconCls="icon-users-add-icon" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Usuário</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Editar Usuário</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Usuário</a>
+      <!--<a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="pesquisaUser()" title="Buscar por Usuário">Pesquisa Usuário</a> -->
       
     </div>
   </center>
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
+
+    
+<!-- DIALOG ADMIN PESSOA FÍSICA -->
+
+   <!-- <div id="dlgPesquisa" class="easyui-dialog" style="background:#F3F8F7; width:500px;height:200px;padding:10px 20px"
+      closed="true" buttons="#dlg-buttons" >
+      <div class="ftitle"></div>
+      <form id="fm2" method="post" novalidate>
+
+         <table>
+          <h2>PESQUISA</h2>
+          <tr>
+            <td><b>CPF</b></td>
+          </tr>
+          <tr>
+            <td><input class="form-control" type="text" id="cpfPesquisa" name="cpfPesquisa" size="23" maxlength="14" placeholder="CPF" type="text" onblur="javascript: validarCPF(this.value);" onkeypress="javascript: mascara(this, cpf_mask);"></td>
+          </tr>
+          </table>
+
+      </form>
+    <div id="dlg-buttons">
+      <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Salvar</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
+    </div>
+      </div>
+    </div>-->
 
     <!-- DIALOG ADMIN PESSOA FÍSICA -->
     <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:610px;padding:10px 20px"
