@@ -39,6 +39,14 @@
 		  $("#btnAprovar").hide("slow");
           url = '../../webServices/usuariosWebService.php?editSave=consultaCotacao&acao=cancelar&acao&id='+row.id;
         }
+		else
+    {
+        $.messager.show(
+            {
+                title: 'Erro!',
+                msg: 'Selecione item da tabela!!!'//result.msg
+            });
+    }
       }
       function saveUser(){
         $('#fm').form('submit',{

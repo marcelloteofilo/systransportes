@@ -4,18 +4,21 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SysTransportes</title>
-        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" />
 
-        <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css">
-        <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
-        <link rel="stylesheet" type="text/css" href="../../css/icon.css">
-        <link rel="stylesheet" type="text/css" href="../../css/demo.css">
+        <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/easyui.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/icon.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/demo.css" />
+        <!--<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css" />-->
+
         <script type="text/javascript" src="../../js/jquery-1.6.min.js"></script>
         <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
         <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
         <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
         <script type="text/javascript" src="../../js/scriptsRastreamento.js"></script>
         <script type="text/javascript" src="../../js/jquery.validate.min.js"></script>
+		<script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
 
         <script>
 <!-- SCRIPT DO GRAFICO -->
@@ -64,25 +67,32 @@
 <body style="background:#F3F8F7">
 
 <center>
-    <table id="dg" style="width:1190px; height:450px; border:1px solid #ccc;" idField="id">
+        <table id="dg"
+               title="Cadastro de Rastreamentos"
+               class="easyui-datagrid"
+               style=" width:1250px;height:495px"
+               url="../../webServices/RastreamentosWebService.php?editSave=carregarRastreamento"
+               toolbar="#toolbar"
+               pagination="true"
+               rownumbers="true"
+               fitColumns="true"
+               singleSelect="true">
         <thead>
             <tr>
                 <th field="idCte" width="5">Id CTE</th>
                 <th field="localizacao" width="100">Localização</th>
             </tr>
         </thead>
-    </table>
 
-    <div id="toolbar" align="center">
-        <!--<a href="#" class="easyui-linkbutton" iconCls="icon-users-add-icon" plain="true" onclick="javascript:$('#dg').edatagrid('addRow')">Criar Rastreamento</a>-->
-        <!--&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;-->
-        <!--<a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="javascript:$('#dg').edatagrid('saveRow')">Salvar</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="javascript:$('#dg').edatagrid('destroyRow')">Deletar</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" class="easyui-linkbutton" iconCls="icon-undo" plain="true" onclick="javascript:$('#dg').edatagrid('cancelRow')">Cancelar</a>-->
-    </div>
-</center>
+
+        </table>
+
+        <div id="toolbar">
+            <label for="pesquisar">Localizar Rastreamentos</label>
+            &nbsp;&nbsp;
+            <input type="text" id="pesquisar" name="pesquisar" size="30" />
+        </div>
+    </center>
 
 </body>
 </html>

@@ -15,25 +15,34 @@
     <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
     <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
+	 <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
     <!-- JS CRUD -->
 
     <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
       var url;
-      function newUser(){
+      function newCheque(){
         $('#dlg').dialog('open').dialog('setTitle','Novo Cheque');
         $('#fm').form('clear');
         url = '../../webServices/chequeWebService.php?editSave=incluirCheque';
       }
-      function editUser(){
+      function editCheque(){
         var row = $('#dg').datagrid('getSelected');
         if (row){
           $('#dlg').dialog('open').dialog('setTitle','Editar Cheque');
           $('#fm').form('load',row);
           url = '../../webServices/chequeWebService.php?editSave=alterarCheque&id='+row.id;
         }
+		else
+    {
+        $.messager.show(
+            {
+                title: 'Erro!',
+                msg: 'Selecione item da tabela!!!'//result.msg
+            });
+    }
       }
-      function saveUser(){
+      function saveCheque(){
         $('#fm').form('submit',{
           url: url,
             onSubmit: function(){
@@ -41,12 +50,12 @@
           },
           success: function(result){
               $('#dlg').dialog('close');    // close the dialog
-              $('#dg').datagrid('reload');  // reload the user data
+              $('#dg').datagrid('reload');  // reload the Cheque data
 
           }
         });
       }
-      function removeUser(){
+      function removeCheque(){
         var row = $('#dg').datagrid('getSelected');
         if (row){
           $.messager.confirm('Confirm','Tem certeza que deseja remover o Cheque?',function(r){
@@ -56,7 +65,7 @@
               $.post('../../webServices/chequeWebService.php?editSave=deletarCheque',{id:row.id},function(result){
                 /*if (result.success){
                   
-                  $('#dg').datagrid('reload');  // reload the user data
+                  $('#dg').datagrid('reload');  // reload the Cheque data
                 } else {
                   $.messager.show({ // show error message
                     title: 'Error',
@@ -67,6 +76,14 @@
             }
           });
         }
+		else
+    {
+        $.messager.show(
+            {
+                title: 'Erro!',
+                msg: 'Selecione item da tabela!!!'//result.msg
+            });
+    }
       }
 
     </script>
@@ -109,10 +126,12 @@
     </table>
 
     <div id="toolbar">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-check-icon" plain="true" onclick="newUser()" title="Adicionar Cheque">Novo Cheque</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="editUser()" title="Alterar Dados do Cheque">Editar Cheque</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeUser()" title="Remover Dados do Cheque">Remover Cheque</a>
-      
+      <a href="#" class="easyui-linkbutton" iconCls="icon-check-icon" plain="true" onclick="newCheque()" title="Adicionar Cheque">Novo Cheque</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="editCheque()" title="Alterar Dados do Cheque">Editar Cheque</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeCheque()" title="Remover Dados do Cheque">Remover Cheque</a>
+<label for="pesquisar">Localizar Cheques</label>
+            &nbsp;&nbsp;
+            <input type="text" id="pesquisar" name="pesquisar" size="30" />      
     </div>
   </center>
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
@@ -144,7 +163,7 @@
       </form>
     </div>
     <div id="dlg-buttons">
-      <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Salvar</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveCheque()">Salvar</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
     </div>
     <br><br>

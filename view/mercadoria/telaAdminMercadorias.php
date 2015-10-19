@@ -49,30 +49,7 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
         <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
         <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
         <script type="text/javascript" src="../../js/scriptsMercadoria.js"></script>
-
-        <!--
-        <script type="text/javascript">
-            function id(el)
-            {
-                return this.document.getElementById(el);
-            }
-            window.onload = function ()
-            {
-                id('dlg-buttons.enviar').click() = function ()
-                {
-                    if (id('descricaoMercadoria').value === "")
-                    {
-                        alerta('Informe a descricao da mercadoria!');
-                    }
-                    if (id('pesoMercadoria').value === "")
-                    {
-                        alerta('Informe o peso da mercadoria!');
-                    }
-                }
-
-            }
-        </script>
-        -->
+        <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
     </head>
 
     <header class="navbar-fixed-top navbar" style="background:#0EB493;">
@@ -120,6 +97,9 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
                onclick="editMercadoria()" title="Alterar Dados da Mercadoria">Editar Mercadoria</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true"
                onclick="removeMercadoria()" title="Remover Dados da Mercadoria">Remover Mercadoria</a>
+            <label for="pesquisar">Localizar Mercadorias</label>
+            &nbsp;&nbsp;
+            <input type="text" id="pesquisar" name="pesquisar" size="30" />
         </div>
 
         <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"

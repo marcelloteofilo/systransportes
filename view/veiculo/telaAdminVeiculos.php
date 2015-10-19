@@ -18,6 +18,7 @@
     <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
     <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
     <script type="text/javascript" src="../../js/validacoes.js"></script>
+	<script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
     <!-- JS CRUD -->
 
     <!-- SCRIPT ADMIN -->
@@ -35,6 +36,14 @@
           $('#fm').form('load',row);
           url = '../../webServices/veiculoWebService.php?editSave=alterarVeiculo&id='+row.id;
         }
+		else
+    {
+        $.messager.show(
+            {
+                title: 'Erro!',
+                msg: 'Selecione item da tabela!!!'//result.msg
+            });
+    }
       }
       function saveUser(){
         $('#fm').form('submit',{
@@ -70,6 +79,14 @@
             }
           });
         }
+		else
+    {
+        $.messager.show(
+            {
+                title: 'Erro!',
+                msg: 'Selecione item da tabela!!!'//result.msg
+            });
+    }
       }
 
     </script>
@@ -118,7 +135,10 @@
       <a href="#" class="easyui-linkbutton" iconCls="icon-car-icon" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Veiculo</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Editar Veiculo</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Veiculo</a>
-      
+      <label for="pesquisar">Localizar Veículos</label>
+        &nbsp;&nbsp;
+        <input type="text" id="pesquisar" name="pesquisar" size="30" />      
+    </div>
     </div>
   </center>
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
