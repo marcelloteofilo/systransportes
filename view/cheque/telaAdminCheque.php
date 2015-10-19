@@ -126,7 +126,7 @@
           <th field="parcela" width="46">Parcela</th>
           <th field="numero" width="64">Número</th>
           <th field="valor" width="70">Valor</th>
-          <th field="vencimento" width="50">Vencimento</th>
+          <th field="data" width="50">Vencimento</th>
         </tr>
       </thead>   
     </table>
@@ -185,10 +185,13 @@
             
             <td>
               <input class="form-control"
-               type="text" id="vencimento"
-               name="vencimento" size="23"
+               type="text" 
+               id="data"
+               name="data" 
+               size="23"
+               maxlength="10" 
                style="text-transform:uppercase"
-               placeholder="0000/00/00"
+               placeholder="Vencimento"
                OnKeyUp="mascaraData(this);">
             </td>
           </tr>

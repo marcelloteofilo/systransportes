@@ -11,7 +11,7 @@
 		$cheque->setParcela($_REQUEST['parcela']);
 		$cheque->setNumero($_REQUEST['numero']);
 		$cheque->setValor($_REQUEST['valor']);
-		$cheque->setVencimento($_REQUEST['vencimento']);
+		$cheque->setVencimento($_REQUEST['data']);
 
 		if (ChequeSql::adicionar($cheque)) {
 			echo json_encode(array('success'=>true));
@@ -25,7 +25,7 @@
 		$cheque->setParcela($_REQUEST['parcela']);
 		$cheque->setNumero($_REQUEST['numero']);
 		$cheque->setValor($_REQUEST['valor']);
-		$cheque->setVencimento($_REQUEST['vencimento']); 				
+		$cheque->setVencimento($_REQUEST['data']); 				
 		
 		if (ChequeSql::alterar($cheque)) {
 			echo json_encode(array('success'=>true));		
@@ -52,7 +52,7 @@
 				'parcela' => $listaCheques[$i]->getParcela(),
 				'numero' => $listaCheques[$i]->getNumero(),
 				'valor' => $listaCheques[$i]->getValor(),
-				'vencimento' => $listaCheques[$i]->getVencimento(),					
+				'data' => $listaCheques[$i]->getVencimento(),					
 			);
 		}	
 		echo(json_encode($resultado));
