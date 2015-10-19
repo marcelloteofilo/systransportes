@@ -18,6 +18,8 @@
 	 <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
     <!-- JS CRUD -->
 
+    <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
+
     <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
       var url;
@@ -32,16 +34,15 @@
           $('#dlg').dialog('open').dialog('setTitle','Editar Cheque');
           $('#fm').form('load',row);
           url = '../../webServices/chequeWebService.php?editSave=alterarCheque&id='+row.id;
-        }
-		else
-    {
-        $.messager.show(
+        }	else {
+          $.messager.show(
             {
                 title: 'Erro!',
                 msg: 'Selecione item da tabela!!!'//result.msg
             });
-    }
+        }
       }
+
       function saveCheque(){
         $('#fm').form('submit',{
           url: url,
@@ -49,41 +50,46 @@
             return $(this).form('validate');
           },
           success: function(result){
-              $('#dlg').dialog('close');    // close the dialog
-              $('#dg').datagrid('reload');  // reload the Cheque data
-
+              var result = eval('(' + result + ')');
+              if (result.success) {
+                $('#dlg').dialog('close');    // close the dialog
+                $('#dg').datagrid('reload');  // reload the user data
+              } else {
+                $.messager.show({
+                title: 'Erro',
+                msg: result.msg
+                });
+              }
           }
         });
       }
+
+
+
       function removeCheque(){
         var row = $('#dg').datagrid('getSelected');
         if (row){
           $.messager.confirm('Confirm','Tem certeza que deseja remover o Cheque?',function(r){
-            $('#dg').datagrid('reload');
-
             if (r){
               $.post('../../webServices/chequeWebService.php?editSave=deletarCheque',{id:row.id},function(result){
-                /*if (result.success){
-                  
+                if (result.success){                  
                   $('#dg').datagrid('reload');  // reload the Cheque data
                 } else {
                   $.messager.show({ // show error message
                     title: 'Error',
                     msg: result.msg
                   });
-                }*/
+                }
               },'json');
             }
           });
-        }
-		else
-    {
-        $.messager.show(
+        } else {
+         $.messager.show(
             {
                 title: 'Erro!',
                 msg: 'Selecione item da tabela!!!'//result.msg
             });
-    }
+        }
       }
 
     </script>
@@ -153,10 +159,38 @@
             <td><b>Vencimento</b></td>
           </tr>
           <tr>
-            <td><input class="form-control" type="text" id="parcela" name="parcela" size="23" style="text-transform:uppercase"  placeholder="Parcela"></td>
-            <td><input class="form-control" type="text" id="numero" name="numero" size="23" style="text-transform:uppercase"  placeholder="Nº da Parcela"></td>
-            <td><input class="form-control" type="text" id="valor" name="valor" size="23" style="text-transform:uppercase"  placeholder="Valor"></td>
-            <td><input class="form-control" type="text" id="vencimento" name="vencimento" size="23" style="text-transform:uppercase"  placeholder="0000/00/00"></td>
+            <td>
+              <input class="form-control"
+               type="text" id="parcela"
+               name="parcela" size="23"
+               style="text-transform:uppercase"
+               placeholder="Parcela">
+            </td>
+            
+            <td>
+              <input class="form-control"
+               type="text" id="numero" 
+               name="numero" size="23"
+               style="text-transform:uppercase"
+               placeholder="Nº da Parcela">
+            </td>
+            
+            <td>
+              <input class="form-control"
+               type="num" id="valor" name="valor"
+               size="23" style="text-transform:uppercase"
+               placeholder="Valor"
+               onkeyup="validar(this, 'num');">
+            </td>
+            
+            <td>
+              <input class="form-control"
+               type="text" id="vencimento"
+               name="vencimento" size="23"
+               style="text-transform:uppercase"
+               placeholder="0000/00/00"
+               OnKeyUp="mascaraData(this);">
+            </td>
           </tr>
         </table>
        
