@@ -10,16 +10,16 @@ var webServiceCotacao = '../../webServices/cotacaoWebService.php';
 var backgroundAnterior = "";
 var corAnterior = "";
 
-//OCULTAR O MAPA SEM CONSULTA
-$(document).ready(function () {
-    $("#totalGeral").hide("slow");
-    $("#mapaGoogle").hide("slow");
-    $("#ufOrigem").focus();
-    var acao = document.getElementById('acao').value;
-    if (acao == 'visualizar') {
-        $("#gravarBtn").hide("slow");
-    }
-});
+////OCULTAR O MAPA SEM CONSULTA
+//$(document).ready(function () {
+//    $("#totalGeral").hide("slow");
+//    $("#mapaGoogle").hide("slow");
+//    $("#ufOrigem").focus();
+//    var acao = document.getElementById('acao').value;
+//    if (acao == 'visualizar') {
+//        $("#gravarBtn").hide("slow");
+//    }
+//});
 
 //CONSULTA COTAÇÕES
 function consultaCotacoes(aguardarDigitar, campoDigitado) {
@@ -252,7 +252,7 @@ function acessoWebService(jsonParametros, nomeWebService) {
 
 //TRATA RESULTADO WEBSERVICE
 function trataResultadoWebService(resultadoXml) {
-    if (resultadoXml[0].resultado != 'ok') {
+    if (resultadoXml[0].resultado == 'ok') {
         alert('Operação Realizada Com Sucesso!');
         irPara('viewConsulta.php', 'consultar');
     }

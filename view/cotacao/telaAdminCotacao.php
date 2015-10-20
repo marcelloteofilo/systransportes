@@ -36,14 +36,6 @@
                     $("#btnCancelar").hide("slow");
                     url = '../../webServices/usuariosWebService.php?editSave=consultaCotacao&acao=aprovar&acao&id=' + row.id;
                 }
-				else
-    {
-        $.messager.show(
-            {
-                title: 'Erro!',
-                msg: 'Selecione item da tabela!!!'//result.msg
-            });
-    }
             }
             function cancelarCotacao() {
                 var row = $('#dg').datagrid('getSelected');
@@ -55,14 +47,6 @@
                     $("#btnAprovar").hide("slow");
                     url = '../../webServices/usuariosWebService.php?editSave=consultaCotacao&acao=cancelar&acao&id=' + row.id;
                 }
-				else
-    {
-        $.messager.show(
-            {
-                title: 'Erro!',
-                msg: 'Selecione item da tabela!!!'//result.msg
-            });
-    }
             }
             function saveUser() {
                 $('#fm').form('submit', {

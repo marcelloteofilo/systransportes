@@ -16,7 +16,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
 <?php
 require_once '../../modelo/cotacao/cotacaoSql.php';
 
-$valores = $_POST['item'];
+$valores = @$_POST['item'];
 
 if (isset($_POST['cadastrar'])) {
     $conexao = Conexao::getInstance()->getConexao();
