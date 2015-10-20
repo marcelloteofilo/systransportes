@@ -279,7 +279,7 @@ if (isset($_POST['cadastrar'])) {
                     <!-- *************************** Form para mercadoria ***************************
                     <form id="formMercadoria" method="post">-->
                     <div id="mensagens"></div>
-                    <table width="50%" id="tabelaItens">
+                    <table width="40%" id="tabelaItens">
                         <thead>
                             <tr>
                                 <td>Item</td>
@@ -290,7 +290,7 @@ if (isset($_POST['cadastrar'])) {
                         <tbody>
                             <tr>
                                 <td><input type="text" name="item[]" id="item" value="1" size="4" readonly="readonly"/></td>
-                                <td><input type="text" name="descricao[]" id="descricaoPesoMercadoria" value="" size="60" /></td>
+                                <td><input type="text" name="descricao[]" id="descricaoPesoMercadoria" value="" size="70" /></td>
                                 <td><input type="text" name="peso[]" id="pesoMercadoria" value="" size="4" /></td>
                                 <td>&nbsp;</td>
                             </tr>
