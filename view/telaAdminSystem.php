@@ -99,45 +99,7 @@
 				</div>
 			</div>
 		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-new6">
-				<div class="offer-content">
-					<h3 class="lead">
-						Cheque
-					</h3>						
-					<p>Cads. cheques SysTransportes</p>
-					<a class="btn btn-lg btn-block btn-default" href="cheque/telaAdminCheque.php">Acesse</a>	
-				</div>
-			</div>
-		</div>
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-new3">
-								<div class="shape">
-					<div class="shape-text">
-						New							
-					</div>
-				</div>
-				<div class="offer-content">
-					<h3 class="lead">
-						Financeiro
-					</h3>						
-					<p>And a little description.</p>
-					<a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
-				</div>
-			</div>
-		</div>
 
-		<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-			<div class="offer offer-new4">
-				<div class="offer-content">
-					<h3 class="lead">
-						Relatorio de Despesas
-					</h3>						
-					<p>Depesas da SysTransportes</p>
-					<a class="btn btn-lg btn-block btn-default" href="despesas/telaAdminDespesas.php">Acesse</a>	
-				</div>
-			</div>
-		</div>
 	</div>
 </div>
 
