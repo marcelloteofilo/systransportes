@@ -15,6 +15,21 @@ CREATE DATABASE IF NOT EXISTS `systransportes` /*!40100 DEFAULT CHARACTER SET ut
 USE `systransportes`;
 
 
+-- Copiando estrutura para tabela systransportes.cheques
+CREATE TABLE IF NOT EXISTS `cheques` (
+  `id` int(11) NOT NULL AUTO_INCREMENT,
+  `parcela` varchar(50) DEFAULT NULL,
+  `numero` varchar(50) DEFAULT NULL,
+  `valor` float DEFAULT NULL,
+  `vencimento` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
+
+-- Copiando dados para a tabela systransportes.cheques: ~2 rows (aproximadamente)
+/*!40000 ALTER TABLE `cheques` DISABLE KEYS */;
+/*!40000 ALTER TABLE `cheques` ENABLE KEYS */;
+
+
 -- Copiando estrutura para tabela systransportes.cidades
 CREATE TABLE IF NOT EXISTS `cidades` (
   `codigo` int(7) NOT NULL,
@@ -5662,41 +5677,27 @@ CREATE TABLE IF NOT EXISTS `cotacoes` (
   CONSTRAINT `FK_cotacoes_cidades` FOREIGN KEY (`codCidadeOrigem`) REFERENCES `cidades` (`codigo`),
   CONSTRAINT `FK_cotacoes_cidades_2` FOREIGN KEY (`codCidadeDestino`) REFERENCES `cidades` (`codigo`),
   CONSTRAINT `FK_cotacoes_usuarios` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela systransportes.cotacoes: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `cotacoes` DISABLE KEYS */;
+REPLACE INTO `cotacoes` (`id`, `idUsuario`, `codCidadeOrigem`, `codCidadeDestino`, `valorCarga`, `valorFrete`, `altura`, `largura`, `peso`, `comprimento`, `prazo`, `quantidadeCaixa`, `descricao`, `aprovadoCliente`, `aprovadoAtendente`, `status`, `distancia`) VALUES
+	(1, 1, 1200054, 1099930, 6785.67, 63.97, 34.56, 34.56, 34.56, 34.56, 18, 3456, '', 1, NULL, '0', 5);
 /*!40000 ALTER TABLE `cotacoes` ENABLE KEYS */;
 
 
--- Copiando estrutura para tabela systransportes.ctes
-CREATE TABLE IF NOT EXISTS `ctes` (
+-- Copiando estrutura para tabela systransportes.despesas
+CREATE TABLE IF NOT EXISTS `despesas` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idCotacao` int(11) DEFAULT NULL,
-  `idManifesto` int(11) DEFAULT NULL,
-  `idFaturamento` int(11) DEFAULT NULL,
-  `idRemetente` int(11) DEFAULT NULL,
-  `idDestinatario` int(11) DEFAULT NULL,
-  `emissao` date DEFAULT NULL,
-  `status` varchar(15) DEFAULT NULL,
-  `dataEntrega` date DEFAULT NULL,
-  `HoraEntrega` varchar(10) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_ctes_cotacoes` (`idCotacao`),
-  KEY `FK_ctes_manifestos` (`idManifesto`),
-  KEY `FK_ctes_faturamentos` (`idFaturamento`),
-  KEY `FK_ctes_usuarios` (`idRemetente`),
-  KEY `FK_ctes_usuarios_2` (`idDestinatario`),
-  CONSTRAINT `FK_ctes_cotacoes` FOREIGN KEY (`idCotacao`) REFERENCES `cotacoes` (`id`),
-  CONSTRAINT `FK_ctes_faturamentos` FOREIGN KEY (`idFaturamento`) REFERENCES `faturamentos` (`id`),
-  CONSTRAINT `FK_ctes_manifestos` FOREIGN KEY (`idManifesto`) REFERENCES `manifestos` (`id`),
-  CONSTRAINT `FK_ctes_usuarios` FOREIGN KEY (`idRemetente`) REFERENCES `usuarios` (`id`),
-  CONSTRAINT `FK_ctes_usuarios_2` FOREIGN KEY (`idDestinatario`) REFERENCES `usuarios` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `descricao` varchar(50) DEFAULT NULL,
+  `valor` float DEFAULT NULL,
+  `data` date DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela systransportes.ctes: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `ctes` DISABLE KEYS */;
-/*!40000 ALTER TABLE `ctes` ENABLE KEYS */;
+-- Copiando dados para a tabela systransportes.despesas: ~2 rows (aproximadamente)
+/*!40000 ALTER TABLE `despesas` DISABLE KEYS */;
+/*!40000 ALTER TABLE `despesas` ENABLE KEYS */;
 
 
 -- Copiando estrutura para tabela systransportes.faturamentos
@@ -5716,36 +5717,16 @@ CREATE TABLE IF NOT EXISTS `faturamentos` (
 /*!40000 ALTER TABLE `faturamentos` ENABLE KEYS */;
 
 
--- Copiando estrutura para tabela systransportes.manifestos
-CREATE TABLE IF NOT EXISTS `manifestos` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `idUsuario` int(11) DEFAULT NULL,
-  `idVeiculo` int(11) DEFAULT NULL,
-  `emissao` date DEFAULT NULL,
-  `valorTotal` float DEFAULT NULL,
-  `qtdCtes` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_manifestos_usuarios` (`idUsuario`),
-  KEY `FK_manifestos_veiculos` (`idVeiculo`),
-  CONSTRAINT `FK_manifestos_usuarios` FOREIGN KEY (`idUsuario`) REFERENCES `usuarios` (`id`),
-  CONSTRAINT `FK_manifestos_veiculos` FOREIGN KEY (`idVeiculo`) REFERENCES `veiculos` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
-
--- Copiando dados para a tabela systransportes.manifestos: ~0 rows (aproximadamente)
-/*!40000 ALTER TABLE `manifestos` DISABLE KEYS */;
-/*!40000 ALTER TABLE `manifestos` ENABLE KEYS */;
-
-
 -- Copiando estrutura para tabela systransportes.mercadorias
 CREATE TABLE IF NOT EXISTS `mercadorias` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `idCotacoes` int(11) DEFAULT '0',
-  `descricao` varchar(50) DEFAULT '0',
-  `peso` int(11) DEFAULT '0',
+  `descricaoMercadoria` varchar(50) DEFAULT '0',
+  `pesoMercadoria` int(11) DEFAULT '0',
   PRIMARY KEY (`id`),
   KEY `FK__cotacoes` (`idCotacoes`),
   CONSTRAINT `FK__cotacoes` FOREIGN KEY (`idCotacoes`) REFERENCES `cotacoes` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
 -- Copiando dados para a tabela systransportes.mercadorias: ~0 rows (aproximadamente)
 /*!40000 ALTER TABLE `mercadorias` DISABLE KEYS */;
@@ -5793,15 +5774,15 @@ CREATE TABLE IF NOT EXISTS `usuarios` (
   `login` varchar(50) DEFAULT NULL,
   `senha` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=21 DEFAULT CHARSET=utf8;
+) ENGINE=InnoDB AUTO_INCREMENT=31 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela systransportes.usuarios: ~6 rows (aproximadamente)
+-- Copiando dados para a tabela systransportes.usuarios: ~5 rows (aproximadamente)
 /*!40000 ALTER TABLE `usuarios` DISABLE KEYS */;
 REPLACE INTO `usuarios` (`id`, `perfil`, `status`, `razaoSocial`, `nomeFantasia`, `tipoEmpresa`, `cnpj`, `nomeCompleto`, `cpf`, `rg`, `orgaoExpedidor`, `email`, `telefone1`, `telefone2`, `logradouro`, `bairro`, `numero`, `complemento`, `cep`, `estado`, `cidade`, `login`, `senha`) VALUES
-	(1, 'Pessoa Fisica', 'Habilitado', '', '', '', '', 'marcello teofilo fonteles', '088.673.464-90', '878.778-7', 'sds/pe', 'marcello.312@hotmail.com', '(81) 2433-4334', '(81) 2433-4433', 'rua dona elvira', 'encruzilhada', '', '299', '78887-788', 'PE', 'RECIFE', 'marc', '123'),
-	(8, 'Pessoa Juridica', 'Habilitado', 'pepe', 'tete', 'Empresa Publica', '1232233', '', '', '', '', 'sss@gmail.com', '(32) 4444-5334', '(23) 4543-3444', 'eesee', 'asdf', 'eerrss', '2343', '12343-212', 'SP', 'sÃ£o paulo', 'teste', 'teste'),
-	(12, 'Pessoa Fisica', 'Habilitado', '', '', '', '', 'teste', '088.673.464-90', '234.567-8', 'sdfgh', '', '', '', 'asdfg', '', '', '', '12345-67', 'MG', 'asdfg', 'MASTER', '123'),
-	(20, 'Pessoa Fisica', 'Habilitado', '', '', '', '', 'tereza', '088.673.464-90', '878.778-7', 'sdspe', 'asdfgh2345@hmailddfgh', '(81) 2323-2332', '(12) 3456-7876', 'teste', 'rua do amigo', '299', 'casa', '78887-787', 'PI', 'terezinha', 'teste', 'teste');
+	(1, 'Pessoa Fisica', 'Habilitado', '', '', '', '', '', '', '', '', 'marcello.312@hotmail.com', '(81) 2433-4334', '(81) 2433-4433', 'rua dona elvira', 'encruzilhada', '299', '', '78887-788', 'PE', 'RECIFE', 'marc', 'marc'),
+	(20, 'Pessoa Fisica', 'Desabilitado', '', '', '', '', 'tereza', '088.673.464-90', '878.778-7', 'sdspe', 'asdfgh2345@hmailddfgh', '(81) 2323-2332', '(12) 3456-7876', 'teste', 'rua do amigo', '299', 'casa', '78887-787', 'PI', 'terezinha', 'teste', 'teste'),
+	(21, 'Atendente', 'Habilitado', '', '', '', '', 'teste', '088.673.464-90', '878.778-7', 'sds/pe', 'asdfgh2345@hmailddfgh', '(43) 2232-32323', '(32) 3232-3232', 'rua do sol', 'rua do amigo', '', '2345', '78887-787', 'PE', 'olinda', 'teteet', 'teteet'),
+	(30, 'Atendente', 'Habilitado', '', '', '', '', 'joÃ£o', '088.673.464-90', '123.424-4', 'sdsdd', 'teste@gmail.com', '(32) 3232-32332', '(34) 5342-4232', 'ter', 'rua teste', '1234', '', '34564-321', 'PE', 'recife', 'testeMarc', 'testeMarc');
 /*!40000 ALTER TABLE `usuarios` ENABLE KEYS */;
 
 
@@ -5810,16 +5791,15 @@ CREATE TABLE IF NOT EXISTS `veiculos` (
   `id` int(11) NOT NULL AUTO_INCREMENT,
   `placa` varchar(8) NOT NULL,
   `capacidadeKg` float DEFAULT NULL,
-  `capacidadeM3` float DEFAULT NULL,
+  `capacidadeM3` float NOT NULL,
   `ano` varchar(4) DEFAULT NULL,
-  `tipo` int(10) DEFAULT NULL,
-  `codCidade` int(11) DEFAULT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FK_veiculos_cidades` (`codCidade`),
-  CONSTRAINT `FK_veiculos_cidades` FOREIGN KEY (`codCidade`) REFERENCES `cidades` (`codigo`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+  `tipo` varchar(50) DEFAULT NULL,
+  `uf` varchar(50) DEFAULT NULL,
+  `cidade` varchar(50) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8;
 
--- Copiando dados para a tabela systransportes.veiculos: ~0 rows (aproximadamente)
+-- Copiando dados para a tabela systransportes.veiculos: ~1 rows (aproximadamente)
 /*!40000 ALTER TABLE `veiculos` DISABLE KEYS */;
 /*!40000 ALTER TABLE `veiculos` ENABLE KEYS */;
 /*!40101 SET SQL_MODE=IFNULL(@OLD_SQL_MODE, '') */;
