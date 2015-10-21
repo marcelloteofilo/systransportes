@@ -25,7 +25,6 @@
 			$sql = "insert into cheques (parcela, numero, valor, vencimento) 
 				values ('$parcela', '$numero', '$valor', '$novaData')";
 
-			echo($sql);
 			$resultado =@mysql_query($sql, $conexao);
 
 			return ($resultado === true); 
