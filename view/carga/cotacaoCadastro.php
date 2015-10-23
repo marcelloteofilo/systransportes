@@ -342,7 +342,8 @@
                               <h2>Dados Finais</h2>
                               <tr>
                                  <td><b>Distancia</b></td>
-                                 <td><b>Frete</b></td>
+                                 <td><b>Valor Aproximado</b></td>
+                                 <td><b>Temdo de Entrega</b></td>
                                  <td><b>Data do Pedido</b></td>
                                  <td><b>Coletada</b></td>
                                  <td><b>Status Carga</b></td>

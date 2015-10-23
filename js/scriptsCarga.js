@@ -69,6 +69,7 @@ function callback(response, status) {
 
         // CALCULO EM REAL, NECESSITAREMOS DE UMA TABELA PRA CASO O CLIENTE QUEIRA ALTERAR
         var fretePelaDistancia = pegaDistancia * (0.9);// ME FALARAM QUE O PREÇO POR KM É 0,90;
+        //$("#frete").val(fretePelaDistancia);
 
         //CALCULO DO SEGURO DA CARGA QUE É AVALIADO DE ACORDO COM O VALOR TOTAL DA MERCADORIA
         var caixaValorMercadoria = document.getElementById('valor');
@@ -118,7 +119,7 @@ function callback(response, status) {
 
 
         valorFinalFrete = moeda(valorFinalFrete, 2, ',', '.');
-
+        $("#frete").val(valorFinalFrete);
 
         var tempo = response.rows[0].elements[0].duration.text;
         tempo = tempo.replace("day", "dia").replace("hour", "hora").replace("min", "minuto");
@@ -164,6 +165,8 @@ function callback(response, status) {
         if (menosDeUmaHora) {
             diaFinal = 1;
         }
+
+        $("#prazo").val(diaFinal + ' Dia(s)');
 
         //JOGA O VALOR NA CAIXA DE TEXTO
         /*var acao = document.getElementById('acao').value;
