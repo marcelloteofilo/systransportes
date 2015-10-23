@@ -28,7 +28,7 @@ if (isset($_POST['cadastrar'])) {
         $peso = $_POST['peso'][$i];
 
         //$total += $_POST['peso'][$i];
-        $sql = "insert into mercadorias (idCotacoes, descricaoMercadoria, pesoMercadoria) values ('$idCotacao','$descricao', '$peso')";
+        $sql = "insert into mercadorias (idCotacoes, descricao, peso) values ('$idCotacao','$descricao', '$peso')";
         mysql_query($sql, $conexao) or die('erro na inserção do banco!!');
     }
 }
