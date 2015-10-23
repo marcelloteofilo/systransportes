@@ -23,12 +23,14 @@ if (isset($_POST['cadastrar'])) {
 
     //$total = " ";
     for ($i = 0; $i < count($valores); $i++) {
-        $idCotacao = CotacaoSql::ultimo();
+        $codCarga = CotacaoSql::ultimo();
         $descricao = $_POST['descricao'][$i];
-        $peso = $_POST['peso'][$i];
+        $pesoMercadoria = $_POST['pesoMercadoria'][$i];
+        $valorMercadoria = $_POST['valorMercadoria'][$i];
+        $quantidade = $_POST['quantidade'][$i];
 
         //$total += $_POST['peso'][$i];
-        $sql = "insert into mercadorias (idCotacoes, descricao, peso) values ('$idCotacao','$descricao', '$peso')";
+        $sql = "insert into mercadorias (codCarga, descricao, pesoMercadoria, valorMercadoria, quantidade) values ('$codCarga','$descricao', '$pesoMercadoria',$valorMercadoria,$quantidade)";
         mysql_query($sql, $conexao) or die('erro na inserção do banco!!');
     }
 }
