@@ -70,8 +70,8 @@
 		$usuario->setTelefone2($_REQUEST['telefone2']); 
 		$usuario->setLogradouro($_REQUEST['logradouro']); 
 		$usuario->setBairro($_REQUEST['bairro']); 
-		$usuario->setComplemento($_REQUEST['numero']); 
-		$usuario->setNumero($_REQUEST['complemento']); 
+		$usuario->setComplemento($_REQUEST['complemento']); 
+		$usuario->setNumero($_REQUEST['numero']); 
 		$usuario->setCep($_REQUEST['cep']); 
 		$usuario->setEstado($_REQUEST['estado']); 
 		$usuario->setCidade($_REQUEST['cidade']); 
@@ -121,8 +121,8 @@
 		$usuario->setTelefone2($_REQUEST['telefone2']); 
 		$usuario->setLogradouro($_REQUEST['logradouro']); 
 		$usuario->setBairro($_REQUEST['bairro']); 
-		$usuario->setComplemento($_REQUEST['numero']); 
-		$usuario->setNumero($_REQUEST['complemento']); 
+		$usuario->setComplemento($_REQUEST['complemento']); 
+		$usuario->setNumero($_REQUEST['numero']); 
 		$usuario->setCep($_REQUEST['cep']);
 		$usuario->setEstado($_REQUEST['estado']); 
 		$usuario->setCidade($_REQUEST['cidade']);  
