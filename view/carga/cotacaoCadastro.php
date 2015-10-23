@@ -299,7 +299,7 @@
                                     <td><input class="form-control"type="text" name="descricao[]" id="descricao" value="" size="90" placeholder="Descrição sobre a mercadoria" maxlength="50" /></td>
                                     <td><input class="form-control"type="text" name="quantidade[]" id="quantidade" value="" size="10" placeholder="0,00" maxlength="8" /></td>
                                     <td><input class="form-control"type="text" name="pesoMercadoria[]" id="pesoMercadoria" value="" size="4" placeholder="0,00" maxlength="8" /></td>
-                                    <td><input class="form-control"	type="text" name="valor[]" id="valor" value="" size="4" placeholder="0,00" maxlength="8" /></td>
+                                    <td><input class="form-control"	type="text" name="valorMercadoria[]" id="valorMercadoria" value="" size="4" placeholder="0,00" maxlength="8" /></td>
                                     <td>&nbsp;</td>
                                  </tr>
                               </tbody>
@@ -319,7 +319,7 @@
                               <tr>
                                  <td><input type="text" id="altura" name="" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
                                  <td><input type="text" id="largura" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input type="text" id="pesoMercadoria" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input type="text" id="peso" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
                                  <td><input type="text" id="comprimento" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
                                  <td><input type="text" id="quantidade" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(mascaraInteiro())"></td>
                                  <td><input type="text" id="valor" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"  onBlur="focus_Blur(this, 'white'); CalculaDistancia();"></td>
@@ -348,9 +348,10 @@
                                  <td><b>Status Carga</b></td>
                               </tr>
                               <tr>
-                                 <td><input type="text" id="distancia" name="" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
-                                 <td><input type="text" id="frete" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
-                                 <td><input type="text" id="dataPedido" name="" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
+                                 <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
+                                 <td><input readonly type="text" id="frete" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
+                                 <td><input readonly type="text" id="prazo" name="" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
+                                 <td><input readonly type="text" id="dataPedido" name="" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
                                  <td>
                                     <select class="form-control" id="coletada" name="">
                                        <option value=""> --- Status Coleta --- </option>
@@ -369,13 +370,16 @@
                                  </td>
                               </tr>
                            </table>
+
                            <table>
                               <div><span id="litResultado">&nbsp;</span></div>
                               <div  id="mapaGoogle"  style="padding: 0px 0 0; clear: both">
                                  <iframe width="100%" scrolling="no" height="300" frameborder="0" id="map" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=S&atilde;o Paulo&daddr=Rio de Janeiro&output=embed"></iframe>
                               </div>
-                           </table>
-                           <br>
+                              <input name="pesquisaOrigem" type="hidden" id="txtOrigem" class="field" value="S&atilde;o Paulo" />
+                              <input name="pesquisaDestino" type="hidden" id="txtDestino" class="field" value="Rio de Janeiro" />
+                           </table><br>
+
                            <input class="btn btn-success btn-login-submit" value="Fazer Cotação" type="submit" id="btnCotar">
                            <input class="btn btn-success btn-login-submit" value="Limpar" type="reset" id="btnLimpar">
                         </form>
