@@ -1,3 +1,39 @@
+<?php
+session_start();
+extract($_REQUEST);
+?>
+<?php
+if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+    session_destroy();
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    header('');
+    $logado = 'Visitante';
+} else {
+    $logado = $_SESSION['login'];
+}
+?>
+<?php
+require_once '../../modelo/cotacao/cotacaoSql.php';
+
+$valores = @$_POST['item'];
+
+if (isset($_POST['cadastrar'])) {
+    $conexao = Conexao::getInstance()->getConexao();
+
+    //$total = " ";
+    for ($i = 0; $i < count($valores); $i++) {
+        $idCotacao = CotacaoSql::ultimo();
+        $descricao = $_POST['descricao'][$i];
+        $peso = $_POST['peso'][$i];
+
+        //$total += $_POST['peso'][$i];
+        $sql = "insert into mercadorias (idCotacoes, descricao, peso) values ('$idCotacao','$descricao', '$peso')";
+        mysql_query($sql, $conexao) or die('erro na inserção do banco!!');
+    }
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en" class="no-js">
    <head>
