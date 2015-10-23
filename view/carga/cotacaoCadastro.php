@@ -124,12 +124,10 @@
                         <form>
                            <table>
                               <!--Dados Pessoais -->
-                              <h2>Plano de Viagem</h2>
+                              <h2>Dados de Endereço</h2>
                               <tr>
                               <td><b>Estado de Origem</b></td>
-                              <td><b>Cidade de Origem</b></td>
                               <td><b>Estado de Destino</b></td>
-                              <td><b>Cidade de Destino</b></td>
                               </tr>
                               <tr>                           
                               <td>
@@ -164,11 +162,6 @@
                                                 <option value="TO">TO</option>
                               </select>
                               </td>
-                              <td>
-                                <select class="form-control" id="cidadeOrigem" name="cidadeOrigem"  onChange="juntaCidadeUf(); CalculaDistancia();">
-                                <option  value="">Escolha Cidade Origem</option>
-                                </select>
-                              </td>
                             <td>
                               <select tabindex="1" class="form-control" id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0', 'Escolha a Cidade!')">
                                                 <option value="">Escolha Estado Destino</option>
@@ -201,9 +194,79 @@
                                                 <option value="TO">TO</option>
                               </select>
                               </td>
+                              </tr>
+
+                              <tr>
+                              <td><b>Cidade de Origem</b></td>
+                              <td><b>Cidade de Destino</b></td>
+                              </tr>
+
+                              <tr>
+                              <td>
+                                <select class="form-control" id="cidadeOrigem" name="cidadeOrigem"  onChange="juntaCidadeUf(); CalculaDistancia();">
+                                <option  value="">Escolha Cidade Origem</option>
+                                </select>
+                              </td>
                               <td>
                                 <select class="form-control" id="cidadeDestino" name="cidadeDestino"  onChange="juntaCidadeUf(); CalculaDistancia();">
                                 <option  value="">Escolha Cidade Destino</option>
+                                </select>
+                              </td>
+                              
+                              </tr>
+
+                          </table><br>
+                           <table>
+                              <!--Dados Pessoais -->
+                              <h2>Dados de Endereço</h2>
+                              <tr>
+                              <td><b>Telefone</b></td>
+                              <td><b>Logradouro</b></td>
+                              <td><b>Bairro</b></td>
+                              <td><b>Número</b></td>
+                              <td><b>Estado</b></td>
+                              <td><b>Cidade</b></td>
+                              </tr>
+                              <tr>                                                         
+                              <td><input type="text" id="nomeCompleto" name="" class="form-control" placeholder="0,00" tabindex="1"  ></td>
+                              <td><input type="text" id="nomeCompleto" name="" class="form-control" placeholder="0,00" tabindex="1"  ></td>
+                              <td><input type="text" id="nomeCompleto" name="" class="form-control" placeholder="0,00" tabindex="1"  ></td>
+                              <td><input type="text" id="nomeCompleto" name="" class="form-control" placeholder="0,00" tabindex="1"  ></td>
+                              <td>
+                              <select tabindex="1" class="form-control" id="estado" onChange="consultaCidades('cidade', 'estado', '0', 'Escolha a Cidade!')">
+                                                <option value="">Escolha Estado</option>
+                                                <option value="PE">PE</option>
+                                                <option value="AC">AC</option>
+                                                <option value="AL">AL</option>
+                                                <option value="AM">AM</option>
+                                                <option value="AP">AP</option>
+                                                <option value="BA">BA</option>
+                                                <option value="CE">CE</option>
+                                                <option value="DF">DF</option>
+                                                <option value="ES">ES</option>
+                                                <option value="GO">GO</option>
+                                                <option value="MA">MA</option>
+                                                <option value="MG">MG</option>
+                                                <option value="MS">MS</option>
+                                                <option value="MT">MT</option>
+                                                <option value="PA">PA</option>
+                                                <option value="PB">PB</option>
+                                                <option value="PI">PI</option>
+                                                <option value="PR">PR</option>
+                                                <option value="RJ">RJ</option>
+                                                <option value="RN">RN</option>
+                                                <option value="RO">RO</option>
+                                                <option value="RR">RR</option>
+                                                <option value="RS">RS</option>
+                                                <option value="SC">SC</option>
+                                                <option value="SE">SE</option>
+                                                <option value="SP">SP</option>
+                                                <option value="TO">TO</option>
+                              </select>
+                              </td>
+                              <td>
+                                <select class="form-control" id="cidade" name="cidade"  onChange="juntaCidadeUf(); CalculaDistancia();">
+                                <option  value="">Escolha Cidade</option>
                                 </select>
                               </td>
                               </tr>
@@ -258,23 +321,7 @@
                               <td><input type="text" id="rg" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1"></td>
                               <td><input type="text" id="orgaoExpedidor" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1"></td>
                               </tr>
-                              <tr>
-                              <td><b>Razão Social</b></td>
-                              <td><b>Nome Fantasia</b></td>
-                              <td><b>CNPJ</b></td>
-                              <td><b>Tipo de Empresa</b></td>
-                              </tr>
-
-                              <tr>                           
-                              <td><input type="text" id="razaoSocial"maxlength="40" style="text-transform:uppercase"onkeyup="validar(this,'text');"name="" size="40" class="form-control" placeholder="Razão Social" tabindex="1" type="text"></td>
-                              <td><input type="text" id="nomeFantasia" maxlength="40"style="text-transform:uppercase"onkeyup="validar(this,'text');"name="" size="40" class="form-control" placeholder="Nome Fantasia" tabindex="1" type="text"></td>
-                              <td><input type="text" id="cnpj" onkeyup="formataCampo(this, event)"maxlength="14"name="" size="40"class="form-control"placeholder="CNPJ" tabindex="1" type="text" ></td>
-                              <td><select class="form-control" id="tipoEmpresa" name="">
-                              <option value=""> --- Selecione o tipo --- </option>
-                              <option value="Empresa Privada">Empresa Privada</option>
-                              <option value="Empresa Publica">Empresa Publica</option>
-                              </select></td>
-                              </tr>
+                              
                            </table>
                            <br>
                            <input class="btn btn-success btn-login-submit" value="Fazer Cotação" type="submit" id="btnCotar">
