@@ -28,7 +28,7 @@
            if (row){
              $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
              $('#fm').form('load',row);
-             url = '../../webServices/cargaWebService.php?editSave=alterarCarga&id='+row.id;
+             url = '../../webServices/cargaWebService.php?editSave=alterarCargaCliente&id='+row.id;
            }
          else
          {

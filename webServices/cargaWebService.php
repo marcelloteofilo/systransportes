@@ -27,18 +27,14 @@
 		//echo(json_encode($resultado ));			
 	}*/
 	
-	if ($_GET["editSave"] == "alterarCargaAtendente"){	
+	if ($_GET["editSave"] == "alterarCargaCliente"){	
 		$carga = new carga();	
 
 		//Atributos da classe Usuário/Valores 
 		$carga->setCodCarga($_REQUEST['codCarga']); 
-		$carga->setDistancia($_REQUEST['distancia']); 
-		$carga->setPrazo($_REQUEST['prazo']); 
-		$carga->setFrete($_REQUEST['frete']); 
-		$carga->setColetada($_REQUEST['coletada']);
 		$carga->setStatusCarga($_REQUEST['statusCarga']);
 		
-		if (cargaSql::alterar($carga)){
+		if (cargaSql::alterarCargaCliente($carga)){
 			echo json_encode(array('success'=>true));
 		}	
 		
