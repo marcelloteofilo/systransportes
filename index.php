@@ -1,15 +1,16 @@
 <?php
-    session_start();
-    if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-        session_destroy();
-        unset($_SESSION['login']);
-        unset($_SESSION['senha']);
-        header('');
-        $logado = 'Visitante';
-    } else {
-        $logado = $_SESSION['login'];
-    }
-    ?>
+session_start();
+
+if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+    session_destroy();
+    unset($_SESSION['login']);
+    unset($_SESSION['senha']);
+    header('');
+    $logado = 'Visitante';
+} else {
+    $logado = $_SESSION['login'];
+}
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <!--<![endif]-->
@@ -78,9 +79,35 @@
                     }
             );
             wow.init();
-            
-            
+
+
         </script>
+
+        <script language="javascript">
+
+            function sistema()
+
+            {
+
+                if (navigator.userAgent.indexOf('Linux') !== -1)
+
+                {
+                    var so = "Linuz";
+                    var caminho = "/opt/lampp/htdocs/dashboard/systransportes/";
+                }
+                else
+                {
+                    var so = "Windows";
+                    var caminho = "../../";
+                }
+
+                alert(so + ' - ' + caminho)
+
+            }
+
+        </script>
+
+
         <!-- Custom Functions -->
         <script src="js/custom.js"></script>
     </head>
@@ -95,8 +122,8 @@
                 <div class="navbar-header">
                     <!-- responsive nav button -->
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="fa fa-bars fa-2x"></i>
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars fa-2x"></i>
                     </button>
                     <!-- /responsive nav button -->
                     <!-- logo -->

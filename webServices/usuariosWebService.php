@@ -1,9 +1,11 @@
 <?php
-	require_once("../modelo/usuario/usuarioSql.php");   	
 	session_start();   	
-	
 	extract ($_REQUEST);
-	extract ($_SESSION);	
+	extract ($_SESSION);
+	require_once("../modelo/usuario/usuarioSql.php");   	
+	
+	
+	
 
 	//CONSULTA USUÁRIO
 	if (isset($_GET["incluirUsuario"])) {			

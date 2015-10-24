@@ -56,8 +56,8 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
         <div class="container">
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul  class="nav navbar-nav">
-                    <li class="current"><a href="../../index.php">Início</a></li>
-                    <li><a href="../telaAdminSystem.php">Admin</a></li>
+                    <li class="current"><a href="../telaAdminSystem.php">Início Admin</a></li>
+                    <li><a href="#"><?php echo "Usuario: ".$logado;?></a></li>
                 </ul>
             </nav>
             <div class="navbar-header">

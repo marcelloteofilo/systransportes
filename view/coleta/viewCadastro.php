@@ -22,8 +22,8 @@
     <!-- JS CRUD -->	
     <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
     <script type="text/javascript" src="../../js/validacaoCampo.js"></script> 
-	<script type="text/javascript" src="../../js/scriptsColeta.js"> </script>		
-	<script type="text/javascript" src="../../js/validacoes.js"> </script>	
+	<script type="text/javascript" src="../../js/scriptsColeta.js"></script>		
+	<script type="text/javascript" src="../../js/validacoes.js"></script>	
 
     <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
@@ -76,7 +76,7 @@
         <nav class="collapse navbar-collapse navbar-right" role="navigation">
           <ul  class="nav navbar-nav">
             <li class="current"><a href="../../index.php">Início</a></li>
-            <li><a href="../telaAdminSystem.php">Admin</a></li>
+            <li><a href="../telaAdminSystem.php">Admin<?php echo ":   ".$logado;?></a></li>
           </ul>
         </nav>
         <div class="navbar-header">
