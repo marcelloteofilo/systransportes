@@ -1,4 +1,4 @@
-<?php
+<!--<?php
     session_start();
 if (!isset($_SESSION['login']) == true and !isset($_SESSION['senha']) == true) {
     session_destroy();
@@ -8,7 +8,7 @@ if (!isset($_SESSION['login']) == true and !isset($_SESSION['senha']) == true) {
 } else {
     $logado = $_SESSION['login'];
 }
-?>
+?>-->
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -28,7 +28,7 @@ if (!isset($_SESSION['login']) == true and !isset($_SESSION['senha']) == true) {
                     <li class="current"><a href="usuario/logout.php">Início</a></li>
                 </ul>
                 <ul  class="nav navbar-nav">
-                    <li class="current"><a href="#"><?php echo "Usuario: ".$logado; ?></a></li>
+                    <li class="current"><a href="#"><!--<?php echo "Usuario: ".$logado; ?>--></a></li>
                 </ul>               
             </nav>
             <div class="navbar-header">
@@ -115,6 +115,20 @@ if (!isset($_SESSION['login']) == true and !isset($_SESSION['senha']) == true) {
                     </div>
                 </div>
             </div>
+
+            <!--COLETA-->
+             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="offer offer-new1">
+                    <div class="offer-content">
+                        <h3 class="lead">
+                            Coleta
+                        </h3>                       
+                        <p>Cads. Coleta SysTransportes</p>
+                        <a class="btn btn-lg btn-block btn-default" href="coleta/telaAdminColeta.php">Acesse</a>  
+                    </div>
+                </div>
+            </div>
+
 
         </div>
     </div>
