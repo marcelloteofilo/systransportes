@@ -69,7 +69,7 @@
 		  $sql = 'select * from veiculos';
 		  
 		  $resultado = @mysql_query($sql, $conexao);
-
+		  
 		if ($resultado) {
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {

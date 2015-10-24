@@ -28,7 +28,7 @@
 	}*/
 	
 	if ($_GET["editSave"] == "alterarCargaCliente"){	
-		$carga = new carga();	
+		$carga = new Carga();	
 
 		//Atributos da classe Usuário/Valores 
 		$carga->setCodCarga($_REQUEST['codCarga']); 
@@ -77,10 +77,10 @@
 				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
 			);
 		}
-			var_dump($resultado);
+			//var_dump($resultado);
 		    //die;
 
-		echo( json_encode( $resultado ) );	
+		echo(json_encode($resultado));	
 		return $resultado;	
 	}
 
