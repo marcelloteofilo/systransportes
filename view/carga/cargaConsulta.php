@@ -18,14 +18,46 @@
       <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
       <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
       <script type="text/javascript" src="../../js/validacoes.js"></script>
+      <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
       <!-- JS CRUD -->
       <!-- SCRIPT ADMIN -->
       <script type="text/javascript">
          var url;
          
-         function carregaTodos(){
-            url='../../webServices/cargaWebService.php?editSave=carregarTodos';
-            $('#dg').datagrid('reload');
+         function carregarAtendimento(){
+            $("div.easyui-layout").layout();
+            $('#dg').edatagrid({
+            url:'../../webServices/cargaWebService.php?editSave=carregarAtendimento',
+            fitColumns: true
+            });
+            //$('#dg').datagrid('reload');
+         }
+
+         function carregarAprovados(){
+            $("div.easyui-layout").layout();
+            $('#dg').edatagrid({
+            url:'../../webServices/cargaWebService.php?editSave=carregarAprovados',
+            fitColumns: true
+            });
+            //$('#dg').datagrid('reload');
+         }
+
+         function carregarConcluidos(){
+            $("div.easyui-layout").layout();
+            $('#dg').edatagrid({
+            url:'../../webServices/cargaWebService.php?editSave=carregarConcluidos',
+            fitColumns: true
+            });
+            //$('#dg').datagrid('reload');
+         }
+
+         function carregarTodos(){
+            $("div.easyui-layout").layout();
+            $('#dg').edatagrid({
+            url:'../../webServices/cargaWebService.php?editSave=carregarTodos',
+            fitColumns: true
+            });
+            //$('#dg').datagrid('reload');
          }
 
 
@@ -111,12 +143,14 @@
          </table>
          <div id="toolbar">
             <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregaTodos();" title="Alterar Dados do Usuário">Vis. Todos</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Aprovadas</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Atendimento</a>
-            <!--<label for="pesquisar">Localizar Cotação</label>
-               &nbsp;&nbsp;
-               <input type="text" id="pesquisar" name="pesquisar" size="30" />  -->    
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">tendimento</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
+            
+            <!--<label for="pesquisar">Busca Avançada</label>
+          
+            <input type="text" id="pesquisar" name="pesquisar" size="30" />-->    
          </div>
          </div>
       </center>
@@ -230,18 +264,16 @@
                                  <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
                                  <td>
                                     <select readonly class="form-control" id="coletada" name="coletada">
-                                       <option value=""> --- Status Coleta --- </option>
-                                       <option value="Aguardando">Aguardando</option>
-                                       <option value="Iniciada">Iniciada</option>
-                              <option value="Finalizada">Finalizada</option>
+                                       <option value=""> --- Em Processo --- </option>
+                                       <option value="Coletado">Coletado</option>
+                                       <option value="Aprovado">Aprovado</option>
                                     </select>
                                  </td>
                                  <td>
                                     <select readonly class="form-control" id="statusCarga" name="statusCarga">
-                                       <option value=""> --- Status Carga --- </option>
-                                       <option value="Despachada">Despachada</option>
-                                       <option value="Em Transito">Em Transito</option>
-                              <option value="Entrege">Entrege</option>
+                                       <option value="Atendimento">Atendimento</option>
+                                       <option value="Aprovado Atendente">Aprovado Atendente</option>
+                                       <option value="Aprovado Cliente">Aprovado Cliente</option>               
                                     </select>
                                  </td>
                               </tr>
@@ -251,8 +283,8 @@
          </form>
       </div>
       <div id="dlg-buttons">
-         <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Aprovar Cotação</a>
-         <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancela Operaçãor</a>
+         <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Salvar</a>
+         <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
       </div>
       <br><br>
       <!-- FIM DIALOG ADMIN PESSOA FÍSICA -->
