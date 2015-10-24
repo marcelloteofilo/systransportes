@@ -1,19 +1,3 @@
-//VARIAVEIS UTEIS
-var contaNumero = 0;
-var contaLinha = 0;
-var idCotacao = 0;
-var idStatus = 0;
-var statusCotacao = 0;
-var listaDeCotacoes = "";
-var aguardaDigitar;
-var webServiceCotacao = '../../webServices/cotacaoWebService.php';
-var backgroundAnterior = "";
-var corAnterior = "";
-
-
-
-
-
 // PEGAS AS CAIXAS DE DIGITAÇAO E CONCATENA NO CAMPO DE CONSULTA OCULTO
 function juntaCidadeUf() {
     var caixaCidadeOrigem = document.getElementById('cidadeOrigem');
