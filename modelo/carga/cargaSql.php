@@ -102,10 +102,10 @@
 
     }
 	
-    public static function carregarLista(Carga $car) {
+    public static function carregarLista(Carga $carga) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
-	  $nomeCliente = mysql_real_escape_string($busca->getNomeCompleto(), $conexao);	        
+	  //$nomeCliente = mysql_real_escape_string($busca->getNomeCompleto(), $conexao);	        
 
 		/*$rs = mysql_query('select * from usuarios');
 		$result = array();
@@ -115,42 +115,43 @@
 
 		echo json_encode($result);
 		*/		
-		$sql = 'select * from usuarios';
-		 if ($busca->getNomeCompleto())  
-			$sql .= "  where nomeCompleto like '$nomeCliente%'";  	    
+		$sql = 'select * from cargas';
+		 //if ($busca->getNomeCompleto())  
+			//$sql .= "  where nomeCompleto like '$nomeCliente%'";  	    
 		$resultado = @mysql_query($sql, $conexao);	      
 		
 		if ($resultado) {
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {
-				$usuario = new Usuario();
-				$usuario->setId($row["id"]);
-				$usuario->setPerfil($row["perfil"]);
-				$usuario->setStatus($row["status"]);
-				$usuario->setEstado($row["estado"]);
-				$usuario->setCidade($row["cidade"]);
-				$usuario->setNomeCompleto($row["nomeCompleto"]);
-				$usuario->setRazaoSocial($row["razaoSocial"]);
-				$usuario->setnomeFantasia($row["nomeFantasia"]);
-				$usuario->setTipoEmpresa($row["tipoEmpresa"]);
-				$usuario->setRg($row["rg"]);
-				$usuario->setOrgaoExpedidor($row["orgaoExpedidor"]);
-				$usuario->setCpf($row["cpf"]);
-				$usuario->setCnpj($row["cnpj"]);
-				$usuario->setEmail($row["email"]);
-				$usuario->setTelefone1($row["telefone1"]);
-				$usuario->setTelefone2($row["telefone2"]);
-				$usuario->setLogradouro($row["logradouro"]);
-				$usuario->setBairro($row["bairro"]);
-				$usuario->setNumero($row["numero"]);
-				$usuario->setComplemento($row["complemento"]);
-				$usuario->setCep($row["cep"]);
-				$usuario->setLogin($row["login"]);
-				$usuario->setSenha($row["senha"]);				
+				$carga = new Cargo();
+				$carga->setCodCarga($row["id"]);
+				$carga->setPerfil($row["perfil"]);
+				$carga->setStatus($row["status"]);
+				$carga->setEstado($row["estado"]);
+				$carga->setCidade($row["cidade"]);
+				$carga->setNomeCompleto($row["nomeCompleto"]);
+				$carga->setRazaoSocial($row["razaoSocial"]);
+				$carga->setnomeFantasia($row["nomeFantasia"]);
+				$carga->setTipoEmpresa($row["tipoEmpresa"]);
+				$carga->setRg($row["rg"]);
+				$carga->setOrgaoExpedidor($row["orgaoExpedidor"]);
+				$carga->setCpf($row["cpf"]);
+				$carga->setCnpj($row["cnpj"]);
+				$carga->setEmail($row["email"]);
+				$carga->setTelefone1($row["telefone1"]);
+				$carga->setTelefone2($row["telefone2"]);
+				$carga->setLogradouro($row["logradouro"]);
+				$carga->setBairro($row["bairro"]);
+				$carga->setNumero($row["numero"]);
+				$carga->setComplemento($row["complemento"]);
+				$carga->setCep($row["cep"]);
+				$carga->setLogin($row["login"]);
+				$carga->setSenha($row["senha"]);				
 				$retorno[] = $usuario;
          }
         return ($retorno);
-      } else
+      } 
+      else
         return null;
     }
 
