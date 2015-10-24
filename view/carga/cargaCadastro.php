@@ -421,8 +421,7 @@ if (isset($_POST['cadastrar'])) {
                            </table><br>
 
                            <input class="btn btn-success btn-login-submit" value="Criar Cotação" type="submit" id="btnCriarCota">
-                           <input class="btn btn-success btn-login-submit" value="Aprovar Cotação" type="submit" id="btnAprovarCota">
-                           <input class="btn btn-success btn-login-submit" value="Limpar" type="reset" id="btnLimpar">
+                           <input class="btn btn-danger" value="Limpar" type="reset" id="btnLimpar">
                         </form>
                      </div>
                   </nav>
