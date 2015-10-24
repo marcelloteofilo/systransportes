@@ -23,6 +23,12 @@
       <script type="text/javascript">
          var url;
          
+         function carregaTodos(){
+            url='../../webServices/cargaWebService.php?editSave=carregarTodos';
+            $('#dg').datagrid('reload');
+         }
+
+
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
            if (row){
@@ -105,7 +111,7 @@
          </table>
          <div id="toolbar">
             <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Todos</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregaTodos();" title="Alterar Dados do Usuário">Vis. Todos</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Aprovadas</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Atendimento</a>
             <!--<label for="pesquisar">Localizar Cotação</label>

@@ -84,6 +84,90 @@
 		return $resultado;	
 	}
 
+	if ($_GET["editSave"] == "carregarAprovados") {
+
+		$carga = new Carga();
+
+		$listaCarga = cargaSql::carregarLista($carga);
+		
+		for ($i=0; $i<count($listaCarga); $i++ ){											
+			$resultado[] = array(
+			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
+
+				'altura'	=>  $listaCarga[$i]->getAltura(),					
+				'largura'	=>   $listaCarga[$i]->getLargura(),				
+				'peso'	=>  $listaCarga[$i]->getPeso(),				
+				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
+				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
+				'valor'	=>  $listaCarga[$i]->getValor(),
+
+				'telefone'	=>  $listaCarga[$i]->getTelefone(),
+				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
+				'bairro'	=>  $listaCarga[$i]->getBairro(),
+				'uf'	=>  $listaCarga[$i]->getUf(),
+				'cidade'	=>  $listaCarga[$i]->getCidade(),
+				'numero'	=>  $listaCarga[$i]->getNumero(),
+				'observacao'	=>  $listaCarga[$i]->getObservacao(),
+				
+				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
+				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
+				'distancia'	=>  $listaCarga[$i]->getDistancia(),
+				'frete'	=>  $listaCarga[$i]->getFrete(),
+				'prazo'	=>  $listaCarga[$i]->getPrazo(),
+				
+				'coletada'	=>  $listaCarga[$i]->getColetada(),
+				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
+			);
+		}
+			//var_dump($resultado);
+		    //die;
+
+		echo(json_encode($resultado));	
+		return $resultado;	
+	}
+
+	if ($_GET["editSave"] == "carregarAtendimento") {
+
+		$carga = new Carga();
+
+		$listaCarga = cargaSql::carregarLista($carga);
+		
+		for ($i=0; $i<count($listaCarga); $i++ ){											
+			$resultado[] = array(
+			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
+
+				'altura'	=>  $listaCarga[$i]->getAltura(),					
+				'largura'	=>   $listaCarga[$i]->getLargura(),				
+				'peso'	=>  $listaCarga[$i]->getPeso(),				
+				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
+				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
+				'valor'	=>  $listaCarga[$i]->getValor(),
+
+				'telefone'	=>  $listaCarga[$i]->getTelefone(),
+				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
+				'bairro'	=>  $listaCarga[$i]->getBairro(),
+				'uf'	=>  $listaCarga[$i]->getUf(),
+				'cidade'	=>  $listaCarga[$i]->getCidade(),
+				'numero'	=>  $listaCarga[$i]->getNumero(),
+				'observacao'	=>  $listaCarga[$i]->getObservacao(),
+				
+				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
+				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
+				'distancia'	=>  $listaCarga[$i]->getDistancia(),
+				'frete'	=>  $listaCarga[$i]->getFrete(),
+				'prazo'	=>  $listaCarga[$i]->getPrazo(),
+				
+				'coletada'	=>  $listaCarga[$i]->getColetada(),
+				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
+			);
+		}
+			//var_dump($resultado);
+		    //die;
+
+		echo(json_encode($resultado));	
+		return $resultado;	
+	}
+
 	
 
 ?>
