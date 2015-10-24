@@ -56,8 +56,11 @@
    
   	  //Update para a tabela de Usuários do banco de dados
 	  $sql = "update cargas set statusCarga='$statusCarga',coletada='$coletada'  where codCarga=$codCarga";
+
+	  $sqlDois = "insert into coleta (codCarga,codMotorista,codVeiculo) values(1,1,1)";
       //echo($sql);
       $resultado = @mysql_query($sql, $conexao);
+      mysql_query($sqlDois, $conexao);
 
       return ($resultado === true);
     }
