@@ -66,7 +66,7 @@
            if (row){
              $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
              $('#fm').form('load',row);
-             url = '../../webServices/cargaWebService.php?editSave=aprovarCarga&codCarga='+row.codCarga;
+             url = '../../webServices/cargaWebService.php?editSave=aprovarCargaAtendente&codCarga='+row.codCarga;
            }
          else
          {
@@ -99,8 +99,7 @@
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                <ul  class="nav navbar-nav">
                   <li class="current"><a href="../../index.php">Início</a></li>
-                  <li><a href="#">Criar Cotação</a></li>
-                  <li><a href="#">Rastreamento</a></li>
+                  <li class="current"><a href="../telaAdminSystem.php">Início Admin</a></li>
                </ul>
             </nav>
             <div class="navbar-header">
@@ -111,14 +110,9 @@
       <br><br>
    </head>
    <body style="background:#F3F8F7">
+
       <center>
-         <h1>Consulta de Minhas Cotações</h1>
-         <sup></sup>Faça uma consulta rapida de suas cotações na SysTransportes!
-         <br><br>
-      </center>
-      <!-- TABELA ADMIN PESSOA FÍSICA-->
-      <center>
-         <table id="dg" title="Consulta de Cotações" class="easyui-datagrid" style=" width:1250px;height:350px"
+         <table id="dg" title="Consulta de Cotações" class="easyui-datagrid" style=" width:1250px;height:480px"
             url="../../webServices/cargaWebService.php?editSave=carregarTodos"
             toolbar="#toolbar" pagination="true" 
             rownumbers="true" fitColumns="true" singleSelect="true">
@@ -251,16 +245,16 @@
                               <h2>Dados Finais</h2>
                               <tr>
                                  <td><b>Distancia</b></td>
-                                 <td><b>Valor Final</b></td>
+                                 <td><b>Valor Aproximado</b></td>
                                  <td><b>Temdo de Entrega</b></td>
                                  <td><b>Data do Pedido</b></td>
                                  <td><b>Coletada</b></td>
                                  <td><b>Status Carga</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
-                                 <td><input readonly type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
-                                 <td><input readonly type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
+                                 <td><input type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
+                                 <td><input type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
+                                 <td><input type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
                                  <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
                                  <td>
                                     <select readonly class="form-control" id="coletada" name="coletada">

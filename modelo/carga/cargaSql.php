@@ -49,13 +49,33 @@
       $conexao = Conexao::getInstance()->getConexao();     
 	  
 	  //Atributo da tabela usuário
-	  $codCarga = mysql_real_escape_string($usuario->getCodCarga(), $conexao); 
-	  $statusCarga = mysql_real_escape_string($usuario->getStatusCarga(), $conexao);      
-  
-  
+	  $codCarga = mysql_real_escape_string($carga->getCodCarga(), $conexao); 
+	  $statusCarga = mysql_real_escape_string($carga->getStatusCarga(), $conexao);
+	  $coletada = mysql_real_escape_string($carga->getColetada(), $conexao); 
+
+   
   	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update cargas set statusCarga='$statusCarga',  where codCarga=$codCarga";
-      
+	  $sql = "update cargas set statusCarga='$statusCarga',coletada='$coletada'  where codCarga=$codCarga";
+      //echo($sql);
+      $resultado = @mysql_query($sql, $conexao);
+
+      return ($resultado === true);
+    }
+
+    public static function alterarCargaAtendente(Carga $carga) {
+      //Conexão com o banco
+      $conexao = Conexao::getInstance()->getConexao();     
+	  
+	  //Atributo da tabela usuário
+	  $codCarga = mysql_real_escape_string($carga->getCodCarga(), $conexao); 
+	  $statusCarga = mysql_real_escape_string($carga->getStatusCarga(), $conexao);
+	  $frete = mysql_real_escape_string($carga->getFrete(), $conexao);
+	  $distancia = mysql_real_escape_string($carga->getDistancia(), $conexao);
+	  $prazo = mysql_real_escape_string($carga->getPrazo(), $conexao);
+   
+  	  //Update para a tabela de Usuários do banco de dados
+	  $sql = "update cargas set statusCarga='$statusCarga',prazo='$prazo',distancia=$distancia,frete=$frete  where codCarga=$codCarga";
+      echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);
@@ -112,7 +132,7 @@
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
 		
-		$sql = 'select * from cargas where statusCarga = "atendimento"';
+		$sql = 'select * from cargas where statusCarga = "Atendimento"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 

@@ -6,40 +6,38 @@
 	extract ($_SESSION);
 
 
-	/*if ($_GET["editSave"] == "incluirVeiculo"){			
-		//Classe de Usuário
-		$veiculo = new veiculo();	
-
-		//Atributos da classe Usuário/Valores 
-		$veiculo->setPlaca($_REQUEST['placa']); 
-		$veiculo->setCapacidadeKg($_REQUEST['capacidadeKg']); 
-		$veiculo->setCapacidadeM3($_REQUEST['capacidadeM3']); 
-		$veiculo->setAno($_REQUEST['ano']);
-		$veiculo->setTipo($_REQUEST['tipo']);
-		$veiculo->setUf($_REQUEST['uf']); 
-		$veiculo->setCidade($_REQUEST['cidade']);  				
-		
-		if (VeiculoSql::adicionar($veiculo)){
-			echo json_encode(array('success'=>true));
-		
-		}	
-		
-		//echo(json_encode($resultado ));			
-	}*/
 	
-	if ($_GET["editSave"] == "alterarCargaCliente"){	
+	if ($_GET["editSave"] == "aprovarCarga"){	
 		$carga = new Carga();	
 
 		//Atributos da classe Usuário/Valores 
 		$carga->setCodCarga($_REQUEST['codCarga']); 
-		$carga->setStatusCarga($_REQUEST['statusCarga']);
-		
+		$carga->setStatusCarga('Aprovado Cliente');
+		$carga->setColetada('Aprovado');
+
 		if (cargaSql::alterarCargaCliente($carga)){
 			echo json_encode(array('success'=>true));
 		}	
 		
 		//echo(json_encode($resultado ));						
-	}	
+	}
+
+	if ($_GET["editSave"] == "aprovarCargaAtendente"){	
+		$carga = new Carga();	
+
+		//Atributos da classe Usuário/Valores 
+		$carga->setCodCarga($_REQUEST['codCarga']); 
+		$carga->setStatusCarga('Aprovado Atendente');
+		$carga->setDistancia($_REQUEST['distancia']);
+		$carga->setFrete($_REQUEST['frete']); 
+		$carga->setPrazo($_REQUEST['prazo']);  
+
+		if (cargaSql::alterarCargaAtendente($carga)){
+			echo json_encode(array('success'=>true));
+		}	
+		
+		//echo(json_encode($resultado ));						
+	}		
 
 	
 	if ($_GET["editSave"] == "carregarTodos") {
