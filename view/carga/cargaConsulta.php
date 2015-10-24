@@ -104,7 +104,7 @@
             </thead>
          </table>
          <div id="toolbar">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="" title="Alterar Dados do Usuário">Abrir Cotação</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Todos</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Aprovadas</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Atendimento</a>
@@ -116,7 +116,7 @@
       </center>
       <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
       <!-- DIALOG ADMIN PESSOA FÍSICA -->
-      <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:250px;padding:10px 20px"
+      <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1200px;height:600px;padding:10px 20px"
          closed="true" buttons="#dlg-buttons">
          <div class="ftitle"></div>
          <form id="fm" method="post" novalidate>
@@ -155,12 +155,12 @@
                                  <td><b>Cidade</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="(00)0000-0000" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="logradouro" name="" class="form-control" placeholder="Logradouro" tabindex="1"  ></td>
-                                 <td><input readonly  type="text" id="bairro" name="" class="form-control" placeholder="Bairro" tabindex="1"  ></td>
-                                 <td><input readonly  type="text" id="numero" name="" class="form-control" placeholder="Número" tabindex="1"  ></td>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="UF" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="Cidade" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="telefone" name="telefone" class="form-control" placeholder="(00)0000-0000" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="logradouro" name="logradouro" class="form-control" placeholder="Logradouro" tabindex="1"  ></td>
+                                 <td><input readonly  type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro" tabindex="1"  ></td>
+                                 <td><input readonly  type="text" id="numero" name="numero" class="form-control" placeholder="Número" tabindex="1"  ></td>
+                                 <td><input readonly  type="text" id="uf" name="uf" class="form-control" placeholder="UF" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" tabindex="1" ></td>
                               </tr>
                            </table>
                            <table width="100%">
@@ -186,19 +186,19 @@
                                  <td><b>Valor/R$</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly  type="text" id="altura" name="" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input readonly  type="text" id="largura" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input readonly  type="text" id="peso" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input readonly  type="text" id="comprimento" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input readonly  type="text" id="quantidade" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(mascaraInteiro())"></td>
-                                 <td><input readonly  type="text" id="valor" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"  onBlur="focus_Blur(this, 'white');"></td>
+                                 <td><input readonly  type="text" id="altura" name="altura" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input readonly  type="text" id="largura" name="largura" class="form-control" maxlength="14" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input readonly  type="text" id="peso" name="peso" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input readonly  type="text" id="comprimento" name="comprimento" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input readonly  type="text" id="quantidade" name="quantidade" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(mascaraInteiro())"></td>
+                                 <td><input readonly  type="text" id="valor" name="valor" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"  onBlur="focus_Blur(this, 'white');"></td>
                               </tr>
                               <td><b>Natureza da Carga</b></td>
                               <tr>
                               </tr>
                               <tr>
                                  <td>
-                                    <select readonly class="form-control" id="naturezaCarga" name="">
+                                    <select readonly class="form-control" id="naturezaCarga" name="naturezaCarga">
                                        <option value=""> --- Escolha o Tipo --- </option>
                                        <option value="Tipo 1">Tipo 1</option>
                                        <option value="Tipo 2">Tipo 2</option>
@@ -218,24 +218,24 @@
                                  <td><b>Status Carga</b></td>
                               </tr>
                               <tr>
-                                 <td><input  type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
-                                 <td><input type="text" id="frete" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
-                                 <td><input type="text" id="prazo" name="" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
-                                 <td><input type="text" id="dataPedido" name="" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
+                                 <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
+                                 <td><input readonly type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
+                                 <td><input readonly type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
+                                 <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
                                  <td>
-                                    <select class="form-control" id="coletada" name="">
+                                    <select readonly class="form-control" id="coletada" name="coletada">
                                        <option value=""> --- Status Coleta --- </option>
-                                       <option value="1">Aguardando</option>
-                                       <option value="2">Iniciada</option>
-                              <option value="3">Finalizada</option>
+                                       <option value="Aguardando">Aguardando</option>
+                                       <option value="Iniciada">Iniciada</option>
+                              <option value="Finalizada">Finalizada</option>
                                     </select>
                                  </td>
                                  <td>
-                                    <select class="form-control" id="statusCarga" name="">
+                                    <select readonly class="form-control" id="statusCarga" name="statusCarga">
                                        <option value=""> --- Status Carga --- </option>
-                                       <option value="1">Despachada</option>
-                                       <option value="2">Em Transito</option>
-                              <option value="3">Entrege</option>
+                                       <option value="Despachada">Despachada</option>
+                                       <option value="Em Transito">Em Transito</option>
+                              <option value="Entrege">Entrege</option>
                                     </select>
                                  </td>
                               </tr>
@@ -245,8 +245,8 @@
          </form>
       </div>
       <div id="dlg-buttons">
-         <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Salvar</a>
-         <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>
+         <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Aprovar Cotação</a>
+         <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancela Operaçãor</a>
       </div>
       <br><br>
       <!-- FIM DIALOG ADMIN PESSOA FÍSICA -->
