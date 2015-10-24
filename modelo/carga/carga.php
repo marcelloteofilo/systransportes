@@ -16,7 +16,9 @@
   private $telefone;  
   private $logradouro;  
   private $bairro;  
-  private $uf;     
+  private $uf;  
+  private $cidade;
+
   private $numero;
   private $observacao; 
 
@@ -111,14 +113,6 @@
       return $this->comprimento;
     }
 
-    // GET/SET
-  public function setValorCarga($l) {
-      $this->valorCarga = trim($l);
-    }
-    
-    public function getValorCarga() {
-      return $this->valorCarga;
-    }
 
     // GET/SET
   public function setQuantidade($quantidade) {
@@ -172,6 +166,15 @@
     
     public function getUf() {
       return $this->uf;
+    }
+
+    // GET/SET
+  public function setCidade($cidade) {
+      $this->cidade = trim($cidade);
+    }
+    
+    public function getCidade() {
+      return $this->cidade;
     }
 
     // GET/SET

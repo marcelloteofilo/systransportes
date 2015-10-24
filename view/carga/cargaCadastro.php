@@ -420,7 +420,8 @@ if (isset($_POST['cadastrar'])) {
                               <input name="pesquisaDestino" type="hidden" id="txtDestino" class="field" value="Rio de Janeiro" />
                            </table><br>
 
-                           <input class="btn btn-success btn-login-submit" value="Fazer Cotação" type="submit" id="btnCotar">
+                           <input class="btn btn-success btn-login-submit" value="Criar Cotação" type="submit" id="btnCriarCota">
+                           <input class="btn btn-success btn-login-submit" value="Aprovar Cotação" type="submit" id="btnAprovarCota">
                            <input class="btn btn-success btn-login-submit" value="Limpar" type="reset" id="btnLimpar">
                         </form>
                      </div>

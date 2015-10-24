@@ -4,7 +4,7 @@
 
  class CargaSql {  
   
-     public static function adicionar(Carga $carga) {
+     /*public static function adicionar(Carga $carga) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao();     
 	  
@@ -100,56 +100,54 @@
 
       return ($resultado === true);
 
-    }
+    }*/
 	
     public static function carregarLista(Carga $carga) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
-	  //$nomeCliente = mysql_real_escape_string($busca->getNomeCompleto(), $conexao);	        
-
-		/*$rs = mysql_query('select * from usuarios');
-		$result = array();
-		while($row = mysql_fetch_object($rs)){
-			array_push($result, $row);
-		}
-
-		echo json_encode($result);
-		*/		
+	
 		$sql = 'select * from cargas';
+
 		 //if ($busca->getNomeCompleto())  
 			//$sql .= "  where nomeCompleto like '$nomeCliente%'";  	    
-		$resultado = @mysql_query($sql, $conexao);	      
+		$resultado = @mysql_query($sql, $conexao);
+
 		
+
 		if ($resultado) {
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {
-				$carga = new Cargo();
-				$carga->setCodCarga($row["id"]);
-				$carga->setPerfil($row["perfil"]);
-				$carga->setStatus($row["status"]);
-				$carga->setEstado($row["estado"]);
-				$carga->setCidade($row["cidade"]);
-				$carga->setNomeCompleto($row["nomeCompleto"]);
-				$carga->setRazaoSocial($row["razaoSocial"]);
-				$carga->setnomeFantasia($row["nomeFantasia"]);
-				$carga->setTipoEmpresa($row["tipoEmpresa"]);
-				$carga->setRg($row["rg"]);
-				$carga->setOrgaoExpedidor($row["orgaoExpedidor"]);
-				$carga->setCpf($row["cpf"]);
-				$carga->setCnpj($row["cnpj"]);
-				$carga->setEmail($row["email"]);
-				$carga->setTelefone1($row["telefone1"]);
-				$carga->setTelefone2($row["telefone2"]);
+				$carga = new Carga();
+				$carga->setCodCarga($row["codCarga"]);
+
+				$carga->setAltura($row["altura"]);
+				$carga->setLargura($row["largura"]);
+				$carga->setPeso($row["peso"]);
+				$carga->setComprimento($row["comprimento"]);
+				$carga->setQuantidade($row["quantidade"]);
+				$carga->setValor($row["valor"]);
+
+				$carga->setTelefone($row["telefone"]);
 				$carga->setLogradouro($row["logradouro"]);
 				$carga->setBairro($row["bairro"]);
+				$carga->setUf($row["uf"]);
+				$carga->setCidade($row["cidade"]);
 				$carga->setNumero($row["numero"]);
-				$carga->setComplemento($row["complemento"]);
-				$carga->setCep($row["cep"]);
-				$carga->setLogin($row["login"]);
-				$carga->setSenha($row["senha"]);				
-				$retorno[] = $usuario;
+				$carga->setObservacao($row["observacao"]);
+
+				$carga->setNaturezaCarga($row["naturezaCarga"]);
+				$carga->setDataPedido($row["dataPedido"]);
+				$carga->setDistancia($row["distancia"]);
+				$carga->setPrazo($row["prazo"]);
+				$carga->setFrete($row["frete"]);
+
+				$carga->setColetada($row["coletada"]);
+				$carga->setStatusCarga($row["statusCarga"]);
+				
+				$retorno[] = $carga;
          }
         return ($retorno);
+        
       } 
       else
         return null;

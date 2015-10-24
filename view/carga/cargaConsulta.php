@@ -87,8 +87,8 @@
             rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
                <tr>
-                  <th field="origem" width="55">Origem</th>
-                  <th field="destino" width="55">Destino</th>
+                  <!--<th field="origem" width="55">Origem</th>-->
+                  <!--<th field="destino" width="55">Destino</th>-->
                   <th field="altura" width="25">Altura</th>
                   <th field="largura" width="30">Largura</th>
                   <th field="peso" width="20">Peso</th>
@@ -242,7 +242,7 @@
                               </tr>
                            </table>
 
-           
+
          </form>
       </div>
       <div id="dlg-buttons">
