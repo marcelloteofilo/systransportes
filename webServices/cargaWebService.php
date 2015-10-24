@@ -25,41 +25,25 @@
 		}	
 		
 		//echo(json_encode($resultado ));			
-	}
+	}*/
 	
-	if ($_GET["editSave"] == "alterarVeiculo"){	
-		$veiculo = new veiculo();	
+	if ($_GET["editSave"] == "alterarCargaAtendente"){	
+		$carga = new carga();	
 
 		//Atributos da classe Usuário/Valores 
-		$veiculo->setIdVeiculo($_REQUEST['id']); 
-		$veiculo->setPlaca($_REQUEST['placa']); 
-		$veiculo->setCapacidadeKg($_REQUEST['capacidadeKg']); 
-		$veiculo->setCapacidadeM3($_REQUEST['capacidadeM3']); 
-		$veiculo->setAno($_REQUEST['ano']);
-		$veiculo->setTipo($_REQUEST['tipo']);
-		$veiculo->setUf($_REQUEST['uf']); 
-		$veiculo->setCidade($_REQUEST['cidade']);  				
+		$carga->setCodCarga($_REQUEST['codCarga']); 
+		$carga->setDistancia($_REQUEST['distancia']); 
+		$carga->setPrazo($_REQUEST['prazo']); 
+		$carga->setFrete($_REQUEST['frete']); 
+		$carga->setColetada($_REQUEST['coletada']);
+		$carga->setStatusCarga($_REQUEST['statusCarga']);
 		
-		if (VeiculoSql::alterar($veiculo)){
+		if (cargaSql::alterar($carga)){
 			echo json_encode(array('success'=>true));
-	
 		}	
 		
 		//echo(json_encode($resultado ));						
 	}	
-
-	
-	if ($_GET["editSave"] == "deletarVeiculo"){	
-		$veiculo = new veiculo();	
-
-		$veiculo->setIdVeiculo($_REQUEST['id']);  
-
-		if (VeiculoSql::remover($veiculo)){
-			echo json_encode(array('success'=>true));
-			
-		}			
-		//echo( json_encode( $resultado ) );				
-	}*/
 
 	
 	if ($_GET["editSave"] == "carregarTodos") {
@@ -97,9 +81,9 @@
 				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
 			);
 		}
-			//var_dump($resultado);
-		//die;
-		
+			var_dump($resultado);
+		    //die;
+
 		echo( json_encode( $resultado ) );	
 		return $resultado;	
 	}

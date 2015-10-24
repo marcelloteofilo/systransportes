@@ -105,14 +105,10 @@
     public static function carregarLista(Carga $carga) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
-	
-		$sql = 'select * from cargas';
-
-		 //if ($busca->getNomeCompleto())  
-			//$sql .= "  where nomeCompleto like '$nomeCliente%'";  	    
-		$resultado = @mysql_query($sql, $conexao);
-
 		
+		$sql = 'select * from cargas';
+	    
+		$resultado = @mysql_query($sql, $conexao);
 
 		if ($resultado) {
 			$retorno = array();
@@ -147,27 +143,9 @@
 				$retorno[] = $carga;
          }
         return ($retorno);
-        
       } 
       else
         return null;
     }
-
-
-     /*public static function carregarListaPesquisa() {
-        //Conexão com o banco
-        $conexao = Conexao::getInstance()->getConexao();
-        //$cpf = mysql_real_escape_string($usuario->getCpf(), $conexao);
-
-        //$rs = mysql_query('select * from usuarios where cpf=$cpf');
-        $rs = mysql_query('select * from usuarios where cpf=088.673.464-90');
-
-        $resultado = array();
-        while ($row = mysql_fetch_object($rs)) {
-            array_push($resultado, $row);
-        }
-        echo json_encode($resultado);
-    }*/
-
   }
 ?>

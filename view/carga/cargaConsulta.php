@@ -18,7 +18,6 @@
       <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
       <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
       <script type="text/javascript" src="../../js/validacoes.js"></script>
-      <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
       <!-- JS CRUD -->
       <!-- SCRIPT ADMIN -->
       <script type="text/javascript">
@@ -27,9 +26,9 @@
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
            if (row){
-             $('#dlg').dialog('open').dialog('setTitle','Editar Veículo');
+             $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
              $('#fm').form('load',row);
-             url = '../../webServices/veiculoWebService.php?editSave=alterarVeiculo&id='+row.id;
+             url = '../../webServices/cargaWebService.php?editSave=alterarCarga&id='+row.id;
            }
          else
          {
@@ -105,7 +104,7 @@
             </thead>
          </table>
          <div id="toolbar">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Abrir Cotação</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="" title="Alterar Dados do Usuário">Abrir Cotação</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Todos</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Aprovadas</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Atendimento</a>
