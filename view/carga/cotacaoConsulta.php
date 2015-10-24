@@ -23,11 +23,7 @@
       <!-- SCRIPT ADMIN -->
       <script type="text/javascript">
          var url;
-         function newUser(){
-           $('#dlg').dialog('open').dialog('setTitle','Novo Veículo');
-           $('#fm').form('clear');
-           url = '../../webServices/veiculoWebService.php?editSave=incluirVeiculo';
-         }
+         
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
            if (row){
@@ -44,6 +40,7 @@
                });
          }
          }
+         
          function saveUser(){
            $('#fm').form('submit',{
              url: url,
@@ -56,36 +53,6 @@
          
              }
            });
-         }
-         function removeUser(){
-           var row = $('#dg').datagrid('getSelected');
-           if (row){
-             $.messager.confirm('Confirm','Tem certeza que deseja remover o Veículo?',function(r){
-               $('#dg').datagrid('reload');
-         
-               if (r){
-                 $.post('../../webServices/veiculoWebService.php?editSave=deletarVeiculo',{id:row.id},function(result){
-                   /*if (result.success){
-                     
-                     $('#dg').datagrid('reload');  // reload the user data
-                   } else {
-                     $.messager.show({ // show error message
-                       title: 'Error',
-                       msg: result.msg
-                     });
-                   }*/
-                 },'json');
-               }
-             });
-           }
-         else
-         {
-           $.messager.show(
-               {
-                   title: 'Erro!',
-                   msg: 'Selecione item da tabela!!!'//result.msg
-               });
-         }
          }
          
       </script>
@@ -115,7 +82,7 @@
       <!-- TABELA ADMIN PESSOA FÍSICA-->
       <center>
          <table id="dg" title="Consulta de Cotações" class="easyui-datagrid" style=" width:1250px;height:350px"
-            url="../../webServices/veiculoWebService.php?editSave=carregarVeiculo"
+            url="../../webServices/cargaWebService.php?editSave=carregarTodos"
             toolbar="#toolbar" pagination="true" 
             rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
@@ -138,10 +105,10 @@
             </thead>
          </table>
          <div id="toolbar">
-		    <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Abrir Cotação</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Vis. Todos</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Vis. Aprovadas</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Vis. Atendimento</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Abrir Cotação</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Todos</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Aprovadas</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="" title="Alterar Dados do Usuário">Vis. Atendimento</a>
             <!--<label for="pesquisar">Localizar Cotação</label>
                &nbsp;&nbsp;
                <input type="text" id="pesquisar" name="pesquisar" size="30" />  -->    
@@ -156,37 +123,15 @@
          <form id="fm" method="post" novalidate>
             <table>
                <!--Dados Pessoais -->
-               <h2>Dados do Veiculo</h2>
-               <!--Dados Pessoa Física -->
+               <h2>Plano de Viagem</h2>
                <tr>
-                  <td><b>Placa</b></td>
-                  <td><b>CapacidadeKG</b></td>
-                  <td><b>CapacidadeM3</b></td>
-                  <td><b>Ano</b></td>
-               </tr>
-               <tr>
-                  <td><input required="required" class="form-control" type="text" id="placa" name="placa" size="23" style="text-transform:uppercase"  placeholder="Placa" maxlength="8" OnKeyPress="formatar(this, '###-####')"></td>
-                  <td><input required="required" class="form-control" type="text" id="capacidadeKg" name="capacidadeKg" size="23" style="text-transform:uppercase"  placeholder="Cap. Quilogramas" value="0,00" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                  <td><input required="required" class="form-control" type="text" id="capacidadeM3" name="capacidadeM3" size="23" style="text-transform:uppercase"  placeholder="Cap. Metros³" value="0,00" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                  <td><input required="required" class="form-control" type="text" id="ano" name="ano" size="23" style="text-transform:uppercase"  placeholder="Ano" maxlength="4" onkeyup="validar(this,'num');"></td>
-               </tr>
-               <!--Dados Pessoa Jurídica -->
-               <tr>
-                  <td><b>Tipo</b></td>
-                  <td><b>Estado</b></td>
-                  <td><b>Cidade</b></td>
+                  <td><b>Estado de Origem</b></td>
+                  <td><b>Estado de Destino</b></td>
                </tr>
                <tr>
                   <td>
-                     <select required="required" class="form-control" id="tipo" name="tipo">
-                        <option value="">Tipo de Caminhão</option>
-                        <option value="Tipo 1">Tipo 1</option>
-                        <option value="Tipo 2">Tipo 2</option>
-                     </select>
-                  </td>
-                  <td>
-                     <select required="required" class="form-control" id="uf" name="uf">
-                        <option value="">Escolha o seu Estado</option>
+                     <select tabindex="1" class="form-control" id="ufOrigem" onChange="consultaCidades('cidadeOrigem', 'ufOrigem', '0', 'Escolha a Cidade!')">
+                        <option value="">Escolha Estado Origem</option>
                         <option value="PE">PE</option>
                         <option value="AC">AC</option>
                         <option value="AL">AL</option>
@@ -216,7 +161,184 @@
                         <option value="TO">TO</option>
                      </select>
                   </td>
-                  <td><input required="required" class="form-control" type="text" id="cidade" name="cidade" style="text-transform:uppercase" size="23" placeholder="Cidade"></td>
+                  <td>
+                     <select tabindex="1" class="form-control" id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0', 'Escolha a Cidade!')">
+                        <option value="">Escolha Estado Destino</option>
+                        <option value="PE">PE</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AM">AM</option>
+                        <option value="AP">AP</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MG">MG</option>
+                        <option value="MS">MS</option>
+                        <option value="MT">MT</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PI">PI</option>
+                        <option value="PR">PR</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="RS">RS</option>
+                        <option value="SC">SC</option>
+                        <option value="SE">SE</option>
+                        <option value="SP">SP</option>
+                        <option value="TO">TO</option>
+                     </select>
+                  </td>
+               </tr>
+               <tr>
+                  <td><b>Cidade de Origem</b></td>
+                  <td><b>Cidade de Destino</b></td>
+               </tr>
+               <tr>
+                  <td>
+                     <select class="form-control" id="cidadeOrigem" name="cidadeOrigem"  onChange="juntaCidadeUf(); CalculaDistancia();">
+                        <option  value="">Escolha Cidade Origem</option>
+                     </select>
+                  </td>
+                  <td>
+                     <select class="form-control" id="cidadeDestino" name="cidadeDestino"  onChange="juntaCidadeUf(); CalculaDistancia();">
+                        <option  value="">Escolha Cidade Destino</option>
+                     </select>
+                  </td>
+               </tr>
+            </table>
+            <br>
+            <table width="100%">
+               <!--Dados Pessoais -->
+               <h2>Dados da Coleta</h2>
+               <tr>
+                  <td><b>Telefone</b></td>
+                  <td><b>Logradouro</b></td>
+                  <td><b>Bairro</b></td>
+                  <td><b>Número</b></td>
+                  <td><b>Estado</b></td>
+                  <td><b>Cidade</b></td>
+               </tr>
+               <tr>
+                  <td><input type="text" id="telefone" name="" class="form-control" placeholder="(00)0000-0000" tabindex="1"  ></td>
+                  <td><input type="text" id="logradouro" name="" class="form-control" placeholder="Logradouro" tabindex="1"  ></td>
+                  <td><input type="text" id="bairro" name="" class="form-control" placeholder="Bairro" tabindex="1"  ></td>
+                  <td><input type="text" id="numero" name="" class="form-control" placeholder="Número" tabindex="1"  ></td>
+                  <td>
+                     <select tabindex="1" class="form-control" id="estado" onChange="consultaCidades('cidade', 'estado', '0', 'Escolha a Cidade!')">
+                        <option value="">Escolha Estado</option>
+                        <option value="PE">PE</option>
+                        <option value="AC">AC</option>
+                        <option value="AL">AL</option>
+                        <option value="AM">AM</option>
+                        <option value="AP">AP</option>
+                        <option value="BA">BA</option>
+                        <option value="CE">CE</option>
+                        <option value="DF">DF</option>
+                        <option value="ES">ES</option>
+                        <option value="GO">GO</option>
+                        <option value="MA">MA</option>
+                        <option value="MG">MG</option>
+                        <option value="MS">MS</option>
+                        <option value="MT">MT</option>
+                        <option value="PA">PA</option>
+                        <option value="PB">PB</option>
+                        <option value="PI">PI</option>
+                        <option value="PR">PR</option>
+                        <option value="RJ">RJ</option>
+                        <option value="RN">RN</option>
+                        <option value="RO">RO</option>
+                        <option value="RR">RR</option>
+                        <option value="RS">RS</option>
+                        <option value="SC">SC</option>
+                        <option value="SE">SE</option>
+                        <option value="SP">SP</option>
+                        <option value="TO">TO</option>
+                     </select>
+                  </td>
+                  <td>
+                     <select class="form-control" id="cidade" name="cidade"  onChange="juntaCidadeUf(); CalculaDistancia();">
+                        <option  value="">Escolha Cidade</option>
+                     </select>
+                  </td>
+               </tr>
+            </table>
+            <table width="100%">
+               <tr>
+                  <td><b>Observação</b></td>
+               </tr>
+               <tr>
+                  <td><textarea class="form-control"name="observacao"  id="observacao" cols="80" rows="3" ></textarea></td>
+               </tr>
+            </table><br>
+            
+            <table width="100%">
+               <h2>Dados da Carga</h2>
+               <tr>
+                  <td><b>Altura</b></td>
+                  <td><b>Largura</b></td>
+                  <td><b>Peso</b></td>
+                  <td><b>Comprimento</b></td>
+                  <td><b>Qtd.Volumes</b></td>
+                  <td><b>Valor/R$</b></td>
+               </tr>
+               <tr>
+                  <td><input type="text" id="altura" name="" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                  <td><input type="text" id="largura" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                  <td><input type="text" id="peso" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                  <td><input type="text" id="comprimento" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                  <td><input type="text" id="quantidade" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(mascaraInteiro())"></td>
+                  <td><input type="text" id="valor" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"  onBlur="focus_Blur(this, 'white'); CalculaDistancia();"></td>
+               </tr>
+               <td><b>Natureza da Carga</b></td>
+               <tr>
+               </tr>
+               <tr>
+                  <td>
+                     <select class="form-control" id="naturezaCarga" name="">
+                        <option value=""> --- Escolha o Tipo --- </option>
+                        <option value="Tipo 1">Tipo 1</option>
+                        <option value="Tipo 2">Tipo 2</option>
+                     </select>
+                  </td>
+               </tr>
+            </table>
+            <br>
+            <table width="100%">
+               <h2>Dados Finais</h2>
+               <tr>
+                  <td><b>Distancia</b></td>
+                  <td><b>Valor Aproximado</b></td>
+                  <td><b>Temdo de Entrega</b></td>
+                  <td><b>Data do Pedido</b></td>
+                  <td><b>Coletada</b></td>
+                  <td><b>Status Carga</b></td>
+               </tr>
+               <tr>
+                  <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
+                  <td><input readonly type="text" id="frete" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
+                  <td><input readonly type="text" id="prazo" name="" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
+                  <td><input readonly type="text" id="dataPedido" name="" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
+                  <td>
+                     <select class="form-control" id="coletada" name="">
+                        <option value=""> --- Status Coleta --- </option>
+                        <option value="1">Aguardando</option>
+                        <option value="2">Iniciada</option>
+                        <option value="3">Finalizada</option>
+                     </select>
+                  </td>
+                  <td>
+                     <select class="form-control" id="statusCarga" name="">
+                        <option value=""> --- Status Carga --- </option>
+                        <option value="1">Despachada</option>
+                        <option value="2">Em Transito</option>
+                        <option value="3">Entrege</option>
+                     </select>
+                  </td>
                </tr>
             </table>
          </form>
@@ -229,4 +351,3 @@
       <!-- FIM DIALOG ADMIN PESSOA FÍSICA -->
    </body>
 </html>
-

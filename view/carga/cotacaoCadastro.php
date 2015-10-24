@@ -13,6 +13,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
     $logado = $_SESSION['login'];
 }
 ?>
+
 <?php
 require_once '../../modelo/cotacao/cotacaoSql.php';
 

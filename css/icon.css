@@ -40,7 +40,9 @@
 .icon-check-icon{
 	background:url('icons/check-icon.png') no-repeat center center;
 }
-
+.icon-open-file{
+	background:url('icons/open-file-icon.png') no-repeat center center;
+}
 
 
 
