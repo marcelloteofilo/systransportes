@@ -269,7 +269,7 @@ if (isset($_POST['cadastrar'])) {
                                  <td><input type="text" id="bairro" name="" class="form-control" placeholder="Bairro" tabindex="1"  ></td>
                                  <td><input type="text" id="numero" name="" class="form-control" placeholder="Número" tabindex="1"  ></td>
                                  <td>
-                                    <select tabindex="1" class="form-control" id="estado" onChange="consultaCidades('cidade', 'estado', '0', 'Escolha a Cidade!')">
+                                    <select tabindex="1" class="form-control" id="estado">
                                        <option value="">Escolha Estado</option>
                                        <option value="PE">PE</option>
                                        <option value="AC">AC</option>
@@ -300,11 +300,7 @@ if (isset($_POST['cadastrar'])) {
                                        <option value="TO">TO</option>
                                     </select>
                                  </td>
-                                 <td>
-                                    <select class="form-control" id="cidade" name="cidade"  onChange="juntaCidadeUf(); CalculaDistancia();">
-                                       <option  value="">Escolha Cidade</option>
-                                    </select>
-                                 </td>
+                                 <td><input type="text" id="cidade" name="" class="form-control" placeholder="Cidade" tabindex="1"></td>
                               </tr>
                            </table>
                            <table width="100%">
