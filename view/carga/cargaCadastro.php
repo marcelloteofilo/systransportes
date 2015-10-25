@@ -269,7 +269,7 @@ if (isset($_POST['cadastrar'])) {
                                  <td><input type="text" id="bairro" name="" class="form-control" placeholder="Bairro" tabindex="1"  ></td>
                                  <td><input type="text" id="numero" name="" class="form-control" placeholder="Número" tabindex="1"  ></td>
                                  <td>
-                                    <select tabindex="1" class="form-control" id="estado" onChange="consultaCidades('cidade', 'estado', '0', 'Escolha a Cidade!')">
+                                    <select tabindex="1" class="form-control" id="estado">
                                        <option value="">Escolha Estado</option>
                                        <option value="PE">PE</option>
                                        <option value="AC">AC</option>
@@ -300,11 +300,7 @@ if (isset($_POST['cadastrar'])) {
                                        <option value="TO">TO</option>
                                     </select>
                                  </td>
-                                 <td>
-                                    <select class="form-control" id="cidade" name="cidade"  onChange="juntaCidadeUf(); CalculaDistancia();">
-                                       <option  value="">Escolha Cidade</option>
-                                    </select>
-                                 </td>
+                                 <td><input type="text" id="cidade" name="" class="form-control" placeholder="Cidade" tabindex="1"></td>
                               </tr>
                            </table>
                            <table width="100%">
@@ -393,19 +389,17 @@ if (isset($_POST['cadastrar'])) {
                                  <td><input readonly type="text" id="prazo" name="" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
                                  <td><input readonly type="text" id="dataPedido" name="" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
                                  <td>
-                                    <select class="form-control" id="coletada" name="">
-                                       <option value=""> --- Status Coleta --- </option>
-                                       <option value="1">Aguardando</option>
-                                       <option value="2">Iniciada</option>
-									   <option value="3">Finalizada</option>
+                                    <select readonly class="form-control" id="coletada" name="">
+                                       <option value=""> --- Em Processo --- </option>
+                                       <option value="Coletado">Coletado</option>
+                                       <option value="Aprovado">Aprovado</option>
                                     </select>
                                  </td>
                                  <td>
-                                    <select class="form-control" id="statusCarga" name="">
-                                       <option value=""> --- Status Carga --- </option>
-                                       <option value="1">Despachada</option>
-                                       <option value="2">Em Transito</option>
-									   <option value="3">Entrege</option>
+                                    <select readonly class="form-control" id="statusCarga" name="">
+                                       <option value="Atendimento">Atendimento</option>
+                                       <option value="Aprovado Atendente">Aprovado Atendente</option>
+									            <option value="Aprovado Cliente">Aprovado Cliente</option>
                                     </select>
                                  </td>
                               </tr>

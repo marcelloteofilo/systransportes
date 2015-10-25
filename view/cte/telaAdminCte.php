@@ -36,74 +36,36 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
         <!-- SCRIPT ADMIN -->
         <script type="text/javascript">
             var url;
-            function newCTE() {
-                $('#dlg').dialog('open').dialog('setTitle', 'Nova CTE');
-                $('#fm').form('clear');
-                url = '../../webServices/cteWebService.php?editSave=adicionarCte';
-            }
+
             function editCTE() {
-                var row = $('#dg').datagrid('getSelected');
-                if (row) {
-                    $('#dlg').dialog('open').dialog('setTitle', 'Editar CTE');
-                    $('#fm').form('load', row);
-                    url = '../../webServices/cteWebService.php?editSave=alterarCte&id=' + row.id;
+            var row = $('#dg').datagrid('getSelected');
+            if (row){
+                $('#dlg').dialog('open').dialog('setTitle','Editar Veículo');
+                $('#fm').form('load',row);
+                url = '../../webServices/veiculoWebService.php?editSave=alterarVeiculo&id='+row.id;
                 }
-				else
-    {
-        $.messager.show(
+            else {
+            $.messager.show(
             {
                 title: 'Erro!',
                 msg: 'Selecione item da tabela!!!'//result.msg
             });
-    }
+            }
             }
             function saveCTE() {
-                $('#fm').form('submit', {
-                    url: url,
-                    onSubmit: function () {
-                        return $(this).form('validate');
-                    },
-                    success: function (result) {
-                        var result = eval('(' + result + ')');
-                        if (result.success) {
-                            $('#dlg').dialog('close');    // close the dialog
-                            $('#dg').datagrid('reload');  // reload the user data
-                        } else {
-                            $.messager.show({
-                                title: 'Erro',
-                                msg: result.msg
-                            });
-                        }
-                    }
-                });
-            }
-            function removeCTE() {
-                var row = $('#dg').datagrid('getSelected');
-                if (row) {
-                    $.messager.confirm('Confirm', 'Tem certeza que deseja remover o Cte?', function (r) {
-                        if (r) {
-                            $.post('../../webServices/cteWebService.php?editSave=removerCte', {id: row.id}, function (result) {
-                                if (result.success) {
-                                    $('#dg').datagrid('reload');  // reload the user data
-                                } else {
-                                    $.messager.show({// show error message
-                                        title: 'Error',
-                                        msg: result.msg
-                                    });
-                                }
-                            }, 'json');
-                        }
-                    });
-                }
-				else
-    {
-        $.messager.show(
-            {
-                title: 'Erro!',
-                msg: 'Selecione item da tabela!!!'//result.msg
+            $('#fm').form('submit',{
+              url: url,
+                onSubmit: function(){
+                return $(this).form('validate');
+              },
+              success: function(result){
+                  $('#dlg').dialog('close');    // close the dialog
+                  $('#dg').datagrid('reload');  // reload the user data
+
+              }
             });
-    }
             }
+
         </script>
         <!-- FIM SCRIPT ADMIN -->
 
@@ -143,14 +105,8 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
     </table>
 
     <div id="toolbar">
-        <a href="#" class="easyui-linkbutton" iconCls="icon-add" plain="true" onclick="newCTE()" title="Adicionar CTE">Nova CTE</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" class="easyui-linkbutton" iconCls="icon-edit" plain="true" onclick="editCTE()" title="Alterar Dados da CTE">Editar CTE</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <a href="#" class="easyui-linkbutton" iconCls="icon-remove" plain="true" onclick="removeCTE()" title="Remover Dados da CTE">Remover CTE</a>
-        &nbsp;&nbsp;&nbsp;&nbsp;
+        <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editCTE()" title="Alterar Dados da CTE">Abrir CTE</a>
         <label for="pesquisar">Localizar CTE</label>
-        &nbsp;&nbsp;
         <input type="text" id="pesquisar" name="pesquisar" size="30" />
     </div>
 </center>

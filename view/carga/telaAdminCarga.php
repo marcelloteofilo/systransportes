@@ -67,14 +67,18 @@
            if (row){
              $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
              $('#fm').form('load',row);
-             if(statusDaCarga == "Aprovado Atendente"){
-             url = '../../webServices/cargaWebService.php?editSave=aprovarCarga&codCarga='+row.codCarga;
-             }
-             else if(statusDaCarga == "Aprovado Cliente"){
-               alert("Sua cotação já está com status concluído, a mesma só consta para visualização dos dados.");
+             //document.getElementById('prazo').setAttribute('readonly',false);
+             //document.getElementById('distancia').setAttribute('readonly',false);
+             //document.getElementById('prazo').setAttribute('readonly',false);
+
+             if(statusDaCarga == "Atendimento"){
+             url = '../../webServices/cargaWebService.php?editSave=aprovarCargaAtendente&codCarga='+row.codCarga;
              }
              else{
-               alert("Sua cotação ainda esta com um de nossos atendentes, aguarde até que a mesma seja aprovada.");
+               alert("Essa cotação já está com status de ("+statusDaCarga+"), a mesma só consta para visualização dos dados.");
+               //document.getElementById('frete').setAttribute('readonly',true);
+               //document.getElementById('distancia').setAttribute('readonly',true);
+               //document.getElementById('prazo').setAttribute('readonly',true);
              }
            }
          else
@@ -108,8 +112,7 @@
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                <ul  class="nav navbar-nav">
                   <li class="current"><a href="../../index.php">Início</a></li>
-                  <li><a href="cargaCadastro.php">Criar Cotação</a></li>
-                  <li><a href="#">Rastreamento</a></li>
+                  <li class="current"><a href="../telaAdminSystem.php">Início Admin</a></li>
                </ul>
             </nav>
             <div class="navbar-header">
@@ -120,14 +123,9 @@
       <br><br>
    </head>
    <body style="background:#F3F8F7">
+
       <center>
-         <h1>Consulta de Minhas Cotações</h1>
-         <sup></sup>Faça uma consulta rapida de suas cotações na SysTransportes!
-         <br><br>
-      </center>
-      <!-- TABELA ADMIN PESSOA FÍSICA-->
-      <center>
-         <table id="dg" title="Consulta de Cotações" class="easyui-datagrid" style=" width:1250px;height:350px"
+         <table id="dg" title="Consulta de Cotações" class="easyui-datagrid" style=" width:1250px;height:480px"
             url="../../webServices/cargaWebService.php?editSave=carregarTodos"
             toolbar="#toolbar" pagination="true" 
             rownumbers="true" fitColumns="true" singleSelect="true">
@@ -177,10 +175,14 @@
                               <tr>
                                  <td><b>Origem Carga</b></td>
                                  <td><b>Destino Carga</b></td>
+                                 <td><b>Cliente Pessoa Física</b></td>
+                                 <td><b>Cliente Pessoa Jurídica</b></td>
                               </tr>
                               <tr>
                                  <td><input readonly  type="text" id="origem" name="origem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
                                  <td><input readonly  type="text" id="destino" name="destino" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="pessoaFisica" name="pessoaFisica" class="form-control" placeholder="Não é Pessoa Física" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="pessoaJuridica" name="pessoaJuridica" class="form-control" placeholder="Não é Pessoa Jurídica" tabindex="1" ></td>
                               </tr>
                            </table>
                            <br>
@@ -252,16 +254,16 @@
                               <h2>Dados Finais</h2>
                               <tr>
                                  <td><b>Distancia</b></td>
-                                 <td><b>Valor Final</b></td>
+                                 <td><b>Valor do Frete</b></td>
                                  <td><b>Temdo de Entrega</b></td>
                                  <td><b>Data do Pedido</b></td>
                                  <td><b>Coletada</b></td>
                                  <td><b>Status Carga</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
-                                 <td><input readonly type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
-                                 <td><input readonly type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
+                                 <td><input type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
+                                 <td><input type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
+                                 <td><input type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
                                  <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
                                  <td>
                                     <select readonly class="form-control" id="coletada" name="coletada">

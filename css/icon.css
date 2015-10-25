@@ -43,6 +43,23 @@
 .icon-open-file{
 	background:url('icons/open-file-icon.png') no-repeat center center;
 }
+.icon-like-icon{
+	background:url('icons/like-icon.png') no-repeat center center;
+}
+.icon-Customer-service-icon{
+	background:url('icons/Customer-service-icon.png') no-repeat center center;
+}
+.icon-Unit-completed-icon{
+	background:url('icons/Unit-completed-icon.png') no-repeat center center;
+}
+.icon-Stats-icon{
+	background:url('icons/Stats-icon.png') no-repeat center center;
+}
+.icon-invoice-icon{
+	background:url('icons/invoice-icon.png') no-repeat center center;
+}
+
+
 
 
 

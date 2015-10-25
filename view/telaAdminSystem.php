@@ -60,6 +60,7 @@
                     </div>
                 </div>
             </div>
+            
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="offer offer-success">
                     <div class="offer-content">
@@ -71,17 +72,7 @@
                     </div>
                 </div>
             </div>
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="offer  offer-primary">
-                    <div class="offer-content">
-                        <h3 class="lead">
-                            Veiculos
-                        </h3>						
-                        <p>Cads. veiculos SysTransportes</p>
-                        <a class="btn btn-lg btn-block btn-default" href="veiculo/telaAdminVeiculos.php">Acesse</a>	
-                    </div>
-                </div>
-            </div>
+
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="offer offer-info">
                     <div class="offer-content">
@@ -93,25 +84,63 @@
                     </div>
                 </div>
             </div>
+
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="offer offer-warning">
+                <div class="offer  offer-primary">
                     <div class="offer-content">
                         <h3 class="lead">
-                            Rastreamento
-                        </h3>						
-                        <p>Cads. rast. SysTransportes</p>
-                        <a class="btn btn-lg btn-block btn-default" href="rastreamento/telaAdminRastreamento.php">Acesse</a>	
+                            Veiculos
+                        </h3>                       
+                        <p>Cads. veiculos SysTransportes</p>
+                        <a class="btn btn-lg btn-block btn-default" href="veiculo/telaAdminVeiculos.php">Acesse</a> 
                     </div>
                 </div>
             </div>
+            
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="offer offer-new1">
+                    <div class="offer-content">
+                        <h3 class="lead">
+                            Coleta
+                        </h3>						
+                        <p>Cads. Coleta SysTransportes</p>
+                        <a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>	
+                    </div>
+                </div>
+            </div>
+
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="offer offer-new1">
                     <div class="offer-content">
                         <h3 class="lead">
                             CTE's
-                        </h3>						
+                        </h3>                       
                         <p>Cads. CTE's SysTransportes</p>
-                        <a class="btn btn-lg btn-block btn-default" href="cte/telaAdminCte.php">Acesse</a>	
+                        <a class="btn btn-lg btn-block btn-default" href="cte/telaAdminCte.php">Acesse</a>  
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="offer offer-warning">
+                    <div class="offer-content">
+                        <h3 class="lead">
+                            Rastreamento
+                        </h3>                       
+                        <p>Cads. rast. SysTransportes</p>
+                        <a class="btn btn-lg btn-block btn-default" href="rastreamento/telaAdminRastreamento.php">Acesse</a>    
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                <div class="offer offer-new1">
+                    <div class="offer-content">
+                        <h3 class="lead">
+                            Frete
+                        </h3>                       
+                        <p>Cads. Frete SysTransportes</p>
+                        <a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>  
                     </div>
                 </div>
             </div>
