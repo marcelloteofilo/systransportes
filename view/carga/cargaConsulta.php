@@ -133,8 +133,8 @@
             rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
                <tr>
-                  <!--<th field="origem" width="55">Origem</th>-->
-                  <!--<th field="destino" width="55">Destino</th>-->
+                  <th field="origem" width="55">Origem</th>
+                  <th field="destino" width="55">Destino</th>
                   <th field="altura" width="25">Altura</th>
                   <th field="largura" width="30">Largura</th>
                   <th field="peso" width="20">Peso</th>
@@ -177,22 +177,18 @@
                               <tr>
                                  <td><b>Estado de Origem</b></td>
                                  <td><b>Estado de Destino</b></td>
-                                 <td><b>Cliente Pessoa Física</b></td>
                               </tr>
                               <tr>
                                  <td><input readonly  type="text" id="ufOrigem" name="ufOrigem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
                                  <td><input readonly  type="text" id="ufDestino" name="" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="pessoaFisica" name="pessoaFisica" class="form-control" placeholder="Não é Pessoa Física" tabindex="1" ></td>
                               </tr>
                               <tr>
                                  <td><b>Cidade de Origem</b></td>
                                  <td><b>Cidade de Destino</b></td>
-                                 <td><b>Cliente Pessoa Jurídica</b></td>
                               </tr>
                               <tr>
                                  <td><input readonly  type="text" id="cidadeOrigem" name="cidadeOrigem" class="form-control" placeholder="Cidade Origem" tabindex="1" ></td>
                                  <td><input readonly  type="text" id="cidadeDestino" name="" class="form-control" placeholder="Cidade Destino" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="pessoaJuridica" name="pessoaJuridica" class="form-control" placeholder="Não é Pessoa Jurídica" tabindex="1" ></td>
                               </tr>
                            </table>
                            <br>
