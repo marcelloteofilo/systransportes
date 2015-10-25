@@ -32,9 +32,9 @@
       function editUser(){
         var row = $('#dg').datagrid('getSelected');
         if (row){
-          $('#dlg').dialog('open').dialog('setTitle','Editar Veículo');
+          $('#dlg').dialog('open').dialog('setTitle','Editar Coleta');
           $('#fm').form('load',row);
-          url = '../../webServices/veiculoWebService.php?editSave=alterarVeiculo&id='+row.id;//AGUADAR MUDANÇAS
+          url = '../../webServices/coetaWebService.php?editSave=alterarColeta&id='+row.id;//AGUADAR MUDANÇAS
         }
 		else
     {
