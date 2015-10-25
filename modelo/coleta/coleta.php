@@ -4,17 +4,20 @@
 	require_once("/../veiculo/veiculo.php");  
 	
   class Coleta {
-    private $id;
-	private $emissao;  	
-	private $objRemetente;  	
-	private $objDestinatario;  	
-	private $objMotorista;  	
-	private $objCotacao;  	
-	private $objVeiculo;  	
-	private $dataAgendada;  	
-	private $horaAgendada;  	
-	private $obs;  	
-	private $status;  	
+    private $id;  
+    private $codCarga;
+	private $codMotorista;  	
+	private $codVeiculo;  
+	private $data;   
+	private $hora;   
+	private $statusCarga;  	
+	private $telefone;  	 
+	private $logradouro;   
+	private $bairro; 
+	private $numero;   
+	private $estado;  	
+	private $cidade;
+	private $observacao;  	  	
             
     public function setId($l) {
       $this->id = trim($l);
@@ -23,15 +26,122 @@
     public function getId() {
       return $this->id;
     }	
-           
-    public function setEmissao($l) {
-      $this->emissao = trim($l);
+
+
+    public function setCodCarga($codCarga) {
+		   $this->codCarga = trim($codCarga);
+	}
+	
+	public function CodCarga() {     //da uma olhada depois
+		if($this->codCarga == null){
+			$this->codCarga = new Cotacao();
+		}		
+		return $this->codCarga;
+	}
+
+    public function setCodMotorista($codMotorista) {
+		   $this->codMotorista = trim($codMotorista);
+	}
+	
+	public function CodMotorista() {     //da uma olhada depois
+		if($this->codMotorista == null){
+			$this->codMotorista = new Usuario();
+		}		
+		return $this->codMotorista;
+	}
+
+	 public function setCodVeiculo($codVeiculo) {
+		   $this->codVeiculo = trim($codVeiculo);
+	}
+	
+	public function CodVeiculo() {     //da uma olhada depois
+		if($this->codVeiculo == null){
+			$this->codVeiculo = new Veiculo();
+		}		
+		return $this->codVeiculo;
+	}
+
+	public function setData($data) {
+      $this->data = trim($data);
     }
     
-    public function getEmissao() {
-      return $this->emissao;
+    public function getData() {
+      return $this->data;
     }	
-	
+
+    public function setHora($hora) {
+      $this->hora = trim($hora);
+    }
+    
+    public function getHora() {
+      return $this->hora;
+    }	
+
+    public function setStatusCarga($statusCarga) {
+      $this->statusCarga = trim($statusCarga);
+    }
+    
+    public function getStatusCarga() {
+      return $this->statusCarga;
+    }	
+
+    public function setTelefone($telefone) {
+      $this->telefone = trim($telefone);
+    }
+    
+    public function getTelefone() {
+      return $this->telefone;
+    }	
+
+    public function setLogradouro($logradouro) {
+      $this->logradouro = trim($logradouro);
+    }
+    
+    public function getLogradouro() {
+      return $this->logradouro;
+    }
+
+    public function setBairro($bairro) {
+      $this->bairro = trim($bairro);
+    }
+    
+    public function getBairro() {
+      return $this->bairro;
+    }
+
+    public function setNumero($numero) {
+      $this->numero = trim($numero);
+    }
+    
+    public function getNumero() {
+      return $this->numero;
+    }
+
+    public function setEstado($estado) {
+      $this->estado = trim($estado);
+    }
+    
+    public function getEstado() {
+      return $this->estado;
+    }
+
+    public function setCidade($cidade) {
+      $this->cidade = trim($cidade);
+    }
+    
+    public function getCidade() {
+      return $this->cidade;
+    }
+
+    public function setObservacao($observacao) {
+      $this->observacao = trim($observacao);
+    }
+    
+    public function getObservacao() {
+      return $this->observacao;
+    }
+
+	/*
 	public function setObjRemetente($objRemetente) {
 		   $this->objRemetente = trim($objRemetente);
 	}
@@ -121,9 +231,6 @@
     public function getStatus() {
       return $this->status;
     }	
-	
-	
-
-    
+	*/  
   }
 ?>
