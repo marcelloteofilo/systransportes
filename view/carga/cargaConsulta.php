@@ -62,11 +62,20 @@
 
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
+           var statusDaCarga = row.statusCarga;
            //alert(row.codCarga);
            if (row){
              $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
              $('#fm').form('load',row);
+             if(statusDaCarga == "Aprovado Atendente"){
              url = '../../webServices/cargaWebService.php?editSave=aprovarCarga&codCarga='+row.codCarga;
+             }
+             else if(statusDaCarga == "Aprovado Cliente"){
+               alert("Sua cotação já está com status concluído, a mesma só consta para visualização dos dados.");
+             }
+             else{
+               alert("Sua cotação ainda esta com um de nossos atendentes, aguarde até que a mesma seja aprovada.");
+             }
            }
          else
          {
@@ -144,7 +153,7 @@
          <div id="toolbar">
             <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">tendimento</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">Atendimento</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
             
@@ -168,18 +177,22 @@
                               <tr>
                                  <td><b>Estado de Origem</b></td>
                                  <td><b>Estado de Destino</b></td>
+                                 <td><b>Cliente Pessoa Física</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="ufOrigem" name="ufOrigem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="ufDestino" name="" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="pessoaFisica" name="pessoaFisica" class="form-control" placeholder="Não é Pessoa Física" tabindex="1" ></td>
                               </tr>
                               <tr>
                                  <td><b>Cidade de Origem</b></td>
                                  <td><b>Cidade de Destino</b></td>
+                                 <td><b>Cliente Pessoa Jurídica</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="Cidade Origem" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="Cidade Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="cidadeOrigem" name="cidadeOrigem" class="form-control" placeholder="Cidade Origem" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="cidadeDestino" name="" class="form-control" placeholder="Cidade Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="pessoaJuridica" name="pessoaJuridica" class="form-control" placeholder="Não é Pessoa Jurídica" tabindex="1" ></td>
                               </tr>
                            </table>
                            <br>

@@ -31,7 +31,7 @@
 		$carga->setDistancia($_REQUEST['distancia']);
 		$carga->setFrete($_REQUEST['frete']); 
 		$carga->setPrazo($_REQUEST['prazo']);  
-
+		
 		if (cargaSql::alterarCargaAtendente($carga)){
 			echo json_encode(array('success'=>true));
 		}	

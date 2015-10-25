@@ -62,11 +62,24 @@
 
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
+           var statusDaCarga = row.statusCarga;
            //alert(row.codCarga);
            if (row){
              $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
              $('#fm').form('load',row);
+             //document.getElementById('prazo').setAttribute('readonly',false);
+             //document.getElementById('distancia').setAttribute('readonly',false);
+             //document.getElementById('prazo').setAttribute('readonly',false);
+
+             if(statusDaCarga == "Atendimento"){
              url = '../../webServices/cargaWebService.php?editSave=aprovarCargaAtendente&codCarga='+row.codCarga;
+             }
+             else{
+               alert("Essa cotação já está com status de ("+statusDaCarga+"), a mesma só consta para visualização dos dados.");
+               //document.getElementById('frete').setAttribute('readonly',true);
+               //document.getElementById('distancia').setAttribute('readonly',true);
+               //document.getElementById('prazo').setAttribute('readonly',true);
+             }
            }
          else
          {
@@ -118,8 +131,8 @@
             rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
                <tr>
-                  <!--<th field="origem" width="55">Origem</th>-->
-                  <!--<th field="destino" width="55">Destino</th>-->
+                  <th field="origem" width="55">Origem</th>
+                  <th field="destino" width="55">Destino</th>
                   <th field="altura" width="25">Altura</th>
                   <th field="largura" width="30">Largura</th>
                   <th field="peso" width="20">Peso</th>
@@ -138,7 +151,7 @@
          <div id="toolbar">
             <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">tendimento</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">Atendimento</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
             
@@ -162,18 +175,22 @@
                               <tr>
                                  <td><b>Estado de Origem</b></td>
                                  <td><b>Estado de Destino</b></td>
+                                 <td><b>Cliente Pessoa Física</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="ufOrigem" name="ufOrigem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="ufDestino" name="" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="pessoaFisica" name="pessoaFisica" class="form-control" placeholder="Não é Pessoa Física" tabindex="1" ></td>
                               </tr>
                               <tr>
                                  <td><b>Cidade de Origem</b></td>
                                  <td><b>Cidade de Destino</b></td>
+                                 <td><b>Cliente Pessoa Jurídica</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="Cidade Origem" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="telefone" name="" class="form-control" placeholder="Cidade Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="cidadeOrigem" name="cidadeOrigem" class="form-control" placeholder="Cidade Origem" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="cidadeDestino" name="" class="form-control" placeholder="Cidade Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="pessoaJuridica" name="pessoaJuridica" class="form-control" placeholder="Não é Pessoa Jurídica" tabindex="1" ></td>
                               </tr>
                            </table>
                            <br>
@@ -245,7 +262,7 @@
                               <h2>Dados Finais</h2>
                               <tr>
                                  <td><b>Distancia</b></td>
-                                 <td><b>Valor Aproximado</b></td>
+                                 <td><b>Valor do Frete</b></td>
                                  <td><b>Temdo de Entrega</b></td>
                                  <td><b>Data do Pedido</b></td>
                                  <td><b>Coletada</b></td>
