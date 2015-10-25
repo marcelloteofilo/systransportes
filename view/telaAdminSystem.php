@@ -121,7 +121,7 @@
                 </div>
             </div>
 
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+            <!--<div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="offer offer-warning">
                     <div class="offer-content">
                         <h3 class="lead">
@@ -131,7 +131,7 @@
                         <a class="btn btn-lg btn-block btn-default" href="rastreamento/telaAdminRastreamento.php">Acesse</a>    
                     </div>
                 </div>
-            </div>
+            </div>-->
 
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="offer offer-new1">
@@ -140,7 +140,7 @@
                             Frete
                         </h3>                       
                         <p>Cads. Frete SysTransportes</p>
-                        <a class="btn btn-lg btn-block btn-default" href="#">Acesse</a>  
+                        <a class="btn btn-lg btn-block btn-default" href="frete/telaAdminFrete.php">Acesse</a>  
                     </div>
                 </div>
             </div>
