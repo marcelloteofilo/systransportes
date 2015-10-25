@@ -111,7 +111,15 @@ INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo;';
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
 		
-		$sql = 'select * from cargas where statusCarga = "Atendimento"';
+$sql = 'select cg.*,
+cidOrigem.descricao as origem,cidDestino.descricao as destino,
+clientePF.nomeCompleto as pessoaFisicaNome,clientePJ.razaoSocial as pessoaJuridicaNome 
+from cargas as cg
+INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
+INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
+INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
+INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
+where statusCarga = "Atendimento"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -120,6 +128,12 @@ INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo;';
 			while ($row = mysql_fetch_array($resultado)) {
 				$carga = new Carga();
 				$carga->setCodCarga($row["codCarga"]);
+
+				$carga->setObjCidadeOrigem($row["origem"]);
+				$carga->setObjCidadeDestino($row["destino"]);
+
+				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
+				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
 
 				$carga->setAltura($row["altura"]);
 				$carga->setLargura($row["largura"]);
@@ -157,7 +171,15 @@ INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo;';
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
 		
-		$sql = 'select * from cargas where statusCarga = "Aprovado Atendente"';
+		$sql = 'select cg.*,
+cidOrigem.descricao as origem,cidDestino.descricao as destino,
+clientePF.nomeCompleto as pessoaFisicaNome,clientePJ.razaoSocial as pessoaJuridicaNome 
+from cargas as cg
+INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
+INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
+INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
+INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
+where statusCarga = "Aprovado Atendente"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -166,6 +188,12 @@ INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo;';
 			while ($row = mysql_fetch_array($resultado)) {
 				$carga = new Carga();
 				$carga->setCodCarga($row["codCarga"]);
+
+				$carga->setObjCidadeOrigem($row["origem"]);
+				$carga->setObjCidadeDestino($row["destino"]);
+
+				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
+				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
 
 				$carga->setAltura($row["altura"]);
 				$carga->setLargura($row["largura"]);
@@ -203,7 +231,15 @@ INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo;';
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
 		
-		$sql = 'select * from cargas where statusCarga = "Aprovado Cliente"';
+		$sql = 'select cg.*,
+cidOrigem.descricao as origem,cidDestino.descricao as destino,
+clientePF.nomeCompleto as pessoaFisicaNome,clientePJ.razaoSocial as pessoaJuridicaNome 
+from cargas as cg
+INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
+INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
+INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
+INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo 
+where statusCarga = "Aprovado Cliente"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -212,6 +248,12 @@ INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo;';
 			while ($row = mysql_fetch_array($resultado)) {
 				$carga = new Carga();
 				$carga->setCodCarga($row["codCarga"]);
+
+				$carga->setObjCidadeOrigem($row["origem"]);
+				$carga->setObjCidadeDestino($row["destino"]);
+
+				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
+				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
 
 				$carga->setAltura($row["altura"]);
 				$carga->setLargura($row["largura"]);

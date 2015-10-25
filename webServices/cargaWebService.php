@@ -99,7 +99,10 @@
 			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
 
 			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),					
+				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
+
+				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
+				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),					
 
 				'altura'	=>  $listaCarga[$i]->getAltura(),					
 				'largura'	=>   $listaCarga[$i]->getLargura(),				
@@ -144,7 +147,10 @@
 			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
 
 			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),						
+				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
+
+				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
+				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),						
 
 				'altura'	=>  $listaCarga[$i]->getAltura(),					
 				'largura'	=>   $listaCarga[$i]->getLargura(),				
@@ -189,7 +195,10 @@
 			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
 
 				'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),	
+				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
+
+				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
+				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),	
 
 				'altura'	=>  $listaCarga[$i]->getAltura(),					
 				'largura'	=>   $listaCarga[$i]->getLargura(),				
