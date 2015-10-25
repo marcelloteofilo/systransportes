@@ -173,23 +173,15 @@
                               <!--Dados Pessoais -->
                               <h2>Plano de Viagem / Dados Cliente</h2>
                               <tr>
-                                 <td><b>Estado de Origem</b></td>
-                                 <td><b>Estado de Destino</b></td>
+                                 <td><b>Origem Carga</b></td>
+                                 <td><b>Destino Carga</b></td>
                                  <td><b>Cliente Pessoa Física</b></td>
-                              </tr>
-                              <tr>
-                                 <td><input readonly  type="text" id="ufOrigem" name="ufOrigem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="ufDestino" name="" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="pessoaFisica" name="pessoaFisica" class="form-control" placeholder="Não é Pessoa Física" tabindex="1" ></td>
-                              </tr>
-                              <tr>
-                                 <td><b>Cidade de Origem</b></td>
-                                 <td><b>Cidade de Destino</b></td>
                                  <td><b>Cliente Pessoa Jurídica</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly  type="text" id="cidadeOrigem" name="cidadeOrigem" class="form-control" placeholder="Cidade Origem" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="cidadeDestino" name="" class="form-control" placeholder="Cidade Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="origem" name="origem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="destino" name="destino" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="pessoaFisica" name="pessoaFisica" class="form-control" placeholder="Não é Pessoa Física" tabindex="1" ></td>
                                  <td><input readonly  type="text" id="pessoaJuridica" name="pessoaJuridica" class="form-control" placeholder="Não é Pessoa Jurídica" tabindex="1" ></td>
                               </tr>
                            </table>

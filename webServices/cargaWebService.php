@@ -48,7 +48,13 @@
 		
 		for ($i=0; $i<count($listaCarga); $i++ ){											
 			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
+			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
+
+			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
+				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),		
+
+				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
+				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),					
 
 				'altura'	=>  $listaCarga[$i]->getAltura(),					
 				'largura'	=>   $listaCarga[$i]->getLargura(),				
@@ -90,7 +96,10 @@
 		
 		for ($i=0; $i<count($listaCarga); $i++ ){											
 			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
+			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
+
+			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
+				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),					
 
 				'altura'	=>  $listaCarga[$i]->getAltura(),					
 				'largura'	=>   $listaCarga[$i]->getLargura(),				
@@ -132,7 +141,10 @@
 		
 		for ($i=0; $i<count($listaCarga); $i++ ){											
 			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
+			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
+
+			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
+				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),						
 
 				'altura'	=>  $listaCarga[$i]->getAltura(),					
 				'largura'	=>   $listaCarga[$i]->getLargura(),				
@@ -175,6 +187,9 @@
 		for ($i=0; $i<count($listaCarga); $i++ ){											
 			$resultado[] = array(
 			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
+
+				'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
+				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),	
 
 				'altura'	=>  $listaCarga[$i]->getAltura(),					
 				'largura'	=>   $listaCarga[$i]->getLargura(),				

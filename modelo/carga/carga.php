@@ -31,6 +31,9 @@
 
   private $statusCarga;
 
+  private $pessoaFisicaNome;
+  private $pessoaJuridicaNome;
+
    
   //Id Usuário     
   public function setCodCarga($codCarga) {
@@ -257,6 +260,25 @@
     public function getStatusCarga() {
       return $this->statusCarga;
     }
+
+    //GET/SET     
+  public function setPessoaFisicaNome($pessoaFisicaNome) {
+    $this->pessoaFisicaNome = trim($pessoaFisicaNome);
+  }
+    
+  public function getPessoaFisicaNome() {
+    return $this->pessoaFisicaNome;
+  }
+
+  //GET/SET     
+  public function setPessoaJuridicaNome($pessoaJuridicaNome) {
+    $this->pessoaJuridicaNome = trim($pessoaJuridicaNome);
+  }
+    
+  public function getPessoaJuridicaNome() {
+    return $this->pessoaJuridicaNome;
+  }
+
 
   }
 ?>

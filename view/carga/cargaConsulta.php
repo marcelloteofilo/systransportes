@@ -108,7 +108,7 @@
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                <ul  class="nav navbar-nav">
                   <li class="current"><a href="../../index.php">Início</a></li>
-                  <li><a href="#">Criar Cotação</a></li>
+                  <li><a href="cargaCadastro.php">Criar Cotação</a></li>
                   <li><a href="#">Rastreamento</a></li>
                </ul>
             </nav>
@@ -175,20 +175,12 @@
                               <!--Dados Pessoais -->
                               <h2>Plano de Viagem / Dados Cliente</h2>
                               <tr>
-                                 <td><b>Estado de Origem</b></td>
-                                 <td><b>Estado de Destino</b></td>
+                                 <td><b>Origem Carga</b></td>
+                                 <td><b>Destino Carga</b></td>
                               </tr>
                               <tr>
-                                 <td><input readonly  type="text" id="ufOrigem" name="ufOrigem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="ufDestino" name="" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
-                              </tr>
-                              <tr>
-                                 <td><b>Cidade de Origem</b></td>
-                                 <td><b>Cidade de Destino</b></td>
-                              </tr>
-                              <tr>
-                                 <td><input readonly  type="text" id="cidadeOrigem" name="cidadeOrigem" class="form-control" placeholder="Cidade Origem" tabindex="1" ></td>
-                                 <td><input readonly  type="text" id="cidadeDestino" name="" class="form-control" placeholder="Cidade Destino" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="origem" name="origem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
+                                 <td><input readonly  type="text" id="destino" name="destino" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
                               </tr>
                            </table>
                            <br>

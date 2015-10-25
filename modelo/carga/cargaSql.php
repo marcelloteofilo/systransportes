@@ -4,45 +4,6 @@
 
  class CargaSql {  
   
-     /*public static function adicionar(Carga $carga) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao();     
-	  
-	  //Atributo da tabela usuário
-	  $idPerfil = mysql_real_escape_string($usuario->getPerfil(), $conexao);      
-	  $idStatus = mysql_real_escape_string($usuario->getStatus(), $conexao);      
-	  $nomeCompleto = mysql_real_escape_string($usuario->getNomeCompleto(), $conexao);      
-	  $razaoSocial = mysql_real_escape_string($usuario->getRazaoSocial(), $conexao);      
-	  $nomeFantasia = mysql_real_escape_string($usuario->getnomeFantasia(), $conexao);      
-	  $tipoEmpresa = mysql_real_escape_string($usuario->getTipoEmpresa(), $conexao);     
-	  $rg = mysql_real_escape_string($usuario->getRg(), $conexao);      
-	  $orgaoExpedidor = mysql_real_escape_string($usuario->getOrgaoExpedidor(), $conexao);
-	  $cpf = mysql_real_escape_string($usuario->getCpf(), $conexao);
-	  $cnpj = mysql_real_escape_string($usuario->getCnpj(), $conexao);
-
-	  $email = mysql_real_escape_string($usuario->getEmail(), $conexao);      
-	  $telefone1 = mysql_real_escape_string($usuario->getTelefone1(), $conexao);     
-	  $telefone2 = mysql_real_escape_string($usuario->getTelefone2(), $conexao); 
-
-	  $logradouro = mysql_real_escape_string($usuario->getLogradouro(), $conexao);     
-	  $bairro = mysql_real_escape_string($usuario->getBairro(), $conexao);
-	  $numero = mysql_real_escape_string($usuario->getNumero(), $conexao);
-	  $complemento = mysql_real_escape_string($usuario->getComplemento(), $conexao);
-	  $cep = mysql_real_escape_string($usuario->getCep(), $conexao);  
-	  $estado = mysql_real_escape_string($usuario->getEstado(), $conexao); 
-	  $cidade = mysql_real_escape_string($usuario->getCidade(), $conexao); 
-	  //$codCidade = mysql_real_escape_string($usuario->getCodCidade(), $conexao);
-
-	  //Login e senha do usuário    
-	  $login = mysql_real_escape_string($usuario->getLogin(), $conexao);     
-	  $senha = mysql_real_escape_string($usuario->getSenha(), $conexao);    
-  
-  	  //Insert para a tabela de Usuários do banco de dados
-	  $sql = "insert into usuarios (status ,perfil, nomeCompleto, razaoSocial, nomeFantasia, tipoEmpresa, rg, orgaoExpedidor, cpf, cnpj, email, telefone1, telefone2, logradouro, bairro, numero, complemento, cep, estado, cidade, login, senha) values ('$idStatus', '$idPerfil', '$nomeCompleto', '$razaoSocial', '$nomeFantasia', '$tipoEmpresa', '$rg', '$orgaoExpedidor', '$cpf','$cnpj', '$email', '$telefone1', '$telefone2', '$logradouro', '$bairro', '$numero', '$complemento', '$cep','$estado', '$cidade', '$login', '$senha')";	  
-      $resultado = @mysql_query($sql, $conexao);
-
-      return ($resultado === true);
-    }*/
 
      public static function alterarCargaCliente(Carga $carga) {
       //Conexão com o banco
@@ -79,7 +40,7 @@
 	  $prazo = mysql_real_escape_string($carga->getPrazo(), $conexao);
    
   	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update cargas set statusCarga='$statusCarga',prazo='$prazo',distancia=$distancia,frete=$frete  where codCarga=$codCarga";
+	  $sql = "update cargas set statusCarga='$statusCarga',prazo='$prazo',distancia=$distancia,frete=$frete where codCarga=$codCarga";
       echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
@@ -91,7 +52,14 @@
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
 		
-		$sql = 'select * from cargas';
+		$sql = 'select cg.*,
+cidOrigem.descricao as origem,cidDestino.descricao as destino,
+clientePF.nomeCompleto as pessoaFisicaNome,clientePJ.razaoSocial as pessoaJuridicaNome 
+from cargas as cg
+INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
+INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
+INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
+INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo;';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -100,6 +68,12 @@
 			while ($row = mysql_fetch_array($resultado)) {
 				$carga = new Carga();
 				$carga->setCodCarga($row["codCarga"]);
+
+				$carga->setObjCidadeOrigem($row["origem"]);
+				$carga->setObjCidadeDestino($row["destino"]);
+
+				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
+				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
 
 				$carga->setAltura($row["altura"]);
 				$carga->setLargura($row["largura"]);
