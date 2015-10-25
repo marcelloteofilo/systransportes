@@ -1,3 +1,14 @@
+<?php
+   session_start();
+   if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) {
+       session_destroy();
+       unset($_SESSION['login']);
+       unset($_SESSION['senha']);
+       header('location: ../usuario/login.php#login');
+   } else {
+       $logado = $_SESSION['login'];
+   }
+   ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
    <head>
@@ -111,8 +122,8 @@
          <div class="container">
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                <ul  class="nav navbar-nav">
-                  <li class="current"><a href="../../index.php">Início</a></li>
                   <li class="current"><a href="../telaAdminSystem.php">Início Admin</a></li>
+                  <li><a href="#"><?php echo "Usuario: ".$logado;?></a></li>
                </ul>
             </nav>
             <div class="navbar-header">

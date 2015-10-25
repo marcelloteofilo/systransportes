@@ -68,7 +68,7 @@
                             Cotações
                         </h3>						
                         <p>Cads. cotações SysTransportes</p>
-                        <a class="btn btn-lg btn-block btn-default" href="cotacao/telaAdminCotacao.php">Acesse</a>	
+                        <a class="btn btn-lg btn-block btn-default" href="carga/telaAdminCarga.php">Acesse</a>	
                     </div>
                 </div>
             </div>
