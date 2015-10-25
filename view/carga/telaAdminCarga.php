@@ -150,10 +150,10 @@
          </table>
          <div id="toolbar">
             <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">Atendimento</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-search-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-Stats-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-Customer-service-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">Atendimento</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-Unit-completed-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
             
             <!--<label for="pesquisar">Busca Avançada</label>
           
