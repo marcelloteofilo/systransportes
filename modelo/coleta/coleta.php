@@ -4,7 +4,8 @@
 	require_once("/../veiculo/veiculo.php");  
 	
   class Coleta {
-
+ 
+ 
   private $codColeta;  
   private $codCarga;
 	private $codMotorista;  	
