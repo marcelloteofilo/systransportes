@@ -18,7 +18,7 @@
     <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
     <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
     <script type="text/javascript" src="../../js/validacoes.js"></script>
-	<script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
+    <script type="text/javascript" src="../../js/scriptsBuscas.js"></script>
     <!-- JS CRUD -->
 
     <!-- SCRIPT ADMIN -->
@@ -110,7 +110,7 @@
           <th field="codVeiculo" width="20">Veiculo</th>
           <th field="data" width="30">Data da coleta</th>
           <th field="hora" width="30">Hora da Coleta</th>
-          <th field="statusCarga" width="30">Status da Carga</th>
+          <th field="coletada" width="30">Status da Coleta</th>
           <th field="telefone" width="20">Telefone</th>
           <th field="logradouro" width="30">Logradouro</th>
           <th field="bairro" width="30">Bairro</th>
@@ -137,7 +137,7 @@
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
 
     <!-- DIALOG ADMIN PESSOA FÍSICA -->
-    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:250px;padding:10px 20px"
+    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:400px;padding:10px 20px"
       closed="true" buttons="#dlg-buttons">
       <div class="ftitle"></div>
       <form id="fm" method="post" novalidate>
@@ -154,6 +154,9 @@
             <td><b>Hora da Coleta</b></td>
             <td><b>Status da Coleta</b></td>
             <td><b>Telefone da Coleta</b></td>
+            <td><b>Motorista</b></td>
+            <td><b>Veiculo</b></td>
+
           </tr>
 
           <tr>
@@ -304,6 +307,16 @@
               style="text-transform:uppercase"  
               placeholder="Observações">
             </td>
+            <!--<td>
+                     <select class="form-control" id="motorista" name="motorista" onclick="consultaMotorista()">
+                        <option value="2">MOTORISTA</option>
+                     </select>
+                  </td>
+                  <td>
+                     <select class="form-control" id="veiculo" name="veiculo" onclick="consultaVeiculo()">
+                        <option value="">VEICULO</option>
+                     </select>
+                  </td>-->
           </tr> 
 
 

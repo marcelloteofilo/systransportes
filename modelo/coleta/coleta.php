@@ -35,7 +35,7 @@
 		   $this->codCarga = trim($codCarga);
 	}
 	
-	public function CodCarga() {     //da uma olhada depois
+	public function getCodCarga() {     //da uma olhada depois
 		if($this->codCarga == null){
 			$this->codCarga = new Carga();
 		}		
@@ -46,7 +46,7 @@
 		   $this->codMotorista = trim($codMotorista);
 	}
 	
-	public function CodMotorista() {     //da uma olhada depois
+	public function getCodMotorista() {     //da uma olhada depois
 		if($this->codMotorista == null){
 			$this->codMotorista = new Usuario();
 		}		
@@ -57,7 +57,7 @@
 		   $this->codVeiculo = trim($codVeiculo);
 	}
 	
-	public function CodVeiculo() {     //da uma olhada depois
+	public function getCodVeiculo() {     //da uma olhada depois
 		if($this->codVeiculo == null){
 			$this->codVeiculo = new Veiculo();
 		}		

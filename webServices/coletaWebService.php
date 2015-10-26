@@ -5,7 +5,7 @@
 	extract ($_REQUEST);
 	extract ($_SESSION);	
 
-	if ($_GET["editSave"] == "alterarColeta"){	
+	/*if ($_GET["editSave"] == "alterarColeta"){	
 		$coleta = new Coleta();	
 
 		//Atributos da classe Usuário/Valores 
@@ -26,14 +26,11 @@
 
 		
 		if (ColetaSql::alterar($coleta)){
-			echo json_encode(array('success'=>true));
-			/*$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);	*/		
+			echo json_encode(array('success'=>true));	
 		}	
 		
 		//echo(json_encode($resultado ));						
-	}
+	}*/
 
 	if ($_GET["editSave"] == "carregarColeta") {
 
@@ -41,24 +38,22 @@
 
 		$listaColeta = coletaSql::carregarLista($coleta);
 		
-		for ($i=0; $i<count($listaVeiculo); $i++ ){											
+		for ($i=0; $i<count($listaColeta); $i++ ){											
 			$resultado[] = array(
-			    'id'	=>  $listaColeta[$i]->getIdColeta(),					
+			    'codColeta'	=>  $listaColeta[$i]->getCodColeta(),					
 				'codCarga'	=>  $listaColeta[$i]->getCodCarga(),					
 				'codMotorista'	=>   $listaColeta[$i]->getCodMotorista(),				
 				'codVeiculo'	=>  $listaColeta[$i]->getCodVeiculo(),				
 				'data'	=>   $listaColeta[$i]->getData(),				
 				'hora'	=>  $listaColeta[$i]->getHora(),
-				'statusCarga'	=>  $listaColeta[$i]->getStatusCarga(),
+				'coletada'	=>  $listaColeta[$i]->getColetada(),
 				'telefone'	=>  $listaColeta[$i]->getTelefone(),					
 				'logradouro'	=>  $listaColeta[$i]->getLogradouro(),					
 				'bairro'	=>  $listaColeta[$i]->getBairro(),					
 				'numero'	=>  $listaColeta[$i]->getNumero(),					
 				'estado'	=>  $listaColeta[$i]->getEstado(),					
 				'cidade'	=>  $listaColeta[$i]->getCidade(),	
-				'observacao'	=>  $listaColeta[$i]->getObservacao(),									
-					
-					
+				'observacao'	=>  $listaColeta[$i]->getObservacao(),														
 			);
 		}
 			//var_dump($resultado);
