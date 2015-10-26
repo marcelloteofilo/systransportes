@@ -2,95 +2,87 @@
   require_once("/../banco.php");  
   require_once("cte.php");  
 
- class CteSql {  
-  
-    public static function adicionar(Cte $cte) {
-      
-      	$conexao = Conexao::getInstance()->getConexao();    	  
-	  
-	  	$cotacao 				= mysql_real_escape_string($cte->getCotacao(), $conexao); 
-	  	$manifesto 				= mysql_real_escape_string($cte->getManifesto(), $conexao);
-	  	$faturamento 			= mysql_real_escape_string($cte->getFaturamento(), $conexao);
-	  	$usuario 				= mysql_real_escape_string($cte->getUsuario(), $conexao); 
-	  	$veiculo      			= mysql_real_escape_string($cte->getVeiculo(), $conexao);                
-	  	$emissao 				= mysql_real_escape_string($cte->getEmissao(), $conexao);   
-	  	$status 				= mysql_real_escape_string($cte->getStatus(), $conexao); 
-	  	$dataEntrega 			= mysql_real_escape_string($cte->getDataEntrega(), $conexao); 
-	  	$horaEntrega 			= mysql_real_escape_string($cte->getHoraEntrega(), $conexao);    
-  
-	  	$sql = "insert into cte (idCotacao, idManifesto, idFaturamento, idUsuario, idVeiculo, 
-	  				emissao, status, dataEntrega, HoraEntrega) values ($cotacao, $manifesto, $faturamento,
-	  					$usuario, $veiculo, '$emissao', '$status', '$dataEntrega','$horaEntrega')";	  
+ class CteSql { 
+
+ 	public static function adicionar(Cte $cte) {
+
+ 		$conexao 				= Conexao::getInstance()->getConexao();
+
+ 		$numeroCte 				= mysql_real_escape_string($cte->getNumeroCte(), $conexao);  
+ 		$codigoCarga			= mysql_real_escape_string($cte->getCodigoCarga(), $conexao); 
+ 		$codigoRota				= mysql_real_escape_string($cte->getCodigoRota(), $conexao); 
+ 		$situacao				= mysql_real_escape_string($cte->getSituacao(), $conexao);
+ 		$chaveAcesso			= mysql_real_escape_string($cte->getChaveAcesso(), $conexao);
+ 		$statusCte				= mysql_real_escape_string($cte->getStatusCte(), $conexao);
+ 		$emissao				= mysql_real_escape_string($cte->getEmissao(), $conexao);  
+	  	
+	  	$sql = "insert into cte (numcte, codCarga, codRota, situacao,
+	  				chaveAcesso, statuscte, emissao) values ($numeroCte, $codigoCarga,
+	  					 $codigoRota, '$situacao', '$status', '$chaveAcesso','$statusCte,'$emissao')"; 
 
       	$resultado = @mysql_query($sql, $conexao);
 
-      	return ($resultado === true);
-    }
+      	return ($resultado === true);  
+ 	}
 
-    public static function alterar(Cte $cte) {
+ 	public static function alterar(Cte $cte) {
 
-      	$conexao = Conexao::getInstance()->getConexao();     
-	  
-	  	$id 					= mysql_real_escape_string($cte->getId(), $conexao);  
-	  	$cotacao 				= mysql_real_escape_string($cte->getCotacao(), $conexao); 
-	  	$manifesto 				= mysql_real_escape_string($cte->getManifesto(), $conexao);
-	  	$faturamento 			= mysql_real_escape_string($cte->getFaturamento(), $conexao);
-	  	$usuario 				= mysql_real_escape_string($cte->getUsuario(), $conexao); 
-	  	$veiculo      			= mysql_real_escape_string($cte->getVeiculo(), $conexao);                
-	  	$emissao 				= mysql_real_escape_string($cte->getEmissao(), $conexao);   
-	  	$status 				= mysql_real_escape_string($cte->getStatus(), $conexao); 
-	  	$dataEntrega 			= mysql_real_escape_string($cte->getDataEntrega(), $conexao); 
-	  	$horaEntrega 			= mysql_real_escape_string($cte->getHoraEntrega(), $conexao);      
-	 
-	  	$sql = "update cte set id=$id, idContacao=$contacao, idManifesto=$manifesto, idFaturamento=faturamento,
-	  		 		idUsuario=$usuario, idVeiculo=$veiculo, emissao='$emissao', status='$status', 
-	  		 			dataEntrega='$dataEntrega', horaEntrega='$HoraEntrega' where id=$id";
-      
-      	$resultado = @mysql_query($sql, $conexao);
+ 		$conexao 				= Conexao::getInstance()->getConexao();
+
+ 		$numeroCte 				= mysql_real_escape_string($cte->getNumeroCte(), $conexao);  
+ 		$codigoCarga			= mysql_real_escape_string($cte->getCodigoCarga(), $conexao); 
+ 		$codigoRota				= mysql_real_escape_string($cte->getCodigoRota(), $conexao); 
+ 		$situacao				= mysql_real_escape_string($cte->getSituacao(), $conexao);
+ 		$chaveAcesso			= mysql_real_escape_string($cte->getChaveAcesso(), $conexao);
+ 		$statusCte				= mysql_real_escape_string($cte->getStatusCte(), $conexao);
+ 		$emissao				= mysql_real_escape_string($cte->getEmissao(), $conexao);
+
+ 		$sql = "update cte set numcte=$numeroCte, codCarga=$codigoCarga,
+ 					 codRota=$codigoRota, situacao='$situacao', chaveAcesso='chaveAcesso',
+ 					 	 statuscte='$statusCte', emissao='$emissao' where numcte=$numeroCte";
+
+	    $resultado = @mysql_query($sql, $conexao);
 
       	return ($resultado === true);
-    }
+ 	}
 
-    public static function deletar(Cte $cte) {
-     
-      	$conexao = Conexao::getInstance()->getConexao();     
-	  
-	  	$id = mysql_real_escape_string($cte->getId(), $conexao);
+ 	public static function deletar(Cte $cte) {
 
-	  	$sql = "delete from cte where id=$id";
+ 		$conexao 				= Conexao::getInstance()->getConexao();
+
+ 		$numeroCte 				= mysql_real_escape_string($cte->getNumeroCte(), $conexao);  
+
+	  	$sql = "delete from cte where numcte=$numeroCte";
       
       	$resultado = @mysql_query($sql, $conexao);
 
       	return ($resultado === true);
-    }
+ 	}
 
-    public static function carregarLista() {
+ 	public static function carregarLista() {
 
-		$conexao = Conexao::getInstance()->getConexao();
+ 		$conexao 				= Conexao::getInstance()->getConexao();
 
-		$rs = mysql_query('select * from cte');
+ 		$rs 					= mysql_query('select * from cte');
 
-		$result = array();
-			
+		$result 				= array();
+
 		while($row = mysql_fetch_array($rs)) {
 
 			$objCte = new Cte();
-			$objCte->setId($row['id']);
-			$objCte->setCotacao($row['idContacao']);
-			$objCte->setManifesto($row['idManifesto']);
-			$objCte->setFaturamento($row['idFaturamento']);
-			$objCte->setRemetente($row['idRemetente']);
-			$objCte->setDestinatario($row['idDestinatario']);
+			$objCte->setNumeroCte($row['numcte']);
+			$objCte->setCodigoCarga($row['codCarga']);
+			$objCte->getCodigoRota($row['codRota']);
+			$objCte->setSituacao($row['situacao']);
+			$objCte->setChaveAcesso($row['chaveAcesso']);
+			$objCte->setStatusCte($row['statuscte']);
 			$objCte->setEmissao($row['emissao']);
-			$objCte->setStatus($row['status']);
-			$objCte->setDataEntrega($row['dataEntrega']);
-			$objCte->setHoraEntrega($row['HoraEntrega']);
 			$result[] = $objCte;
 		}
 
 		return $result;
-	}
-	
-	}
+ 	}
 
-?>
+ }
+
+?> 
