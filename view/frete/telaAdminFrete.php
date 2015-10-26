@@ -32,7 +32,8 @@
       <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
       <script type="text/javascript" src="../../js/validacoes.js"></script>
       <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
-      <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
+      <!--<script type="text/javascript" src="../../js/scriptPesquisa.js"></script>-->
+      <script type="text/javascript" src="../../js/scriptsBuscas.js"></script>
       <!-- JS CRUD -->
       <!-- SCRIPT ADMIN -->
       <script type="text/javascript">
@@ -228,13 +229,13 @@
                      </select>
                   </td>
                  <td>
-                     <select class="form-control" id="motorista" name="motorista">
-                        <option value=""> --- Motorista ---</option>
+                     <select class="form-control" id="motorista" name="motorista" onclick="consultaMotorista()">
+                        <option value="2">MOTORISTA</option>
                      </select>
                   </td>
                   <td>
-                     <select class="form-control" id="veiculo" name="veiculo">
-                        <option value=""> --- Veiculo ---</option>
+                     <select class="form-control" id="veiculo" name="veiculo" onclick="consultaVeiculo()">
+                        <option value="">VEICULO</option>
                      </select>
                   </td>
                </tr>

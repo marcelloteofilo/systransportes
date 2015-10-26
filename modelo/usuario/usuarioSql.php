@@ -154,21 +154,30 @@
         return null;
     }
 
+    public static function localizarMotorista(Usuario $usuario) {
+    $conexao = Conexao::getInstance()->getConexao();
 
-     /*public static function carregarListaPesquisa() {
-        //Conexão com o banco
-        $conexao = Conexao::getInstance()->getConexao();
-        //$cpf = mysql_real_escape_string($usuario->getCpf(), $conexao);
+	$id = mysql_real_escape_string($usuario->getId(), $conexao);
+	$nomeCompleto = mysql_real_escape_string($usuario->getNomeCompleto(), $conexao);
 
-        //$rs = mysql_query('select * from usuarios where cpf=$cpf');
-        $rs = mysql_query('select * from usuarios where cpf=088.673.464-90');
+    $sql = 'Select * from usuarios where perfil="Motorista"';
+   
+    $resultado = @mysql_query($sql, $conexao);
 
-        $resultado = array();
-        while ($row = mysql_fetch_object($rs)) {
-            array_push($resultado, $row);
-        }
-        echo json_encode($resultado);
-    }*/
+    if ($resultado) {
+
+        $retorno = array();
+        while ($linha = mysql_fetch_array($resultado)) {
+          $usuario = new Usuario();          
+          $usuario->setId($linha["id"]);          
+		  $usuario->setNomeCompleto($linha["nomeCompleto"]);		  		      
+		 	
+          $retorno[] = $usuario;
+         }
+        return ($retorno);
+      } else
+        return null;
+    }
 
   }
 ?>

@@ -89,10 +89,33 @@
       else
         return null;
       }
+    
+
+    public static function localizarVeiculo(veiculo $veiculo) {
+    $conexao = Conexao::getInstance()->getConexao();
+
+	$id = mysql_real_escape_string($veiculo->getIdVeiculo(), $conexao);
+	$placa = mysql_real_escape_string($veiculo->getPlaca(), $conexao);
+
+    $sql = 'Select * from veiculos';
+   
+    $resultado = @mysql_query($sql, $conexao);
+
+    if ($resultado) {
+
+        $retorno = array();
+        while ($linha = mysql_fetch_array($resultado)) {
+          $veiculo = new Veiculo();          
+          $veiculo->setIdVeiculo($linha["id"]);          
+		  $veiculo->setPlaca($linha["placa"]);		  		      
+		 	
+          $retorno[] = $veiculo;
+         }
+        return ($retorno);
+      } else
+        return null;
     }
-
-      
-
+}
 
     
 		

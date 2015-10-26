@@ -201,20 +201,6 @@
 		return $resultado;
 	}
 
-	/*if ($_GET["editSave"] == "pesquisaUsuario"){
-
-		$usuario = new Usuario();
-		//$usuario->setCpf($_REQUEST['cpfPesquisa']);
-		$usuario->setCpf("088.673.464-90");
-
-		if (UsuarioSql::carregarListaPesquisa($usuario)){
-			echo json_encode(array('success'=>true));		
-		}	
-
-	}*/
-
-
-
 ?>
 	
 	
