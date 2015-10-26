@@ -8,15 +8,13 @@
 	if ($_GET["editSave"] == "incluirCte") {			
 		$cte = new Cte();	
 
-		$cte->setId($id); 
-		$cte->setCotacao($cotacao); 
-		$cte->setManifesto($manifesto); 
-		$cte->setFaturamento($faturamento); 
-		$cte->setRemetente($remetente); 
-		$cte->setDestinatario($destinatario); 
-		$cte->setStatus($status); 
-		$cte->setDataEntrega($dataEntrega); 
-		$cte->setHoraEntrega($horaEntrega);			
+		$cte->setNumeroCte($numeroCte); 
+		$cte->setCodigoCarga($codigoCarga); 
+		$cte->getCodigoRota($codigoRota); 
+		$cte->setSituacao($situacao); 
+		$cte->setChaveAcesso($chaveAcesso); 
+		$cte->setStatusCte($statusCte); 
+		$cte->setEmissao($emissao); 			
 		
 		if (CteSql::adicionar($cte)) {
 			$resultado[] = array(				
@@ -30,15 +28,13 @@
 	if ($_GET["editSave"] == "alterarCte") {	
 		$cte = new Cte();	
 
-		$cte->setId($id); 
-		$cte->setCotacao($cotacao); 
-		$cte->setManifesto($manifesto); 
-		$cte->setFaturamento($faturamento); 
-		$cte->setRemetente($remetente); 
-		$cte->setDestinatario($destinatario); 
-		$cte->setStatus($status); 
-		$cte->setDataEntrega($dataEntrega); 
-		$cte->setHoraEntrega($horaEntrega);			
+		$cte->setNumeroCte($numeroCte); 
+		$cte->setCodigoCarga($codigoCarga); 
+		$cte->getCodigoRota($codigoRota); 
+		$cte->setSituacao($situacao); 
+		$cte->setChaveAcesso($chaveAcesso); 
+		$cte->setStatusCte($statusCte); 
+		$cte->setEmissao($emissao); 			
 
 		if (CteSql::alterar($cte)) {
 			$resultado[] = array(				
@@ -52,7 +48,7 @@
 	if ($_GET["editSave"] == "deletarCte") {	
 		$cte = new Cte();
 
-		$cheque->setId($_REQUEST['id']);  
+		$cte->setNumeroCte($numeroCte);  
 
 		if (ChequeSql::deletar($cte)) {
 			$resultado[] = array(				
