@@ -3,23 +3,61 @@
   require_once("coleta.php");  
 
   class ColetaSql {   
-     public static function adicionar(Coleta $coleta) {
-      $conexao = Conexao::getInstance()->getConexao();     
-	  $emissao = mysql_real_escape_string($coleta->getEmissao(), $conexao);   
-	  $idRemetente = mysql_real_escape_string($coleta->getObjRemetente()->getId(), $conexao);   
-	  $idDestinatario = mysql_real_escape_string($coleta->getObjDestinatario()->getId(), $conexao);   
-	  $idMotorista = mysql_real_escape_string($coleta->getObjMotorista()->getId(), $conexao);   
-	  $idCotacao = mysql_real_escape_string($coleta->getObjCotacao()->getId(), $conexao);   
-	  $placaVeiculo = mysql_real_escape_string($coleta->getObjVeiculo()->getPlaca(), $conexao);   
-	  $dataAgendada = mysql_real_escape_string($coleta->getDataAgendada(), $conexao);   
-	  $horaAgendada = mysql_real_escape_string($coleta->getHoraAgendada(), $conexao);   
-	  $obs = mysql_real_escape_string($coleta->getObs(), $conexao);   	  
-	  $status = mysql_real_escape_string($coleta->getStatus(), $conexao);   
-	  	   
-	  $sql = "insert into coleta (emissao, IdRemetente, idDestinatario, idMotorista, idCotacao, placaVeiculo, dataAgendada, horaAgendada, obs, status) values ('$emissao',$idRemetente, $idDestinatario, $idMotorista, $idCotacao, '$placaVeiculo', '$dataAgendada', '$horaAgendada', '$obs', $status)";	 	  	  
-    
-      $resultado = @mysql_query($sql, $conexao);
-      return ($resultado === true);
+     
+
+
+
+
+    public static function carregarLista(Coleta $coleta) {
+      //Conexão com o banco
+      $conexao = Conexao::getInstance()->getConexao(); 
+		
+		$sql = 'select * from coleta';
+	    
+		$resultado = @mysql_query($sql, $conexao);
+
+		if ($resultado) {
+			$retorno = array();
+			while ($row = mysql_fetch_array($resultado)) {
+				$carga = new Carga();
+				$carga->setCodCarga($row["codCarga"]);
+
+				$carga->setObjCidadeOrigem($row["origem"]);
+				$carga->setObjCidadeDestino($row["destino"]);
+
+				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
+				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
+
+				$carga->setAltura($row["altura"]);
+				$carga->setLargura($row["largura"]);
+				$carga->setPeso($row["peso"]);
+				$carga->setComprimento($row["comprimento"]);
+				$carga->setQuantidade($row["quantidade"]);
+				$carga->setValor($row["valor"]);
+
+				$carga->setTelefone($row["telefone"]);
+				$carga->setLogradouro($row["logradouro"]);
+				$carga->setBairro($row["bairro"]);
+				$carga->setUf($row["uf"]);
+				$carga->setCidade($row["cidade"]);
+				$carga->setNumero($row["numero"]);
+				$carga->setObservacao($row["observacao"]);
+
+				$carga->setNaturezaCarga($row["naturezaCarga"]);
+				$carga->setDataPedido($row["dataPedido"]);
+				$carga->setDistancia($row["distancia"]);
+				$carga->setPrazo($row["prazo"]);
+				$carga->setFrete($row["frete"]);
+
+				$carga->setColetada($row["coletada"]);
+				$carga->setStatusCarga($row["statusCarga"]);
+				
+				$retorno[] = $carga;
+         }
+        return ($retorno);
+      } 
+      else
+        return null;
     }
   }
 ?>

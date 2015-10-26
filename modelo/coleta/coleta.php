@@ -4,7 +4,7 @@
 	require_once("/../veiculo/veiculo.php");  
 	
   class Coleta {
-    private $id;
+    private $codColeta;
 	private $emissao;  	
 	private $objRemetente;  	
 	private $objDestinatario;  	

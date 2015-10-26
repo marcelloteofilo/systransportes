@@ -24,11 +24,26 @@
     <!-- SCRIPT ADMIN -->
     <script type="text/javascript">
       var url;
-      function newUser(){
-        $('#dlg').dialog('open').dialog('setTitle','Novo Veículo');
-        $('#fm').form('clear');
-        url = '../../webServices/veiculoWebService.php?editSave=incluirVeiculo';//AGUADAR MUDANÇAS
-      }
+
+        function carregarAprovados(){
+            $("div.easyui-layout").layout();
+            $('#dg').edatagrid({
+            url:'../../webServices/cargaWebService.php?editSave=carregarAtendimento',
+            fitColumns: true
+            });
+            //$('#dg').datagrid('reload');
+         }
+
+         function carregarColetados(){
+            $("div.easyui-layout").layout();
+            $('#dg').edatagrid({
+            url:'../../webServices/cargaWebService.php?editSave=carregarAprovados',
+            fitColumns: true
+            });
+            //$('#dg').datagrid('reload');
+         }
+    
+
       function editUser(){
         var row = $('#dg').datagrid('getSelected');
         if (row){
@@ -58,37 +73,6 @@
           }
         });
       }
-      function removeUser(){
-        var row = $('#dg').datagrid('getSelected');
-        if (row){
-          $.messager.confirm('Confirm','Tem certeza que deseja remover essa Coleta?',function(r){//AGUADAR MUDANÇAS//AGUADAR MUDANÇAS
-            $('#dg').datagrid('reload');
-
-            if (r){
-              $.post('../../webServices/veiculoWebService.php?editSave=deletarVeiculo',{id:row.id},function(result){//AGUADAR MUDANÇAS
-                /*if (result.success){
-                  
-                  $('#dg').datagrid('reload');  // reload the user data
-                } else {
-                  $.messager.show({ // show error message
-                    title: 'Error',
-                    msg: result.msg
-                  });
-                }*/
-              },'json');
-            }
-          });
-        }
-		else
-    {
-        $.messager.show(
-            {
-                title: 'Erro!',
-                msg: 'Selecione item da tabela!!!'//result.msg
-            });
-    }
-      }
-
     </script>
 
 
@@ -140,11 +124,13 @@
 
     <div id="toolbar">
       <!--<a href="#" class="easyui-linkbutton" iconCls="icon-car-icon" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Veiculo</a>-->
-      <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="editUser()" title="Alterar Dados do Usuário">Visualizar Coleta</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser()" title="Alterar Dados da Coleta">Visualizar Coleta</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados()" title="">Aprovados</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-box-icon" plain="true" onclick="carregarColetados()" title="">Coletados</a>
       <!--<a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Coleta</a>-->
-      <label for="pesquisar">Localizar Coleta</label>
+      <!--<label for="pesquisar">Localizar Coleta</label>
         &nbsp;&nbsp;
-        <input type="text" id="pesquisar" name="pesquisar" size="30" />      
+        <input type="text" id="pesquisar" name="pesquisar" size="30" />-->      
     </div>
     </div>
   </center>
