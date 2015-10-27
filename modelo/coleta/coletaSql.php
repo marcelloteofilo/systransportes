@@ -26,7 +26,7 @@
 							INNER JOIN cargas as cidade ON cl.codCarga = cidade.codCarga
 							INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
-							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga;'
+							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga;';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -83,7 +83,7 @@
 							INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
 							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga
-							where coletada = "Aprovado";'
+							where coletada = "Aprovado"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -140,7 +140,7 @@
 							INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
 							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga
-							where coletada = "Coletado";'
+							where coletada = "Coletado"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
