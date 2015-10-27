@@ -201,7 +201,18 @@
 
    
 
-	  $sql = "update coleta set statusCarga='$statusCarga',prazo='$prazo',distancia='$distancia',frete='$frete' where codCarga='$codCarga'";
+	  $sql = "update coleta 
+	  			set 
+		  			codColeta='$codColeta',
+		  			codCarga='$codCarga',
+		  			codMotorista='$codMotorista',
+		  			codVeiculo='$codVeiculo'
+		  			data='$data'
+		  			hora='$hora'
+	  				coleta='$coleta'
+
+	  			where 
+	  				codColeta='$codColeta'";
       echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
