@@ -25,10 +25,19 @@
     <script type="text/javascript">
       var url;
 
+        function carregarColeta(){
+            $("div.easyui-layout").layout();
+            $('#dg').edatagrid({
+            url:'../../webServices/coletaWebService.php?editSave=carregarColeta',
+            fitColumns: true
+            });
+            //$('#dg').datagrid('reload');
+         }
+
         function carregarColetasAprovados(){
             $("div.easyui-layout").layout();
             $('#dg').edatagrid({
-            url:'../../webServices/coletaWebService.php?editSave=carregarListaAprovados',
+            url:'../../webServices/coletaWebService.php?editSave=carregarColetaAprovados',
             fitColumns: true
             });
             //$('#dg').datagrid('reload');
@@ -37,7 +46,7 @@
          function carregarColetasColetadas(){
             $("div.easyui-layout").layout();
             $('#dg').edatagrid({
-            url:'../../webServices/coletaWebService.php?editSave=carregarListaColetadas',
+            url:'../../webServices/coletaWebService.php?editSave=carregarColetasColetadas',
             fitColumns: true
             });
             //$('#dg').datagrid('reload');
@@ -125,6 +134,7 @@
     <div id="toolbar">
       <!--<a href="#" class="easyui-linkbutton" iconCls="icon-car-icon" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Veiculo</a>-->
       <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser()" title="Alterar Dados da Coleta">Visualizar Coleta</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-box-icon" plain="true" onclick="carregarColeta()" title="">Listar Todos</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarColetasAprovados()" title="">Aprovados</a>
       <a href="#" class="easyui-linkbutton" iconCls="icon-box-icon" plain="true" onclick="carregarColetasColetadas()" title="">Coletados</a>
       <!--<a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Coleta</a>-->

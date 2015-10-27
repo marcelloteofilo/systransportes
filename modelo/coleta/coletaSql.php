@@ -26,7 +26,7 @@
 							INNER JOIN cargas as cidade ON cl.codCarga = cidade.codCarga
 							INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
-							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga;';
+							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -83,7 +83,7 @@
 							INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
 							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga
-							where coletada = "Aprovado"';
+							where coletada.coletada  = "Aprovado"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -126,7 +126,9 @@
 		$sql = 'select cl.*,
 					idMotorista.id as idMotorista,nomeMotorista.nomeCompleto as nomeMotorista,
 					idVeiculo.id as idVeiculo,placaVeiculo.placa as placaVeiculo,
-					telefone.telefone as telefone,logradouro.logradouro as logradouro,bairro.bairro as bairro,uf.uf as uf,cidade.cidade as cidade,numero.numero as numero,observacao.observacao as observacao,coletada.coletada as coletada
+					telefone.telefone as telefone,logradouro.logradouro as logradouro,bairro.bairro as
+					 bairro,uf.uf as uf,cidade.cidade as cidade,numero.numero as numero,observacao.observacao as
+					  observacao,coletada.coletada as coletada
 						from coleta as cl
 							INNER JOIN usuarios as nomeMotorista ON cl.codMotorista = nomeMotorista.id
 							INNER JOIN usuarios as idMotorista ON cl.codMotorista = idMotorista.id
@@ -140,7 +142,7 @@
 							INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
 							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga
-							where coletada = "Coletado"';
+							where coletada.coletada  = "Coletada"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
