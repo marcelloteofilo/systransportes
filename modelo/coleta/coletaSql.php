@@ -178,5 +178,37 @@
         return null;
     }
 
+
+     public static function alterarColeta(Coleta $coleta) {
+      //Conexão com o banco
+      $conexao = Conexao::getInstance()->getConexao();     
+	  
+	  //Atributo da tabela usuário
+	  $codColeta = mysql_real_escape_string($coleta->getCodColeta(), $conexao); 
+	  $codCarga = mysql_real_escape_string($coleta->getCodCarga(), $conexao); 
+	  $codMotorista = mysql_real_escape_string($coleta->getCodMotorista(), $conexao);
+	  $codVeiculo = mysql_real_escape_string($coleta->getCodVeiculo(), $conexao);
+	  $data = mysql_real_escape_string($coleta->getData(), $conexao);   
+	  $hora = mysql_real_escape_string($coleta->getHora(), $conexao); 
+	  $coleta = mysql_real_escape_string($coleta->getColetada(), $conexao); 
+	  $telefone = mysql_real_escape_string($coleta->getTelefone(), $conexao);
+	  $logradouro = mysql_real_escape_string($coleta->getLogradouro(), $conexao); 
+	  $bairro = mysql_real_escape_string($coleta->getBairro(), $conexao);
+	  $numero = mysql_real_escape_string($coleta->getNumero(), $conexao);
+	  $estado = mysql_real_escape_string($coleta->getEstado(), $conexao);
+	  $cidade = mysql_real_escape_string($coleta->getCidade(), $conexao);
+	  $observacao = mysql_real_escape_string($coleta->getObservacao(), $conexao);
+
+
+	  
+   
+  	  //Update para a tabela de Usuários do banco de dados
+	  $sql = "update cargas set statusCarga='$statusCarga',prazo='$prazo',distancia='$distancia',frete='$frete' where codCarga='$codCarga'";
+      echo($sql);
+      $resultado = @mysql_query($sql, $conexao);
+
+      return ($resultado === true);
+    }
+
   }
 ?>

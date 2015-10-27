@@ -8,7 +8,7 @@ class MercadoriaSql {
     //Método responsável em adicionar um determinado veículo
     public static function adicionar(Mercadoria $mercadoria) {
 
-        //Criando a conexão com o banco de dados
+        //Criando a conexão com o banco de dadosalt
         $conexao = Conexao::getInstance()->getConexao();
 
         //Atributos da classe Mercadoria sendo definidas em uma variável, obtidas em um método para realização da

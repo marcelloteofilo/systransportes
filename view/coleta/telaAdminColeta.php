@@ -53,7 +53,7 @@
          }
     
 
-      function editUser(){
+      function editSave(){
         var row = $('#dg').datagrid('getSelected');
         if (row){
           $('#dlg').dialog('open').dialog('setTitle','Editar Coleta');
@@ -154,22 +154,20 @@
 
         <table>
           <!--Dados Pessoais -->
-          <h2>Dados da Coleta</h2>
+          <h2>Dados da Coleta</h2><br>
           <!--Dados Pessoa Física -->
           <tr>
-            <td><b>Codigo da Carga</b></td>
+            <!--<td><b>Codigo da Carga</b></td>-->
             <td><b>Motorista</b></td>
             <td><b>Veiculo</b></td>
             <td><b>Data da Coleta</b></td>
             <td><b>Hora da Coleta</b></td>
             <td><b>Status da Coleta</b></td>
             <td><b>Telefone da Coleta</b></td>
-            <td><b>Motorista</b></td>
-            <td><b>Veiculo</b></td>
-
           </tr>
-
+          
           <tr>
+          <!-- 
             <td><input required="required" 
               class="form-control" 
               type="text" 
@@ -179,6 +177,7 @@
               style="text-transform:uppercase"  
               placeholder="Codigo da Carga">
             </td>
+          -->
             <!--maxlength="8" OnKeyPress="formatar(this, '###-####')"-->
 
             <td><input required="required" 
@@ -246,7 +245,12 @@
             </td>
           </tr>
 
-           <h2>Dados do Endereço da Coleta</h2>
+        </table>
+
+
+
+        <table>
+           <br><h2>Endereço da Coleta</h2><br>
           <!--Dados Pessoa Física -->
           <tr>
             <td><b>Logradouro</b></td>
