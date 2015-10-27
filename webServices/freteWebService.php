@@ -1,5 +1,5 @@
 <?php
-	require_once("../modelo/carga/cargaSql.php");   	
+	require_once("../modelo/frete/freteSql.php");   	
 	session_start();   	
 	
 	extract ($_REQUEST);
@@ -7,7 +7,7 @@
 
 
 	
-	if ($_GET["editSave"] == "aprovarCarga"){	
+	if ($_GET["editSave"] == "alterarFrete"){	
 		$carga = new Carga();	
 
 		//Atributos da classe Usuário/Valores 
@@ -21,64 +21,24 @@
 		
 		//echo(json_encode($resultado ));						
 	}
-
-	if ($_GET["editSave"] == "aprovarCargaAtendente"){	
-		$carga = new Carga();	
-
-		//Atributos da classe Usuário/Valores 
-		$carga->setCodCarga($_REQUEST['codCarga']); 
-		$carga->setStatusCarga('Aprovado Atendente');
-		$carga->setDistancia($_REQUEST['distancia']);
-		$carga->setFrete($_REQUEST['frete']); 
-		$carga->setPrazo($_REQUEST['prazo']);  
-		
-		if (cargaSql::alterarCargaAtendente($carga)){
-			echo json_encode(array('success'=>true));
-		}	
-		
-		//echo(json_encode($resultado ));						
-	}		
-
 	
 	if ($_GET["editSave"] == "carregarTodos") {
 
-		$carga = new Carga();
+		$frete = new Frete();
 
-		$listaCarga = cargaSql::carregarLista($carga);
+		$listaFrete = freteSql::carregarLista($frete);
 		
-		for ($i=0; $i<count($listaCarga); $i++ ){											
+		for ($i=0; $i<count($listaFrete); $i++ ){											
 			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
+			    'codFrete'	=>  $listaFrete[$i]->getCodFrete(),
 
-			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),		
+			    'ufOrigem'	=>  $listaFrete[$i]->getOrigem(),	
+				'ufDestino'	=>  $listaFrete[$i]->getDestino(),		
+				'motorista'	=>  $listaFrete[$i]->getCodMotorista(),	
+				'veiculo'	=>  $listaFrete[$i]->getCodVeiculo(),					
 
-				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
-				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),					
-
-				'altura'	=>  $listaCarga[$i]->getAltura(),					
-				'largura'	=>   $listaCarga[$i]->getLargura(),				
-				'peso'	=>  $listaCarga[$i]->getPeso(),				
-				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
-				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
-				'valor'	=>  $listaCarga[$i]->getValor(),
-
-				'telefone'	=>  $listaCarga[$i]->getTelefone(),
-				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
-				'bairro'	=>  $listaCarga[$i]->getBairro(),
-				'uf'	=>  $listaCarga[$i]->getUf(),
-				'cidade'	=>  $listaCarga[$i]->getCidade(),
-				'numero'	=>  $listaCarga[$i]->getNumero(),
-				'observacao'	=>  $listaCarga[$i]->getObservacao(),
-				
-				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
-				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
-				'distancia'	=>  $listaCarga[$i]->getDistancia(),
-				'frete'	=>  $listaCarga[$i]->getFrete(),
-				'prazo'	=>  $listaCarga[$i]->getPrazo(),
-				
-				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
+				'statusFrete'	=>  $listaFrete[$i]->getStatusFrete(),					
+				'codTransp'	=>   $listaFrete[$i]->getCodTransp(),								
 			);
 		}
 			//var_dump($resultado);
@@ -87,151 +47,6 @@
 		echo(json_encode($resultado));	
 		return $resultado;	
 	}
-
-	if ($_GET["editSave"] == "carregarAprovados") {
-
-		$carga = new Carga();
-
-		$listaCarga = cargaSql::carregarListaAprovados($carga);
-		
-		for ($i=0; $i<count($listaCarga); $i++ ){											
-			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
-
-			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
-
-				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
-				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),					
-
-				'altura'	=>  $listaCarga[$i]->getAltura(),					
-				'largura'	=>   $listaCarga[$i]->getLargura(),				
-				'peso'	=>  $listaCarga[$i]->getPeso(),				
-				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
-				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
-				'valor'	=>  $listaCarga[$i]->getValor(),
-
-				'telefone'	=>  $listaCarga[$i]->getTelefone(),
-				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
-				'bairro'	=>  $listaCarga[$i]->getBairro(),
-				'uf'	=>  $listaCarga[$i]->getUf(),
-				'cidade'	=>  $listaCarga[$i]->getCidade(),
-				'numero'	=>  $listaCarga[$i]->getNumero(),
-				'observacao'	=>  $listaCarga[$i]->getObservacao(),
-				
-				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
-				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
-				'distancia'	=>  $listaCarga[$i]->getDistancia(),
-				'frete'	=>  $listaCarga[$i]->getFrete(),
-				'prazo'	=>  $listaCarga[$i]->getPrazo(),
-				
-				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
-			);
-		}
-			//var_dump($resultado);
-		    //die;
-
-		echo(json_encode($resultado));	
-		return $resultado;	
-	}
-
-	if ($_GET["editSave"] == "carregarAtendimento") {
-
-		$carga = new Carga();
-
-		$listaCarga = cargaSql::carregarListaAtendimento($carga);
-		
-		for ($i=0; $i<count($listaCarga); $i++ ){											
-			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
-
-			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
-
-				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
-				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),						
-
-				'altura'	=>  $listaCarga[$i]->getAltura(),					
-				'largura'	=>   $listaCarga[$i]->getLargura(),				
-				'peso'	=>  $listaCarga[$i]->getPeso(),				
-				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
-				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
-				'valor'	=>  $listaCarga[$i]->getValor(),
-
-				'telefone'	=>  $listaCarga[$i]->getTelefone(),
-				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
-				'bairro'	=>  $listaCarga[$i]->getBairro(),
-				'uf'	=>  $listaCarga[$i]->getUf(),
-				'cidade'	=>  $listaCarga[$i]->getCidade(),
-				'numero'	=>  $listaCarga[$i]->getNumero(),
-				'observacao'	=>  $listaCarga[$i]->getObservacao(),
-				
-				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
-				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
-				'distancia'	=>  $listaCarga[$i]->getDistancia(),
-				'frete'	=>  $listaCarga[$i]->getFrete(),
-				'prazo'	=>  $listaCarga[$i]->getPrazo(),
-				
-				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
-			);
-		}
-			//var_dump($resultado);
-		    //die;
-
-		echo(json_encode($resultado));	
-		return $resultado;	
-	}
-
-		if ($_GET["editSave"] == "carregarConcluidos") {
-
-		$carga = new Carga();
-
-		$listaCarga = cargaSql::carregarListaConcluidos($carga);
-		
-		for ($i=0; $i<count($listaCarga); $i++ ){											
-			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
-
-				'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
-
-				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
-				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),	
-
-				'altura'	=>  $listaCarga[$i]->getAltura(),					
-				'largura'	=>   $listaCarga[$i]->getLargura(),				
-				'peso'	=>  $listaCarga[$i]->getPeso(),				
-				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
-				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
-				'valor'	=>  $listaCarga[$i]->getValor(),
-
-				'telefone'	=>  $listaCarga[$i]->getTelefone(),
-				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
-				'bairro'	=>  $listaCarga[$i]->getBairro(),
-				'uf'	=>  $listaCarga[$i]->getUf(),
-				'cidade'	=>  $listaCarga[$i]->getCidade(),
-				'numero'	=>  $listaCarga[$i]->getNumero(),
-				'observacao'	=>  $listaCarga[$i]->getObservacao(),
-				
-				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
-				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
-				'distancia'	=>  $listaCarga[$i]->getDistancia(),
-				'frete'	=>  $listaCarga[$i]->getFrete(),
-				'prazo'	=>  $listaCarga[$i]->getPrazo(),
-				
-				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
-			);
-		}
-			//var_dump($resultado);
-		    //die;
-
-		echo(json_encode($resultado));	
-		return $resultado;	
-	}
-
 	
 
 ?>

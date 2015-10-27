@@ -1,34 +1,13 @@
 <?php
   require_once("/../banco.php");  
-  require_once("carga.php");  
+  require_once("frete.php");  
 
- class CargaSql {  
+ class FreteSql {  
   
 
-     public static function alterarCargaCliente(Carga $carga) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao();     
-	  
-	  //Atributo da tabela usuário
-	  $codCarga = mysql_real_escape_string($carga->getCodCarga(), $conexao); 
-	  $statusCarga = mysql_real_escape_string($carga->getStatusCarga(), $conexao);
-	  $coletada = mysql_real_escape_string($carga->getColetada(), $conexao); 
 
-   
-  	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update cargas set statusCarga='$statusCarga',coletada='$coletada' where codCarga=$codCarga";
 
-	  $sqlDois = "insert into coleta (codCarga,codMotorista,codVeiculo) values($codCarga,2,1)";
-      //echo($sql);
-      $resultado = @mysql_query($sql, $conexao);
-      
-      //Cria o registro de Coleta Automatica
-      mysql_query($sqlDois, $conexao);
-
-      return ($resultado === true);
-    }
-
-    public static function alterarCargaAtendente(Carga $carga) {
+    /*public static function alterarFrete(Frete $frete) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao();     
 	  
@@ -45,69 +24,41 @@
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);
-    }
+    }*/
 
 	
-    public static function carregarLista(Carga $carga) {
+    public static function carregarLista(Frete $frete) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
 		
-		$sql = 'select cl.*,
-idMotorista.id as idMotorista,nomeMotorista.nomeCompleto as nomeMotorista,
-idVeiculo.id as idVeiculo,placaVeiculo.placa as placaVeiculo,
-telefone.telefone as telefone,logradouro.logradouro as logradouro,bairro.bairro as bairro,uf.uf as uf,cidade.cidade as cidade,numero.numero as numero,observacao.observacao as observacao
-from coleta as cl
-INNER JOIN usuarios as nomeMotorista ON cl.codMotorista = nomeMotorista.id
-INNER JOIN usuarios as idMotorista ON cl.codMotorista = idMotorista.id
-INNER JOIN veiculos as placaVeiculo ON cl.codVeiculo = placaVeiculo.id
-INNER JOIN veiculos as idVeiculo ON cl.codVeiculo = idVeiculo.id
-INNER JOIN cargas as telefone ON cl.codCarga = telefone.codCarga
-INNER JOIN cargas as logradouro ON cl.codCarga = logradouro.codCarga
-INNER JOIN cargas as bairro ON cl.codCarga = bairro.codCarga
-INNER JOIN cargas as uf ON cl.codCarga = uf.codCarga
-INNER JOIN cargas as cidade ON cl.codCarga = cidade.codCarga
-INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
-INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga;';
+		$sql = 'select ft.*,
+cidadeOrigem.descricao as cidadeOrigem,cidadeOrigem.uf as ufOrigem, cidadeOrigem.codigo as codigoOrigem,
+cidadeDestino.descricao as cidadeDestino,cidadeDestino.uf as ufDestino, cidadeDestino.codigo as codigoDestino,
+usuarioMotorista.id as idMotorista,usuarioMotorista.nomeCompleto as nomeMotorista,
+veiculo.id as idVeiculo,veiculo.placa as placaVeiculo
+from frete as ft
+INNER JOIN cidades as cidadeOrigem ON ft.origem = cidadeOrigem.codigo
+INNER JOIN cidades as cidadeDestino ON ft.destino = cidadeDestino.codigo
+INNER JOIN usuarios as usuarioMotorista ON ft.codMotorista = usuarioMotorista.id
+INNER JOIN veiculos as veiculo ON ft.codVeiculo = veiculo.id;';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
 		if ($resultado) {
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {
-				$carga = new Carga();
-				$carga->setCodCarga($row["codCarga"]);
+				$frete = new Frete();
+				$frete->setCodFrete($row["codFrete"]);
 
-				$carga->setObjCidadeOrigem($row["origem"]);
-				$carga->setObjCidadeDestino($row["destino"]);
+				$frete->setCodVeiculo($row["codVeiculo"]);
+				$frete->setCodMotorista($row["codMotorista"]);
+				$frete->setOrigem($row["codigoOrigem"]);
+				$frete->setDestino($row["codigoDestino"]);
 
-				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
-				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
+				$frete->setStatusFrete($row["statusFrete"]);
+				$frete->setCodTransp($row["codTransp"]);
 
-				$carga->setAltura($row["altura"]);
-				$carga->setLargura($row["largura"]);
-				$carga->setPeso($row["peso"]);
-				$carga->setComprimento($row["comprimento"]);
-				$carga->setQuantidade($row["quantidade"]);
-				$carga->setValor($row["valor"]);
-
-				$carga->setTelefone($row["telefone"]);
-				$carga->setLogradouro($row["logradouro"]);
-				$carga->setBairro($row["bairro"]);
-				$carga->setUf($row["uf"]);
-				$carga->setCidade($row["cidade"]);
-				$carga->setNumero($row["numero"]);
-				$carga->setObservacao($row["observacao"]);
-
-				$carga->setNaturezaCarga($row["naturezaCarga"]);
-				$carga->setDataPedido($row["dataPedido"]);
-				$carga->setDistancia($row["distancia"]);
-				$carga->setPrazo($row["prazo"]);
-				$carga->setFrete($row["frete"]);
-
-				$carga->setColetada($row["coletada"]);
-				$carga->setStatusCarga($row["statusCarga"]);
-				
-				$retorno[] = $carga;
+				$retorno[] = $frete;
          }
         return ($retorno);
       } 
@@ -115,184 +66,6 @@ INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga;';
         return null;
     }
 
-    public static function carregarListaAtendimento(Carga $carga) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao(); 
-		
-$sql = 'select cg.*,
-cidOrigem.descricao as origem,cidDestino.descricao as destino,
-clientePF.nomeCompleto as pessoaFisicaNome,clientePJ.razaoSocial as pessoaJuridicaNome 
-from cargas as cg
-INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
-INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
-INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
-INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
-where statusCarga = "Atendimento"';
-	    
-		$resultado = @mysql_query($sql, $conexao);
 
-		if ($resultado) {
-			$retorno = array();
-			while ($row = mysql_fetch_array($resultado)) {
-				$carga = new Carga();
-				$carga->setCodCarga($row["codCarga"]);
-
-				$carga->setObjCidadeOrigem($row["origem"]);
-				$carga->setObjCidadeDestino($row["destino"]);
-
-				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
-				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
-
-				$carga->setAltura($row["altura"]);
-				$carga->setLargura($row["largura"]);
-				$carga->setPeso($row["peso"]);
-				$carga->setComprimento($row["comprimento"]);
-				$carga->setQuantidade($row["quantidade"]);
-				$carga->setValor($row["valor"]);
-
-				$carga->setTelefone($row["telefone"]);
-				$carga->setLogradouro($row["logradouro"]);
-				$carga->setBairro($row["bairro"]);
-				$carga->setUf($row["uf"]);
-				$carga->setCidade($row["cidade"]);
-				$carga->setNumero($row["numero"]);
-				$carga->setObservacao($row["observacao"]);
-
-				$carga->setNaturezaCarga($row["naturezaCarga"]);
-				$carga->setDataPedido($row["dataPedido"]);
-				$carga->setDistancia($row["distancia"]);
-				$carga->setPrazo($row["prazo"]);
-				$carga->setFrete($row["frete"]);
-
-				$carga->setColetada($row["coletada"]);
-				$carga->setStatusCarga($row["statusCarga"]);
-				
-				$retorno[] = $carga;
-         }
-        return ($retorno);
-      } 
-      else
-        return null;
-    }
-
-    public static function carregarListaAprovados(Carga $carga) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao(); 
-		
-		$sql = 'select cg.*,
-cidOrigem.descricao as origem,cidDestino.descricao as destino,
-clientePF.nomeCompleto as pessoaFisicaNome,clientePJ.razaoSocial as pessoaJuridicaNome 
-from cargas as cg
-INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
-INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
-INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
-INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
-where statusCarga = "Aprovado Atendente"';
-	    
-		$resultado = @mysql_query($sql, $conexao);
-
-		if ($resultado) {
-			$retorno = array();
-			while ($row = mysql_fetch_array($resultado)) {
-				$carga = new Carga();
-				$carga->setCodCarga($row["codCarga"]);
-
-				$carga->setObjCidadeOrigem($row["origem"]);
-				$carga->setObjCidadeDestino($row["destino"]);
-
-				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
-				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
-
-				$carga->setAltura($row["altura"]);
-				$carga->setLargura($row["largura"]);
-				$carga->setPeso($row["peso"]);
-				$carga->setComprimento($row["comprimento"]);
-				$carga->setQuantidade($row["quantidade"]);
-				$carga->setValor($row["valor"]);
-
-				$carga->setTelefone($row["telefone"]);
-				$carga->setLogradouro($row["logradouro"]);
-				$carga->setBairro($row["bairro"]);
-				$carga->setUf($row["uf"]);
-				$carga->setCidade($row["cidade"]);
-				$carga->setNumero($row["numero"]);
-				$carga->setObservacao($row["observacao"]);
-
-				$carga->setNaturezaCarga($row["naturezaCarga"]);
-				$carga->setDataPedido($row["dataPedido"]);
-				$carga->setDistancia($row["distancia"]);
-				$carga->setPrazo($row["prazo"]);
-				$carga->setFrete($row["frete"]);
-
-				$carga->setColetada($row["coletada"]);
-				$carga->setStatusCarga($row["statusCarga"]);
-				
-				$retorno[] = $carga;
-         }
-        return ($retorno);
-      } 
-      else
-        return null;
-    }
-
-            public static function carregarListaConcluidos(Carga $carga) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao(); 
-		
-		$sql = 'select cg.*,
-cidOrigem.descricao as origem,cidDestino.descricao as destino,
-clientePF.nomeCompleto as pessoaFisicaNome,clientePJ.razaoSocial as pessoaJuridicaNome 
-from cargas as cg
-INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
-INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
-INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
-INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo 
-where statusCarga = "Aprovado Cliente"';
-	    
-		$resultado = @mysql_query($sql, $conexao);
-
-		if ($resultado) {
-			$retorno = array();
-			while ($row = mysql_fetch_array($resultado)) {
-				$carga = new Carga();
-				$carga->setCodCarga($row["codCarga"]);
-
-				$carga->setObjCidadeOrigem($row["origem"]);
-				$carga->setObjCidadeDestino($row["destino"]);
-
-				$carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
-				$carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
-
-				$carga->setAltura($row["altura"]);
-				$carga->setLargura($row["largura"]);
-				$carga->setPeso($row["peso"]);
-				$carga->setComprimento($row["comprimento"]);
-				$carga->setQuantidade($row["quantidade"]);
-				$carga->setValor($row["valor"]);
-
-				$carga->setTelefone($row["telefone"]);
-				$carga->setLogradouro($row["logradouro"]);
-				$carga->setBairro($row["bairro"]);
-				$carga->setUf($row["uf"]);
-				$carga->setCidade($row["cidade"]);
-				$carga->setNumero($row["numero"]);
-				$carga->setObservacao($row["observacao"]);
-
-				$carga->setNaturezaCarga($row["naturezaCarga"]);
-				$carga->setDataPedido($row["dataPedido"]);
-				$carga->setDistancia($row["distancia"]);
-				$carga->setPrazo($row["prazo"]);
-				$carga->setFrete($row["frete"]);
-
-				$carga->setColetada($row["coletada"]);
-				$carga->setStatusCarga($row["statusCarga"]);
-				
-				$retorno[] = $carga;
-         }
-        return ($retorno);
-      } 
-      else
-        return null;
-    }
   }
 ?>

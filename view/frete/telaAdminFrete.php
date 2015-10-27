@@ -124,15 +124,15 @@
       <!-- TABELA ADMIN PESSOA FÍSICA-->
       <center>
          <table id="dg" title="Cadastro de Frete" class="easyui-datagrid" style=" width:1250px;height:495px"
-            url="../../webServices/veiculoWebService.php?editSave=carregarVeiculo"
+            url="../../webServices/freteWebService.php?editSave=carregarTodos"
             toolbar="#toolbar" pagination="true" 
             rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
                <tr>
                   <th field="motorista" width="46">Motorista</th>
                   <th field="veiculo" width="64">Veiculo</th>
-                  <th field="cidadeOrigem" width="70">Origem</th>
-                  <th field="cidadeDestino" width="50">Destino</th>
+                  <th field="ufOrigem" width="70">Origem</th>
+                  <th field="ufOrigem" width="50">Destino</th>
                   <th field="statusFrete" width="72">Status</th>
                   <th field="codTransp" width="70">Codigo de Trans.</th>
                </tr>
