@@ -1,6 +1,6 @@
 <?php
 
-require_once("/../modelo/cotacao/cotacao.php");
+require_once("/../modelo/carga/carga.php");
 
 class Mercadoria {
 
@@ -8,7 +8,9 @@ class Mercadoria {
     private $id;
     private $descricaoMercadoria;
     private $pesoMercadoria;
-    private $objCotacao;
+    private $objCarga;
+    private $quantidade;
+    private $valorMercadoria;
 
     //Id Mercadoria
     public function setId($l) {
@@ -38,15 +40,33 @@ class Mercadoria {
     }
 
     //Id Cotacao
-    public function setObjCotacao($objCotacao) {
-        $this->objCotacao = trim($objCotacao);
+    public function setObjCarga($objCarga) {
+        $this->objCarga = trim($objCarga);
     }
 
-    public function getObjCotacao() {
-        if ($this->objCotacao == null) {
-            $this->objCotacao = new Cotacao();
+    public function getObjCarga() {
+        if ($this->objCarga == null) {
+            $this->objCarga = new Carga();
         }
-        return $this->objCotacao;
+        return $this->objCarga;
+    }
+
+    public function getValorMercadoria() {
+        return $this->valorMercadoria;
+    }
+
+    //Id Cotacao
+    public function setValorMercadoria($valorMercadoria) {
+        $this->valorMercadoria = trim($valorMercadoria);
+    }
+
+    public function getQuantidade() {
+        return $this->quantidade;
+    }
+
+    //Id Cotacao
+    public function setQuantidade($quantidade) {
+        $this->quantidade = trim($quantidade);
     }
 
 }

@@ -68,6 +68,8 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <script src="js/jquery.easing.min.js"></script>
         <!-- jquery easing -->
         <script src="js/wow.min.js"></script>
+        <!-- Custom Functions -->
+        <script src="js/custom.js"></script>
         <script>
             var wow = new WOW(
                     {
@@ -107,14 +109,11 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
 
         </script>
 
-
-        <!-- Custom Functions -->
-        <script src="js/custom.js"></script>
     </head>
     <body id="body">
         <!-- preloader -->
         <!-- end preloader -->
-        <!-- 
+        <!--
             Fixed Navigation
             ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
