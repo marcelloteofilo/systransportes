@@ -25,19 +25,19 @@
     <script type="text/javascript">
       var url;
 
-        function carregarAprovados(){
+        function carregarColetasAprovados(){
             $("div.easyui-layout").layout();
             $('#dg').edatagrid({
-            url:'../../webServices/cargaWebService.php?editSave=carregarAtendimento',
+            url:'../../webServices/coletaWebService.php?editSave=carregarListaAprovados',
             fitColumns: true
             });
             //$('#dg').datagrid('reload');
          }
 
-         function carregarColetados(){
+         function carregarColetasColetadas(){
             $("div.easyui-layout").layout();
             $('#dg').edatagrid({
-            url:'../../webServices/cargaWebService.php?editSave=carregarAprovados',
+            url:'../../webServices/coletaWebService.php?editSave=carregarListaColetadas',
             fitColumns: true
             });
             //$('#dg').datagrid('reload');
@@ -125,8 +125,8 @@
     <div id="toolbar">
       <!--<a href="#" class="easyui-linkbutton" iconCls="icon-car-icon" plain="true" onclick="newUser()" title="Adicionar Usuário">Novo Veiculo</a>-->
       <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser()" title="Alterar Dados da Coleta">Visualizar Coleta</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados()" title="">Aprovados</a>
-      <a href="#" class="easyui-linkbutton" iconCls="icon-box-icon" plain="true" onclick="carregarColetados()" title="">Coletados</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarColetasAprovados()" title="">Aprovados</a>
+      <a href="#" class="easyui-linkbutton" iconCls="icon-box-icon" plain="true" onclick="carregarColetasColetadas()" title="">Coletados</a>
       <!--<a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true" onclick="removeUser()" title="Remover Dados do Usuário">Remover Coleta</a>-->
       <!--<label for="pesquisar">Localizar Coleta</label>
         &nbsp;&nbsp;
@@ -319,62 +319,6 @@
                   </td>-->
           </tr> 
 
-
-
-
-
-
-
-
-          <!--
-          <tr>
-            <td><b>Tipo</b></td>
-            <td><b>Estado</b></td>
-            <td><b>Cidade</b></td>
-          </tr>
-          <tr>
-            <td>
-                <select required="required" class="form-control" id="tipo" name="tipo">
-                  <option value="">Tipo de Caminhão</option>
-                  <option value="Tipo 1">Tipo 1</option>
-                  <option value="Tipo 2">Tipo 2</option>
-                </select>
-            </td>
-          <td>
-              <select required="required" class="form-control" id="uf" name="uf">
-                <option value="">Escolha o seu Estado</option>
-                <option value="PE">PE</option>
-                <option value="AC">AC</option>
-                <option value="AL">AL</option>
-                <option value="AM">AM</option>
-                <option value="AP">AP</option>
-                <option value="BA">BA</option>
-                <option value="CE">CE</option>
-                <option value="DF">DF</option>
-                <option value="ES">ES</option>
-                <option value="GO">GO</option>
-                <option value="MA">MA</option>
-                <option value="MG">MG</option>
-                <option value="MS">MS</option>
-                <option value="MT">MT</option>
-                <option value="PA">PA</option>
-                <option value="PB">PB</option>
-                <option value="PI">PI</option>
-                <option value="PR">PR</option>
-                <option value="RJ">RJ</option>
-                <option value="RN">RN</option>
-                <option value="RO">RO</option>
-                <option value="RR">RR</option>
-                <option value="RS">RS</option>
-                <option value="SC">SC</option>
-                <option value="SE">SE</option>
-                <option value="SP">SP</option>
-                <option value="TO">TO</option>
-              </select>
-            </td>
-            <td><input required="required" class="form-control" type="text" id="cidade" name="cidade" style="text-transform:uppercase" size="23" placeholder="Cidade"></td>
-
-          </tr>-->
         </table>
        
       </form>
