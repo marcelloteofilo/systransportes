@@ -142,7 +142,7 @@
 							INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
 							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga
-							where coletada.coletada  = "Coletada"';
+							where coletada.coletada  = "Coletado"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 

@@ -2,9 +2,14 @@
   class Frete {
 
   //Atributos
-  private $codFrete;    
+  private $codFrete;
+
+
   private $codVeiculo;
+  //placa
   private $codMotorista;
+  //nome
+
   private $origem;  
   private $destino;  
     
