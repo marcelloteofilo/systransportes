@@ -230,12 +230,12 @@
                   </td>
                  <td>
                      <select class="form-control" id="motorista" name="motorista" onclick="consultaMotorista()">
-                        <option value="2">MOTORISTA</option>
+                        <option value="">Escolha o Motorista</option>
                      </select>
                   </td>
                   <td>
                      <select class="form-control" id="veiculo" name="veiculo" onclick="consultaVeiculo()">
-                        <option value="">VEICULO</option>
+                        <option value="">Escolha o Veículo</option>
                      </select>
                   </td>
                </tr>
