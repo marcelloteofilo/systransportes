@@ -53,7 +53,7 @@
          }
     
 
-      function editSave(){
+      function editUser(){
         var row = $('#dg').datagrid('getSelected');
         if (row){
           $('#dlg').dialog('open').dialog('setTitle','Editar Coleta');

@@ -64,6 +64,10 @@
 		echo( json_encode( $resultado ) );	
 		return $resultado;	
 	}			
+
+
+
+
 	if ($_GET["editSave"] == "carregarColetasColetadas") {
 
 		$coleta = new Coleta();
@@ -95,10 +99,7 @@
 	}	
 
 
-
-
-
-	if ($_GET["editSave"] == "alterarColeta"){	
+	if ($_GET["editUser"] == "alterarColeta"){	
 		$coleta = new Coleta();	
 
 		//Atributos da classe Usuário/Valores 
@@ -123,12 +124,6 @@
 		
 		//echo(json_encode($resultado ));						
 	}
-	
-
-
-
-
-
 
 ?>
 	

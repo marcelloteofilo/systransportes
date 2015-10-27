@@ -199,11 +199,9 @@
 	  $cidade = mysql_real_escape_string($coleta->getCidade(), $conexao);
 	  $observacao = mysql_real_escape_string($coleta->getObservacao(), $conexao);
 
-
-	  
    
-  	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update cargas set statusCarga='$statusCarga',prazo='$prazo',distancia='$distancia',frete='$frete' where codCarga='$codCarga'";
+
+	  $sql = "update coleta set statusCarga='$statusCarga',prazo='$prazo',distancia='$distancia',frete='$frete' where codCarga='$codCarga'";
       echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
