@@ -57,7 +57,7 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul  class="nav navbar-nav">
                     <li class="current"><a href="../telaAdminSystem.php">Início Admin</a></li>
-                    <li><a href="#"><?php echo "Usuario: ".$logado;?></a></li>
+                    <li><a href="#"><?php echo "Usuario: " . $logado; ?></a></li>
                 </ul>
             </nav>
             <div class="navbar-header">
@@ -81,9 +81,11 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
                singleSelect="true">
             <thead>
                 <tr>
-                    <th field="idCotacoes" width="50">Cotação</th>
-                    <th field="descricaoMercadoria" width="50">Descricao</th>
-                    <th field="pesoMercadoria" width="50">Peso</th>
+                    <th field="carga" width="10">Carga</th>
+                    <th field="descricao" width="80">Descricao</th>
+                    <th field="peso" width="10">Peso</th>
+                    <th field="valor" width="10">Valor</th>
+                    <th field="quantidade" width="10">Quantidade</th>
                 </tr>
             </thead>
 
@@ -109,15 +111,23 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
             <form id="fm" method="post" novalidate>
                 <div class="fitem">
                     <label>Cotação:</label>
-                    <input name="idCotacoes" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
+                    <input name="codCarga" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
                 </div>
                 <div class="fitem">
                     <label>Descrição:</label>
-                    <input name="descricaoMercadoria" class="easyui-validatebox" required="true" onkeyup="validar(this, 'text');">
+                    <input name="descricao" class="easyui-validatebox" required="true" onkeyup="validar(this, 'text');">
                 </div>
                 <div class="fitem">
                     <label>Peso:</label>
                     <input name="pesoMercadoria" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
+                </div>
+                <div class="fitem">
+                    <label>Valor:</label>
+                    <input name="valorMercadoria" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
+                </div>
+                <div class="fitem">
+                    <label>Quantidade:</label>
+                    <input name="quantidade" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
                 </div>
             </form>
         </div>

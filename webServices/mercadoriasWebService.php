@@ -10,17 +10,19 @@ if ($_GET["editSave"] == "incluirMercadoria") {
     $mercadoria = new Mercadoria();
 
     //Atributos da classe Mercadoria/Valores
-    $mercadoria->getObjCotacao()->setId($_REQUEST['idCotacoes']);
-    $mercadoria->setDescricaoMercadoria($_REQUEST['descricaoMercadoria']);
+    $mercadoria->getObjCarga()->setCodCarga($_REQUEST['codCarga']);
+    $mercadoria->setDescricaoMercadoria($_REQUEST['descricao']);
     $mercadoria->setPeso($_REQUEST['pesoMercadoria']);
+    $mercadoria->setValorMercadoria($_REQUEST['valorMercadoria']);
+    $mercadoria->setQuantidade($_REQUEST['quantidade']);
 
     if (mercadoriaSql::adicionar($mercadoria)) {
 
         echo json_encode(array('success' => true));
 
-        $resultado[] = array(
-            'oka' => 'oks',
-        );
+//        $resultado[] = array(
+//            'oka' => 'oks',
+//        );
     }
 
     echo(json_encode($resultado));
@@ -31,9 +33,11 @@ if ($_GET["editSave"] == "alterarMercadoria") {
 
     //Atributos da classe Mercadoria/Valores
     $mercadoria->setId($_REQUEST['id']);
-    $mercadoria->getObjCotacao()->setId($_REQUEST['idCotacoes']);
-    $mercadoria->setDescricaoMercadoria($_REQUEST['descricaoMercadoria']);
+    $mercadoria->getObjCarga()->setCodCarga($_REQUEST['codCarga']);
+    $mercadoria->setDescricaoMercadoria($_REQUEST['descricao']);
     $mercadoria->setPeso($_REQUEST['pesoMercadoria']);
+    $mercadoria->setValorMercadoria($_REQUEST['valorMercadoria']);
+    $mercadoria->setQuantidade($_REQUEST['quantidade']);
 
     if (mercadoriaSql::alterar($mercadoria)) {
         $resultado[] = array(
@@ -61,10 +65,21 @@ if ($_GET["editSave"] == "deletarMercadoria") {
 
 if ($_GET["editSave"] == "carregarMercadoria") {
 
-    if (mercadoriaSql::carregarLista()) {
+    $listaMercadoria = mercadoriaSql::carregarLista();
+
+    for ($i = 0; $i < count($listaMercadoria); $i++) {
         $resultado[] = array(
-            'oka' => 'oks',
+            'id' => $listaMercadoria[$i]->getId(),
+            'carga' => $listaMercadoria[$i]->getObjCarga()->getCodCarga(),
+            'descricao' => $listaMercadoria[$i]->getDescricaoMercadoria(),
+            'peso' => $listaMercadoria[$i]->getPeso(),
+            'valor' => $listaMercadoria[$i]->getValorMercadoria(),
+            'quantidade' => $listaMercadoria[$i]->getQuantidade()
         );
     }
+
+    echo (json_encode($resultado));
+
+    return $resultado;
 }
 ?>
