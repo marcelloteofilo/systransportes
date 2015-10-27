@@ -8,14 +8,18 @@
 
 	
 	if ($_GET["editSave"] == "alterarFrete"){	
-		$carga = new Carga();	
+		$frete = new Frete();	
 
 		//Atributos da classe Usuário/Valores 
-		$carga->setCodCarga($_REQUEST['codCarga']); 
-		$carga->setStatusCarga('Aprovado Cliente');
-		$carga->setColetada('Aprovado');
+		$frete->setCodFrete($_REQUEST['codFrete']); 
+		$frete->setOrigem($_REQUEST['ufOrigem']);
+		$frete->setDestino($_REQUEST['ufDestino']);
+		$frete->setCodMotorista($_REQUEST['motorista']);
+		$frete->setCodVeiculo($_REQUEST['veiculo']);
+		$frete->setStatusFrete($_REQUEST['statusFrete']);
+		$frete->setCodTransp($_REQUEST['codTransp']);
 
-		if (cargaSql::alterarCargaCliente($carga)){
+		if (freteSql::alterarFrete($frete)){
 			echo json_encode(array('success'=>true));
 		}	
 		

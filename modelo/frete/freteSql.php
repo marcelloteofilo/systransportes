@@ -7,24 +7,27 @@
 
 
 
-    /*public static function alterarFrete(Frete $frete) {
+    public static function alterarFrete(Frete $frete) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao();     
 	  
 	  //Atributo da tabela usuário
-	  $codCarga = mysql_real_escape_string($carga->getCodCarga(), $conexao); 
-	  $statusCarga = mysql_real_escape_string($carga->getStatusCarga(), $conexao);
-	  $frete = mysql_real_escape_string($carga->getFrete(), $conexao);
-	  $distancia = mysql_real_escape_string($carga->getDistancia(), $conexao);
-	  $prazo = mysql_real_escape_string($carga->getPrazo(), $conexao);
+	  $codFrete = mysql_real_escape_string($frete->getCodFrete(), $conexao); 
+	  $codVeiculo = mysql_real_escape_string($frete->getCodVeiculo(), $conexao);
+	  $codMotorista = mysql_real_escape_string($frete->getCodMotorista(), $conexao);
+	  $origem = mysql_real_escape_string($frete->getOrigem(), $conexao);
+	  $destino = mysql_real_escape_string($frete->getDestino(), $conexao);
+
+	  $statusFrete = mysql_real_escape_string($frete->getStatusFrete(), $conexao);
+	  $codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
    
   	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update cargas set statusCarga='$statusCarga',prazo='$prazo',distancia=$distancia,frete=$frete where codCarga=$codCarga";
+	  $sql = "update frete set statusCarga='$statusCarga',prazo='$prazo',distancia=$distancia,frete=$frete where codCarga=$codCarga";
       echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);
-    }*/
+    }
 
 	
     public static function carregarLista(Frete $frete) {
@@ -52,7 +55,7 @@ INNER JOIN veiculos as veiculo ON ft.codVeiculo = veiculo.id;';
 
 				$frete->setCodVeiculo($row["codVeiculo"]);
 				$frete->setCodMotorista($row["codMotorista"]);
-				$frete->setOrigem($row["codigoOrigem"]);
+				$frete->setOrigem($row["ufOrigem"]);
 				$frete->setDestino($row["codigoDestino"]);
 
 				$frete->setStatusFrete($row["statusFrete"]);

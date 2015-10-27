@@ -120,7 +120,7 @@
       </header>
       <br><br>
    </head>
-   <body style="background:#F3F8F7">
+   <body style="background:#F3F8F7" onload="consultaVeiculo(); consultaMotorista();">
       <!-- TABELA ADMIN PESSOA FÍSICA-->
       <center>
          <table id="dg" title="Cadastro de Frete" class="easyui-datagrid" style=" width:1250px;height:495px"
@@ -229,12 +229,12 @@
                      </select>
                   </td>
                  <td>
-                     <select class="form-control" id="motorista" name="motorista" onclick="consultaMotorista()">
+                     <select class="form-control" id="motorista" name="motorista">
                         <option value="">Escolha o Motorista</option>
                      </select>
                   </td>
                   <td>
-                     <select class="form-control" id="veiculo" name="veiculo" onclick="consultaVeiculo()">
+                     <select class="form-control" id="veiculo" name="veiculo" >
                         <option value="">Escolha o Veículo</option>
                      </select>
                   </td>
