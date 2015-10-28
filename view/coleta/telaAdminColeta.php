@@ -277,7 +277,7 @@
           </tr>
 
           <tr>
-            <td><input required="required" 
+            <td><input  
               class="form-control" 
               type="text" 
               readonly="true"
@@ -288,7 +288,7 @@
               placeholder="Logradouro">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
               readonly="true"
@@ -299,7 +299,7 @@
               placeholder="Bairro">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
               readonly="true"
@@ -310,7 +310,7 @@
               placeholder="Número">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
               readonly="true"
@@ -321,7 +321,7 @@
               placeholder="Estado">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
               readonly="true"
@@ -332,7 +332,7 @@
               placeholder="Cidade">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
               readonly="true"
