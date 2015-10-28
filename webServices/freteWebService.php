@@ -7,6 +7,32 @@
 
 
 	
+if ($_GET["editSave"] == "incluirFrete"){	
+		$frete = new Frete();	
+
+		//Atributos da classe Usuário/Valores 
+		//$frete->setCodFrete($_REQUEST['codFrete']);
+
+		$frete->setCodMotorista($_REQUEST['codMotorista']);
+		$frete->setCodVeiculo($_REQUEST['codVeiculo']);
+
+		$frete->setUfDestino($_REQUEST['ufDestino']);
+		$frete->setUfOrigem($_REQUEST['ufOrigem']);
+		$frete->setCidadeOrigem($_REQUEST['cidadeOrigem']);
+		$frete->setCidadeDestino($_REQUEST['cidadeDestino']);
+
+		$frete->setStatusFrete($_REQUEST['statusFrete']);
+		$frete->setCodTransp($_REQUEST['codTransp']);
+
+
+
+		if (freteSql::incluirFrete($frete)){
+			echo json_encode(array('success'=>true));
+		}	
+		
+		//echo(json_encode($resultado ));						
+	}
+
 	if ($_GET["editSave"] == "alterarFrete"){	
 		$frete = new Frete();	
 

@@ -42,7 +42,7 @@
          function newUser(){
            $('#dlg').dialog('open').dialog('setTitle','Novo Frete');
            $('#fm').form('clear');
-           url = '../../webServices/freteWebService.php?editSave=incluirVeiculo';
+           url = '../../webServices/freteWebService.php?editSave=incluirFrete';
          }
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
@@ -166,7 +166,7 @@
                </tr>
                <tr>
                   <td>
-                     <select tabindex="1" class="form-control" id="ufOrigem" name="ufOrigem">
+                     <select required="required"  tabindex="1" class="form-control" id="ufOrigem" name="ufOrigem">
                         <option value="">Escolha Estado Origem</option>
                         <option value="PE">PE</option>
                         <option value="AC">AC</option>
@@ -198,7 +198,7 @@
                      </select>
                   </td>
                   <td>
-                     <select tabindex="1" class="form-control" id="ufDestino" name="ufDestino">
+                     <select required="required"  tabindex="1" class="form-control" id="ufDestino" name="ufDestino">
                         <option value="">Escolha Estado Destino</option>
                         <option value="PE">PE</option>
                         <option value="AC">AC</option>
@@ -230,12 +230,12 @@
                      </select>
                   </td>
                  <td>
-                     <select class="form-control" id="codMotorista" name="codMotorista">
+                     <select required="required"  class="form-control" id="codMotorista" name="codMotorista">
                         <option value="">Escolha o Motorista</option>
                      </select>
                   </td>
                   <td>
-                     <select class="form-control" id="codVeiculo" name="codVeiculo" >
+                     <select required="required"  class="form-control" id="codVeiculo" name="codVeiculo" >
                         <option value="">Escolha o Veículo</option>
                      </select>
                   </td>
@@ -248,10 +248,10 @@
                   <td><b>Código Transporte</b></td>
                </tr>
                <tr>
-                   <td><input required="required" class="form-control" type="text" id="cidadeOrigem" name="cidadeOrigem" size="23" style="text-transform:uppercase"  placeholder="Código de Trans." maxlength="10" onkeyup="validar(this,'text');"></td>
-                   <td><input required="required" class="form-control" type="text" id="cidadeDestino" name="cidadeDestino" size="23" style="text-transform:uppercase"  placeholder="Código de Trans." maxlength="10" onkeyup="validar(this,'text');"></td>
+                   <td><input required="required" class="form-control" type="text" id="cidadeOrigem" name="cidadeOrigem" size="23" style="text-transform:uppercase"  placeholder="Cidade Origem" maxlength="10" onkeyup="validar(this,'text');"></td>
+                   <td><input required="required" class="form-control" type="text" id="cidadeDestino" name="cidadeDestino" size="23" style="text-transform:uppercase"  placeholder="Cidade Destino" maxlength="10" onkeyup="validar(this,'text');"></td>
                   <td>
-                     <select class="form-control" id="statusFrete" name="statusFrete">
+                     <select required="required" class="form-control" id="statusFrete" name="statusFrete">
                         <option value=""> --- Qual Status? ---</option>
                         <option value="Aguardando">Aguardando</option>
                         <option value="Iniciada">Iniciada</option>

@@ -6,12 +6,12 @@
   
 
 
- 	/*public static function incluirFrete(Frete $frete) {
+ 	public static function incluirFrete(Frete $frete) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao();     
 	  
 	  //Atributo da tabela usuário
-	  $codFrete = mysql_real_escape_string($frete->getCodFrete(), $conexao); 
+	  //$codFrete = mysql_real_escape_string($frete->getCodFrete(), $conexao); 
 
 	  $codVeiculo = mysql_real_escape_string($frete->getCodVeiculo(), $conexao);
 	  $codMotorista = mysql_real_escape_string($frete->getCodMotorista(), $conexao);
@@ -25,12 +25,14 @@
 	  $codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
    
   	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "insert into frete set codVeiculo=$codVeiculo,codMotorista=$codMotorista,ufOrigem='$ufOrigem',ufDestino='$ufDestino',cidadeOrigem='$cidadeOrigem',cidadeDestino='$cidadeDestino',statusFrete='$statusFrete',codTransp='$codTransp' where codFrete=$codFrete";
-      echo($sql);
+      
+      $sql    = "insert into frete (codVeiculo, codMotorista, ufOrigem, ufDestino, cidadeOrigem,cidadeDestino,statusFrete,codTransp) values 
+      					($codVeiculo,$codMotorista, '$ufOrigem', '$ufDestino', '$cidadeOrigem','$cidadeDestino','$statusFrete','$codTransp')";	
+      //echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);
-    }*/
+    }
 
 
     public static function alterarFrete(Frete $frete) {
