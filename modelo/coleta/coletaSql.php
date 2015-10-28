@@ -41,9 +41,13 @@
 				$coleta->setCodVeiculo($row["placaVeiculo"]);
 
 				//
+
+				//$dataFormatada = explode("-", $row['data']);
+				//$dataBrasileira = $dataFormatada[2]."/".$dataFormatada[1]."/".$dataFormatada[0];
+
+				//
 				$coleta->setData($row["data"]);
 				$coleta->setHora($row["hora"]);
-
 				//
 				$coleta->setColetada($row["coletada"]);
 				$coleta->setTelefone($row["telefone"]);
@@ -53,6 +57,8 @@
 				$coleta->setEstado($row["uf"]);
 				$coleta->setCidade($row["cidade"]);
 				$coleta->setObservacao($row["observacao"]);
+
+
 			
 				$retorno[] = $coleta;
          }
@@ -199,7 +205,9 @@
 	  $cidade = mysql_real_escape_string($coleta->getCidade(), $conexao);
 	  $observacao = mysql_real_escape_string($coleta->getObservacao(), $conexao);
 
-   
+   		$dataFormatada = explode("/", $data);
+   		$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
+	
 
 	  $sql = "update coleta 
 	  			set 
@@ -207,7 +215,7 @@
 		  			codCarga='$codCarga',
 		  			codMotorista='$codMotorista',
 		  			codVeiculo='$codVeiculo'
-		  			data='$data'
+		  			data='$dataAmericana'
 		  			hora='$hora'
 	  				coleta='$coleta'
 

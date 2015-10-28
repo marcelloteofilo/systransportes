@@ -58,7 +58,7 @@
         if (row){
           $('#dlg').dialog('open').dialog('setTitle','Editar Coleta');
           $('#fm').form('load',row);
-          url = '../../webServices/coetaWebService.php?editSave=alterarColeta&id='+row.id;//AGUADAR MUDANÇAS
+          url = '../../webServices/coletaWebService.php?editSave=alterarColeta&id='+row.id;//AGUADAR MUDANÇAS
         }
 		else
     {
@@ -206,38 +206,53 @@
             <td><input required="required" 
               class="form-control" 
               type="text" 
-              id="dataColeta" 
+              id="dataColeta"
+              onkeypress="mascara(this, '##/##/####')"
+              onkeyup="validar(this,'num');" 
+              maxlength="10" 
               name="dataColeta" 
               size="23" 
               style="text-transform:uppercase"  
               placeholder="Data da Coleta">
             </td>
-             <!--maxlength="4" onkeyup="validar(this,'num');"-->
+             <!--maxlength="4" -->
 
             <td><input required="required" 
               class="form-control" 
               type="text" 
               id="horaColeta" 
+              onkeypress="mascara(this, '##:##')"
+              maxlength="5" 
               name="horaColeta" 
               size="23" 
               style="text-transform:uppercase"  
               placeholder="hora da Coleta">
             </td>
 
-            <td><input required="required" 
+            <td>
+
+              <select size="1" name="statusColeta" id="statusColeta" required="required" class="form-control" style="width:130px">
+                <option selected value="Selecione">Selecione</option>
+                <option value="Aprovado">Aprovado</option>
+                <option value="Coletado">Coletado</option>
+              </select>
+              <!--<input required="required" 
               class="form-control" 
               type="text" 
               id="statusColeta" 
               name="statusColeta" 
               size="23" 
               style="text-transform:uppercase"  
-              placeholder="status da Coleta">
+              placeholder="status da Coleta">-->
             </td>
 
             <td><input required="required" 
               class="form-control" 
               type="text" 
-              id="telefone" 
+              id="telefone"
+              onkeypress="mascara(this, '## ####-####')" 
+              onkeyup="validar(this,'num');"
+              maxlength="12" 
               name="telefone" 
               size="23" 
               style="text-transform:uppercase"  
@@ -262,9 +277,10 @@
           </tr>
 
           <tr>
-            <td><input required="required" 
+            <td><input  
               class="form-control" 
               type="text" 
+              readonly="true"
               id="logradouro" 
               name="logradouro" 
               size="23" 
@@ -272,9 +288,10 @@
               placeholder="Logradouro">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
+              readonly="true"
               id="bairro" 
               name="bairro" 
               size="23" 
@@ -282,9 +299,10 @@
               placeholder="Bairro">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
+              readonly="true"
               id="numero" 
               name="numero" 
               size="23" 
@@ -292,9 +310,10 @@
               placeholder="Número">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
+              readonly="true"
               id="estado" 
               name="estado" 
               size="23" 
@@ -302,9 +321,10 @@
               placeholder="Estado">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
+              readonly="true"
               id="cidade" 
               name="cidade" 
               size="23" 
@@ -312,9 +332,10 @@
               placeholder="Cidade">
             </td>
 
-            <td><input required="required" 
+            <td><input 
               class="form-control" 
               type="text" 
+              readonly="true"
               id="observacao" 
               name="observacao" 
               size="23" 
