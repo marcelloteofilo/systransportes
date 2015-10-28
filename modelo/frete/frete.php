@@ -6,12 +6,16 @@
 
 
   private $codVeiculo;
-  //placa
-  private $codMotorista;
-  //nome
+  private $placaVeiculo;
 
-  private $origem;  
-  private $destino;  
+  private $codMotorista;
+  private $nomeMotorista;
+
+
+  private $ufDestino;
+  private $ufOrigem;
+  private $cidadeOrigem;
+  private $cidadeDestino;   
     
   private $statusFrete; 
   private $codTransp;
@@ -49,30 +53,57 @@
     return $this->codMotorista;
   }  
 
-  // GET/SET
-  public function setOrigem($origem) {
-       $this->origem = trim($origem);
-  }
-  
-  public function getOrigem() {     
-    if($this->origem == null){
-      $this->origem = new Cidade();
-    }   
-    return $this->origem;
-  } 
-
-  // GET/SET
-  public function setDestino($destino) {
-       $this->destino = trim($destino);
-  }
-
-  public function getDestino() {     
-    if($this->destino == null){
-      $this->destino = new Cidade();
-    }   
-    return $this->destino;
-  }
 //////////////////////////////////////////////////////////////////////
+  
+// GET/SET
+  public function setUfDestino($ufDestino) {
+      $this->ufDestino = trim($ufDestino);
+    }
+    
+    public function getUfDestino() {
+      return $this->ufDestino;
+    }
+    // GET/SET
+  public function setUfOrigem($ufOrigem) {
+      $this->ufOrigem = trim($ufOrigem);
+    }
+    
+    public function getUfOrigem() {
+      return $this->ufOrigem;
+    }
+    // GET/SET
+  public function setCidadeOrigem($cidadeOrigem) {
+      $this->cidadeOrigem = trim($cidadeOrigem);
+    }
+    
+    public function getCidadeOrigem() {
+      return $this->cidadeOrigem;
+    }
+    // GET/SET
+  public function setCidadeDestino($cidadeDestino) {
+      $this->cidadeDestino = trim($cidadeDestino);
+    }
+    
+    public function getCidadeDestino() {
+      return $this->cidadeDestino;
+    }
+    // GET/SET
+  public function setPlacaVeiculo($placaVeiculo) {
+      $this->placaVeiculo = trim($placaVeiculo);
+    }
+    
+    public function getPlacaVeiculo() {
+      return $this->placaVeiculo;
+    }
+    // GET/SET
+  public function setNomeMotorista($nomeMotorista) {
+      $this->nomeMotorista = trim($nomeMotorista);
+    }
+    
+    public function getNomeMotorista() {
+      return $this->nomeMotorista;
+    }
+
   // GET/SET
   public function setStatusFrete($statusFrete) {
       $this->statusFrete = trim($statusFrete);

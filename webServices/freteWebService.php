@@ -11,13 +11,20 @@
 		$frete = new Frete();	
 
 		//Atributos da classe Usuário/Valores 
-		$frete->setCodFrete($_REQUEST['codFrete']); 
-		$frete->setOrigem($_REQUEST['ufOrigem']);
-		$frete->setDestino($_REQUEST['ufDestino']);
-		$frete->setCodMotorista($_REQUEST['motorista']);
-		$frete->setCodVeiculo($_REQUEST['veiculo']);
+		$frete->setCodFrete($_REQUEST['codFrete']);
+
+		$frete->setCodMotorista($_REQUEST['codMotorista']);
+		$frete->setCodVeiculo($_REQUEST['codVeiculo']);
+
+		$frete->setUfDestino($_REQUEST['ufDestino']);
+		$frete->setUfOrigem($_REQUEST['ufOrigem']);
+		$frete->setCidadeOrigem($_REQUEST['cidadeOrigem']);
+		$frete->setCidadeDestino($_REQUEST['cidadeDestino']);
+
 		$frete->setStatusFrete($_REQUEST['statusFrete']);
 		$frete->setCodTransp($_REQUEST['codTransp']);
+
+
 
 		if (freteSql::alterarFrete($frete)){
 			echo json_encode(array('success'=>true));
@@ -36,10 +43,16 @@
 			$resultado[] = array(
 			    'codFrete'	=>  $listaFrete[$i]->getCodFrete(),
 
-			    'ufOrigem'	=>  $listaFrete[$i]->getOrigem(),	
-				'ufDestino'	=>  $listaFrete[$i]->getDestino(),		
-				'motorista'	=>  $listaFrete[$i]->getCodMotorista(),	
-				'veiculo'	=>  $listaFrete[$i]->getCodVeiculo(),					
+			    'codMotorista'	=>  $listaFrete[$i]->getCodMotorista(),
+			    'nomeMotorista'	=>  $listaFrete[$i]->getNomeMotorista(),
+
+				'codVeiculo'	=>  $listaFrete[$i]->getCodVeiculo(),
+				'placaVeiculo'	=>  $listaFrete[$i]->getPlacaVeiculo(),	
+
+			    'ufDestino'	=>  $listaFrete[$i]->getUfDestino(),	
+				'ufOrigem'	=>  $listaFrete[$i]->getUfOrigem(),		
+				'cidadeOrigem'	=>  $listaFrete[$i]->getCidadeOrigem(),	
+				'cidadeDestino'	=>  $listaFrete[$i]->getCidadeDestino(),					
 
 				'statusFrete'	=>  $listaFrete[$i]->getStatusFrete(),					
 				'codTransp'	=>   $listaFrete[$i]->getCodTransp(),								

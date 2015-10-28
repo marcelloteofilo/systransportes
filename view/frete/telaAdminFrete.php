@@ -42,14 +42,14 @@
          function newUser(){
            $('#dlg').dialog('open').dialog('setTitle','Novo Frete');
            $('#fm').form('clear');
-           url = '../../webServices/veiculoWebService.php?editSave=incluirVeiculo';
+           url = '../../webServices/freteWebService.php?editSave=incluirVeiculo';
          }
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
            if (row){
              $('#dlg').dialog('open').dialog('setTitle','Editar Frete');
              $('#fm').form('load',row);
-             url = '../../webServices/veiculoWebService.php?editSave=alterarVeiculo&id='+row.id;
+             url = '../../webServices/freteWebService.php?editSave=alterarFrete&codFrete='+row.codFrete;
            }
          else
          {
@@ -130,10 +130,10 @@
             rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
                <tr>
-                  <th field="motorista" width="46">Motorista</th>
-                  <th field="veiculo" width="64">Veiculo</th>
-                  <th field="ufOrigem" width="70">Origem</th>
-                  <th field="ufOrigem" width="50">Destino</th>
+                  <th field="nomeMotorista" width="46">Motorista</th>
+                  <th field="placaVeiculo" width="64">Veiculo</th>
+                  <th field="cidadeOrigem" width="70">Origem</th>
+                  <th field="cidadeDestino" width="50">Destino</th>
                   <th field="statusFrete" width="72">Status</th>
                   <th field="codTransp" width="70">Codigo de Trans.</th>
                </tr>
@@ -166,7 +166,7 @@
                </tr>
                <tr>
                   <td>
-                     <select tabindex="1" class="form-control" id="ufOrigem" onChange="consultaCidades('cidadeOrigem', 'ufOrigem', '0', 'Escolha a Cidade!')">
+                     <select tabindex="1" class="form-control" id="ufOrigem" name="ufOrigem">
                         <option value="">Escolha Estado Origem</option>
                         <option value="PE">PE</option>
                         <option value="AC">AC</option>
@@ -198,7 +198,7 @@
                      </select>
                   </td>
                   <td>
-                     <select tabindex="1" class="form-control" id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0', 'Escolha a Cidade!')">
+                     <select tabindex="1" class="form-control" id="ufDestino" name="ufDestino">
                         <option value="">Escolha Estado Destino</option>
                         <option value="PE">PE</option>
                         <option value="AC">AC</option>
@@ -230,12 +230,12 @@
                      </select>
                   </td>
                  <td>
-                     <select class="form-control" id="motorista" name="motorista">
+                     <select class="form-control" id="codMotorista" name="codMotorista">
                         <option value="">Escolha o Motorista</option>
                      </select>
                   </td>
                   <td>
-                     <select class="form-control" id="veiculo" name="veiculo" >
+                     <select class="form-control" id="codVeiculo" name="codVeiculo" >
                         <option value="">Escolha o Veículo</option>
                      </select>
                   </td>
@@ -248,16 +248,8 @@
                   <td><b>Código Transporte</b></td>
                </tr>
                <tr>
-                  <td>
-                     <select class="form-control" id="cidadeOrigem" name="cidadeOrigem"  onChange="juntaCidadeUf(); CalculaDistancia();">
-                        <option  value="">Escolha Cidade Origem</option>
-                     </select>
-                  </td>
-                  <td>
-                     <select class="form-control" id="cidadeDestino" name="cidadeDestino"  onChange="juntaCidadeUf(); CalculaDistancia();">
-                        <option  value="">Escolha Cidade Destino</option>
-                     </select>
-                  </td>
+                   <td><input required="required" class="form-control" type="text" id="cidadeOrigem" name="cidadeOrigem" size="23" style="text-transform:uppercase"  placeholder="Código de Trans." maxlength="10" onkeyup="validar(this,'text');"></td>
+                   <td><input required="required" class="form-control" type="text" id="cidadeDestino" name="cidadeDestino" size="23" style="text-transform:uppercase"  placeholder="Código de Trans." maxlength="10" onkeyup="validar(this,'text');"></td>
                   <td>
                      <select class="form-control" id="statusFrete" name="statusFrete">
                         <option value=""> --- Qual Status? ---</option>

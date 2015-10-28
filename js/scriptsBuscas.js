@@ -3,7 +3,7 @@
 		
 		var servicoHttp = "../../webServices/consultasWebService.php";				
 
-		var caixalistaMotorista = document.getElementById('motorista');
+		var caixalistaMotorista = document.getElementById('codMotorista');
 
 		var valorCaixa = caixalistaMotorista.value;		
 		
@@ -34,7 +34,7 @@
 		
 		var servicoHttp = "../../webServices/consultasWebService.php";				
 
-		var caixalistaVeiculo = document.getElementById('veiculo');
+		var caixalistaVeiculo = document.getElementById('codVeiculo');
 
 		var valorCaixa = caixalistaVeiculo.value;		
 		

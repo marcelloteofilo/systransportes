@@ -6,6 +6,32 @@
   
 
 
+ 	/*public static function incluirFrete(Frete $frete) {
+      //Conexão com o banco
+      $conexao = Conexao::getInstance()->getConexao();     
+	  
+	  //Atributo da tabela usuário
+	  $codFrete = mysql_real_escape_string($frete->getCodFrete(), $conexao); 
+
+	  $codVeiculo = mysql_real_escape_string($frete->getCodVeiculo(), $conexao);
+	  $codMotorista = mysql_real_escape_string($frete->getCodMotorista(), $conexao);
+
+	  $ufOrigem = mysql_real_escape_string($frete->getUfOrigem(), $conexao);
+	  $ufDestino = mysql_real_escape_string($frete->getUfDestino(), $conexao);
+	  $cidadeOrigem = mysql_real_escape_string($frete->getCidadeOrigem(), $conexao);
+	  $cidadeDestino = mysql_real_escape_string($frete->getCidadeDestino(), $conexao);
+
+	  $statusFrete = mysql_real_escape_string($frete->getStatusFrete(), $conexao);
+	  $codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
+   
+  	  //Update para a tabela de Usuários do banco de dados
+	  $sql = "insert into frete set codVeiculo=$codVeiculo,codMotorista=$codMotorista,ufOrigem='$ufOrigem',ufDestino='$ufDestino',cidadeOrigem='$cidadeOrigem',cidadeDestino='$cidadeDestino',statusFrete='$statusFrete',codTransp='$codTransp' where codFrete=$codFrete";
+      echo($sql);
+      $resultado = @mysql_query($sql, $conexao);
+
+      return ($resultado === true);
+    }*/
+
 
     public static function alterarFrete(Frete $frete) {
       //Conexão com o banco
@@ -13,16 +39,20 @@
 	  
 	  //Atributo da tabela usuário
 	  $codFrete = mysql_real_escape_string($frete->getCodFrete(), $conexao); 
+
 	  $codVeiculo = mysql_real_escape_string($frete->getCodVeiculo(), $conexao);
 	  $codMotorista = mysql_real_escape_string($frete->getCodMotorista(), $conexao);
-	  $origem = mysql_real_escape_string($frete->getOrigem(), $conexao);
-	  $destino = mysql_real_escape_string($frete->getDestino(), $conexao);
+
+	  $ufOrigem = mysql_real_escape_string($frete->getUfOrigem(), $conexao);
+	  $ufDestino = mysql_real_escape_string($frete->getUfDestino(), $conexao);
+	  $cidadeOrigem = mysql_real_escape_string($frete->getCidadeOrigem(), $conexao);
+	  $cidadeDestino = mysql_real_escape_string($frete->getCidadeDestino(), $conexao);
 
 	  $statusFrete = mysql_real_escape_string($frete->getStatusFrete(), $conexao);
 	  $codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
    
   	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update frete set statusCarga='$statusCarga',prazo='$prazo',distancia=$distancia,frete=$frete where codCarga=$codCarga";
+	  $sql = "update frete set codVeiculo=$codVeiculo,codMotorista=$codMotorista,ufOrigem='$ufOrigem',ufDestino='$ufDestino',cidadeOrigem='$cidadeOrigem',cidadeDestino='$cidadeDestino',statusFrete='$statusFrete',codTransp='$codTransp' where codFrete=$codFrete";
       echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
@@ -35,15 +65,11 @@
       $conexao = Conexao::getInstance()->getConexao(); 
 		
 		$sql = 'select ft.*,
-cidadeOrigem.descricao as cidadeOrigem,cidadeOrigem.uf as ufOrigem, cidadeOrigem.codigo as codigoOrigem,
-cidadeDestino.descricao as cidadeDestino,cidadeDestino.uf as ufDestino, cidadeDestino.codigo as codigoDestino,
-usuarioMotorista.id as idMotorista,usuarioMotorista.nomeCompleto as nomeMotorista,
-veiculo.id as idVeiculo,veiculo.placa as placaVeiculo
+usuarioMotorista.nomeCompleto as nomeMotorista,
+veiculo.placa as placaVeiculo
 from frete as ft
-INNER JOIN cidades as cidadeOrigem ON ft.origem = cidadeOrigem.codigo
-INNER JOIN cidades as cidadeDestino ON ft.destino = cidadeDestino.codigo
 INNER JOIN usuarios as usuarioMotorista ON ft.codMotorista = usuarioMotorista.id
-INNER JOIN veiculos as veiculo ON ft.codVeiculo = veiculo.id;';
+INNER JOIN veiculos as veiculo ON ft.codVeiculo = veiculo.id';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -54,9 +80,15 @@ INNER JOIN veiculos as veiculo ON ft.codVeiculo = veiculo.id;';
 				$frete->setCodFrete($row["codFrete"]);
 
 				$frete->setCodVeiculo($row["codVeiculo"]);
+				$frete->setPlacaVeiculo($row["placaVeiculo"]);
+
 				$frete->setCodMotorista($row["codMotorista"]);
-				$frete->setOrigem($row["ufOrigem"]);
-				$frete->setDestino($row["codigoDestino"]);
+				$frete->setNomeMotorista($row["nomeMotorista"]);
+
+				$frete->setUfDestino($row["ufDestino"]);
+				$frete->setUfOrigem($row["ufOrigem"]);
+				$frete->setCidadeOrigem($row["cidadeOrigem"]);
+				$frete->setCidadeDestino($row["cidadeDestino"]);
 
 				$frete->setStatusFrete($row["statusFrete"]);
 				$frete->setCodTransp($row["codTransp"]);
