@@ -64,6 +64,10 @@
 		echo( json_encode( $resultado ) );	
 		return $resultado;	
 	}			
+
+
+
+
 	if ($_GET["editSave"] == "carregarColetasColetadas") {
 
 		$coleta = new Coleta();
@@ -93,12 +97,33 @@
 		echo( json_encode( $resultado ) );	
 		return $resultado;	
 	}	
-	
 
 
+	if ($_GET["editUser"] == "alterarColeta"){	
+		$coleta = new Coleta();	
 
-
-
+		//Atributos da classe Usuário/Valores 
+		$coleta->setCodColeta($_REQUEST['codColeta']); 
+		$coleta->setCodCarga('codCarga');
+		$coleta->setCodMotorista($_REQUEST['codMotorista']);
+		$coleta->setCodVeiculo($_REQUEST['codVeiculo']); 
+		$coleta->setData($_REQUEST['data']);
+		$coleta->setHora($_REQUEST['hora']);
+		$coleta->setColetada($_REQUEST['coletada']);  
+		$coleta->setTelefone($_REQUEST['telefone']);
+		$coleta->setLogradouro($_REQUEST['logradouro']);
+		$coleta->setBairro($_REQUEST['bairro']);
+		$coleta->setNumero($_REQUEST['numero']);
+		$coleta->setEstado($_REQUEST['estado']);
+		$coleta->setCidade($_REQUEST['cidade']);
+		$coleta->setObservacao($_REQUEST['observacao']);
+		
+		if (coletaSql::alterarColeta($coleta)){
+			echo json_encode(array('success'=>true));
+		}	
+		
+		//echo(json_encode($resultado ));						
+	}
 
 ?>
 	
