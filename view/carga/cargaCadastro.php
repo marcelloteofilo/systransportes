@@ -380,29 +380,12 @@ if (isset($_POST['cadastrar'])) {
                                  <td><b>Valor Aproximado</b></td>
                                  <td><b>Temdo de Entrega</b></td>
                                  <td><b>Data do Pedido</b></td>
-                                 <td><b>Coletada</b></td>
-                                 <td><b>Status Carga</b></td>
                               </tr>
                               <tr>
                                  <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
                                  <td><input readonly type="text" id="frete" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
                                  <td><input readonly type="text" id="prazo" name="" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
                                  <td><input readonly type="text" id="dataPedido" name="" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
-                                 <td>
-                                    <select readonly class="form-control" id="coletada" name="">
-                                       <option value=""> --- Em Processo --- </option>
-                                       <option value="Coletado">Coletado</option>
-                                       <option value="Aprovado">Aprovado</option>
-                                    </select>
-                                 </td>
-                                 <td>
-                                    <select readonly class="form-control" id="statusCarga" name="">
-                                       <option value="Atendimento">Atendimento</option>
-                                       <option value="Aprovado Atendente">Aprovado Atendente</option>
-									            <option value="Aprovado Cliente">Aprovado Cliente</option>
-                                    </select>
-                                 </td>
-                              </tr>
                            </table>
 
                            <table>
