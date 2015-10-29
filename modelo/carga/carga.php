@@ -27,9 +27,12 @@
   private $distancia;
   private $prazo;
   private $frete;
-  private $coletada;
 
+  //status
+  private $coletada; // Coleta/Carga
+  private $cotado;
   private $statusCarga;
+
 
   private $pessoaFisicaNome;
   private $pessoaJuridicaNome;
@@ -259,6 +262,15 @@
     
     public function getStatusCarga() {
       return $this->statusCarga;
+    }
+
+     // GET/SET
+  public function setCotado($cotado) {
+      $this->cotado = trim($cotado);
+    }
+    
+    public function getCotado() {
+      return $this->cotado;
     }
 
     //GET/SET     

@@ -63,17 +63,18 @@
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
            var statusDaCarga = row.statusCarga;
-           //alert(row.codCarga);
+           var cotado = row.cotado;
+           //alert(row.codCarga+" "+cotado+" "+statusDaCarga);
            if (row){
              $('#dlg').dialog('open').dialog('setTitle','Editar Cotação');
              $('#fm').form('load',row);
-             if(statusDaCarga == "Aprovado Atendente"){
-             url = '../../webServices/cargaWebService.php?editSave=aprovarCarga&codCarga='+row.codCarga;
+             if(cotado == "Cotado" && statusDaCarga == ""){
+             url = '../../webServices/cargaWebService.php?editSave=aprovarCliente&codCarga='+row.codCarga;
              }
-             else if(statusDaCarga == "Aprovado Cliente"){
+             if(statusDaCarga != ""){
                alert("Sua cotação já está com status concluído, a mesma só consta para visualização dos dados.");
              }
-             else{
+             if(cotado == "Nao Cotado"){
                alert("Sua cotação ainda esta com um de nossos atendentes, aguarde até que a mesma seja aprovada.");
              }
            }
@@ -141,12 +142,11 @@
                   <th field="comprimento" width="50">Comprimento</th>
                   <th field="quantidade" width="45">Quantidade</th>
                   <th field="valor" width="25">Valor</th>
-                  <th field="naturezaCarga" width="45">Natureza.C</th>
-                  <th field="dataPedido" width="60">Data do Pedido</th>
-                  <th field="distancia" width="40">Distancia</th>
-                  <th field="frete" width="25">Frete</th>
-                  <th field="coletada" width="40">Coletada</th>
-                  <th field="statusCarga" width="50">Status da Carga</th>
+                  <th field="dataPedido" width="50">Data do Pedido</th>
+                  <th field="frete" width="25"><b>Frete</b></th>
+                  <th field="coletada" width="50"><b>Status Coleta</b></th>
+                  <th field="statusCarga" width="55"><b>Status Cotação</b></th>
+                  <th field="cotado" width="45"><b>Status</b></th>
                </tr>
             </thead>
          </table>
@@ -154,8 +154,8 @@
             <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-Stats-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-Customer-service-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">Atendimento</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
-            <a href="#" class="easyui-linkbutton" iconCls="icon-Unit-completed-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Cotado(os)</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-Unit-completed-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluído(os)</a>
             
             <!--<label for="pesquisar">Busca Avançada</label>
           
@@ -255,26 +255,37 @@
                                  <td><b>Valor Final</b></td>
                                  <td><b>Temdo de Entrega</b></td>
                                  <td><b>Data do Pedido</b></td>
-                                 <td><b>Coletada</b></td>
-                                 <td><b>Status Carga</b></td>
                               </tr>
                               <tr>
                                  <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
                                  <td><input readonly type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
                                  <td><input readonly type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
                                  <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
+                                 
+                              </tr>
+                              <tr>
+                                 <td><b>Coletada</b></td>
+                                 <td><b>Status Carga</b></td>
+                                 <td><b>Aprovar Cotação?</b></td>
+                              </tr>
+                              <tr>
                                  <td>
                                     <select readonly class="form-control" id="coletada" name="coletada">
-                                       <option value=""> --- Em Processo --- </option>
+                                       <option value=""></option>
                                        <option value="Coletado">Coletado</option>
                                        <option value="Aprovado">Aprovado</option>
                                     </select>
                                  </td>
                                  <td>
-                                    <select readonly class="form-control" id="statusCarga" name="statusCarga">
-                                       <option value="Atendimento">Atendimento</option>
-                                       <option value="Aprovado Atendente">Aprovado Atendente</option>
-                                       <option value="Aprovado Cliente">Aprovado Cliente</option>               
+                                    <select readonly class="form-control" id="cotado" name="cotado">
+                                       <option value="Nao Cotado">Nao Cotado</option>
+                                       <option value="Cotado">Cotado</option>               
+                                    </select>
+                                 </td>
+                                 <td>
+                                    <select class="form-control" id="statusCarga" name="statusCarga">
+                                       <option value="Aprovado">Aprovado</option>
+                                       <option value="Não Aprovado">Não Aprovado</option>               
                                     </select>
                                  </td>
                               </tr>
@@ -284,7 +295,7 @@
          </form>
       </div>
       <div id="dlg-buttons">
-         <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Aprovar Cotação</a>
+         <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Salvar</a>
          <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar Operação</a>
       </div>
       <br><br>

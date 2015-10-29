@@ -13,7 +13,6 @@
 	  $codCarga = mysql_real_escape_string($carga->getCodCarga(), $conexao); 
 	  $statusCarga = mysql_real_escape_string($carga->getStatusCarga(), $conexao);
 	  $coletada = mysql_real_escape_string($carga->getColetada(), $conexao); 
-
    
   	  //Update para a tabela de Usuários do banco de dados
 	  $sql = "update cargas set statusCarga='$statusCarga',coletada='$coletada' where codCarga=$codCarga";
@@ -34,20 +33,22 @@
 	  
 	  //Atributo da tabela usuário
 	  $codCarga = mysql_real_escape_string($carga->getCodCarga(), $conexao); 
-	  $statusCarga = mysql_real_escape_string($carga->getStatusCarga(), $conexao);
+	  $cotado = mysql_real_escape_string($carga->getCotado(), $conexao);
 	  $frete = mysql_real_escape_string($carga->getFrete(), $conexao);
 	  $distancia = mysql_real_escape_string($carga->getDistancia(), $conexao);
 	  $prazo = mysql_real_escape_string($carga->getPrazo(), $conexao);
    
   	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update cargas set statusCarga='$statusCarga',prazo='$prazo',distancia=$distancia,frete=$frete where codCarga=$codCarga";
+	  $sql = "update cargas set cotado='$cotado',prazo='$prazo',distancia=$distancia,frete=$frete where codCarga=$codCarga";
       echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);
     }
 
-	
+
+
+////////////////////////// QUERYS DE BUSCAS //////////////////////////
     public static function carregarLista(Carga $carga) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
@@ -59,11 +60,9 @@ from cargas as cg
 INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
 INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
 INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
-INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
-';
+INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo';
 	    
 		$resultado = @mysql_query($sql, $conexao);
-
 		if ($resultado) {
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {
@@ -99,6 +98,7 @@ INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
 
 				$carga->setColetada($row["coletada"]);
 				$carga->setStatusCarga($row["statusCarga"]);
+				$carga->setCotado($row["cotado"]);
 				
 				$retorno[] = $carga;
          }
@@ -120,7 +120,7 @@ INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
 INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
 INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
 INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
-where statusCarga = "Atendimento"';
+where cotado = "Nao Cotado"';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -159,6 +159,7 @@ where statusCarga = "Atendimento"';
 
 				$carga->setColetada($row["coletada"]);
 				$carga->setStatusCarga($row["statusCarga"]);
+				$carga->setCotado($row["cotado"]);
 				
 				$retorno[] = $carga;
          }
@@ -180,7 +181,7 @@ INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
 INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
 INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
 INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
-where statusCarga = "Aprovado Atendente"';
+where cotado = "Cotado" and statusCarga = ""';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -219,6 +220,7 @@ where statusCarga = "Aprovado Atendente"';
 
 				$carga->setColetada($row["coletada"]);
 				$carga->setStatusCarga($row["statusCarga"]);
+				$carga->setCotado($row["cotado"]);
 				
 				$retorno[] = $carga;
          }
@@ -228,7 +230,7 @@ where statusCarga = "Aprovado Atendente"';
         return null;
     }
 
-            public static function carregarListaConcluidos(Carga $carga) {
+       public static function carregarListaConcluidos(Carga $carga) {
       //Conexão com o banco
       $conexao = Conexao::getInstance()->getConexao(); 
 		
@@ -239,8 +241,8 @@ from cargas as cg
 INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
 INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
 INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
-INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo 
-where statusCarga = "Aprovado Cliente"';
+INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
+where cotado = "Cotado" and statusCarga != ""';
 	    
 		$resultado = @mysql_query($sql, $conexao);
 
@@ -279,6 +281,7 @@ where statusCarga = "Aprovado Cliente"';
 
 				$carga->setColetada($row["coletada"]);
 				$carga->setStatusCarga($row["statusCarga"]);
+				$carga->setCotado($row["cotado"]);
 				
 				$retorno[] = $carga;
          }
@@ -287,5 +290,8 @@ where statusCarga = "Aprovado Cliente"';
       else
         return null;
     }
+
+
+
   }
 ?>

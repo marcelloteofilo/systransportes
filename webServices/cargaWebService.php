@@ -7,12 +7,12 @@
 
 
 	
-	if ($_GET["editSave"] == "aprovarCarga"){	
+	if ($_GET["editSave"] == "aprovarCliente"){	
 		$carga = new Carga();	
 
 		//Atributos da classe Usuário/Valores 
 		$carga->setCodCarga($_REQUEST['codCarga']); 
-		$carga->setStatusCarga('Aprovado Cliente');
+		$carga->setStatusCarga($_REQUEST['statusCarga']);
 		$carga->setColetada('Aprovado');
 
 		if (cargaSql::alterarCargaCliente($carga)){
@@ -22,12 +22,12 @@
 		//echo(json_encode($resultado ));						
 	}
 
-	if ($_GET["editSave"] == "aprovarCargaAtendente"){	
+	if ($_GET["editSave"] == "aprovarAtendente"){	
 		$carga = new Carga();	
 
 		//Atributos da classe Usuário/Valores 
 		$carga->setCodCarga($_REQUEST['codCarga']); 
-		$carga->setStatusCarga('Aprovado Atendente');
+		$carga->setCotado($_REQUEST['cotado']);
 		$carga->setDistancia($_REQUEST['distancia']);
 		$carga->setFrete($_REQUEST['frete']); 
 		$carga->setPrazo($_REQUEST['prazo']);  
@@ -78,7 +78,8 @@
 				'prazo'	=>  $listaCarga[$i]->getPrazo(),
 				
 				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
+				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),		
+				'cotado'	=>  $listaCarga[$i]->getCotado(),				
 			);
 		}
 			//var_dump($resultado);
@@ -126,7 +127,8 @@
 				'prazo'	=>  $listaCarga[$i]->getPrazo(),
 				
 				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
+				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),		
+				'cotado'	=>  $listaCarga[$i]->getCotado(),					
 			);
 		}
 			//var_dump($resultado);
@@ -174,7 +176,8 @@
 				'prazo'	=>  $listaCarga[$i]->getPrazo(),
 				
 				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
+				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),		
+				'cotado'	=>  $listaCarga[$i]->getCotado(),						
 			);
 		}
 			//var_dump($resultado);
@@ -222,7 +225,8 @@
 				'prazo'	=>  $listaCarga[$i]->getPrazo(),
 				
 				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),					
+				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),		
+				'cotado'	=>  $listaCarga[$i]->getCotado(),					
 			);
 		}
 			//var_dump($resultado);
