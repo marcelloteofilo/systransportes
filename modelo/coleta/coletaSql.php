@@ -11,8 +11,9 @@
       $conexao = Conexao::getInstance()->getConexao(); 
 		
 		$sql = 'select cl.*,
-					idMotorista.id as idMotorista,nomeMotorista.nomeCompleto as nomeMotorista,
-					idVeiculo.id as idVeiculo,placaVeiculo.placa as placaVeiculo,
+					nomeMotorista.nomeCompleto as nomeMotorista,
+					nomeMotorista.telefone1 as telefoneMotorista,
+					placaVeiculo.placa as placaVeiculo,
 					telefone.telefone as telefone,logradouro.logradouro as logradouro,bairro.bairro as bairro,uf.uf as uf,cidade.cidade as cidade,numero.numero as numero,observacao.observacao as observacao,coletada.coletada as coletada
 						from coleta as cl
 							INNER JOIN usuarios as nomeMotorista ON cl.codMotorista = nomeMotorista.id
@@ -34,16 +35,16 @@
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {
 				$coleta = new Coleta();
+				$coleta->setCodColeta($row["codColeta"]);
 				$coleta->setCodCarga($row["codCarga"]);
 
 				//
-				$coleta->setCodMotorista($row["nomeMotorista"]);
-				$coleta->setCodVeiculo($row["placaVeiculo"]);
+				$coleta->setCodMotorista($row["codMotorista"]);
+				$coleta->setNomeMotorista($row["nomeMotorista"]);
+				$coleta->setTelefoneMotorista($row["telefoneMotorista"]);
 
-				//
-
-				//$dataFormatada = explode("-", $row['data']);
-				//$dataBrasileira = $dataFormatada[2]."/".$dataFormatada[1]."/".$dataFormatada[0];
+				$coleta->setCodVeiculo($row["codVeiculo"]);
+				$coleta->setPlacaVeiculo($row["placaVeiculo"]);
 
 				//
 				$coleta->setData($row["data"]);
@@ -73,8 +74,9 @@
       $conexao = Conexao::getInstance()->getConexao(); 
 		
 		$sql = 'select cl.*,
-					idMotorista.id as idMotorista,nomeMotorista.nomeCompleto as nomeMotorista,
-					idVeiculo.id as idVeiculo,placaVeiculo.placa as placaVeiculo,
+					nomeMotorista.nomeCompleto as nomeMotorista,
+					nomeMotorista.telefone1 as telefoneMotorista,
+					placaVeiculo.placa as placaVeiculo,
 					telefone.telefone as telefone,logradouro.logradouro as logradouro,bairro.bairro as bairro,uf.uf as uf,cidade.cidade as cidade,numero.numero as numero,observacao.observacao as observacao,coletada.coletada as coletada
 						from coleta as cl
 							INNER JOIN usuarios as nomeMotorista ON cl.codMotorista = nomeMotorista.id
@@ -97,11 +99,16 @@
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {
 				$coleta = new Coleta();
+				$coleta->setCodColeta($row["codColeta"]);
 				$coleta->setCodCarga($row["codCarga"]);
 
 				//
-				$coleta->setCodMotorista($row["nomeMotorista"]);
-				$coleta->setCodVeiculo($row["placaVeiculo"]);
+				$coleta->setCodMotorista($row["codMotorista"]);
+				$coleta->setNomeMotorista($row["nomeMotorista"]);
+				$coleta->setTelefoneMotorista($row["telefoneMotorista"]);
+
+				$coleta->setCodVeiculo($row["codVeiculo"]);
+				$coleta->setPlacaVeiculo($row["placaVeiculo"]);
 
 				//
 				$coleta->setData($row["data"]);
@@ -130,11 +137,10 @@
       $conexao = Conexao::getInstance()->getConexao(); 
 		
 		$sql = 'select cl.*,
-					idMotorista.id as idMotorista,nomeMotorista.nomeCompleto as nomeMotorista,
-					idVeiculo.id as idVeiculo,placaVeiculo.placa as placaVeiculo,
-					telefone.telefone as telefone,logradouro.logradouro as logradouro,bairro.bairro as
-					 bairro,uf.uf as uf,cidade.cidade as cidade,numero.numero as numero,observacao.observacao as
-					  observacao,coletada.coletada as coletada
+					nomeMotorista.nomeCompleto as nomeMotorista,
+					nomeMotorista.telefone1 as telefoneMotorista,
+					placaVeiculo.placa as placaVeiculo,
+					telefone.telefone as telefone,logradouro.logradouro as logradouro,bairro.bairro as bairro,uf.uf as uf,cidade.cidade as cidade,numero.numero as numero,observacao.observacao as observacao,coletada.coletada as coletada
 						from coleta as cl
 							INNER JOIN usuarios as nomeMotorista ON cl.codMotorista = nomeMotorista.id
 							INNER JOIN usuarios as idMotorista ON cl.codMotorista = idMotorista.id
@@ -156,11 +162,16 @@
 			$retorno = array();
 			while ($row = mysql_fetch_array($resultado)) {
 				$coleta = new Coleta();
+				$coleta->setCodColeta($row["codColeta"]);
 				$coleta->setCodCarga($row["codCarga"]);
 
 				//
-				$coleta->setCodMotorista($row["nomeMotorista"]);
-				$coleta->setCodVeiculo($row["placaVeiculo"]);
+				$coleta->setCodMotorista($row["codMotorista"]);
+				$coleta->setNomeMotorista($row["nomeMotorista"]);
+				$coleta->setTelefoneMotorista($row["telefoneMotorista"]);
+
+				$coleta->setCodVeiculo($row["codVeiculo"]);
+				$coleta->setPlacaVeiculo($row["placaVeiculo"]);
 
 				//
 				$coleta->setData($row["data"]);
@@ -192,37 +203,34 @@
 	  //Atributo da tabela usuário
 	  $codColeta = mysql_real_escape_string($coleta->getCodColeta(), $conexao); 
 	  $codCarga = mysql_real_escape_string($coleta->getCodCarga(), $conexao); 
+
 	  $codMotorista = mysql_real_escape_string($coleta->getCodMotorista(), $conexao);
 	  $codVeiculo = mysql_real_escape_string($coleta->getCodVeiculo(), $conexao);
+
 	  $data = mysql_real_escape_string($coleta->getData(), $conexao);   
 	  $hora = mysql_real_escape_string($coleta->getHora(), $conexao); 
 	  $coleta = mysql_real_escape_string($coleta->getColetada(), $conexao); 
-	  $telefone = mysql_real_escape_string($coleta->getTelefone(), $conexao);
-	  $logradouro = mysql_real_escape_string($coleta->getLogradouro(), $conexao); 
-	  $bairro = mysql_real_escape_string($coleta->getBairro(), $conexao);
-	  $numero = mysql_real_escape_string($coleta->getNumero(), $conexao);
-	  $estado = mysql_real_escape_string($coleta->getEstado(), $conexao);
-	  $cidade = mysql_real_escape_string($coleta->getCidade(), $conexao);
-	  $observacao = mysql_real_escape_string($coleta->getObservacao(), $conexao);
 
-   		$dataFormatada = explode("/", $data);
-   		$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
+   	  //$dataFormatada = explode("/", $data);
+   	
+      //$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
 	
+	  //Atualiza a Carga Relacionada
+      $sqlDois = "update cargas set coletada='$codColeta' where codCarga=$codCarga";
 
+      //Atualiza a Coleta
 	  $sql = "update coleta 
 	  			set 
-		  			codColeta='$codColeta',
-		  			codCarga='$codCarga',
-		  			codMotorista='$codMotorista',
-		  			codVeiculo='$codVeiculo'
-		  			data='$dataAmericana'
+		  			codMotorista=$codMotorista,
+		  			codVeiculo=$codVeiculo,
+		  			data='$data',
 		  			hora='$hora'
-	  				coleta='$coleta'
-
 	  			where 
-	  				codColeta='$codColeta'";
-      echo($sql);
+	  				codColeta=$codColeta";
+      //Update 1
       $resultado = @mysql_query($sql, $conexao);
+      //Update 2
+      mysql_query($sqlDois, $conexao);
 
       return ($resultado === true);
     }

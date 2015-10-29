@@ -55,10 +55,19 @@
 
       function editUser(){
         var row = $('#dg').datagrid('getSelected');
+        var codColetaStatus = row.coletada;
         if (row){
           $('#dlg').dialog('open').dialog('setTitle','Editar Coleta');
           $('#fm').form('load',row);
-          url = '../../webServices/coletaWebService.php?editSave=alterarColeta&id='+row.id;//AGUADAR MUDANÇAS
+
+          url = '../../webServices/coletaWebService.php?editSave=alterarColeta&codColeta='+row.codColeta;
+
+          /*if(codColetaStatus == "Aprovado"){
+          url = '../../webServices/coletaWebService.php?editSave=alterarColeta&codColeta='+row.codColeta;
+          }
+          else{
+            alert("Este registro de coleta já foi conccluído, a mesma só conta para visualização de dados");
+          }*/
         }
 		else
     {
@@ -103,7 +112,7 @@
     </header>
     <br><br>
   </head>
-  <body style="background:#F3F8F7">
+  <body style="background:#F3F8F7" onload="consultaVeiculo(); consultaMotorista();">
     
     <!-- TABELA ADMIN PESSOA FÍSICA-->
     <center>
@@ -114,19 +123,18 @@
       <thead>
 
         <tr>
-          <th field="codCarga" width="30">Codigo da Carga</th>
-          <th field="codMotorista" width="30">Motorista</th>
-          <th field="codVeiculo" width="20">Veiculo</th>
+          <th field="codCarga" width="20">Cod. Carga</th>
+          <th field="nomeMotorista" width="30">Motorista</th>
+          <th field="placaVeiculo" width="20">Veiculo</th>
           <th field="data" width="30">Data da coleta</th>
           <th field="hora" width="30">Hora da Coleta</th>
           <th field="coletada" width="30">Status da Coleta</th>
-          <th field="telefone" width="20">Telefone</th>
+          <th field="telefone" width="30">Telefone</th>
           <th field="logradouro" width="30">Logradouro</th>
           <th field="bairro" width="30">Bairro</th>
           <th field="numero" width="20">Número</th>
-          <th field="estado" width="20">Estado</th>
+          <th field="estado" width="15">Estado</th>
           <th field="cidade" width="30">Cidade</th>
-          <th field="observacao" width="30">Observação</th>
         </tr>
       </thead>   
     </table>
@@ -147,106 +155,55 @@
     <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
 
     <!-- DIALOG ADMIN PESSOA FÍSICA -->
-    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:400px;padding:10px 20px"
+    <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:440px;padding:10px 20px"
       closed="true" buttons="#dlg-buttons">
       <div class="ftitle"></div>
       <form id="fm" method="post" novalidate>
 
-        <table>
+        <table >
           <!--Dados Pessoais -->
-          <h2>Dados da Coleta</h2><br>
+          <h2>Dados da Coleta</h2>
           <!--Dados Pessoa Física -->
           <tr>
             <!--<td><b>Codigo da Carga</b></td>-->
-            <td><b>Motorista</b></td>
             <td><b>Veiculo</b></td>
-            <td><b>Data da Coleta</b></td>
-            <td><b>Hora da Coleta</b></td>
-            <td><b>Status da Coleta</b></td>
-            <td><b>Telefone da Coleta</b></td>
+            <td><b>Motorista</b></td>
+            <td><b>Status da Coleta</b></td> 
+            <td><b>Tel. Motorista</b></td>
+            <td><b>Tel. da Coleta</b></td>
+              
           </tr>
           
           <tr>
-          <!-- 
-            <td><input required="required" 
-              class="form-control" 
-              type="text" 
-              id="codCarga" 
-              name="codCarga" 
-              size="23" 
-              style="text-transform:uppercase"  
-              placeholder="Codigo da Carga">
-            </td>
-          -->
-            <!--maxlength="8" OnKeyPress="formatar(this, '###-####')"-->
 
-            <td><input required="required" 
-              class="form-control" 
-              type="text" 
-              id="codMotorista" 
-              name="codMotorista" 
-              size="23" 
-              style="text-transform:uppercase"  
-              placeholder="Motorista">
+            <td>
+            <select required="required"  class="form-control" id="codVeiculo" name="codVeiculo" >
+            <option value="">Escolha o Veículo</option>
+            </select>
             </td>
-            <!--value="0,00" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"-->
-
-            <td><input required="required" 
-              class="form-control" 
-              type="text" 
-              id="codVeiculo" 
-              name="codVeiculo" 
-              size="23" 
-              style="text-transform:uppercase"  
-              placeholder="Veiculo">
-            </td>
-            <!--value="0,00" 
-              onKeyPress="return(MascaraMoeda(this, '.', ',', event))"-->
-
-            <td><input required="required" 
-              class="form-control" 
-              type="text" 
-              id="dataColeta"
-              onkeypress="mascara(this, '##/##/####')"
-              onkeyup="validar(this,'num');" 
-              maxlength="10" 
-              name="dataColeta" 
-              size="23" 
-              style="text-transform:uppercase"  
-              placeholder="Data da Coleta">
-            </td>
-             <!--maxlength="4" -->
-
-            <td><input required="required" 
-              class="form-control" 
-              type="text" 
-              id="horaColeta" 
-              onkeypress="mascara(this, '##:##')"
-              maxlength="5" 
-              name="horaColeta" 
-              size="23" 
-              style="text-transform:uppercase"  
-              placeholder="hora da Coleta">
+            <td>
+            <select required="required"  class="form-control" id="codMotorista" name="codMotorista">
+            <option value="">Escolha o Motorista</option>
+            </select>
             </td>
 
             <td>
-
-              <select size="1" name="statusColeta" id="statusColeta" required="required" class="form-control" style="width:130px">
-                <option selected value="Selecione">Selecione</option>
+              <select size="1" name="coletada" id="coletada" required="required" class="form-control" style="width:130px">
                 <option value="Aprovado">Aprovado</option>
                 <option value="Coletado">Coletado</option>
               </select>
-              <!--<input required="required" 
-              class="form-control" 
-              type="text" 
-              id="statusColeta" 
-              name="statusColeta" 
-              size="23" 
-              style="text-transform:uppercase"  
-              placeholder="status da Coleta">-->
             </td>
 
-            <td><input required="required" 
+            <td><input 
+              class="form-control" 
+              type="text" 
+              id="telefoneMotorista"         
+              name="telefoneMotorista" 
+              placeholder="Telefone Motorista"
+              readonly="true">
+            </td>
+
+            <td><input  
               class="form-control" 
               type="text" 
               id="telefone"
@@ -256,16 +213,54 @@
               name="telefone" 
               size="23" 
               style="text-transform:uppercase"  
-              placeholder="Telefone">
+              placeholder="Telefone da Coleta"
+              readonly="true">
             </td>
+
+            
+
+            </table>
+            <table >
+            <tr>
+            <td><b>Data da Coleta</b></td>
+            <td><b>Hora da Coleta</b></td>
+                        
+            </tr>
+
+            <td><input required="required" 
+              class="form-control" 
+              type="text" 
+              id="data"
+              onkeypress="mascara(this, '##/##/####')"
+              onkeyup="validar(this,'num');" 
+              maxlength="10" 
+              name="data" 
+              size="23" 
+              style="text-transform:uppercase"  
+              placeholder="Data da Coleta">
+            </td>
+             <!--maxlength="4" -->
+
+            <td><input required="required" 
+              class="form-control" 
+              type="text" 
+              id="hora" 
+              onkeypress="mascara(this, '##:##')"
+              maxlength="5" 
+              name="hora" 
+              size="23" 
+              style="text-transform:uppercase"  
+              placeholder="hora da Coleta">
+            </td>
+            <td><input type="hidden" class="form-control" name="codCarga" name="codCarga"></td>         
           </tr>
 
         </table>
 
 
 
-        <table>
-           <br><h2>Endereço da Coleta</h2><br>
+        <table width="100%">
+           <br><h2>Endereço da Coleta</h2>
           <!--Dados Pessoa Física -->
           <tr>
             <td><b>Logradouro</b></td>
@@ -273,7 +268,6 @@
             <td><b>Número</b></td>
             <td><b>Estado</b></td>
             <td><b>Cidade</b></td>
-            <td><b>Observação</b></td>
           </tr>
 
           <tr>
@@ -331,31 +325,17 @@
               style="text-transform:uppercase"  
               placeholder="Cidade">
             </td>
-
-            <td><input 
-              class="form-control" 
-              type="text" 
-              readonly="true"
-              id="observacao" 
-              name="observacao" 
-              size="23" 
-              style="text-transform:uppercase"  
-              placeholder="Observações">
-            </td>
-            <!--<td>
-                     <select class="form-control" id="motorista" name="motorista" onclick="consultaMotorista()">
-                        <option value="2">MOTORISTA</option>
-                     </select>
-                  </td>
-                  <td>
-                     <select class="form-control" id="veiculo" name="veiculo" onclick="consultaVeiculo()">
-                        <option value="">VEICULO</option>
-                     </select>
-                  </td>-->
           </tr> 
 
         </table>
-       
+       <table width="100%">
+       <tr>
+       <td><b>Observação</b></td>
+       </tr>
+       <tr>
+       <td><textarea class="form-control" name="observacao" id="observacao" readonly="true" placeholder="Observações" cols="80" rows="3" ></textarea></td>
+       </tr>
+       </table>
       </form>
     </div>
     <div id="dlg-buttons">

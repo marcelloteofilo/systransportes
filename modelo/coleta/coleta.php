@@ -8,8 +8,11 @@
  
   private $codColeta;  
   private $codCarga;
-	private $codMotorista;  	
-	private $codVeiculo;  
+	private $codMotorista;
+  private $nomeMotorista;
+  private $telefoneMotorista;   	
+	private $codVeiculo;
+  private $placaVeiculo;   
 	private $data;   
 	private $hora;
 	   
@@ -47,9 +50,9 @@
 	}
 	
 	public function getCodMotorista() {     //da uma olhada depois
-		if($this->codMotorista == null){
+		/*if($this->codMotorista == null){
 			$this->codMotorista = new Usuario();
-		}		
+		}	*/	
 		return $this->codMotorista;
 	}
 
@@ -63,6 +66,30 @@
 		}		
 		return $this->codVeiculo;
 	}
+
+   public function setNomeMotorista($nomeMotorista) {
+      $this->nomeMotorista = trim($nomeMotorista);
+    }
+    
+    public function getNomeMotorista() {
+      return $this->nomeMotorista;
+    } 
+
+    public function setPlacaVeiculo($placaVeiculo) {
+      $this->placaVeiculo = trim($placaVeiculo);
+    }
+    
+    public function getPlacaVeiculo() {
+      return $this->placaVeiculo;
+    }
+
+    public function setTelefoneMotorista($telefoneMotorista) {
+      $this->telefoneMotorista = trim($telefoneMotorista);
+    }
+    
+    public function getTelefoneMotorista() {
+      return $this->telefoneMotorista;
+    }
 
 	public function setData($data) {
       $this->data = trim($data);

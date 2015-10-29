@@ -40,7 +40,7 @@
    
   	  //Update para a tabela de Usuários do banco de dados
 	  $sql = "update cargas set cotado='$cotado',prazo='$prazo',distancia=$distancia,frete=$frete where codCarga=$codCarga";
-      echo($sql);
+      //echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
       return ($resultado === true);

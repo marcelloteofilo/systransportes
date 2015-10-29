@@ -13,10 +13,16 @@
 		
 		for ($i=0; $i<count($listaColeta); $i++ ){											
 			$resultado[] = array(
-			    'codColeta'	=>  $listaColeta[$i]->getCodColeta(),					
-				'codCarga'	=>  $listaColeta[$i]->getCodCarga(),					
-				'codMotorista'	=>   $listaColeta[$i]->getCodMotorista(),				
-				'codVeiculo'	=>  $listaColeta[$i]->getCodVeiculo(),				
+			    'codColeta'	=>  $listaColeta[$i]->getCodColeta(),
+				'codCarga'	=>  $listaColeta[$i]->getCodCarga(),	
+
+				'codMotorista'	=>   $listaColeta[$i]->getCodMotorista(),
+				'telefoneMotorista'	=>   $listaColeta[$i]->getTelefoneMotorista(),
+				'nomeMotorista'	=>   $listaColeta[$i]->getNomeMotorista(),
+
+				'codVeiculo'	=>  $listaColeta[$i]->getCodVeiculo(),
+				'placaVeiculo'	=>  $listaColeta[$i]->getPlacaVeiculo(),
+
 				'data'	=>   $listaColeta[$i]->getData(),				
 				'hora'	=>  $listaColeta[$i]->getHora(),
 				'coletada'	=>  $listaColeta[$i]->getColetada(),
@@ -44,9 +50,15 @@
 		for ($i=0; $i<count($listaColeta); $i++ ){											
 			$resultado[] = array(
 			    'codColeta'	=>  $listaColeta[$i]->getCodColeta(),					
-				'codCarga'	=>  $listaColeta[$i]->getCodCarga(),					
-				'codMotorista'	=>   $listaColeta[$i]->getCodMotorista(),				
-				'codVeiculo'	=>  $listaColeta[$i]->getCodVeiculo(),				
+				'codCarga'	=>  $listaColeta[$i]->getCodCarga(),	
+
+				'codMotorista'	=>   $listaColeta[$i]->getCodMotorista(),
+				'telefoneMotorista'	=>   $listaColeta[$i]->getTelefoneMotorista(),
+				'nomeMotorista'	=>   $listaColeta[$i]->getNomeMotorista(),
+
+				'codVeiculo'	=>  $listaColeta[$i]->getCodVeiculo(),
+				'placaVeiculo'	=>  $listaColeta[$i]->getPlacaVeiculo(),
+
 				'data'	=>   $listaColeta[$i]->getData(),				
 				'hora'	=>  $listaColeta[$i]->getHora(),
 				'coletada'	=>  $listaColeta[$i]->getColetada(),
@@ -78,8 +90,14 @@
 			$resultado[] = array(
 			    'codColeta'	=>  $listaColeta[$i]->getCodColeta(),					
 				'codCarga'	=>  $listaColeta[$i]->getCodCarga(),					
-				'codMotorista'	=>   $listaColeta[$i]->getCodMotorista(),				
-				'codVeiculo'	=>  $listaColeta[$i]->getCodVeiculo(),				
+				
+				'codMotorista'	=>   $listaColeta[$i]->getCodMotorista(),
+				'telefoneMotorista'	=>   $listaColeta[$i]->getTelefoneMotorista(),
+				'nomeMotorista'	=>   $listaColeta[$i]->getNomeMotorista(),
+
+				'codVeiculo'	=>  $listaColeta[$i]->getCodVeiculo(),
+				'placaVeiculo'	=>  $listaColeta[$i]->getPlacaVeiculo(),
+
 				'data'	=>   $listaColeta[$i]->getData(),				
 				'hora'	=>  $listaColeta[$i]->getHora(),
 				'coletada'	=>  $listaColeta[$i]->getColetada(),
@@ -99,24 +117,19 @@
 	}	
 
 
-	if ($_GET["editUser"] == "alterarColeta"){	
+	if ($_GET["editSave"] == "alterarColeta"){	
 		$coleta = new Coleta();	
 
 		//Atributos da classe Usuário/Valores 
-		$coleta->setCodColeta($_REQUEST['codColeta']); 
-		$coleta->setCodCarga('codCarga');
+		$coleta->setCodColeta($_REQUEST['coletada']); 
+		$coleta->setCodCarga($_REQUEST['codCarga']);
+
 		$coleta->setCodMotorista($_REQUEST['codMotorista']);
-		$coleta->setCodVeiculo($_REQUEST['codVeiculo']); 
+		$coleta->setCodVeiculo($_REQUEST['codVeiculo']);	
+
 		$coleta->setData($_REQUEST['data']);
 		$coleta->setHora($_REQUEST['hora']);
 		$coleta->setColetada($_REQUEST['coletada']);  
-		$coleta->setTelefone($_REQUEST['telefone']);
-		$coleta->setLogradouro($_REQUEST['logradouro']);
-		$coleta->setBairro($_REQUEST['bairro']);
-		$coleta->setNumero($_REQUEST['numero']);
-		$coleta->setEstado($_REQUEST['estado']);
-		$coleta->setCidade($_REQUEST['cidade']);
-		$coleta->setObservacao($_REQUEST['observacao']);
 		
 		if (coletaSql::alterarColeta($coleta)){
 			echo json_encode(array('success'=>true));
