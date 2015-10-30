@@ -394,7 +394,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                            <table>
                               <div><span id="litResultado">&nbsp;</span></div>
                               <div  id="mapaGoogle"  style="padding: 0px 0 0; clear: both">
-                                 <iframe width="100%" scrolling="no" height="300" frameborder="0" id="map" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=#&daddr=#&output=embed"></iframe>
+                                 <iframe width="100%" scrolling="no" height="300" frameborder="0" id="map" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=S&atilde;o Paulo&daddr=Rio de Janeiro&output=embed"></iframe>
                               </div>
                               <input name="pesquisaOrigem" type="hidden" id="txtOrigem" class="field" value="S&atilde;o Paulo" />
                               <input name="pesquisaDestino" type="hidden" id="txtDestino" class="field" value="Rio de Janeiro" />
