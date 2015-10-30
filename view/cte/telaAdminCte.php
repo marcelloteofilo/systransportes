@@ -1,5 +1,14 @@
-
-
+<?php
+   session_start();
+   if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) {
+       session_destroy();
+       unset($_SESSION['login']);
+       unset($_SESSION['senha']);
+       header('location: ../usuario/login.php#login');
+   } else {
+       $logado = $_SESSION['login'];
+   }
+   ?>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -140,123 +149,41 @@
       </center>
       <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
       <!-- DIALOG ADMIN PESSOA FÍSICA -->
-      <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:250px;padding:10px 20px"
+      <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:200px;padding:10px 20px"
          closed="true" buttons="#dlg-buttons">
          <div class="ftitle"></div>
          <form id="fm" method="post" novalidate>
-            <table>
+            <table width="100%">
                <!--Dados Pessoais -->
                <h2>Dados do CTE</h2>
                <!--Dados Pessoa Física -->
+               <tr> 
                <tr>
-                  <td><b>Número do CTE</b></td>
-                  <td><b>Código da Carga</b></td>
-                  <td><b>Código da Rota</b></td>
+                  <td><b>Chave de Acesso</b></td>
+                  <td><b>Data de Emissão</b></td>
                   <td><b>Situação</b></td>
+                  <td><b>Status da CTE</b></td>
                </tr>
                <tr>
+                  <td><input required="required" class="form-control" type="text" id="chaveAcesso" name="chaveAcesso" placeholder="Chave de Acesso" maxlength="10"></td>
+
+                  <td><input required="required" class="form-control" type="text" id="emissao" name="emissao" placeholder="Data de Emissão" maxlength="10"></td>
+
                   <td>
-                     <select tabindex="1" class="form-control" id="ufOrigem" onChange="consultaCidades('cidadeOrigem', 'ufOrigem', '0', 'Escolha a Cidade!')">
-                        <option value="">Escolha Estado Origem</option>
-                        <option value="PE">PE</option>
-                        <option value="AC">AC</option>
-                        <option value="AL">AL</option>
-                        <option value="AM">AM</option>
-                        <option value="AP">AP</option>
-                        <option value="BA">BA</option>
-                        <option value="CE">CE</option>
-                        <option value="DF">DF</option>
-                        <option value="ES">ES</option>
-                        <option value="GO">GO</option>
-                        <option value="MA">MA</option>
-                        <option value="MG">MG</option>
-                        <option value="MS">MS</option>
-                        <option value="MT">MT</option>
-                        <option value="PA">PA</option>
-                        <option value="PB">PB</option>
-                        <option value="PI">PI</option>
-                        <option value="PR">PR</option>
-                        <option value="RJ">RJ</option>
-                        <option value="RN">RN</option>
-                        <option value="RO">RO</option>
-                        <option value="RR">RR</option>
-                        <option value="RS">RS</option>
-                        <option value="SC">SC</option>
-                        <option value="SE">SE</option>
-                        <option value="SP">SP</option>
-                        <option value="TO">TO</option>
-                     </select>
-                  </td>
-                  <td>
-                     <select tabindex="1" class="form-control" id="ufDestino" onChange="consultaCidades('cidadeDestino', 'ufDestino', '0', 'Escolha a Cidade!')">
-                        <option value="">Escolha Estado Destino</option>
-                        <option value="PE">PE</option>
-                        <option value="AC">AC</option>
-                        <option value="AL">AL</option>
-                        <option value="AM">AM</option>
-                        <option value="AP">AP</option>
-                        <option value="BA">BA</option>
-                        <option value="CE">CE</option>
-                        <option value="DF">DF</option>
-                        <option value="ES">ES</option>
-                        <option value="GO">GO</option>
-                        <option value="MA">MA</option>
-                        <option value="MG">MG</option>
-                        <option value="MS">MS</option>
-                        <option value="MT">MT</option>
-                        <option value="PA">PA</option>
-                        <option value="PB">PB</option>
-                        <option value="PI">PI</option>
-                        <option value="PR">PR</option>
-                        <option value="RJ">RJ</option>
-                        <option value="RN">RN</option>
-                        <option value="RO">RO</option>
-                        <option value="RR">RR</option>
-                        <option value="RS">RS</option>
-                        <option value="SC">SC</option>
-                        <option value="SE">SE</option>
-                        <option value="SP">SP</option>
-                        <option value="TO">TO</option>
-                     </select>
-                  </td>
-                 <td>
-                     <select class="form-control" id="motorista" name="motorista">
-                        <option value="">Escolha o Motorista</option>
-                     </select>
-                  </td>
-                  <td>
-                     <select class="form-control" id="veiculo" name="veiculo" >
-                        <option value="">Escolha o Veículo</option>
-                     </select>
-                  </td>
-               </tr>
-               <!--Dados Pessoa Jurídica -->
-               <tr>
-                  <td><b>Cidade Origem</b></td>
-                  <td><b>Cidade Destino</b></td>
-                  <td><b>Status Frete</b></td>
-                  <td><b>Código Transporte</b></td>
-               </tr>
-               <tr>
-                  <td>
-                     <select class="form-control" id="cidadeOrigem" name="cidadeOrigem"  onChange="juntaCidadeUf(); CalculaDistancia();">
-                        <option  value="">Escolha Cidade Origem</option>
-                     </select>
-                  </td>
-                  <td>
-                     <select class="form-control" id="cidadeDestino" name="cidadeDestino"  onChange="juntaCidadeUf(); CalculaDistancia();">
-                        <option  value="">Escolha Cidade Destino</option>
-                     </select>
-                  </td>
-                  <td>
-                     <select class="form-control" id="statusFrete" name="statusFrete">
+                     <select class="form-control" id="situacao" name="situacao">
                         <option value=""> --- Qual Status? ---</option>
-                        <option value="Aguardando">Aguardando</option>
-                        <option value="Iniciada">Iniciada</option>
-                        <option value="Finalizada">Finalizada</option>
+                        <option value="Despachada">Despachada</option>
+                        <option value="Em Transito">Em Transito</option>
+                        <option value="Entregue">Entregue</option>
                      </select>
                   </td>
-                  <td><input required="required" class="form-control" type="text" id="codTransp" name="codTransp" size="23" style="text-transform:uppercase"  placeholder="Código de Trans." maxlength="10" onkeyup="validar(this,'num');"></td>
+
+                  <td>
+                     <select class="form-control" id="statuscte" name="statuscte">
+                        <option value=""> --- Qual Status? ---</option>
+                     </select>
+                  </td>
+
                </tr>
             </table>
          </form>
