@@ -121,7 +121,7 @@
 		$coleta = new Coleta();	
 
 		//Atributos da classe Usuário/Valores 
-		$coleta->setCodColeta($_REQUEST['coletada']); 
+		$coleta->setCodColeta($_REQUEST['codColeta']); 
 		$coleta->setCodCarga($_REQUEST['codCarga']);
 
 		$coleta->setCodMotorista($_REQUEST['codMotorista']);

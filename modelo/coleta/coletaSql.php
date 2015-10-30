@@ -201,7 +201,8 @@
       $conexao = Conexao::getInstance()->getConexao();     
 	  
 	  //Atributo da tabela usuário
-	  $codColeta = mysql_real_escape_string($coleta->getCodColeta(), $conexao); 
+	  $codColeta = mysql_real_escape_string($coleta->getCodColeta(), $conexao);
+	  $coletada = mysql_real_escape_string($coleta->getColetada(), $conexao); 
 	  $codCarga = mysql_real_escape_string($coleta->getCodCarga(), $conexao); 
 
 	  $codMotorista = mysql_real_escape_string($coleta->getCodMotorista(), $conexao);
@@ -215,8 +216,17 @@
    	
       //$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
 	
+	   
+	   //Inseri uma CTE 
+      if($coletada === "Coletado"){
+      	$sqlTres    = "insert into ctes (codCarga, codFrete) values ($codCarga, 1)";
+      	mysql_query($sqlTres, $conexao);
+  	  }
+
 	  //Atualiza a Carga Relacionada
-      $sqlDois = "update cargas set coletada='$codColeta' where codCarga=$codCarga";
+      $sqlDois = "update cargas set coletada='$coletada' where codCarga=$codCarga";
+      mysql_query($sqlDois, $conexao);
+          
 
       //Atualiza a Coleta
 	  $sql = "update coleta 
@@ -227,12 +237,10 @@
 		  			hora='$hora'
 	  			where 
 	  				codColeta=$codColeta";
-      //Update 1
       $resultado = @mysql_query($sql, $conexao);
-      //Update 2
-      mysql_query($sqlDois, $conexao);
 
       return ($resultado === true);
+
     }
 
   }
