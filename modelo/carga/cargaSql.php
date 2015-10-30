@@ -1,8 +1,50 @@
 <?php
-  require_once("/../banco.php");  
+  require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
+  //require_once("/../banco.php");  
   require_once("carga.php");  
 
  class CargaSql {  
+
+ 	public static function adicionar(Carga $objCarga) {
+		
+			//Criando a conexão com o banco de dados
+			$conexao = Conexao::getInstance()->getConexao();
+
+			//Atributos da classe veiculo sendo definidas em uma variável, obtidas em um método para realização da
+			//obtenção do valor e logo em seguida, realizando a chamada do banco
+			$idUsuario 				= mysql_real_escape_string($objCarga->getObjUsuario(1); , $conexao);
+			$idCidadeOrigem 		= mysql_real_escape_string($objCarga->getObjCidadeOrigem(), $conexao);
+			$idCidadeDestino 		= mysql_real_escape_string($objCarga->getObjCidadeDestino(), $conexao);
+			$altura 				= mysql_real_escape_string($objCarga->getAltura(), $conexao);
+			$largura 				= mysql_real_escape_string($objCarga->getLargura(), $conexao);
+			$peso 				    = mysql_real_escape_string($objCarga->getPeso(), $conexao);
+			$comprimento			= mysql_real_escape_string($objCarga->getComprimento(), $conexao);
+			$quantidade			    = mysql_real_escape_string($objCarga->getQuantidade(), $conexao);
+			$valor			        = mysql_real_escape_string($objCarga->getValor(), $conexao);
+			$telefone			    = mysql_real_escape_string($objCarga->getTelefone(), $conexao);
+			$logradouro			    = mysql_real_escape_string($objCarga->getLogradouro(), $conexao);
+			$bairro			        = mysql_real_escape_string($objCarga->getBairro(), $conexao);
+			$uf			            = mysql_real_escape_string($objCarga->getUf(), $conexao);
+			$cidade		         	= mysql_real_escape_string($objCarga->getCidade(), $conexao);
+			$numero		          	= mysql_real_escape_string($objCarga->getNumero(), $conexao);
+			$observacao			    = mysql_real_escape_string($objCarga->getObservacao(), $conexao);
+			$naturezaCarga			= mysql_real_escape_string($objCarga->getNaturezaCarga(), $conexao);
+			$dataPedido			    = mysql_real_escape_string($objCarga->getDataPedido(), $conexao);
+			$distancia			    = mysql_real_escape_string($objCarga->getDistancia(), $conexao);
+			$prazo			        = mysql_real_escape_string($objCarga->getPrazo(), $conexao);
+			$frete			        = mysql_real_escape_string($objCarga->getFrete(), $conexao);
+
+			//Inserção na tabela de veiculo relacionada ao banco de dados systransporte
+		    $sql    = "insert into cargas (codUsuario, origem, destino, altura, largura, peso,
+		    	comprimento,quantidade,valor,telefone,logradouro,bairro,uf,cidade,numero,
+		    	observacao,naturezaCarga) 
+				values ($idUsuario,$idCidadeOrigem,$idCidadeDestino,$altura ,$largura,$peso,
+				$comprimento ,$quantidade,$valor,'$telefone','$logradouro','$bairro','$uf',
+				'$cidade','$numero','$observacao','$naturezaCarga','$dataPedido')";			
+
+		    $resultado = @mysql_query($sql, $conexao);
+		    return ($resultado === true);
+	}
   
 
      public static function alterarCargaCliente(Carga $carga) {

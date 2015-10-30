@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 	require_once("../modelo/carga/cargaSql.php");   	
 	session_start();   	
 	
@@ -6,6 +6,48 @@
 	extract ($_SESSION);
 
 
+	if ($_GET["editSave"] == "incluir") {
+
+   	//////// DADOS DA COTACAO ///////
+
+        $objCarga = new Carga();	
+
+		//Atributos da classe Usuário/Valores 
+		$objCarga->setObjUsuario(1); 
+		// falta adicionar na classe básica
+		$objCarga->setObjEstadoOrigem($_REQUEST['ufOrigem']); 
+		$objCarga->setObjEstadoDestino($_REQUEST['ufDestino']); 
+		//
+		$objCarga->setObjCidadeOrigem($_REQUEST['cidadeOrigem']); 
+		$objCarga->setObjCidadeDestino($_REQUEST['cidadeDestino']); 
+		$objCarga->setAltura($_REQUEST['altura']); 
+		$objCarga->setLargura($_REQUEST['largura']);
+		$objCarga->setPeso($_REQUEST['peso']);
+		$objCarga->setComprimento($_REQUEST['comprimento']); 
+		$objCarga->setQuantidade($_REQUEST['quantidade']); 
+		$objCarga->setValor($_REQUEST['valor']);  				
+		$objCarga->setTelefone($_REQUEST['telefone']);  				
+		$objCarga->setLogradouro($_REQUEST['logradouro']);  				 				
+		$objCarga->setBairro($_REQUEST['bairro']);  				 				
+		$objCarga->setUf($_REQUEST['estado']);  				 				 				
+		$objCarga->setCidade($_REQUEST['cidade']);  				 				 				 			
+		$objCarga->setNumero($_REQUEST['numero']);  				 				 				 				
+		$objCarga->setObservacao($_REQUEST['observacao']);  				 				 				 				
+		$objCarga->setNaturezaCarga($_REQUEST['naturezaCarga']);  				 				 				 					
+		$objCarga->setDataPedido($_REQUEST['dataPedido']);  				 				 				 					
+		$objCarga->setDistancia($_REQUEST['distancia']);  				 				 				 					
+		$objCarga->setPrazo($_REQUEST['prazo']);  				 				 				 					
+		$objCarga->setFrete($_REQUEST['frete']);  				 				 				 					
+		 				 				 				 					
+		
+		if (CargaSql::adicionar($objCarga){
+			echo json_encode(array('success'=>true));
+			/*$resultado[] = array(				
+				'oka'	=>  'oks',						
+			);*/			
+		}	
+
+   }
 	
 	if ($_GET["editSave"] == "aprovarCliente"){	
 		$carga = new Carga();	

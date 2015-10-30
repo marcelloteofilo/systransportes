@@ -1,4 +1,4 @@
-<?php
+﻿<?php
 session_start();
 extract($_REQUEST);
 ?>
@@ -13,30 +13,6 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
     $logado = $_SESSION['login'];
 }
 ?>
-
-<?php
-require_once '../../modelo/cotacao/cotacaoSql.php';
-
-$valores = @$_POST['item'];
-
-if (isset($_POST['cadastrar'])) {
-    $conexao = Conexao::getInstance()->getConexao();
-
-    //$total = " ";
-    for ($i = 0; $i < count($valores); $i++) {
-        $codCarga = CotacaoSql::ultimo();
-        $descricao = $_POST['descricao'][$i];
-        $pesoMercadoria = $_POST['pesoMercadoria'][$i];
-        $valorMercadoria = $_POST['valorMercadoria'][$i];
-        $quantidade = $_POST['quantidade'][$i];
-
-        //$total += $_POST['peso'][$i];
-        $sql = "insert into mercadorias (codCarga, descricao, pesoMercadoria, valorMercadoria, quantidade) values ('$codCarga','$descricao', '$pesoMercadoria',$valorMercadoria,$quantidade)";
-        mysql_query($sql, $conexao) or die('erro na inserção do banco!!');
-    }
-}
-?>
-
 <!DOCTYPE html>
 <html lang="en" class="no-js">
    <head>
@@ -105,7 +81,34 @@ if (isset($_POST['cadastrar'])) {
          );
          wow.init();
       </script>
-	  
+	  <script language="javascript" type="text/javascript">
+       var $f =  jQuery.noConflict()
+
+       $(document).ready(function(){
+          $f("#frmCotacao").submit(function() {
+               var params = $f(this).serialize();
+               //alert(params);
+
+               $f.ajax({
+                   type: "POST",
+                   url: "cargaWebService.php",
+                   data: params,
+                   dataType: "json",
+                   success: function(msg, status) {
+                       $f("#resposta").html(msg.d);
+                   },
+                   error: function(xhr, msg, e) {
+                       alert(msg);
+                   }
+               });
+       });
+
+       })
+
+            
+
+</script>
+
 	  
    </head>
    <body>
@@ -160,7 +163,7 @@ if (isset($_POST['cadastrar'])) {
                         <br><br>
                      </center>
                      <div class="container">
-                        <form >
+                        <form  method="post" id="frmCotacao" name="frmCotacao">
                            <table>
                               <!--Dados Pessoais -->
                               <h2>Plano de Viagem</h2>
@@ -391,7 +394,7 @@ if (isset($_POST['cadastrar'])) {
                            <table>
                               <div><span id="litResultado">&nbsp;</span></div>
                               <div  id="mapaGoogle"  style="padding: 0px 0 0; clear: both">
-                                 <iframe width="100%" scrolling="no" height="300" frameborder="0" id="map" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=S&atilde;o Paulo&daddr=Rio de Janeiro&output=embed"></iframe>
+                                 <iframe width="100%" scrolling="no" height="300" frameborder="0" id="map" marginheight="0" marginwidth="0" src="https://maps.google.com/maps?saddr=#&daddr=#&output=embed"></iframe>
                               </div>
                               <input name="pesquisaOrigem" type="hidden" id="txtOrigem" class="field" value="S&atilde;o Paulo" />
                               <input name="pesquisaDestino" type="hidden" id="txtDestino" class="field" value="Rio de Janeiro" />
