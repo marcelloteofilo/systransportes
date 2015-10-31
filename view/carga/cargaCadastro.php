@@ -81,33 +81,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
          );
          wow.init();
       </script>
-	  <script language="javascript" type="text/javascript">
-       var $f =  jQuery.noConflict()
-
-       $(document).ready(function(){
-          $f("#frmCotacao").submit(function() {
-               var params = $f(this).serialize();
-               //alert(params);
-
-               $f.ajax({
-                   type: "POST",
-                   url: "cargaWebService.php",
-                   data: params,
-                   dataType: "json",
-                   success: function(msg, status) {
-                       $f("#resposta").html(msg.d);
-                   },
-                   error: function(xhr, msg, e) {
-                       alert(msg);
-                   }
-               });
-       });
-
-       })
-
-            
-
-</script>
+	  
 
 	  
    </head>
@@ -163,7 +137,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                         <br><br>
                      </center>
                      <div class="container">
-                        <form  method="post" id="frmCotacao" name="frmCotacao">
+                        <form  method="post" id="frmCotacao" name="frmCotacao" action="cargaWebService.php?editSave=incluir">
                            <table>
                               <!--Dados Pessoais -->
                               <h2>Plano de Viagem</h2>
@@ -267,12 +241,12 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                                  <td><b>Cidade</b></td>
                               </tr>
                               <tr>
-                                 <td><input type="text" id="telefone" name="" class="form-control" placeholder="(00)0000-0000" tabindex="1"  ></td>
-                                 <td><input type="text" id="logradouro" name="" class="form-control" placeholder="Logradouro" tabindex="1"  ></td>
-                                 <td><input type="text" id="bairro" name="" class="form-control" placeholder="Bairro" tabindex="1"  ></td>
-                                 <td><input type="text" id="numero" name="" class="form-control" placeholder="Número" tabindex="1"  ></td>
+                                 <td><input type="text" id="telefone" name="telefone" class="form-control" placeholder="(00)0000-0000" tabindex="1"  ></td>
+                                 <td><input type="text" id="logradouro" name="logradouro" class="form-control" placeholder="Logradouro" tabindex="1"  ></td>
+                                 <td><input type="text" id="bairro" name="bairro" class="form-control" placeholder="Bairro" tabindex="1"  ></td>
+                                 <td><input type="text" id="numero" name="numero" class="form-control" placeholder="Número" tabindex="1"  ></td>
                                  <td>
-                                    <select tabindex="1" class="form-control" id="estado">
+                                    <select tabindex="1" class="form-control" id="estado" name="estado">
                                        <option value="">Escolha Estado</option>
                                        <option value="PE">PE</option>
                                        <option value="AC">AC</option>
@@ -303,7 +277,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                                        <option value="TO">TO</option>
                                     </select>
                                  </td>
-                                 <td><input type="text" id="cidade" name="" class="form-control" placeholder="Cidade" tabindex="1"></td>
+                                 <td><input type="text" id="cidade" name="cidade" class="form-control" placeholder="Cidade" tabindex="1"></td>
                               </tr>
                            </table>
                            <table width="100%">
@@ -318,8 +292,6 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                            <table>
                            <!--Contato -->
                            <h2>Mercadorias</h2>
-                           <!-- *************************** Form para mercadoria ***************************
-                              <form id="formMercadoria" method="post">-->
                            <div id="mensagens"></div>
                            <table width="100%" id="tabelaItens">
                               <thead>
@@ -335,7 +307,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                                  <tr>
                                     <td><input class="form-control"type="text" name="item[]" id="item" value="1" size="4" readonly="readonly"/></td>
                                     <td><input class="form-control"type="text" name="descricao[]" id="descricao" value="" size="90" placeholder="Descrição sobre a mercadoria" maxlength="50" /></td>
-                                    <td><input class="form-control"type="text" name="quantidade[]" id="quantidade" value="" size="10" placeholder="0,00" maxlength="8" /></td>
+                                    <td><input class="form-control"type="text" name="quantidadeMercadoria[]" id="quantidadeMercadoria" value="" size="10" placeholder="0,00" maxlength="8" /></td>
                                     <td><input class="form-control"type="text" name="pesoMercadoria[]" id="pesoMercadoria" value="" size="4" placeholder="0,00" maxlength="8" /></td>
                                     <td><input class="form-control"	type="text" name="valorMercadoria[]" id="valorMercadoria" value="" size="4" placeholder="0,00" maxlength="8" /></td>
                                     <td>&nbsp;</td>
@@ -355,19 +327,19 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                                  <td><b>Valor/R$</b></td>
                               </tr>
                               <tr>
-                                 <td><input type="text" id="altura" name="" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input type="text" id="largura" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input type="text" id="peso" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input type="text" id="comprimento" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
-                                 <td><input type="text" id="quantidade" name="" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(mascaraInteiro())"></td>
-                                 <td><input type="text" id="valor" name="" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"  onBlur="focus_Blur(this, 'white'); CalculaDistancia();"></td>
+                                 <td><input type="text" id="altura" name="altura" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input type="text" id="largura" name="largura" class="form-control" maxlength="14" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input type="text" id="peso" name="peso" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input type="text" id="comprimento" name="comprimento" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"></td>
+                                 <td><input type="text" id="quantidade" name="quantidade" class="form-control" maxlength="9" placeholder="0,00" tabindex="1" onKeyPress="return(mascaraInteiro())"></td>
+                                 <td><input type="text" id="valor" name="valor" maxlength="8" class="form-control" placeholder="0,00" tabindex="1" onKeyPress="return(MascaraMoeda(this, '.', ',', event))"  onBlur="focus_Blur(this, 'white'); CalculaDistancia();"></td>
                               </tr>
                               <td><b>Natureza da Carga</b></td>
                               <tr>
                               </tr>
                               <tr>
                                  <td>
-                                    <select class="form-control" id="naturezaCarga" name="">
+                                    <select class="form-control" id="naturezaCarga" name="naturezaCarga">
                                        <option value=""> --- Escolha o Tipo --- </option>
                                        <option value="Tipo 1">Tipo 1</option>
                                        <option value="Tipo 2">Tipo 2</option>
@@ -386,9 +358,9 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                               </tr>
                               <tr>
                                  <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
-                                 <td><input readonly type="text" id="frete" name="" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
-                                 <td><input readonly type="text" id="prazo" name="" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
-                                 <td><input readonly type="text" id="dataPedido" name="" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
+                                 <td><input readonly type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
+                                 <td><input readonly type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
+                                 <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
                            </table>
 
                            <table>

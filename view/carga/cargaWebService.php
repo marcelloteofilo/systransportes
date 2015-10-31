@@ -1,6 +1,7 @@
 ﻿<?php
-	//require_once("../modelo/carga/cargaSql.php");
-	require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");   	
+	//require_once("../modelo/carga/cargaSql.php");   	
+require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");
+require_once("/opt/lampp/htdocs/systransportes/modelo/mercadoria/mercadoriaSql.php");   	
 	session_start();   	
 	
 	extract ($_REQUEST);
@@ -8,6 +9,8 @@
 
 
 	if ($_GET["editSave"] == "incluir") {
+
+      
 
    	//////// DADOS DA COTACAO ///////
 
@@ -43,13 +46,30 @@
 		$objCarga->setPrazo($_REQUEST['prazo']);  				 				 				 					
 		$objCarga->setFrete($_REQUEST['frete']);  				 				 				 					
 		 				 				 				 					
+		$ultimoId = CargaSql::adicionar($objCarga);
 		
-		if (CargaSql::adicionar($objCarga)){
+        // inserindo mercadorias
+		$qtdMercadorias = $_REQUEST['item'];
+		
+		for($i = 0; $i < count($qtdMercadorias); $i++){
+		   
+		   $objMercadoria = new Mercadoria();
+
+		   $objMercadoria->setDescricaoMercadoria($_REQUEST['descricao'][$i]);
+		   $objMercadoria->setPeso($_REQUEST['pesoMercadoria'][$i]);
+		   $objMercadoria->setObjCarga($ultimoId);
+		   $objMercadoria->setValorMercadoria($_REQUEST['valorMercadoria'][$i]);
+		   $objMercadoria->setQuantidade($_REQUEST['quantidadeMercadoria'][$i]);
+
+		   MercadoriaSql::adicionar($objMercadoria);
+
+		}
+		/*if (){
 			echo json_encode(array('success'=>true));
 			/*$resultado[] = array(				
 				'oka'	=>  'oks',						
-			);*/			
-		}	
+			);			
+		}*/
 
    }
 	

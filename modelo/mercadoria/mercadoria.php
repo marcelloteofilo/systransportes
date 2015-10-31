@@ -1,6 +1,6 @@
 <?php
-
-require_once("/../modelo/carga/carga.php");
+require_once("/opt/lampp/htdocs/systransportes/modelo/carga/carga.php");
+//require_once("/../modelo/carga/carga.php");
 
 class Mercadoria {
 

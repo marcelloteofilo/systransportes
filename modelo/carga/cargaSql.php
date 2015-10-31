@@ -7,43 +7,50 @@
 
  	public static function adicionar(Carga $objCarga) {
 		
+		
 			//Criando a conexão com o banco de dados
 			$conexao = Conexao::getInstance()->getConexao();
 
 			//Atributos da classe veiculo sendo definidas em uma variável, obtidas em um método para realização da
 			//obtenção do valor e logo em seguida, realizando a chamada do banco
-			$idUsuario 				= mysql_real_escape_string($objCarga->getObjUsuario(1); , $conexao);
-			$idCidadeOrigem 		= mysql_real_escape_string($objCarga->getObjCidadeOrigem(), $conexao);
-			$idCidadeDestino 		= mysql_real_escape_string($objCarga->getObjCidadeDestino(), $conexao);
-			$altura 				= mysql_real_escape_string($objCarga->getAltura(), $conexao);
-			$largura 				= mysql_real_escape_string($objCarga->getLargura(), $conexao);
-			$peso 				    = mysql_real_escape_string($objCarga->getPeso(), $conexao);
-			$comprimento			= mysql_real_escape_string($objCarga->getComprimento(), $conexao);
-			$quantidade			    = mysql_real_escape_string($objCarga->getQuantidade(), $conexao);
-			$valor			        = mysql_real_escape_string($objCarga->getValor(), $conexao);
+			$idUsuario 				= $objCarga->getObjUsuario(1);
+			$idCidadeOrigem 		= $objCarga->getObjCidadeOrigem();
+			$idCidadeDestino 		= $objCarga->getObjCidadeDestino();
+			$altura 				= number_format($objCarga->getAltura(), 2, '.', '');
+			$largura 				= number_format($objCarga->getLargura(), 2, '.', '');
+			$peso 				    = number_format($objCarga->getPeso(), 2, '.', '');
+			$comprimento			= number_format($objCarga->getComprimento(), 2, '.', '');
+			$quantidade			    = number_format($objCarga->getQuantidade(), 2, '.', '');
+			$valor			        = number_format($objCarga->getValor(), 2, '.', '');
 			$telefone			    = mysql_real_escape_string($objCarga->getTelefone(), $conexao);
 			$logradouro			    = mysql_real_escape_string($objCarga->getLogradouro(), $conexao);
 			$bairro			        = mysql_real_escape_string($objCarga->getBairro(), $conexao);
 			$uf			            = mysql_real_escape_string($objCarga->getUf(), $conexao);
 			$cidade		         	= mysql_real_escape_string($objCarga->getCidade(), $conexao);
-			$numero		          	= mysql_real_escape_string($objCarga->getNumero(), $conexao);
+			$numero		          	= $objCarga->getNumero();
 			$observacao			    = mysql_real_escape_string($objCarga->getObservacao(), $conexao);
 			$naturezaCarga			= mysql_real_escape_string($objCarga->getNaturezaCarga(), $conexao);
 			$dataPedido			    = mysql_real_escape_string($objCarga->getDataPedido(), $conexao);
 			$distancia			    = mysql_real_escape_string($objCarga->getDistancia(), $conexao);
 			$prazo			        = mysql_real_escape_string($objCarga->getPrazo(), $conexao);
-			$frete			        = mysql_real_escape_string($objCarga->getFrete(), $conexao);
+			$frete			        = number_format($objCarga->getFrete(), 2, '.', '');
 
 			//Inserção na tabela de veiculo relacionada ao banco de dados systransporte
 		    $sql    = "insert into cargas (codUsuario, origem, destino, altura, largura, peso,
 		    	comprimento,quantidade,valor,telefone,logradouro,bairro,uf,cidade,numero,
-		    	observacao,naturezaCarga) 
+		    	observacao,naturezaCarga,dataPedido) 
 				values ($idUsuario,$idCidadeOrigem,$idCidadeDestino,$altura ,$largura,$peso,
 				$comprimento ,$quantidade,$valor,'$telefone','$logradouro','$bairro','$uf',
 				'$cidade','$numero','$observacao','$naturezaCarga','$dataPedido')";			
 
+
 		    $resultado = @mysql_query($sql, $conexao);
-		    return ($resultado === true);
+            
+            if($resultado === true){
+            	$ultimoId = mysql_insert_id();	
+            	return $ultimoId;
+            }
+		    
 	}
   
 
