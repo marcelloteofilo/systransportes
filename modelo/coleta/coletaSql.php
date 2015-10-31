@@ -47,7 +47,10 @@
 				$coleta->setPlacaVeiculo($row["placaVeiculo"]);
 
 				//
-				$coleta->setData($row["data"]);
+				$dataFormatada = explode("-", $row['data']);
+				$dataBrasileira = $dataFormatada[2]."/".$dataFormatada[1]."/".$dataFormatada[0];
+
+				$coleta->setData($dataBrasileira);
 				$coleta->setHora($row["hora"]);
 				//
 				$coleta->setColetada($row["coletada"]);
@@ -63,6 +66,7 @@
 			
 				$retorno[] = $coleta;
          }
+        
         return ($retorno);
       } 
       else
@@ -208,14 +212,16 @@
 	  $codMotorista = mysql_real_escape_string($coleta->getCodMotorista(), $conexao);
 	  $codVeiculo = mysql_real_escape_string($coleta->getCodVeiculo(), $conexao);
 
-	  $data = mysql_real_escape_string($coleta->getData(), $conexao);   
+	  $data = mysql_real_escape_string($coleta->getData(), $conexao); 
+
+	  $dataFormatada = explode("/", $data);		
+	  $dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
+
 	  $hora = mysql_real_escape_string($coleta->getHora(), $conexao); 
 	  $coleta = mysql_real_escape_string($coleta->getColetada(), $conexao); 
 
-   	  //$dataFormatada = explode("/", $data);
-   	
-      //$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
-	
+   	  
+	  
 	   
 	   //Inseri uma CTE 
       if($coletada === "Coletado"){
@@ -233,7 +239,7 @@
 	  			set 
 		  			codMotorista=$codMotorista,
 		  			codVeiculo=$codVeiculo,
-		  			data='$data',
+		  			data='$dataAmericana',
 		  			hora='$hora'
 	  			where 
 	  				codColeta=$codColeta";
