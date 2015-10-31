@@ -1,287 +1,319 @@
 ﻿<?php
-	require_once("../modelo/carga/cargaSql.php");
-	//require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");   	
-	session_start();   	
-	
-	extract ($_REQUEST);
-	extract ($_SESSION);
+    require_once("../modelo/carga/cargaSql.php");
+    //require_once ("../modelo/cidade/cidade.php");
+    //require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");
+    session_start();
+
+    extract($_REQUEST);
+    extract($_SESSION);
 
 
-	if ($_GET["editSave"] == "incluir") {
+    if($_GET["editSave"] == "incluir")
+    {
 
-   	//////// DADOS DA COTACAO ///////
+        //////// DADOS DA COTACAO ///////
 
-        $objCarga = new Carga();	
+        $objCarga = new Carga();
 
-		//Atributos da classe Usuário/Valores 
-		$objCarga->setObjUsuario(1); 
-		// falta adicionar na classe básica
-		//$objCarga->setObjEstadoOrigem($_REQUEST['ufOrigem']); 
-		//$objCarga->setObjEstadoDestino($_REQUEST['ufDestino']); 
-		//
+        //Atributos da classe Usuário/Valores
+        $objCarga->setObjUsuario(1);
+        // falta adicionar na classe básica
+        //$objCarga->setObjEstadoOrigem($_REQUEST['ufOrigem']);
+        //$objCarga->setObjEstadoDestino($_REQUEST['ufDestino']);
+        //
 
-		//$objCarga->setObjCidadeOrigem($_REQUEST['cidadeOrigem']); 
-		//$objCarga->setObjCidadeDestino($_REQUEST['cidadeDestino']); 
-		$objCarga->setObjCidadeOrigem(1099910); 
-		$objCarga->setObjCidadeDestino(1099910); 
-		$objCarga->setAltura($_REQUEST['altura']); 
-		$objCarga->setLargura($_REQUEST['largura']);
-		$objCarga->setPeso($_REQUEST['peso']);
-		$objCarga->setComprimento($_REQUEST['comprimento']); 
-		$objCarga->setQuantidade($_REQUEST['quantidade']); 
-		$objCarga->setValor($_REQUEST['valor']);  				
-		$objCarga->setTelefone($_REQUEST['telefone']);  				
-		$objCarga->setLogradouro($_REQUEST['logradouro']);  				 				
-		$objCarga->setBairro($_REQUEST['bairro']);  				 				
-		$objCarga->setUf($_REQUEST['estado']);  				 				 				
-		$objCarga->setCidade($_REQUEST['cidade']);  				 				 				 			
-		$objCarga->setNumero($_REQUEST['numero']);  				 				 				 				
-		$objCarga->setObservacao($_REQUEST['observacao']);  				 				 				 				
-		$objCarga->setNaturezaCarga($_REQUEST['naturezaCarga']);  				 				 				 					
-		$objCarga->setDataPedido($_REQUEST['dataPedido']);  				 				 				 					
-		$objCarga->setDistancia($_REQUEST['distancia']);  				 				 				 					
-		$objCarga->setPrazo($_REQUEST['prazo']);  				 				 				 					
-		$objCarga->setFrete($_REQUEST['frete']);  				 				 				 					
-		 				 				 				 					
-		
-		if (CargaSql::adicionar($objCarga)){
-			echo json_encode(array('success'=>true));
-			/*$resultado[] = array(				
-				'oka'	=>  'oks',						
-			);*/			
-		}	
+		//$objCarga->setObjCidadeOrigem($_REQUEST['cidadeOrigem']);
+        //$objCarga->setObjCidadeDestino($_REQUEST['cidadeDestino']);
+        $objCarga->setObjCidadeOrigem(1099910);
+        $objCarga->setObjCidadeDestino(1099910);
+        $objCarga->setAltura($_REQUEST['altura']);
+        $objCarga->setLargura($_REQUEST['largura']);
+        $objCarga->setPeso($_REQUEST['peso']);
+        $objCarga->setComprimento($_REQUEST['comprimento']);
+        $objCarga->setQuantidade($_REQUEST['quantidade']);
+        $objCarga->setValor($_REQUEST['valor']);
+        $objCarga->setTelefone($_REQUEST['telefone']);
+        $objCarga->setLogradouro($_REQUEST['logradouro']);
+        $objCarga->setBairro($_REQUEST['bairro']);
+        $objCarga->setUf($_REQUEST['estado']);
+        $objCarga->setCidade($_REQUEST['cidade']);
+        $objCarga->setNumero($_REQUEST['numero']);
+        $objCarga->setObservacao($_REQUEST['observacao']);
+        $objCarga->setNaturezaCarga($_REQUEST['naturezaCarga']);
+        $objCarga->setDataPedido($_REQUEST['dataPedido']);
+        $objCarga->setDistancia($_REQUEST['distancia']);
+        $objCarga->setPrazo($_REQUEST['prazo']);
+        $objCarga->setFrete($_REQUEST['frete']);
 
-   }
-	
-	if ($_GET["editSave"] == "aprovarCliente"){	
-		$carga = new Carga();	
 
-		//Atributos da classe Usuário/Valores 
-		$carga->setCodCarga($_REQUEST['codCarga']); 
-		$carga->setStatusCarga($_REQUEST['statusCarga']);
-		$carga->setColetada('Aprovado');
+        if(CargaSql::adicionar($objCarga))
+        {
+            echo json_encode(array('success' => true));
+            /* $resultado[] = array(
+              'oka'	=>  'oks',
+              ); */
+        }
+    }
 
-		if (cargaSql::alterarCargaCliente($carga)){
-			echo json_encode(array('success'=>true));
-		}	
-		
-		//echo(json_encode($resultado ));						
-	}
+    if($_GET["editSave"] == "aprovarCliente")
+    {
+        $carga = new Carga();
 
-	if ($_GET["editSave"] == "aprovarAtendente"){	
-		$carga = new Carga();	
+        //Atributos da classe Usuário/Valores
+        $carga->setCodCarga($_REQUEST['codCarga']);
+        $carga->setStatusCarga($_REQUEST['statusCarga']);
+        $carga->setColetada('Aprovado');
 
-		//Atributos da classe Usuário/Valores 
-		$carga->setCodCarga($_REQUEST['codCarga']); 
-		$carga->setCotado($_REQUEST['cotado']);
-		$carga->setDistancia($_REQUEST['distancia']);
-		$carga->setFrete($_REQUEST['frete']); 
-		$carga->setPrazo($_REQUEST['prazo']);  
-		
-		if (cargaSql::alterarCargaAtendente($carga)){
-			echo json_encode(array('success'=>true));
-		}	
-		
-		//echo(json_encode($resultado ));						
-	}		
+        if(cargaSql::alterarCargaCliente($carga))
+        {
+            echo json_encode(array('success' => true));
+        }
 
-	
-	if ($_GET["editSave"] == "carregarTodos") {
+        //echo(json_encode($resultado ));
+    }
 
-		$carga = new Carga();
+    if($_GET["editSave"] == "aprovarAtendente")
+    {
+        $carga = new Carga();
 
-		$listaCarga = cargaSql::carregarLista($carga);
-		
-		for ($i=0; $i<count($listaCarga); $i++ ){											
-			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
+        //Atributos da classe Usuário/Valores
+        $carga->setCodCarga($_REQUEST['codCarga']);
+        $carga->setCotado($_REQUEST['cotado']);
+        $carga->setDistancia($_REQUEST['distancia']);
+        $carga->setFrete($_REQUEST['frete']);
+        $carga->setPrazo($_REQUEST['prazo']);
 
-			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),		
+        if(cargaSql::alterarCargaAtendente($carga))
+        {
+            echo json_encode(array('success' => true));
+        }
 
-				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
-				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),					
+        //echo(json_encode($resultado ));
+    }
 
-				'altura'	=>  $listaCarga[$i]->getAltura(),					
-				'largura'	=>   $listaCarga[$i]->getLargura(),				
-				'peso'	=>  $listaCarga[$i]->getPeso(),				
-				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
-				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
-				'valor'	=>  $listaCarga[$i]->getValor(),
 
-				'telefone'	=>  $listaCarga[$i]->getTelefone(),
-				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
-				'bairro'	=>  $listaCarga[$i]->getBairro(),
-				'uf'	=>  $listaCarga[$i]->getUf(),
-				'cidade'	=>  $listaCarga[$i]->getCidade(),
-				'numero'	=>  $listaCarga[$i]->getNumero(),
-				'observacao'	=>  $listaCarga[$i]->getObservacao(),
-				
-				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
-				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
-				'distancia'	=>  $listaCarga[$i]->getDistancia(),
-				'frete'	=>  $listaCarga[$i]->getFrete(),
-				'prazo'	=>  $listaCarga[$i]->getPrazo(),
-				
-				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),		
-				'cotado'	=>  $listaCarga[$i]->getCotado(),				
-			);
-		}
-			//var_dump($resultado);
-		    //die;
+    if($_GET["editSave"] == "carregarTodos")
+    {
 
-		echo(json_encode($resultado));	
-		return $resultado;	
-	}
+        $carga = new Carga();
 
-	if ($_GET["editSave"] == "carregarAprovados") {
+        $listaCarga = cargaSql::carregarLista($carga);
 
-		$carga = new Carga();
+        for($i = 0; $i < count($listaCarga); $i++)
+        {
+            $resultado[] = array(
+                'codCarga' => $listaCarga[$i]->getCodCarga(),
+                'origem' => $listaCarga[$i]->getObjCidadeOrigem(),
+                'destino' => $listaCarga[$i]->getObjCidadeDestino(),
+                'pessoaFisica' => $listaCarga[$i]->getPessoaFisicaNome(),
+                'codUsuario' => $listaCarga[$i]->getObjUsuario()->getId(),
+                'pessoaJuridica' => $listaCarga[$i]->getPessoaJuridicaNome(),
+                'altura' => $listaCarga[$i]->getAltura(),
+                'largura' => $listaCarga[$i]->getLargura(),
+                'peso' => $listaCarga[$i]->getPeso(),
+                'comprimento' => $listaCarga[$i]->getComprimento(),
+                'quantidade' => $listaCarga[$i]->getQuantidade(),
+                'valor' => $listaCarga[$i]->getValor(),
+                'telefone' => $listaCarga[$i]->getTelefone(),
+                'logradouro' => $listaCarga[$i]->getLogradouro(),
+                'bairro' => $listaCarga[$i]->getBairro(),
+                'uf' => $listaCarga[$i]->getUf(),
+                'cidade' => $listaCarga[$i]->getCidade(),
+                'numero' => $listaCarga[$i]->getNumero(),
+                'observacao' => $listaCarga[$i]->getObservacao(),
+                'naturezaCarga' => $listaCarga[$i]->getNaturezaCarga(),
+                'dataPedido' => $listaCarga[$i]->getDataPedido(),
+                'distancia' => $listaCarga[$i]->getDistancia(),
+                'frete' => $listaCarga[$i]->getFrete(),
+                'prazo' => $listaCarga[$i]->getPrazo(),
+                'coletada' => $listaCarga[$i]->getColetada(),
+                'statusCarga' => $listaCarga[$i]->getStatusCarga(),
+            );
+        }
+//        var_dump($resultado);
+//        die;
 
-		$listaCarga = cargaSql::carregarListaAprovados($carga);
-		
-		for ($i=0; $i<count($listaCarga); $i++ ){											
-			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
+        echo(json_encode($resultado));
+        return $resultado;
+    }
 
-			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
+    if($_GET["editSave"] == "carregarAprovados")
+    {
 
-				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
-				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),					
+        $carga = new Carga();
 
-				'altura'	=>  $listaCarga[$i]->getAltura(),					
-				'largura'	=>   $listaCarga[$i]->getLargura(),				
-				'peso'	=>  $listaCarga[$i]->getPeso(),				
-				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
-				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
-				'valor'	=>  $listaCarga[$i]->getValor(),
+        $listaCarga = cargaSql::carregarListaAprovados($carga);
 
-				'telefone'	=>  $listaCarga[$i]->getTelefone(),
-				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
-				'bairro'	=>  $listaCarga[$i]->getBairro(),
-				'uf'	=>  $listaCarga[$i]->getUf(),
-				'cidade'	=>  $listaCarga[$i]->getCidade(),
-				'numero'	=>  $listaCarga[$i]->getNumero(),
-				'observacao'	=>  $listaCarga[$i]->getObservacao(),
-				
-				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
-				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
-				'distancia'	=>  $listaCarga[$i]->getDistancia(),
-				'frete'	=>  $listaCarga[$i]->getFrete(),
-				'prazo'	=>  $listaCarga[$i]->getPrazo(),
-				
-				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),		
-				'cotado'	=>  $listaCarga[$i]->getCotado(),					
-			);
-		}
-			//var_dump($resultado);
-		    //die;
+        for($i = 0; $i < count($listaCarga); $i++)
+        {
+            $resultado[] = array(
+                'codCarga' => $listaCarga[$i]->getCodCarga(),
+                'origem' => $listaCarga[$i]->getObjCidadeOrigem(),
+                'destino' => $listaCarga[$i]->getObjCidadeDestino(),
+                'pessoaFisica' => $listaCarga[$i]->getPessoaFisicaNome(),
+                'pessoaJuridica' => $listaCarga[$i]->getPessoaJuridicaNome(),
+                'altura' => $listaCarga[$i]->getAltura(),
+                'largura' => $listaCarga[$i]->getLargura(),
+                'peso' => $listaCarga[$i]->getPeso(),
+                'comprimento' => $listaCarga[$i]->getComprimento(),
+                'quantidade' => $listaCarga[$i]->getQuantidade(),
+                'valor' => $listaCarga[$i]->getValor(),
+                'telefone' => $listaCarga[$i]->getTelefone(),
+                'logradouro' => $listaCarga[$i]->getLogradouro(),
+                'bairro' => $listaCarga[$i]->getBairro(),
+                'uf' => $listaCarga[$i]->getUf(),
+                'cidade' => $listaCarga[$i]->getCidade(),
+                'numero' => $listaCarga[$i]->getNumero(),
+                'observacao' => $listaCarga[$i]->getObservacao(),
+                'naturezaCarga' => $listaCarga[$i]->getNaturezaCarga(),
+                'dataPedido' => $listaCarga[$i]->getDataPedido(),
+                'distancia' => $listaCarga[$i]->getDistancia(),
+                'frete' => $listaCarga[$i]->getFrete(),
+                'prazo' => $listaCarga[$i]->getPrazo(),
+                'coletada' => $listaCarga[$i]->getColetada(),
+                'statusCarga' => $listaCarga[$i]->getStatusCarga(),
+                'cotado' => $listaCarga[$i]->getCotado(),
+            );
+        }
+        //var_dump($resultado);
+        //die;
 
-		echo(json_encode($resultado));	
-		return $resultado;	
-	}
+        echo(json_encode($resultado));
+        return $resultado;
+    }
 
-	if ($_GET["editSave"] == "carregarAtendimento") {
+    if($_GET["editSave"] == "carregarAtendimento")
+    {
 
-		$carga = new Carga();
+        $carga = new Carga();
 
-		$listaCarga = cargaSql::carregarListaAtendimento($carga);
-		
-		for ($i=0; $i<count($listaCarga); $i++ ){											
-			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),
+        $listaCarga = cargaSql::carregarListaAtendimento($carga);
 
-			    'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
+        for($i = 0; $i < count($listaCarga); $i++)
+        {
+            $resultado[] = array(
+                'codCarga' => $listaCarga[$i]->getCodCarga(),
+                'origem' => $listaCarga[$i]->getObjCidadeOrigem(),
+                'destino' => $listaCarga[$i]->getObjCidadeDestino(),
+                'pessoaFisica' => $listaCarga[$i]->getPessoaFisicaNome(),
+                'pessoaJuridica' => $listaCarga[$i]->getPessoaJuridicaNome(),
+                'altura' => $listaCarga[$i]->getAltura(),
+                'largura' => $listaCarga[$i]->getLargura(),
+                'peso' => $listaCarga[$i]->getPeso(),
+                'comprimento' => $listaCarga[$i]->getComprimento(),
+                'quantidade' => $listaCarga[$i]->getQuantidade(),
+                'valor' => $listaCarga[$i]->getValor(),
+                'telefone' => $listaCarga[$i]->getTelefone(),
+                'logradouro' => $listaCarga[$i]->getLogradouro(),
+                'bairro' => $listaCarga[$i]->getBairro(),
+                'uf' => $listaCarga[$i]->getUf(),
+                'cidade' => $listaCarga[$i]->getCidade(),
+                'numero' => $listaCarga[$i]->getNumero(),
+                'observacao' => $listaCarga[$i]->getObservacao(),
+                'naturezaCarga' => $listaCarga[$i]->getNaturezaCarga(),
+                'dataPedido' => $listaCarga[$i]->getDataPedido(),
+                'distancia' => $listaCarga[$i]->getDistancia(),
+                'frete' => $listaCarga[$i]->getFrete(),
+                'prazo' => $listaCarga[$i]->getPrazo(),
+                'coletada' => $listaCarga[$i]->getColetada(),
+                'statusCarga' => $listaCarga[$i]->getStatusCarga(),
+                'cotado' => $listaCarga[$i]->getCotado(),
+            );
+        }
+        //var_dump($resultado);
+        //die;
 
-				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
-				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),						
+        echo(json_encode($resultado));
+        return $resultado;
+    }
 
-				'altura'	=>  $listaCarga[$i]->getAltura(),					
-				'largura'	=>   $listaCarga[$i]->getLargura(),				
-				'peso'	=>  $listaCarga[$i]->getPeso(),				
-				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
-				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
-				'valor'	=>  $listaCarga[$i]->getValor(),
+    if($_GET["editSave"] == "carregarConcluidos")
+    {
 
-				'telefone'	=>  $listaCarga[$i]->getTelefone(),
-				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
-				'bairro'	=>  $listaCarga[$i]->getBairro(),
-				'uf'	=>  $listaCarga[$i]->getUf(),
-				'cidade'	=>  $listaCarga[$i]->getCidade(),
-				'numero'	=>  $listaCarga[$i]->getNumero(),
-				'observacao'	=>  $listaCarga[$i]->getObservacao(),
-				
-				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
-				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
-				'distancia'	=>  $listaCarga[$i]->getDistancia(),
-				'frete'	=>  $listaCarga[$i]->getFrete(),
-				'prazo'	=>  $listaCarga[$i]->getPrazo(),
-				
-				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),		
-				'cotado'	=>  $listaCarga[$i]->getCotado(),						
-			);
-		}
-			//var_dump($resultado);
-		    //die;
+        $carga = new Carga();
 
-		echo(json_encode($resultado));	
-		return $resultado;	
-	}
+        $listaCarga = cargaSql::carregarListaConcluidos($carga);
 
-		if ($_GET["editSave"] == "carregarConcluidos") {
+        for($i = 0; $i < count($listaCarga); $i++)
+        {
+            $resultado[] = array(
+                'codCarga' => $listaCarga[$i]->getCodCarga(),
+                'origem' => $listaCarga[$i]->getObjCidadeOrigem(),
+                'destino' => $listaCarga[$i]->getObjCidadeDestino(),
+                'pessoaFisica' => $listaCarga[$i]->getPessoaFisicaNome(),
+                'pessoaJuridica' => $listaCarga[$i]->getPessoaJuridicaNome(),
+                'altura' => $listaCarga[$i]->getAltura(),
+                'largura' => $listaCarga[$i]->getLargura(),
+                'peso' => $listaCarga[$i]->getPeso(),
+                'comprimento' => $listaCarga[$i]->getComprimento(),
+                'quantidade' => $listaCarga[$i]->getQuantidade(),
+                'valor' => $listaCarga[$i]->getValor(),
+                'telefone' => $listaCarga[$i]->getTelefone(),
+                'logradouro' => $listaCarga[$i]->getLogradouro(),
+                'bairro' => $listaCarga[$i]->getBairro(),
+                'uf' => $listaCarga[$i]->getUf(),
+                'cidade' => $listaCarga[$i]->getCidade(),
+                'numero' => $listaCarga[$i]->getNumero(),
+                'observacao' => $listaCarga[$i]->getObservacao(),
+                'naturezaCarga' => $listaCarga[$i]->getNaturezaCarga(),
+                'dataPedido' => $listaCarga[$i]->getDataPedido(),
+                'distancia' => $listaCarga[$i]->getDistancia(),
+                'frete' => $listaCarga[$i]->getFrete(),
+                'prazo' => $listaCarga[$i]->getPrazo(),
+                'coletada' => $listaCarga[$i]->getColetada(),
+                'statusCarga' => $listaCarga[$i]->getStatusCarga(),
+                'cotado' => $listaCarga[$i]->getCotado(),
+            );
+        }
+        //var_dump($resultado);
+        //die;
 
-		$carga = new Carga();
+        echo(json_encode($resultado));
+        return $resultado;
+    }
 
-		$listaCarga = cargaSql::carregarListaConcluidos($carga);
-		
-		for ($i=0; $i<count($listaCarga); $i++ ){											
-			$resultado[] = array(
-			    'codCarga'	=>  $listaCarga[$i]->getCodCarga(),					
+    if($_GET["editSave"] == "carregarTodosAdmin")
+    {
 
-				'origem'	=>  $listaCarga[$i]->getObjCidadeOrigem(),	
-				'destino'	=>  $listaCarga[$i]->getObjCidadeDestino(),
+        $carga = new Carga();
 
-				'pessoaFisica'	=>  $listaCarga[$i]->getPessoaFisicaNome(),	
-				'pessoaJuridica'	=>  $listaCarga[$i]->getPessoaJuridicaNome(),	
+        $listaCarga = cargaSql::carregarListaAdmin($carga);
 
-				'altura'	=>  $listaCarga[$i]->getAltura(),					
-				'largura'	=>   $listaCarga[$i]->getLargura(),				
-				'peso'	=>  $listaCarga[$i]->getPeso(),				
-				'comprimento'	=>   $listaCarga[$i]->getComprimento(),				
-				'quantidade'	=>  $listaCarga[$i]->getQuantidade(),
-				'valor'	=>  $listaCarga[$i]->getValor(),
+        for($i = 0; $i < count($listaCarga); $i++)
+        {
+            $resultado[] = array(
+                'codCarga' => $listaCarga[$i]->getCodCarga(),
+                'origem' => $listaCarga[$i]->getObjCidadeOrigem(),
+                'destino' => $listaCarga[$i]->getObjCidadeDestino(),
+                'pessoaFisica' => $listaCarga[$i]->getPessoaFisicaNome(),
+                'codUsuario' => $listaCarga[$i]->getObjUsuario()->getId(),
+                'pessoaJuridica' => $listaCarga[$i]->getPessoaJuridicaNome(),
+                'altura' => $listaCarga[$i]->getAltura(),
+                'largura' => $listaCarga[$i]->getLargura(),
+                'peso' => $listaCarga[$i]->getPeso(),
+                'comprimento' => $listaCarga[$i]->getComprimento(),
+                'quantidade' => $listaCarga[$i]->getQuantidade(),
+                'valor' => $listaCarga[$i]->getValor(),
+                'telefone' => $listaCarga[$i]->getTelefone(),
+                'logradouro' => $listaCarga[$i]->getLogradouro(),
+                'bairro' => $listaCarga[$i]->getBairro(),
+                'uf' => $listaCarga[$i]->getUf(),
+                'cidade' => $listaCarga[$i]->getCidade(),
+                'numero' => $listaCarga[$i]->getNumero(),
+                'observacao' => $listaCarga[$i]->getObservacao(),
+                'naturezaCarga' => $listaCarga[$i]->getNaturezaCarga(),
+                'dataPedido' => $listaCarga[$i]->getDataPedido(),
+                'distancia' => $listaCarga[$i]->getDistancia(),
+                'frete' => $listaCarga[$i]->getFrete(),
+                'prazo' => $listaCarga[$i]->getPrazo(),
+                'coletada' => $listaCarga[$i]->getColetada(),
+                'statusCarga' => $listaCarga[$i]->getStatusCarga(),
+            );
+        }
+//        var_dump($resultado);
+//        die;
 
-				'telefone'	=>  $listaCarga[$i]->getTelefone(),
-				'logradouro'	=>  $listaCarga[$i]->getLogradouro(),
-				'bairro'	=>  $listaCarga[$i]->getBairro(),
-				'uf'	=>  $listaCarga[$i]->getUf(),
-				'cidade'	=>  $listaCarga[$i]->getCidade(),
-				'numero'	=>  $listaCarga[$i]->getNumero(),
-				'observacao'	=>  $listaCarga[$i]->getObservacao(),
-				
-				'naturezaCarga'	=>  $listaCarga[$i]->getNaturezaCarga(),
-				'dataPedido'	=>  $listaCarga[$i]->getDataPedido(),
-				'distancia'	=>  $listaCarga[$i]->getDistancia(),
-				'frete'	=>  $listaCarga[$i]->getFrete(),
-				'prazo'	=>  $listaCarga[$i]->getPrazo(),
-				
-				'coletada'	=>  $listaCarga[$i]->getColetada(),
-				'statusCarga'	=>  $listaCarga[$i]->getStatusCarga(),		
-				'cotado'	=>  $listaCarga[$i]->getCotado(),					
-			);
-		}
-			//var_dump($resultado);
-		    //die;
-
-		echo(json_encode($resultado));	
-		return $resultado;	
-	}
-
-	
-
+        echo(json_encode($resultado));
+        return $resultado;
+    }
 ?>

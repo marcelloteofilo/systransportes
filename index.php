@@ -1,15 +1,18 @@
 <?php
-session_start();
+    session_start();
 
-if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-    session_destroy();
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('');
-    $logado = 'Visitante';
-} else {
-    $logado = $_SESSION['login'];
-}
+    if((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true))
+    {
+        session_destroy();
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('');
+        $logado = 'Visitante';
+    }
+    else
+    {
+        $logado = $_SESSION['login'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -29,9 +32,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <meta name="viewport" content="width=device-width, initial-scale=1">
         <!-- Google Font -->
         <link href='http://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700,800' rel='stylesheet' type='text/css'>
-        <!-- CSS
-            ================================================== -->
-        <!-- Fontawesome Icon font -->
+
         <link rel="stylesheet" href="css/font-awesome.min.css"/>
         <!-- Twitter Bootstrap css -->
         <link rel="stylesheet" href="css/bootstrap.min.css"/>
@@ -81,17 +82,13 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                     }
             );
             wow.init();
-
-
         </script>
 
         <script language="javascript">
-
             function sistema()
-
             {
 
-                if (navigator.userAgent.indexOf('Linux') !== -1)
+                if(navigator.userAgent.indexOf('Linux') !== -1)
 
                 {
                     var so = "Linuz";
@@ -106,16 +103,9 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                 alert(so + ' - ' + caminho)
 
             }
-
         </script>
-
     </head>
     <body id="body">
-        <!-- preloader -->
-        <!-- end preloader -->
-        <!--
-            Fixed Navigation
-            ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
             <div class="container">
                 <div class="navbar-header">
@@ -139,7 +129,8 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                         <li class="current"><a href="#body">Início</a></li>
                         <li><a href="view/empresa.php#empresa">Empresa</a></li>
                         <li><a href="view/atuacao.php#atuacao">Atuação</a></li>
-                        <li><a href="view/cotacao/viewConsulta.php#viewConsulta">Cotação Online</a></li>
+                        <li><a href="view/carga/cargaCadastro.php">Cotação Online</a></li>
+                        <li><a href="view/Cliente_Final/dados_rastreamento.php">Rastreamento Online</a></li>
                         <li><a href="view/contato.php#contato">Contato</a></li>
                         <li><a href="view/usuario/login.php#login">Registre-se</a></li>
                         <li class="">
@@ -148,7 +139,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                     </ul>
                 </nav>
                 <!-- /main nav -->
-            </div>
+                <!--</div>-->
         </header>
         <!--
             End Fixed Navigation
@@ -179,14 +170,12 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                 <!-- End Wrapper for slides -->
             </div>
         </section>
-
         <section id="features" class="features">
             <div class="container">
                 <hr>
                 <center>
                     <h1 class="brand-name">SysTransporte</h1>
-                    <h2>Nosso Trabalho é com <strong>Rapidez e Confiança!</strong></br>
-                    </h2>
+                    <h2>Nosso Trabalho é com <strong>Rapidez e Confiança!</strong><br /></h2>
                 </center>
                 <hr>
                 <ul class="timeline">

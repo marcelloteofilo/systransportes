@@ -30,7 +30,10 @@
 		var senha = document.getElementById('senha').value;							
 		
 		//jsonParametros = {incluirUsuario: 'sim',  status,perfil,nomeCompleto,razaoSocial,nomeFantasia,tipoEmpresa,rg,orgaoExpedidor,cpf,cnpj,email,telefone1,telefone2,logradouro,bairro,numero,complemento,cep,codCidade,login,senha};
-		jsonParametros = {incluirUsuario: 'sim',  status,perfil,razaoSocial,nomeFantasia,tipoEmpresa,cnpj,nomeCompleto,rg,orgaoExpedidor,cpf,email,telefone1,telefone2,logradouro,bairro,numero,complemento,cep,estado,cidade,login,senha};
+		jsonParametros = {incluirUsuario: 'sim',  status:status,perfil:perfil,razaoSocial:razaoSocial,nomeFantasia:nomeFantasia,
+                    tipoEmpresa:tipoEmpresa,cnpj:cnpj,nomeCompleto:nomeCompleto,rg:rg,orgaoExpedidor:orgaoExpedidor,cpf:cpf,email:email,
+                    telefone1:telefone1,telefone2:telefone2,logradouro:logradouro,bairro:bairro,numero:numero,complemento:complemento,
+                    cep:cep,estado:estado,cidade:cidade,login:login,senha:senha};
 
 		var $xhr = $.getJSON(servicoHttp, jsonParametros);		
 		

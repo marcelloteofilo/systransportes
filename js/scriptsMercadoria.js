@@ -10,7 +10,7 @@ function newMercadoria()
 function editMercadoria()
 {
     var row = $('#dg').datagrid('getSelected');
-    if (row) {
+    if(row){
         $('#dlg').dialog('open').dialog('setTitle', 'Editar Mercadoria');
         $('#fm').form('load', row);
         url = '../../webServices/mercadoriasWebService.php?editSave=alterarMercadoria&id=' + row.id;
@@ -18,10 +18,10 @@ function editMercadoria()
     else
     {
         $.messager.show(
-            {
-                title: 'Erro!',
-                msg: 'Selecione item da tabela!!!'//result.msg
-            });
+                {
+                    title: 'Erro!',
+                    msg: 'Selecione item da tabela!!!'//result.msg
+                });
     }
 }
 
@@ -29,11 +29,11 @@ function saveMercadoria()
 {
     $('#fm').form('submit', {
         url: url,
-        onSubmit: function ()
+        onSubmit: function()
         {
             return $(this).form('validate');
         },
-        success: function (result) {
+        success: function(resultado) {
             $('#dlg').dialog('close');    // close the dialog
             $('#dg').datagrid('reload');  // reload the user data
         }
@@ -43,12 +43,12 @@ function saveMercadoria()
 function removeMercadoria()
 {
     var row = $('#dg').datagrid('getSelected');
-    if (row) {
-        $.messager.confirm('Confirm', 'Tem certeza que deseja remover?', function (r) {
+    if(row){
+        $.messager.confirm('Confirm', 'Tem certeza que deseja remover?', function(r) {
             $('#dg').datagrid('reload');
 
-            if (r) {
-                $.post('../../webServices/mercadoriasWebService.php?editSave=deletarMercadoria', {id: row.id}, function (resultado) {
+            if(r){
+                $.post('../../webServices/mercadoriasWebService.php?editSave=deletarMercadoria', {id: row.id}, function(resultado) {
 //                    if (resultado.success)
 //                    {
 //                        $('#dlg').dialog('close');
@@ -63,10 +63,10 @@ function removeMercadoria()
     else
     {
         $.messager.show(
-            {
-                title: 'Erro!',
-                msg: 'Selecione item da tabela!!!'//result.msg
-            });
+                {
+                    title: 'Erro!',
+                    msg: 'Selecione item da tabela!!!'//result.msg
+                });
     }
 }
 
@@ -95,11 +95,11 @@ function consultaAJAXMercadoria( )
     var $xhr = $.getJSON(servicoHttp, jsonParametros);
 
 
-    $xhr.done(function (resultadoXml) {
+    $xhr.done(function(resultadoXml) {
         alert('Mercadoria inserida com sucesso!');
     });
 
-    $xhr.fail(function (data) {
+    $xhr.fail(function(data) {
         alert(data.responseText);
     });
 }

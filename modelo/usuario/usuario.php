@@ -1,221 +1,284 @@
 <?php
-  class Usuario {
 
-  //Atributos
-  private $id;    
-  private $status;
-  private $perfil;  
-  private $nomeCompleto;  
-  private $razaoSocial;  
-  private $nomeFantasia; 
-  private $tipoEmpresa;
-  private $rg;
-  private $orgaoExpedidor;
-  private $cpf; 
-  private $cnpj;  
+    class Usuario
+    {
+        //Atributos
+        private $id;
+        private $status;
+        private $perfil;
+        private $nomeCompleto;
+        private $razaoSocial;
+        private $nomeFantasia;
+        private $tipoEmpresa;
+        private $rg;
+        private $orgaoExpedidor;
+        private $cpf;
+        private $cnpj;
+        private $email;
+        private $telefone1;
+        private $telefone2;
+        private $cep;
+        private $logradouro;
+        private $bairro;
+        private $numero;
+        private $complemento;
+        private $estado;
+        private $cidade;
+        private $login;
+        private $senha;
 
-  private $email;  
-  private $telefone1;  
-  private $telefone2;   
-  
-  private $cep;
-  private $logradouro;    
-  private $bairro;
-  private $numero;
-  private $complemento;
-  private $estado;
-  private $cidade;
+        //Id Usuário
+        public function setId($l)
+        {
+            $this->id = trim($l);
+        }
 
-  private $login;
-  private $senha;
+        public function getId()
+        {
+            return $this->id;
+        }
 
-   
-  //Id Usuário     
-  public function setId($l) {
-    $this->id = trim($l);
-  }
-    
-  public function getId() {
-    return $this->id;
-  }
+        //Status
+        public function setStatus($Status)
+        {
+            $this->status = trim($Status);
+        }
 
-  //Status
-  public function setStatus($Status) {
-    $this->status = trim($Status);
-  }
-  public function getStatus() {
-    return $this->status;
-  } 
+        public function getStatus()
+        {
+            return $this->status;
+        }
 
-  //Perfil
-	public function setPerfil($perfil) {
-    $this->perfil = trim($perfil);
-  }
-  public function getPerfil() {
-    return $this->perfil;
-  }	
-	
-	//Nome Completo
-  public function setNomeCompleto($nomeCompleto) {
-    $this->nomeCompleto = trim($nomeCompleto);
-  }
-  public function getNomeCompleto() {
-    return $this->nomeCompleto;
-  } 
+        //Perfil
+        public function setPerfil($perfil)
+        {
+            $this->perfil = trim($perfil);
+        }
 
-  //Razao Social
-  public function setRazaoSocial($razaoSocial) {
-    $this->razaoSocial = trim($razaoSocial);
-  }
-  public function getRazaoSocial() {
-    return $this->razaoSocial;
-  } 
+        public function getPerfil()
+        {
+            return $this->perfil;
+        }
 
-  //Nome Fantasia
-  public function setnomeFantasia($nomeFantasia) {
-    $this->nomeFantasia = trim($nomeFantasia);
-  }
-  public function getnomeFantasia() {
-    return $this->nomeFantasia;
-  } 
+        //Nome Completo
+        public function setNomeCompleto($nomeCompleto)
+        {
+            $this->nomeCompleto = trim($nomeCompleto);
+        }
 
-  //Tipo de Empresa
-  public function setTipoEmpresa($tipoEmpresa) {
-    $this->tipoEmpresa = trim($tipoEmpresa);
-  }
-  public function getTipoEmpresa() {
-    return $this->tipoEmpresa;
-  } 
+        public function getNomeCompleto()
+        {
+            return $this->nomeCompleto;
+        }
 
-  //RG
-  public function setRg($rg) {
-    $this->rg = trim($rg);
-  }
-  public function getRg() {
-    return $this->rg;
-  } 
+        //Razao Social
+        public function setRazaoSocial($razaoSocial)
+        {
+            $this->razaoSocial = trim($razaoSocial);
+        }
 
-  //Orgão Expedidor
-  public function setOrgaoExpedidor($orgaoExpedidor) {
-    $this->orgaoExpedidor = trim($orgaoExpedidor);
-  }
-  public function getOrgaoExpedidor() {
-    return $this->orgaoExpedidor;
-  } 
+        public function getRazaoSocial()
+        {
+            return $this->razaoSocial;
+        }
 
-    //CPF
-  public function setCpf($cpf) {
-    $this->cpf = trim($cpf);
-  }
-  public function getCpf() {
-    return $this->cpf;
-  } 
+        //Nome Fantasia
+        public function setNomeFantasia($nomeFantasia)
+        {
+            $this->nomeFantasia = trim($nomeFantasia);
+        }
 
-    //CNPJ
-  public function setCnpj($cnpj) {
-    $this->cnpj = trim($cnpj);
-  }
-  public function getCnpj() {
-    return $this->cnpj;
-  } 
+        public function getNomeFantasia()
+        {
+            return $this->nomeFantasia;
+        }
 
-  //Email
-  public function setEmail($email) {
-    $this->email = trim($email);
-  }
-  public function getEmail() {
-    return $this->email;
-  } 
+        //Tipo de Empresa
+        public function setTipoEmpresa($tipoEmpresa)
+        {
+            $this->tipoEmpresa = trim($tipoEmpresa);
+        }
 
-  //Telefone 1
-  public function setTelefone1($telefone1) {
-    $this->telefone1 = trim($telefone1);
-  }
-  public function getTelefone1() {
-    return $this->telefone1;
-  } 
+        public function getTipoEmpresa()
+        {
+            return $this->tipoEmpresa;
+        }
 
-  //Telefone 2
-  public function setTelefone2($telefone2) {
-    $this->telefone2 = trim($telefone2);
-  }
-  public function getTelefone2() {
-    return $this->telefone2;
-  } 
+        //RG
+        public function setRg($rg)
+        {
+            $this->rg = trim($rg);
+        }
 
-  //Logradouro
-  public function setLogradouro($logradouro) {
-    $this->logradouro = trim($logradouro);
-  }
-  public function getLogradouro() {
-    return $this->logradouro;
-  } 
+        public function getRg()
+        {
+            return $this->rg;
+        }
 
-  //Bairro
-  public function setBairro($bairro) {
-    $this->bairro = trim($bairro);
-  }
-  public function getBairro() {
-    return $this->bairro;
-  } 
+        //Orgão Expedidor
+        public function setOrgaoExpedidor($orgaoExpedidor)
+        {
+            $this->orgaoExpedidor = trim($orgaoExpedidor);
+        }
 
-  //Número
-  public function setNumero($numero) {
-    $this->numero = trim($numero);
-  }
-  public function getNumero() {
-    return $this->numero;
-  } 
+        public function getOrgaoExpedidor()
+        {
+            return $this->orgaoExpedidor;
+        }
 
-  //Complemento
-  public function setComplemento($complemento) {
-    $this->complemento = trim($complemento);
-  }
-  public function getComplemento() {
-    return $this->complemento;
-  } 
+        //CPF
+        public function setCpf($cpf)
+        {
+            $this->cpf = trim($cpf);
+        }
 
-  //CEP
-  public function setCep($cep) {
-    $this->cep = trim($cep);
-  }
-  public function getCep() {
-    return $this->cep;
-  }   
+        public function getCpf()
+        {
+            return $this->cpf;
+        }
 
+        //CNPJ
+        public function setCnpj($cnpj)
+        {
+            $this->cnpj = trim($cnpj);
+        }
 
-  //cidade
-  public function setCidade($cidade) {
-    $this->cidade = trim($cidade);
-  }
-  public function getCidade() {
-    return $this->cidade;
-  }
+        public function getCnpj()
+        {
+            return $this->cnpj;
+        }
 
-  //estado
-  public function setEstado($estado) {
-    $this->estado = trim($estado);
-  }
-  public function getEstado() {
-    return $this->estado;
-  }
+        //Email
+        public function setEmail($email)
+        {
+            $this->email = trim($email);
+        }
 
+        public function getEmail()
+        {
+            return $this->email;
+        }
 
-  //login
-  public function setLogin($login) {
-    $this->login = trim($login);
-  }
-  public function getLogin() {
-    return $this->login;
-  } 
+        //Telefone 1
+        public function setTelefone1($telefone1)
+        {
+            $this->telefone1 = trim($telefone1);
+        }
 
-  //senha
-  public function setSenha($senha) {
-    $this->senha = trim($senha);
-  }
-  public function getSenha() {
-    return $this->senha;
-  } 
+        public function getTelefone1()
+        {
+            return $this->telefone1;
+        }
 
-  }
+        //Telefone 2
+        public function setTelefone2($telefone2)
+        {
+            $this->telefone2 = trim($telefone2);
+        }
+
+        public function getTelefone2()
+        {
+            return $this->telefone2;
+        }
+
+        //Logradouro
+        public function setLogradouro($logradouro)
+        {
+            $this->logradouro = trim($logradouro);
+        }
+
+        public function getLogradouro()
+        {
+            return $this->logradouro;
+        }
+
+        //Bairro
+        public function setBairro($bairro)
+        {
+            $this->bairro = trim($bairro);
+        }
+
+        public function getBairro()
+        {
+            return $this->bairro;
+        }
+
+        //Número
+        public function setNumero($numero)
+        {
+            $this->numero = trim($numero);
+        }
+
+        public function getNumero()
+        {
+            return $this->numero;
+        }
+
+        //Complemento
+        public function setComplemento($complemento)
+        {
+            $this->complemento = trim($complemento);
+        }
+
+        public function getComplemento()
+        {
+            return $this->complemento;
+        }
+
+        //CEP
+        public function setCep($cep)
+        {
+            $this->cep = trim($cep);
+        }
+
+        public function getCep()
+        {
+            return $this->cep;
+        }
+
+        //cidade
+        public function setCidade($cidade)
+        {
+            $this->cidade = trim($cidade);
+        }
+
+        public function getCidade()
+        {
+            return $this->cidade;
+        }
+
+        //estado
+        public function setEstado($estado)
+        {
+            $this->estado = trim($estado);
+        }
+
+        public function getEstado()
+        {
+            return $this->estado;
+        }
+
+        //login
+        public function setLogin($login)
+        {
+            $this->login = trim($login);
+        }
+
+        public function getLogin()
+        {
+            return $this->login;
+        }
+
+        //senha
+        public function setSenha($senha)
+        {
+            $this->senha = trim($senha);
+        }
+
+        public function getSenha()
+        {
+            return $this->senha;
+        }
+    }
+
 ?>

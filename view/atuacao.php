@@ -1,15 +1,18 @@
 <?php
     session_start();
-    if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+    if((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true))
+    {
         session_destroy();
         unset($_SESSION['login']);
         unset($_SESSION['senha']);
         header('');
         $logado = 'Visitante';
-    } else {
+    }
+    else
+    {
         $logado = $_SESSION['login'];
     }
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <!--<![endif]-->
@@ -77,15 +80,15 @@
             }
             );
             wow.init();
-        </script> 
+        </script>
         <!-- Custom Functions -->
         <script src="../js/custom.js"></script>
     </head>
     <body id="body">
         <!-- preloader -->
-      
+
         <!-- end preloader -->
-        <!-- 
+        <!--
             Fixed Navigation
             ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
@@ -93,8 +96,8 @@
                 <div class="navbar-header">
                     <!-- responsive nav button -->
                     <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="fa fa-bars fa-2x"></i>
+                        <span class="sr-only">Toggle navigation</span>
+                        <i class="fa fa-bars fa-2x"></i>
                     </button>
                     <!-- /responsive nav button -->
                     <!-- logo -->
@@ -111,7 +114,8 @@
                         <li class="current"><a href="../index.php">Início</a></li>
                         <li><a href="empresa.php#empresa">Empresa</a></li>
                         <li><a href="atuacao.php#atuacao">Atuação</a></li>
-                        <li><a href="../view/cotacao/viewConsulta.php#viewConsulta">Cotação Online</a></li>
+                        <li><a href="../view/carga/cargaCadastro.php">Cotação Online</a></li>
+                        <li><a href="view/Cliente_Final/dados_rastreamento.php">Rastreamento Online</a></li>
                         <li><a href="contato.php#contato">Contato</a></li>
                         <li><a href="../view/usuario/login.php#login">Registre-se</a></li>
                         <li class="">
@@ -165,40 +169,40 @@
                             <hr>
                             <h2 class="intro-text text-center">Nossa <strong> frota</strong> e nossa <strong>logística</strong></h2>
                             <hr>
-                </div>
-                </center>
-                <h3>Frota</h3>
-                <p>
-                Com uma frota própria, nossos veículos são rastreados e monitorados via satélite, permitindo ao cliente
-                segurança e informação no acompanhamento da sua carga. Entrega eficiente desde grandes cargas a pequenas encomendas.
-                </p>
-                <h3>Logística</h3>
-                <p>
-                Nosso maior compromisso é evitar avarias e entregar as encomendas no prazo correto, atendendo sempre as necessidade de
-                nosso clientes. Trabalhamos com coleta e distribuição de cargas.
-                </p>
-                </nav>
-                <div class="col-md-4 col-sm-6">
-                    <div class="block-text rel zmin">
-                        <a title="" href="#">Marcos</a>
-                        <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+                            </div>
+                        </center>
+                        <h3>Frota</h3>
+                        <p>
+                            Com uma frota própria, nossos veículos são rastreados e monitorados via satélite, permitindo ao cliente
+                            segurança e informação no acompanhamento da sua carga. Entrega eficiente desde grandes cargas a pequenas encomendas.
+                        </p>
+                        <h3>Logística</h3>
+                        <p>
+                            Nosso maior compromisso é evitar avarias e entregar as encomendas no prazo correto, atendendo sempre as necessidade de
+                            nosso clientes. Trabalhamos com coleta e distribuição de cargas.
+                        </p>
+                    </nav>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="block-text rel zmin">
+                            <a title="" href="#">Marcos</a>
+                            <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="block-text rel zmin">
-                        <a title="" href="#">Josenaldo</a>
-                        <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="block-text rel zmin">
+                            <a title="" href="#">Josenaldo</a>
+                            <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+                        </div>
                     </div>
-                </div>
-                <div class="col-md-4 col-sm-6">
-                    <div class="block-text rel zmin">
-                        <a title="" href="#">Thiago</a>
-                        <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="block-text rel zmin">
+                            <a title="" href="#">Thiago</a>
+                            <p>Never before has there been a good film portrayal of ancient Greece's favourite myth. So why would Hollywood start now? This latest attempt at bringing the son of Zeus to the big screen is brought to us by X-Men: The last Stand director Brett Ratner. If the name of the director wasn't enough to dissuade ...</p>
+                        </div>
                     </div>
                 </div>
             </div>
-            </div>
-            </div>
-        </section>
-    </body>
+        </div>
+    </section>
+</body>
 </html>

@@ -1,6 +1,6 @@
 /* ========================================================================= */
 /*	Preloader
-/* ========================================================================= */
+ /* ========================================================================= */
 
 
 
@@ -9,108 +9,106 @@
 $(function() {
 
     $('#login-form-link').click(function(e) {
-		$("#login-form").delay(100).fadeIn(100);
- 		$("#register-form").fadeOut(100);
-		$('#register-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
-	$('#register-form-link').click(function(e) {
-		$("#register-form").delay(100).fadeIn(100);
- 		$("#login-form").fadeOut(100);
-		$('#login-form-link').removeClass('active');
-		$(this).addClass('active');
-		e.preventDefault();
-	});
+        $("#login-form").delay(100).fadeIn(100);
+        $("#register-form").fadeOut(100);
+        $('#register-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
+    $('#register-form-link').click(function(e) {
+        $("#register-form").delay(100).fadeIn(100);
+        $("#login-form").fadeOut(100);
+        $('#login-form-link').removeClass('active');
+        $(this).addClass('active');
+        e.preventDefault();
+    });
 
 });
 
 
 
-jQuery(window).load(function(){
+jQuery(window).load(function() {
 
-	$("#preloader").fadeOut("slow");
+    $("#preloader").fadeOut("slow");
 
 });
 
 
-$(document).ready(function(){
+$(document).ready(function() {
 
-	/* ========================================================================= */
-	/*	Menu item highlighting
-	/* ========================================================================= */
+    /* ========================================================================= */
+    /*	Menu item highlighting
+     /* ========================================================================= */
 
-	jQuery('#nav').singlePageNav({
-		offset: jQuery('#nav').outerHeight(),
-		filter: ':not(.external)',
-		speed: 1200,
-		currentClass: 'current',
-		easing: 'easeInOutExpo',
-		updateHash: true,
-		beforeStart: function() {
-			console.log('begin scrolling');
-		},
-		onComplete: function() {
-			console.log('done scrolling');
-		}
-	});
-	
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > 400) {
-            $("#navigation").css("background-color","#0EB493");
-        } else {
-            $("#navigation").css("background-color","rgba(16, 22, 54, 0.2)");
+    jQuery('#nav').singlePageNav({
+        offset: jQuery('#nav').outerHeight(),
+        filter: ':not(.external)',
+        speed: 1200,
+        currentClass: 'current',
+        easing: 'easeInOutExpo',
+        updateHash: true,
+        beforeStart: function() {
+            console.log('begin scrolling');
+        },
+        onComplete: function() {
+            console.log('done scrolling');
         }
     });
-	
-	/* ========================================================================= */
-	/*	Fix Slider Height
-	/* ========================================================================= */	
 
-	var slideHeight = $(window).height();
-	
-	$('#slider, .carousel.slide, .carousel-inner, .carousel-inner .item').css('height',slideHeight);
+    $(window).scroll(function() {
+        if($(window).scrollTop() > 400){
+            $("#navigation").css("background-color", "#0EB493");
+        }else{
+            $("#navigation").css("background-color", "rgba(16, 22, 54, 0.2)");
+        }
+    });
 
-	$(window).resize(function(){'use strict',
-		$('#slider, .carousel.slide, .carousel-inner, .carousel-inner .item').css('height',slideHeight);
-	});
-	
-	
-	/* ========================================================================= */
-	/*	Portfolio Filtering
-	/* ========================================================================= */	
-	
-	
+    /* ========================================================================= */
+    /*	Fix Slider Height
+     /* ========================================================================= */
+
+    var slideHeight = $(window).height();
+
+    $('#slider, .carousel.slide, .carousel-inner, .carousel-inner .item').css('height', slideHeight);
+
+    $(window).resize(function() {
+        'use strict',
+                $('#slider, .carousel.slide, .carousel-inner, .carousel-inner .item').css('height', slideHeight);
+    });
+
+
+    /* ========================================================================= */
+    /*	Portfolio Filtering
+     /* ========================================================================= */
+
+
     // portfolio filtering
 
     $(".project-wrapper").mixItUp();
-	
-	
-	$(".fancybox").fancybox({
-		padding: 0,
 
-		openEffect : 'elastic',
-		openSpeed  : 650,
 
-		closeEffect : 'elastic',
-		closeSpeed  : 550,
+    $(".fancybox").fancybox({
+        padding: 0,
+        openEffect: 'elastic',
+        openSpeed: 650,
+        closeEffect: 'elastic',
+        closeSpeed: 550,
+        closeClick: true,
+    });
 
-		closeClick : true,
-	});
-	
-	/* ========================================================================= */
-	/*	Parallax
-	/* ========================================================================= */	
-	
-	$('#facts').parallax("50%", 0.3);
-	
-	/* ========================================================================= */
-	/*	Timer count
-	/* ========================================================================= */
+    /* ========================================================================= */
+    /*	Parallax
+     /* ========================================================================= */
 
-	"use strict";
-    $(".number-counters").appear(function () {
-        $(".number-counters [data-to]").each(function () {
+    $('#facts').parallax("50%", 0.3);
+
+    /* ========================================================================= */
+    /*	Timer count
+     /* ========================================================================= */
+
+    "use strict";
+    $(".number-counters").appear(function() {
+        $(".number-counters [data-to]").each(function() {
             var e = $(this).attr("data-to");
             $(this).delay(6e3).countTo({
                 from: 50,
@@ -120,25 +118,25 @@ $(document).ready(function(){
             })
         })
     });
-	
-	/* ========================================================================= */
-	/*	Back to Top
-	/* ========================================================================= */
-	
-	
-    $(window).scroll(function () {
-        if ($(window).scrollTop() > 400) {
+
+    /* ========================================================================= */
+    /*	Back to Top
+     /* ========================================================================= */
+
+
+    $(window).scroll(function() {
+        if($(window).scrollTop() > 400){
             $("#back-top").fadeIn(200)
-        } else {
+        }else{
             $("#back-top").fadeOut(200)
         }
     });
-    $("#back-top").click(function () {
+    $("#back-top").click(function() {
         $("html, body").stop().animate({
             scrollTop: 0
         }, 1500, "easeInOutExpo")
     });
-	
+
 });
 
 

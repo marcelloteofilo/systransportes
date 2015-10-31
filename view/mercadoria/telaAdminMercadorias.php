@@ -1,26 +1,57 @@
 <?php
-session_start();
-if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) {
-    session_destroy();
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('location: ../usuario/login.php#login');
-} else {
-    $logado = $_SESSION['login'];
-}
+    session_start();
+    ob_start();
+
+//$login = $_SESSION['login'];
+    $userAtual = $_SESSION['login'];
+    $senha = $_SESSION['senha'];
+
+    if(!isset($login) == true and ! isset($senha) == true)
+    {
+        session_destroy();
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('location: usuario/login.php#login');
+    }
+    else
+    {
+
+        $con = mysql_connect('localhost', 'root', '') or die('Sem conexão com o servidor');
+        $select = mysql_select_db('systransportes') or die('Sem acesso ao DB, Entre em contato com o Administrador');
+
+        $sql = "select * from usuarios where login = '$userAtual'";
+        $res = mysql_query($sql, $con);
+        $user = mysql_fetch_assoc($res);
+        $logado = $userAtual;
+        $stringIdUser = (int) implode($user);
+
+//    echo '<pre class="user">';
+//    print_r($user);
+//    print_r('O id  do usuario é: ' . $stringIdUser);
+//    echo '</pre>';
+    }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <head>
         <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 
-        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css">
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
         <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
         <link rel="stylesheet" type="text/css" href="../../css/icon.css">
         <link rel="stylesheet" type="text/css" href="../../css/demo.css">
-        <!--<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">-->
+        <link rel="stylesheet" type="text/css" href="../../css/usuario.css">
+
+        <script type="text/javascript" src="../../js/scriptsMercadoria.js"></script>
+        <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
+        <script type="text/javascript" src="../../js/jquery/jquery.validate.js"></script>
+        <script type="text/javascript" src="../../js/jquery-1.6.min.js"></script>
+        <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
+        <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
+        <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
 
         <style type="text/css">
             #fm{
@@ -43,13 +74,8 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
                 width:80px;
             }
         </style>
-        <script type="text/javascript" src="../../js/jquery-1.11.1.min.js"></script>
-        <script type="text/javascript" src="../../js/jquery.easyui.min.js"></script>
-        <script type="text/javascript" src="../../js/jquery.edatagrid.js"></script>
-        <script type="text/javascript" src="../../js/datagrid-filter.js"></script>
-        <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
-        <script type="text/javascript" src="../../js/scriptsMercadoria.js"></script>
-        <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
+
+
     </head>
 
     <header class="navbar-fixed-top navbar" style="background:#0EB493;">
@@ -57,7 +83,7 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul  class="nav navbar-nav">
                     <li class="current"><a href="../telaAdminSystem.php">Início Admin</a></li>
-                    <li><a href="#"><?php echo "Usuario: " . $logado; ?></a></li>
+                    <li><a href="#"><?php echo "Usuario: ".$logado." ID: ".$stringIdUser; ?></a></li>
                 </ul>
             </nav>
             <div class="navbar-header">
@@ -78,18 +104,17 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
                pagination="true"
                rownumbers="true"
                fitColumns="true"
-               singleSelect="true">
+               singleSelect="true"
+               >
             <thead>
                 <tr>
-                    <th field="carga" width="10">Carga</th>
-                    <th field="descricao" width="80">Descricao</th>
-                    <th field="peso" width="10">Peso</th>
-                    <th field="valor" width="10">Valor</th>
-                    <th field="quantidade" width="10">Quantidade</th>
+                    <th field="codCarga" width="20">Carga</th>
+                    <th field="descricao" width="100">Descricao</th>
+                    <th field="pesoMercadoria" width="20">Peso</th>
+                    <th field="valorMercadoria" width="20">Valor</th>
+                    <th field="quantidade" width="20">Quantidade</th>
                 </tr>
             </thead>
-
-
         </table>
 
         <div id="toolbar">
@@ -104,33 +129,34 @@ if (!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true) 
             <input type="text" id="pesquisar" name="pesquisar" size="30" />
         </div>
 
-        <div id="dlg" class="easyui-dialog" style="width:400px;height:280px;padding:10px 20px"
+        <div id="dlg" class="easyui-dialog" style="width:600px;height:350px;padding:10px 20px"
              closed="true" buttons="#dlg-buttons">
 
             <div class="ftitle">Dados da Mercadoria</div>
             <form id="fm" method="post" novalidate>
                 <div class="fitem">
                     <label>Cotação:</label>
-                    <input name="codCarga" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
+                    <input name="codCarga" class="easyui-validatebox" size="10" required="true" onkeydown="teclasNumeros()" />
                 </div>
                 <div class="fitem">
                     <label>Descrição:</label>
-                    <input name="descricao" class="easyui-validatebox" required="true" onkeyup="validar(this, 'text');">
+                    <input name="descricao" class="easyui-validatebox" size="50" required="true" onkeydown="teclasLetrasNumeros()" />
                 </div>
                 <div class="fitem">
                     <label>Peso:</label>
-                    <input name="pesoMercadoria" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
+                    <input name="pesoMercadoria" class="easyui-validatebox" size="10" required="true" onkeydown="teclasNumeros()" />
                 </div>
                 <div class="fitem">
                     <label>Valor:</label>
-                    <input name="valorMercadoria" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
+                    <input name="valorMercadoria" class="easyui-validatebox" size="10" required="true" onkeydown="teclasNumeros()" />
                 </div>
                 <div class="fitem">
                     <label>Quantidade:</label>
-                    <input name="quantidade" class="easyui-validatebox" required="true" onkeyup="validar(this, 'num');">
+                    <input name="quantidade" class="easyui-validatebox" size="10" required="true" onkeydown="teclasNumeros()" >
                 </div>
             </form>
         </div>
+        <div class="alert" style="display: none"></div>
         <div id="dlg-buttons">
             <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" id="enviar" onclick="saveMercadoria()">Salvar</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar</a>

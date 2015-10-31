@@ -1,14 +1,17 @@
 <?php
-session_start();
-if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
-    session_destroy();
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
-    header('');
-    $logado = 'Visitante';
-} else {
-    $logado = $_SESSION['login'];
-}
+    session_start();
+    if((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true))
+    {
+        session_destroy();
+        unset($_SESSION['login']);
+        unset($_SESSION['senha']);
+        header('');
+        $logado = 'Visitante';
+    }
+    else
+    {
+        $logado = $_SESSION['login'];
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -76,7 +79,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
             }
             );
             wow.init();
-        </script> 
+        </script>
         <!-- Custom Functions -->
         <script src="../js/custom.js"></script>
 
@@ -87,7 +90,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
         <!-- preloader -->
 
         <!-- end preloader -->
-        <!-- 
+        <!--
            Fixed Navigation
            ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
@@ -113,7 +116,8 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                         <li class="current"><a href="../index.php">Início</a></li>
                         <li><a href="empresa.php#empresa">Empresa</a></li>
                         <li><a href="atuacao.php#atuacao">Atuação</a></li>
-                        <li><a href="../view/cotacao/viewConsulta.php#viewConsulta">Cotação Online</a></li>
+                        <li><a href="../view/carga/cargaCadastro.php">Cotação Online</a></li>
+                        <li><a href="view/Cliente_Final/dados_rastreamento.php">Rastreamento Online</a></li>
                         <li><a href="contato.php#contato">Contato</a></li>
                         <li><a href="../view/usuario/login.php#login">Registre-se</a></li>
                         <li class="">
@@ -165,7 +169,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                     <div class="navbar-wrapper">
                         <nav class="navbar">
                             <div class="container">
-                                
+
                                 <hr>
                                 <center>
                                     <h1 class="brand-name">SOBRE A SYSTRANSPORTES</h1>
@@ -183,32 +187,32 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
 
 
 
-<div class="container">
+            <div class="container">
 
-    <div class="col-md-4 well text-center">
-        <a href="#">
-        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
-        <h3>Marcos</h3>
-        <em>Gerente Executivo</em>
-    </div>
+                <div class="col-md-4 well text-center">
+                    <a href="#">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
+                    <h3>Marcos</h3>
+                    <em>Gerente Executivo</em>
+                </div>
 
-    <div class="col-md-4 well text-center">
-        <a href="#">
-        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
-        <h3>Thiago</h3>
-        <em>Coordenador de Setores</em>
-    </div>
+                <div class="col-md-4 well text-center">
+                    <a href="#">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
+                    <h3>Thiago</h3>
+                    <em>Coordenador de Setores</em>
+                </div>
 
-    <div class="col-md-4 well text-center">
-        <a href="#">
-        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
-        <h3>Josenaldo</h3>
-        <em>Coordenador de Produção</em>
-    </div>
+                <div class="col-md-4 well text-center">
+                    <a href="#">
+                        <img src="https://encrypted-tbn2.gstatic.com/images?q=tbn:ANd9GcRbezqZpEuwGSvitKy3wrwnth5kysKdRqBW54cAszm_wiutku3R"  class="img-circle"  height="140" width="140" ></a>
+                    <h3>Josenaldo</h3>
+                    <em>Coordenador de Produção</em>
+                </div>
 
 
 
-</div> <!-- /container -->
+            </div> <!-- /container -->
 
 
 
@@ -245,7 +249,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
             }
             );
             wow.init();
-        </script> 
+        </script>
         <!-- Custom Functions -->
         <script src="js/custom.js"></script>
     </body>

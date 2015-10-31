@@ -74,11 +74,6 @@ function crudCotacao(acao) {
         document.getElementById('cidadeOrigem').focus();
         return;
     }
-    if (document.getElementById('cidadeDestino').value.length == 0) {
-        alert('Por Favor, informe a Cidade de Destino!');
-        document.getElementById('cidadeDestino').focus();
-        return;
-    }
     if (document.getElementById('pesoCotacao').value.length == 0) {
         alert('Por Favor, informe o Peso da Mercadoria!');
         document.getElementById('pesoCotacao').focus();

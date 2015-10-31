@@ -9,7 +9,8 @@ function consultaAJAX( ) {
 	var statusCte = document.getElementById('statuscte').value;
 	var emissao = document.getElementById('emissao').value;
 
-	jsonParametros = {incluirCte: 'sim', numeroCte, codigoCarga, codigoRota, situacao, chaveAcesso, statusCte, emissao};
+	jsonParametros = {incluirCte: 'sim', numeroCte:numeroCte, codigoCarga:codigoCarga,
+            codigoRota:codigoRota, situacao:situacao, chaveAcesso:chaveAcesso, statusCte:statusCte, emissao:emissao};
 
 	var $xhr = $.getJSON(servicoHttp, jsonParametros);		
 		

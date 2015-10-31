@@ -1,24 +1,9 @@
-<?php
-    session_start();
-    if(!isset($_SESSION['login']) == true and ! isset($_SESSION['senha']) == true)
-    {
-        session_destroy();
-        unset($_SESSION['login']);
-        unset($_SESSION['senha']);
-        header('location: ../usuario/login.php#login');
-    }
-    else
-    {
-        $logado = $_SESSION['login'];
-    }
-?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <head>
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SysTransportes</title>
-        <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
         <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css">
         <!-- CSS CRUD -->
         <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
@@ -37,33 +22,6 @@
         <script type="text/javascript">
             var url;
 
-            function carregarAtendimento() {
-                $("div.easyui-layout").layout();
-                $('#dg').edatagrid({
-                    url: '../../webServices/cargaWebService.php?editSave=carregarAtendimento',
-                    fitColumns: true
-                });
-                //$('#dg').datagrid('reload');
-            }
-
-            function carregarAprovados() {
-                $("div.easyui-layout").layout();
-                $('#dg').edatagrid({
-                    url: '../../webServices/cargaWebService.php?editSave=carregarAprovados',
-                    fitColumns: true
-                });
-                //$('#dg').datagrid('reload');
-            }
-
-            function carregarConcluidos() {
-                $("div.easyui-layout").layout();
-                $('#dg').edatagrid({
-                    url: '../../webServices/cargaWebService.php?editSave=carregarConcluidos',
-                    fitColumns: true
-                });
-                //$('#dg').datagrid('reload');
-            }
-
             function carregarTodos() {
                 $("div.easyui-layout").layout();
                 $('#dg').edatagrid({
@@ -73,61 +31,14 @@
                 //$('#dg').datagrid('reload');
             }
 
-            function editUser() {
-                var row = $('#dg').datagrid('getSelected');
-                var cotado = row.cotado;
-                var statusCarga = row.statusCarga;
-                //alert(row.codCarga+" "+cotado+" "+statusCarga);
-                if(row){
-                    $('#dlg').dialog('open').dialog('setTitle', 'Editar Cotação');
-                    $('#fm').form('load', row);
-                    //url = '../../webServices/cargaWebService.php?editSave=aprovarAtendente&codCarga='+row.codCarga;
-                    if(cotado == "Nao Cotado"){
-                        url = '../../webServices/cargaWebService.php?editSave=aprovarAtendente&codCarga=' + row.codCarga;
-                    }
-                    if(statusCarga != ""){
-                        alert("Esta cotação já foi Concluída pelo cliente, a mesma só consta para visualização dos dados.");
-                        //document.getElementById('frete').setAttribute('readonly',true);
-                        //document.getElementById('distancia').setAttribute('readonly',true);
-                        //document.getElementById('prazo').setAttribute('readonly',true);
-                    }
-                    if(cotado == "Cotado"){
-                        alert("Esta cotação já foi aprovada por alguns dos atendentes, a mesma só consta para visualização dos dados.");
-                    }
-
-                    /*else
-                     {
-                     $.messager.show(
-                     {
-                     title: 'Erro!',
-                     msg: 'Selecione item da tabela!!!'//result.msg
-                     });
-                     }*/
-                }
-            }
-
-            function saveUser() {
-                $('#fm').form('submit', {
-                    url: url,
-                    onSubmit: function() {
-                        return $(this).form('validate');
-                    },
-                    success: function(result) {
-                        $('#dlg').dialog('close');    // close the dialog
-                        $('#dg').datagrid('reload');  // reload the user data
-
-                    }
-                });
-            }
-
         </script>
         <!-- FIM SCRIPT ADMIN -->
     <header class="navbar-fixed-top navbar" style="background:#0EB493;">
         <div class="container">
             <nav class="collapse navbar-collapse navbar-right" role="navigation">
                 <ul  class="nav navbar-nav">
-                    <li class="current"><a href="../telaAdminSystem.php">Início Admin</a></li>
-                    <li><a href="#"><?php echo "Usuario: ".$logado; ?></a></li>
+                    <li class="current"><a href="../../index.php">Início</a></li>
+                    <li><a href="cargaCadastro.php">Criar Cotação</a></li>
                 </ul>
             </nav>
             <div class="navbar-header">
@@ -138,10 +49,15 @@
     <br><br>
 </head>
 <body style="background:#F3F8F7">
-
 <center>
-    <table id="dg" title="Consulta de Cotações" class="easyui-datagrid" style=" width:1250px;height:480px"
-           url="../../webServices/cargaWebService.php?editSave=carregarTodosAdmin"
+    <h1>Consulta de Cotações</h1>
+    <sup>*</sup>Faça uma consulta rápida de suas cotações na SysTransportes!
+    <br><br>
+</center>
+<!-- TABELA ADMIN PESSOA FÍSICA-->
+<center>
+    <table id="dg" title="Consulta de Cotações" class="easyui-datagrid" style=" width:1250px;height:350px"
+           url="../../webServices/cargaWebService.php?editSave=carregarTodos"
            toolbar="#toolbar" pagination="true"
            rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>
@@ -160,21 +76,18 @@
                 <th field="frete" width="25">Frete</th>
                 <th field="coletada" width="40">Coletada</th>
                 <th field="statusCarga" width="50">Status da Carga</th>
-                <th field="cotado" width="45"><b>Status</b></th>
-
             </tr>
         </thead>
     </table>
     <div id="toolbar">
-        <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
+        <!--<a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-Stats-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>
         <a href="#" class="easyui-linkbutton" iconCls="icon-Customer-service-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">Atendimento</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Cotado(os)</a>
-        <a href="#" class="easyui-linkbutton" iconCls="icon-Unit-completed-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluído(os)</a>
-
-        <!--<label for="pesquisar">Busca Avançada</label>
-
-        <input type="text" id="pesquisar" name="pesquisar" size="30" />-->
+        <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
+        <a href="#" class="easyui-linkbutton" iconCls="icon-Unit-completed-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
+        -->
+        <label for="pesquisar">Busca Avançada</label>
+        <input type="text" id="pesquisar" name="pesquisar" size="30" />
     </div>
 </div>
 </center>
@@ -192,14 +105,10 @@
             <tr>
                 <td><b>Origem Carga</b></td>
                 <td><b>Destino Carga</b></td>
-                <td><b>Cliente Pessoa Física</b></td>
-                <td><b>Cliente Pessoa Jurídica</b></td>
             </tr>
             <tr>
                 <td><input readonly  type="text" id="origem" name="origem" class="form-control" placeholder="UF Origem" tabindex="1" ></td>
                 <td><input readonly  type="text" id="destino" name="destino" class="form-control" placeholder="UF Destino" tabindex="1" ></td>
-                <td><input readonly  type="text" id="pessoaFisica" name="pessoaFisica" class="form-control" placeholder="Não é Pessoa Física" tabindex="1" ></td>
-                <td><input readonly  type="text" id="pessoaJuridica" name="pessoaJuridica" class="form-control" placeholder="Não é Pessoa Jurídica" tabindex="1" ></td>
             </tr>
         </table>
         <br>
@@ -271,49 +180,39 @@
                 <h2>Dados Finais</h2>
                 <tr>
                     <td><b>Distancia</b></td>
-                    <td><b>Valor do Frete</b></td>
+                    <td><b>Valor Final</b></td>
                     <td><b>Temdo de Entrega</b></td>
                     <td><b>Data do Pedido</b></td>
-                </tr>
-                <tr>
-                    <td><input type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
-                    <td><input type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
-                    <td><input type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
-                    <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
-                </tr>
-                <tr>
                     <td><b>Coletada</b></td>
-                    <td><b>Status Aprovação</b></td>
                     <td><b>Status Carga</b></td>
                 </tr>
                 <tr>
+                    <td><input readonly type="text" id="distancia" name="distancia" class="form-control" placeholder="Distancia" tabindex="1"  ></td>
+                    <td><input readonly type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
+                    <td><input readonly type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
+                    <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
                     <td>
                         <select readonly class="form-control" id="coletada" name="coletada">
-                            <option value=""></option>
+                            <option value=""> --- Em Processo --- </option>
                             <option value="Coletado">Coletado</option>
                             <option value="Aprovado">Aprovado</option>
                         </select>
                     </td>
                     <td>
                         <select readonly class="form-control" id="statusCarga" name="statusCarga">
-                            <option value=""></option>
-                            <option value="Aprovado">Aprovado</option>
-                            <option value="Não Aprovado">Não Aprovado</option>
-                        </select>
-                    </td>
-                    <td>
-                        <select class="form-control" id="cotado" name="cotado">
-                            <option value=""></option>
-                            <option value="Nao Cotado">Nao Cotado</option>
-                            <option value="Cotado">Cotado</option>
+                            <option value="Atendimento">Atendimento</option>
+                            <option value="Aprovado Atendente">Aprovado Atendente</option>
+                            <option value="Aprovado Cliente">Aprovado Cliente</option>
                         </select>
                     </td>
                 </tr>
             </table>
+
+
     </form>
 </div>
 <div id="dlg-buttons">
-    <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Salvar</a>
+    <a href="#" class="easyui-linkbutton" iconCls="icon-App-clean-icon" onclick="saveUser()">Aprovar Cotação</a>
     <a href="#" class="easyui-linkbutton" iconCls="icon-Actions-edit-delete-icon" onclick="javascript:$('#dlg').dialog('close')">Cancelar Operação</a>
 </div>
 <br><br>

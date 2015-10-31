@@ -1,15 +1,18 @@
 <?php
     session_start();
-    if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+    if((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true))
+    {
         session_destroy();
         unset($_SESSION['login']);
         unset($_SESSION['senha']);
         header('');
         $logado = 'Visitante';
-    } else {
+    }
+    else
+    {
         $logado = $_SESSION['login'];
     }
-    ?>
+?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <!--<![endif]-->
@@ -77,25 +80,19 @@
             }
             );
             wow.init();
-        </script> 
+        </script>
         <!-- Custom Functions -->
         <script src="../js/custom.js"></script>
     </head>
     <body id="body">
-        <!-- preloader -->
-
-        <!-- end preloader -->
-        <!-- 
-            Fixed Navigation
-            ==================================== -->
         <header id="navigation" class="navbar-fixed-top navbar">
             <div class="container">
                 <div class="navbar-header">
-                    <!-- responsive nav button -->
-                    <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
-                    <span class="sr-only">Toggle navigation</span>
-                    <i class="fa fa-bars fa-2x"></i>
-                    </button>
+                    <!--                     responsive nav button
+                                        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                                            <span class="sr-only">Toggle navigation</span>
+                                            <i class="fa fa-bars fa-2x"></i>
+                                        </button>-->
                     <!-- /responsive nav button -->
                     <!-- logo -->
                     <a class="navbar-brand" href="#body">
@@ -111,7 +108,8 @@
                         <li class="current"><a href="../index.php">Início</a></li>
                         <li><a href="empresa.php#empresa">Empresa</a></li>
                         <li><a href="atuacao.php#atuacao">Atuação</a></li>
-                        <li><a href="../view/cotacao/viewConsulta.php#viewConsulta">Cotação Online</a></li>
+                        <li><a href="../view/carga/cargaCadastro.php">Cotação Online</a></li>
+                        <li><a href="view/Cliente_Final/dados_rastreamento.php">Rastreamento Online</a></li>
                         <li><a href="contato.php#contato">Contato</a></li>
                         <li><a href="../view/usuario/login.php#login">Registre-se</a></li>
                         <li class="">
@@ -151,16 +149,11 @@
                 <!-- End Wrapper for slides -->
             </div>
         </section>
-        <!--
-            End Home SliderEnd
-            ==================================== -->
-        <!--
-            Features
-            ==================================== -->
+
         <section id="contato" class="features">
             <div class="container">
                 <div class="row info" style="text-align:center;"></div>
-                
+
 
 
 
@@ -180,7 +173,7 @@
                                                 </figure>
                                                 <div class="row">
                                                     <div class="col-xs-12 social-btns">
-                                                        
+
                                                     </div>
                                                 </div>
                                             </div>
@@ -189,7 +182,7 @@
                                                     <li class="list-group-item"><b>Empresa:</b> SysTransportes</li>
                                                     <li class="list-group-item"><b>Departamento:</b> Rastreamento de Cargas Online</li>
                                                     <li class="list-group-item"><b>Matriz:</b> Rua: Ari Barroso, 1002 - Blumenau - SC
-CEP: 89065-130</li>
+                                                        CEP: 89065-130</li>
                                                     <li class="list-group-item"><i class="fa fa-phone"></i>(81) 1111-1111 / (81) 2222-2222</li>
                                                     <li class="list-group-item"><i class="fa fa-envelope"></i> systransportes@gmail.com</li>
                                                 </ul>
@@ -200,14 +193,14 @@ CEP: 89065-130</li>
                                 <div class="bs-callout bs-callout-danger">
                                     <h4>Resumo</h4>
                                     <p>
-                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu, 
+                                        Lorem ipsum dolor sit amet, ea vel prima adhuc, scripta liberavisse ea quo, te vel vidit mollis complectitur. Quis verear mel ne. Munere vituperata vis cu,
                                         te pri duis timeam scaevola, nam postea diceret ne. Cum ex quod aliquip mediocritatem, mei habemus persecuti mediocritatem ei.
                                     </p>
                                     <p>
-                                        Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis. 
+                                        Odio recteque expetenda eum ea, cu atqui maiestatis cum. Te eum nibh laoreet, case nostrud nusquam an vis.
                                         Clita debitis apeirian et sit, integre iudicabit elaboraret duo ex. Nihil causae adipisci id eos.
                                     </p>
-                                </div>                                
+                                </div>
                             </div>
                         </div>
                     </div>

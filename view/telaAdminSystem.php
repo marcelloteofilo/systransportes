@@ -1,4 +1,4 @@
-<!--<php
+<?php
 //session_start();
 //if (!isset($_SESSION['login']) == true and !isset($_SESSION['senha']) == true) {
 // session_destroy();
@@ -8,7 +8,7 @@
 //} else {
 //  $logado = $_SESSION['login'];
 //}
-?>-->
+?>
 
 <!DOCTYPE html>
 <html lang="en" class="no-js">
@@ -17,7 +17,7 @@
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SysTransportes</title>
         <link href="http://maxcdn.bootstrapcdn.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
-        <!--<link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">-->
+        <link rel="stylesheet" type="text/css" href="../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../css/paginaTemplate.css">
         <script type="text/javascript" src="../js/scriptsUsuarios.js"></script>
 
@@ -121,19 +121,19 @@
                     </div>
                 </div>
             </div>
-
-            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
-                <div class="offer offer-warning">
-                    <div class="offer-content">
-                        <h3 class="lead">
-                            Rastreamento
-                        </h3>
-                        <p>Cads. rast. SysTransportes</p>
-                        <a class="btn btn-lg btn-block btn-default" href="rastreamento/telaAdminRastreamento.php">Acesse</a>
-                    </div>
-                </div>
-            </div>
-
+            <!--
+                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+                            <div class="offer offer-warning">
+                                <div class="offer-content">
+                                    <h3 class="lead">
+                                        Rastreamento
+                                    </h3>
+                                    <p>Cads. rast. SysTransportes</p>
+                                    <a class="btn btn-lg btn-block btn-default" href="rastreamento/telaAdminRastreamento.php">Acesse</a>
+                                </div>
+                            </div>
+                        </div>
+            -->
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="offer offer-new1">
                     <div class="offer-content">
