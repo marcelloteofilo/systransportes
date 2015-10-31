@@ -4,7 +4,7 @@
 
  class CteSql { 
 
- 	public static function adicionar(Cte $cte) {
+ 	/*public static function adicionar(Cte $cte) {
 
  		$conexao 				= Conexao::getInstance()->getConexao();
 
@@ -57,22 +57,22 @@
       	$resultado = @mysql_query($sql, $conexao);
 
       	return ($resultado === true);
- 	}
+ 	}*/
 
  	public static function carregarLista() {
 
- 		$conexao 				= Conexao::getInstance()->getConexao();
+ 		$conexao = Conexao::getInstance()->getConexao();
 
- 		$rs 					= mysql_query('select * from cte');
+ 		$rs = mysql_query('select * from ctes');
 
-		$result 				= array();
+		$result = array();
 
 		while($row = mysql_fetch_array($rs)) {
 
 			$objCte = new Cte();
 			$objCte->setNumeroCte($row['numcte']);
 			$objCte->setCodigoCarga($row['codCarga']);
-			$objCte->getCodigoRota($row['codRota']);
+			$objCte->setCodigoRota($row['codFrete']);
 			$objCte->setSituacao($row['situacao']);
 			$objCte->setChaveAcesso($row['chaveAcesso']);
 			$objCte->setStatusCte($row['statuscte']);
@@ -82,6 +82,31 @@
 
 		return $result;
  	}
+
+
+ 	public static function alterar(Cte $cte) {
+
+ 		$conexao 				= Conexao::getInstance()->getConexao();
+
+ 		$numeroCte 				= mysql_real_escape_string($cte->getNumeroCte(), $conexao);  
+ 		//$codigoCarga			= mysql_real_escape_string($cte->getCodigoCarga(), $conexao); 
+ 		$codigoRota				= mysql_real_escape_string($cte->getCodigoRota(), $conexao); 
+ 		$situacao				= mysql_real_escape_string($cte->getSituacao(), $conexao);
+ 		$chaveAcesso			= mysql_real_escape_string($cte->getChaveAcesso(), $conexao);
+ 		$statusCte				= mysql_real_escape_string($cte->getStatusCte(), $conexao);
+ 		$emissao				= mysql_real_escape_string($cte->getEmissao(), $conexao);
+
+ 		$sql = "update ctes set codFrete=$codigoRota, situacao='$situacao', chaveAcesso='chaveAcesso',
+ 					 	 statuscte='$statusCte', emissao='$emissao' where numcte=$numeroCte";
+echo($sql);
+	    $resultado = @mysql_query($sql, $conexao);
+
+      	return ($resultado === true);
+ 	}
+
+
+
+ 	
 
  }
 

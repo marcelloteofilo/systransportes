@@ -4,7 +4,10 @@
   	//Atributos
   	private $numeroCte;
   	private $codigoCarga;
+
     private $codigoRota;
+    private $codTransp;
+
   	private $situacao;
   	private $chaveAcesso;
   	private $statusCte;
@@ -17,6 +20,14 @@
   	public function getNumeroCte() {
     	return $this->numeroCte;
   	}
+
+    public function setCodTransp($codTransp) {
+      $this->codTransp = trim($codTransp);
+    }
+    
+    public function getCodTransp() {
+      return $this->codTransp;
+    }
 
   	public function setCodigoCarga($codigoCarga) {
   		$this->codigoCarga = trim($codigoCarga);
@@ -63,7 +74,7 @@
   	}
 
   	public function getEmissao() {
-  		return $this->sEmissao;
+  		return $this->emissao;
   	}
 
  }

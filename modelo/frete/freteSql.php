@@ -103,6 +103,31 @@ INNER JOIN veiculos as veiculo ON ft.codVeiculo = veiculo.id';
         return null;
     }
 
+    public static function localizarFrete(Frete $frete) {
+    $conexao = Conexao::getInstance()->getConexao();
+
+	$codFrete = mysql_real_escape_string($frete->getCodFrete(), $conexao);
+	$codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
+
+    $sql = 'Select * from frete';
+   
+    $resultado = @mysql_query($sql, $conexao);
+
+    if ($resultado) {
+
+        $retorno = array();
+        while ($linha = mysql_fetch_array($resultado)) {
+          $frete = new Frete();          
+          $frete->setCodFrete($linha["codFrete"]);          
+		  $frete->setCodTransp($linha["codTransp"]);		  		      
+		 	
+          $retorno[] = $frete;
+         }
+        return ($retorno);
+      } else
+        return null;
+    }
+
 
   }
 ?>

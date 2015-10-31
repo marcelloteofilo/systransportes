@@ -59,3 +59,34 @@
 		});	
 		}
 	}
+
+
+		function consultaFrete() {	
+		
+		var servicoHttp = "../../webServices/consultasWebService.php";				
+
+		var caixalistaFrete = document.getElementById('codFrete');
+
+		var valorCaixa = caixalistaFrete.value;		
+		
+		if(valorCaixa == ""){
+		jsonParametros = {consultaFrete: 'sim'};
+	
+		var $xhr = $.getJSON(servicoHttp, jsonParametros);		
+		
+			
+		$xhr.done(function(resultadoXml) {
+
+			var options = '<option value="'+1+'">'+"FRETE"+'</option>';	
+			for (var i = 0; i < resultadoXml.length; i++) {
+				options += '<option value="' + resultadoXml[i].codFrete +'">' + resultadoXml[i].codTransp + '</option>';
+			}	
+			caixalistaFrete.innerHTML= options;	
+
+		});
+
+		$xhr.fail(function(data) {
+			alert(data.responseText);
+		});	
+		}
+	}

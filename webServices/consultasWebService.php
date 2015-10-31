@@ -1,6 +1,7 @@
 <?php
 	require_once("../modelo/usuario/usuarioSql.php");
-	require_once("../modelo/veiculo/veiculoSql.php");    	
+	require_once("../modelo/veiculo/veiculoSql.php"); 
+	require_once("../modelo/frete/freteSql.php");   	
 	session_start();   	
 	
 	extract ($_REQUEST);
@@ -33,7 +34,21 @@
 		}				
 		
 		echo( json_encode( $resultado ) );				
-	}			
+	}
+
+	if (isset($_GET["consultaFrete"])) {			
+		$frete = new Frete();				
+		
+		$listaFrete = freteSql::localizarFrete($frete);				
+		for ($i=0; $i<count($listaFrete); $i++ ){					
+			$resultado[] = array(				
+				'codFrete'	=>  $listaFrete[$i]->getCodFrete(),				
+				'codTransp'	=>  $listaFrete[$i]->getCodTransp(),				
+			);
+		}				
+		
+		echo( json_encode( $resultado ) );				
+	}					
 ?>
 	
 	

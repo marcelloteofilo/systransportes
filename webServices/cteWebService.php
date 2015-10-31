@@ -5,7 +5,7 @@
 	extract ($_REQUEST);
 	extract ($_SESSION);	
 
-	if ($_GET["editSave"] == "incluirCte") {			
+	/*if ($_GET["editSave"] == "incluirCte") {			
 		$cte = new Cte();	
 
 		$cte->setNumeroCte($numeroCte); 
@@ -22,58 +22,43 @@
 			);			
 		}			
 		echo(json_encode($resultado ));	
-	}
+	}*/
 
 
 	if ($_GET["editSave"] == "alterarCte") {	
 		$cte = new Cte();	
 
-		$cte->setNumeroCte($numeroCte); 
-		$cte->setCodigoCarga($codigoCarga); 
-		$cte->getCodigoRota($codigoRota); 
-		$cte->setSituacao($situacao); 
-		$cte->setChaveAcesso($chaveAcesso); 
-		$cte->setStatusCte($statusCte); 
-		$cte->setEmissao($emissao); 			
+		$cte->setNumeroCte($_REQUEST['numcte']); 
+		$cte->setCodigoRota($_REQUEST['codFrete']); 
+		$cte->setSituacao($_REQUEST['situacao']); 
+		$cte->setChaveAcesso($_REQUEST['chaveAcesso']); 
+		$cte->setStatusCte($_REQUEST['statuscte']); 
+		$cte->setEmissao($_REQUEST['emissao']); 			
 
-		if (CteSql::alterar($cte)) {
-			$resultado[] = array(				
-					'oka'	=>  'oks',						
-			);			
-		}
-		echo(json_encode($resultado));	
+
+		if (CteSql::alterar($cte)){
+			echo json_encode(array('success'=>true));
+		}	
 	}
 
 
-	if ($_GET["editSave"] == "deletarCte") {	
+
+
+	if ($_GET["editSave"] == "carregarCte") {
+		
 		$cte = new Cte();
-
-		$cte->setNumeroCte($numeroCte);  
-
-		if (ChequeSql::deletar($cte)) {
-			$resultado[] = array(				
-				'ok'	=>  'ok',						
-			);			
-		}			
-		echo(json_encode($resultado));				
-	}
-
-	if ($_GET["editSave"] == "carregarCte") {			
 		
 		$listaCtes = CteSql::carregarLista();
 
-		for ($i=0; $i<count($listaCheques); $i++) {
+		for ($i=0; $i<count($listaCtes); $i++) {
 			$resultado[] = array(				
-				'id' 				=> $listaCtes[$i]->getId(),	
-				'idCotacao' 		=> $listaCtes[$i]->getCotacao(),
-				'idManifesto' 		=> $listaCtes[$i]->getManifesto(),
-				'idFaturamento' 	=> $listaCtes[$i]->getFaturamento(),
-				'idRemetente' 		=> $listaCtes[$i]->getRemetente(),
-				'idDestinatario' 	=> $listaCtes[$i]->getDestinatario(),
-				'emissao' 			=> $listaCtes[$i]->getEmissao(),
-				'status' 			=> $listaCtes[$i]->getStatus(),
-				'dataEntrega' 		=> $listaCtes[$i]->getDataEntrega(),	
-				'HoraEntrega' 		=> $listaCtes[$i]->getHoraEntrega(),				
+				'numcte' 				=> $listaCtes[$i]->getNumeroCte(),	
+				'codCarga' 		=> $listaCtes[$i]->getCodigoCarga(),
+				'codFrete' 		=> $listaCtes[$i]->getCodigoRota(),
+				'situacao' 	=> $listaCtes[$i]->getSituacao(),
+				'chaveAcesso' 		=> $listaCtes[$i]->getChaveAcesso(),
+				'statuscte' 	=> $listaCtes[$i]->getStatusCte(),
+				'emissao' 			=> $listaCtes[$i]->getEmissao(),				
 			);
 		}	
 		echo(json_encode($resultado));		

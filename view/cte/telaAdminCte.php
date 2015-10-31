@@ -37,17 +37,17 @@
       <!-- SCRIPT ADMIN -->
       <script type="text/javascript">
          var url;
-         function newUser(){
+         /*function newUser(){
            $('#dlg').dialog('open').dialog('setTitle','Novo Frete');
            $('#fm').form('clear');
            url = '../../webServices/veiculoWebService.php?editSave=incluirVeiculo';
-         }
+         }*/
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
            if (row){
              $('#dlg').dialog('open').dialog('setTitle','Editar Frete');
              $('#fm').form('load',row);
-             url = '../../webServices/veiculoWebService.php?editSave=alterarVeiculo&id='+row.id;
+             url = '../../webServices/cteWebService.php?editSave=alterarCte&numcte='+row.numcte;
            }
          else
          {
@@ -71,7 +71,7 @@
              }
            });
          }
-         function removeUser(){
+         /*function removeUser(){
            var row = $('#dg').datagrid('getSelected');
            if (row){
              $.messager.confirm('Confirm','Tem certeza que deseja remover o Veículo?',function(r){
@@ -88,7 +88,7 @@
                        msg: result.msg
                      });
                    }*/
-                 },'json');
+                 /*},'json');
                }
              });
            }
@@ -100,7 +100,7 @@
                    msg: 'Selecione item da tabela!!!'//result.msg
                });
          }
-         }
+         }*/
          
       </script>
       <!-- FIM SCRIPT ADMIN -->
@@ -119,27 +119,27 @@
       </header>
       <br><br>
    </head>
-   <body style="background:#F3F8F7" onload="consultaVeiculo(); consultaMotorista();">
+   <body style="background:#F3F8F7" onload="consultaFrete();">
       <!-- TABELA ADMIN PESSOA FÍSICA-->
       <center>
          <table id="dg" title="Consulta da CTE" class="easyui-datagrid" style=" width:1250px;height:495px"
-            url="../../webServices/freteWebService.php?editSave=carregarTodos"
+            url="../../webServices/cteWebService.php?editSave=carregarCte"
             toolbar="#toolbar" pagination="true" 
             rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
                <tr>
-                  <th field="numcte" width="46">Número do CTE</th>
-                  <th field="codCarga" width="64">Código da Carga</th>
-                  <th field="codRota" width="70">Código da Rota</th>
+                  <!--<th field="numcte" width="46">Nm. CTE</th>-->
+                  <th field="codCarga" width="30">Código Carga</th>
+                  <th field="codFrete" width="30">Código Frete</th>
+                  <th field="chaveAcesso" width="30">Chave de Acesso</th>
                   <th field="situacao" width="50">Situação</th>
-                  <th field="chaveAcesso" width="50">Chave de Acesso</th>
                   <th field="statuscte" width="50">Status da CTE</th>
                   <th field="emissao" width="50">Emissão</th>
                </tr>
             </thead>
          </table>
          <div id="toolbar">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-invoice-icon" plain="true" onclick="newUser()" title="Adicionar Frete">Editar CTE</a>
+            <a href="#" class="easyui-linkbutton" iconCls="icon-invoice-icon" plain="true" onclick="editUser()" title="Adicionar Frete">Editar CTE</a>
             <!--<a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true" onclick="editUser()" title="Alterar Dados do Frete">Editar CTE</a>-->
             <!--<label for="pesquisar">Localizar Veículos</label>
                &nbsp;&nbsp;
@@ -163,6 +163,7 @@
                   <td><b>Data de Emissão</b></td>
                   <td><b>Situação</b></td>
                   <td><b>Status da CTE</b></td>
+                  <td><b>Frete</b></td>
                </tr>
                <tr>
                   <td><input required="required" class="form-control" type="text" id="chaveAcesso" name="chaveAcesso" placeholder="Chave de Acesso" maxlength="10"></td>
@@ -181,6 +182,14 @@
                   <td>
                      <select class="form-control" id="statuscte" name="statuscte">
                         <option value=""> --- Qual Status? ---</option>
+                        <option value="Autorizado">Autorizado</option>
+                        <option value="Cancelado">Cancelado</option>
+                     </select>
+                  </td>
+
+                  <td>
+                     <select class="form-control" id="codFrete" name="codFrete">
+                        <option value="">FRETE</option>
                      </select>
                   </td>
 
