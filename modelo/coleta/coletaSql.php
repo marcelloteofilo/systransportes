@@ -218,14 +218,15 @@
 	  $dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
 
 	  $hora = mysql_real_escape_string($coleta->getHora(), $conexao); 
-	  $coleta = mysql_real_escape_string($coleta->getColetada(), $conexao); 
+	  $coleta = mysql_real_escape_string($coleta->getColetada(), $conexao);
+	  $numCte = rand(111111,999999); 
 
    	  
 	  
 	   
 	   //Inseri uma CTE 
       if($coletada === "Coletado"){
-      	$sqlTres    = "insert into ctes (codCarga, codFrete) values ($codCarga, 1)";
+      	$sqlTres    = "insert into ctes (numcte, codCarga, codFrete) values ($numCte ,$codCarga, 1)";
       	mysql_query($sqlTres, $conexao);
   	  }
 
