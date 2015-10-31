@@ -1,6 +1,6 @@
 <?php
-  require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
-  //require_once("/../banco.php");  
+  //require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
+  require_once("/../banco.php");  
   require_once("carga.php");  
 
  class CargaSql {  

@@ -13,6 +13,16 @@
   	private $statusCte;
   	private $emissao;
 
+    private $chaveCgm;
+
+    public function setChaveCgm($chaveCgm) {
+      $this->chaveCgm = trim($chaveCgm);
+    }
+
+    public function getChaveCgm() {
+      return $this->chaveCgm;
+    }
+
   	public function setNumeroCte($numeroCte) {
     	$this->numeroCte = trim($numeroCte);
   	}

@@ -71,6 +71,7 @@
 
 			$objCte = new Cte();
 			$objCte->setNumeroCte($row['numcte']);
+			$objCte->setCodigoCarga($row['codCarga']);
 			$objCte->setCodigoRota($row['codFrete']);
 			$objCte->setSituacao($row['situacao']);
 			$objCte->setChaveAcesso($row['chaveAcesso']);
@@ -88,7 +89,8 @@
 
  		$conexao 				= Conexao::getInstance()->getConexao();
 
- 		$numeroCte 				= mysql_real_escape_string($cte->getNumeroCte(), $conexao);   
+ 		$numeroCte 				= mysql_real_escape_string($cte->getNumeroCte(), $conexao);  
+ 		//$codigoCarga			= mysql_real_escape_string($cte->getCodigoCarga(), $conexao); 
  		$codigoRota				= mysql_real_escape_string($cte->getCodigoRota(), $conexao); 
  		$situacao				= mysql_real_escape_string($cte->getSituacao(), $conexao);
  		$chaveAcesso			= mysql_real_escape_string($cte->getChaveAcesso(), $conexao);
