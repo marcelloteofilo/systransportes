@@ -17,22 +17,14 @@
         $_SESSION['login'] = $login;
         $_SESSION['senha'] = $senha;
         header('location: ../telaAdminSystem.php');
-    }
-    else if(mysql_num_rows($resultPerfilFisica) > 0)
-    {
-        session_start();
-        $_SESSION['login'] = $login;
-        $_SESSION['senha'] = $senha;
-        header('location: ../../view/Cliente_Final/dados_rastreamento.php');
-    }
-    else if(mysql_num_rows($resultPerfilJuridica) > 0)
+
+    } else if(mysql_num_rows($resultPerfilJuridica) > 0 or mysql_num_rows($resultPerfilFisica) > 0)
     {
         session_start();
         $_SESSION['login'] = $login;
         $_SESSION['senha'] = $senha;
         header('location: ../../view/Cliente_Empresa/cliente_empresa.php');
-    }
-    else
+    } else
     {
         session_destroy();
         unset($_SESSION['login']);

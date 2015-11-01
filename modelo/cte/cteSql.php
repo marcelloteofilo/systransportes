@@ -77,7 +77,6 @@
 			$objCte->setChaveAcesso($row['chaveAcesso']);
 			$objCte->setStatusCte($row['statuscte']);
 			$objCte->setEmissao($row['emissao']);
-			$objCte->setChaveCgm($row['chave_gcm']);
 			$result[] = $objCte;
 		}
 
@@ -96,10 +95,9 @@
  		$chaveAcesso			= mysql_real_escape_string($cte->getChaveAcesso(), $conexao);
  		$statusCte				= mysql_real_escape_string($cte->getStatusCte(), $conexao);
  		$emissao				= mysql_real_escape_string($cte->getEmissao(), $conexao);
- 		$chaveCgm 				= mysql_real_escape_string($cte->getChaveCgm(), $conexao);
 
- 		$sql = "update ctes set codFrete=$codigoRota, situacao='$situacao', chaveAcesso='$chaveAcesso',
- 					 	 statuscte='$statusCte', emissao='$emissao', chave_gcm='$chaveCgm' where numcte=$numeroCte";
+ 		$sql = "update ctes set codFrete=$codigoRota, situacao='$situacao', chaveAcesso='chaveAcesso',
+ 					 	 statuscte='$statusCte', emissao='$emissao' where numcte=$numeroCte";
 echo($sql);
 	    $resultado = @mysql_query($sql, $conexao);
 

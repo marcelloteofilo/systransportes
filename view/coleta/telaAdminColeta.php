@@ -246,7 +246,6 @@
               type="text" 
               id="hora" 
               onkeypress="mascara(this, '##:##')"
-              onkeyup="validar(this,'num');" 
               maxlength="5" 
               name="hora" 
               size="23" 

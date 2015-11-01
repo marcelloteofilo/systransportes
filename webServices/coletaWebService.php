@@ -35,8 +35,10 @@
 				'observacao'	=>  $listaColeta[$i]->getObservacao(),														
 			);
 		}
-			//var_dump($resultado);
-		//die;
+		echo '<pre>';
+	    var_dump($resultado);
+		die;
+		echo '</pre>';
 		echo( json_encode( $resultado ) );	
 		return $resultado;	
 	}

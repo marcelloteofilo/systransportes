@@ -33,8 +33,7 @@
 		$cte->setSituacao($_REQUEST['situacao']); 
 		$cte->setChaveAcesso($_REQUEST['chaveAcesso']); 
 		$cte->setStatusCte($_REQUEST['statuscte']); 
-		$cte->setEmissao($_REQUEST['emissao']); 	
-		$cte->setEmissao($_REQUEST['chave_gcm']); 		
+		$cte->setEmissao($_REQUEST['emissao']); 			
 
 
 		if (CteSql::alterar($cte)){
@@ -59,8 +58,7 @@
 				'situacao' 	=> $listaCtes[$i]->getSituacao(),
 				'chaveAcesso' 		=> $listaCtes[$i]->getChaveAcesso(),
 				'statuscte' 	=> $listaCtes[$i]->getStatusCte(),
-				'emissao' 			=> $listaCtes[$i]->getEmissao(),
-				'chave_gcm' 			=> $listaCtes[$i]->getChaveCgm(),					
+				'emissao' 			=> $listaCtes[$i]->getEmissao(),				
 			);
 		}	
 		echo(json_encode($resultado));		

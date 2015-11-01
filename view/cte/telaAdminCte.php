@@ -128,7 +128,7 @@
             rownumbers="true" fitColumns="true" singleSelect="true">
             <thead>
                <tr>
-                  <th field="numcte" width="30">Código CTE</th>
+                  <!--<th field="numcte" width="46">Nm. CTE</th>-->
                   <th field="codCarga" width="30">Código Carga</th>
                   <th field="codFrete" width="30">Código Frete</th>
                   <th field="chaveAcesso" width="30">Chave de Acesso</th>

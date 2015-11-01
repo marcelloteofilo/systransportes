@@ -111,13 +111,13 @@
                 <!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li class="current"><a href="../index.php">Início</a></li>
+                        <li class="current"><a href="../index.php#body">Início</a></li>
                         <li><a href="empresa.php#empresa">Empresa</a></li>
                         <li><a href="atuacao.php#atuacao">Atuação</a></li>
-                        <li><a href="../view/carga/cargaCadastro.php">Cotação Online</a></li>
-                        <li><a href="view/Cliente_Final/dados_rastreamento.php">Rastreamento Online</a></li>
+                        <li><a href="carga/cargaCadastro.php">Cotação Online</a></li>
+                        <li><a href="Cliente_Final/dados_rastreamento.php">Rastreamento Online</a></li>
                         <li><a href="contato.php#contato">Contato</a></li>
-                        <li><a href="../view/usuario/login.php#login">Registre-se</a></li>
+                        <li><a href="usuario/login.php#login">Registre-se</a></li>
                         <li class="">
                             <a href="#"><?php echo" Bem vindo $logado"; ?></a>
                         </li>

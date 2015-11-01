@@ -72,15 +72,16 @@
                 <!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
                     <ul class="nav navbar-nav">
-                        <li class="">
-                            <a href="#"><?php echo" Bem vindo, $logado"; ?></a>
-                        </li>
                         <ul  class="nav navbar-nav">
                             <li class="current"><a href="../usuario/logout.php">Sair</a></li>
                         </ul>
                     </ul>
                 </nav>
-                <!-- /main nav -->
+            <div class="navbar-header">
+               <ul  class="nav navbar-nav">
+               <li class=""><a href="#"><?php echo" BEM VINDO, $logado"; ?></a></li>  
+               <ul>   
+            </div>
             </div>
         </header>
 
