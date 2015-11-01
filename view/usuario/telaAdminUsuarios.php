@@ -136,18 +136,19 @@
         <thead>
 
             <tr>
-                <th field="status" width="20">Status</th>
-                <th field="perfil" width="25">Perfil</th>
-                <th field="nomeCompleto" width="50">Nome Completo</th>
-                <th field="rg" width="10">RG</th>
-                <th field="cpf" width="15">CPF</th>
-                <th field="cnpj" width="17">CNPJ</th>
-                <th field="login" width="15">Login</th>
-                <th field="senha" width="15">Senha</th>
-                <th field="telefone1" width="15">Telelefone Res.</th>
+                <th field="status" width="46">Status</th>
+                <th field="perfil" width="64">Perfil</th>
+                <th field="nomeCompleto" width="70">Nome Completo</th>
+                <th field="rg" width="50">RG</th>
+                <th field="cpf" width="72">CPF</th>
+                <th field="razaoSocial" width="70">Razão Social</th>
+                <th field="nomeFantasia" width="70">Nome Fantasia</th>
+                <th field="cnpj" width="50">CNPJ</th>
+                <th field="email" width="100">E-mail</th>
+                <th field="telefone1" width="70">Telelefone Res.</th>
                 <th field="estado" width="20">UF</th>
                 <th field="cidade" width="50">Cidade</th>
-                <th field="cep" width="10">CEP</th>
+                <th field="cep" width="50">CEP</th>
             </tr>
         </thead>
     </table>
