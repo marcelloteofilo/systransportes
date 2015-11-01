@@ -23,7 +23,7 @@
         session_start();
         $_SESSION['login'] = $login;
         $_SESSION['senha'] = $senha;
-        header('location: ../../view/Cliente_Empresa/cliente_empresa.php');
+        header('location: ../../view/carga/cargaConsulta.php');
     } else
     {
         session_destroy();

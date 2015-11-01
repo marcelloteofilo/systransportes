@@ -25,7 +25,9 @@
         <link rel="stylesheet" href="../../css/main.css" />
         <link rel="stylesheet" href="../../css/index.css"/>
 
-        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css" />
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
+        <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css">
+        
         <link rel="stylesheet" type="text/css" href="../../css/easyui.css" />
         <link rel="stylesheet" type="text/css" href="../../css/icon.css" />
 
@@ -36,9 +38,9 @@
 
     </head>
 
-    <body id="body">
+    <body id="body" style="background:#F3F8F7">
 
-        <header id="navigation" class="navbar-fixed-top navbar">
+        <header id="navigation" class="navbar-fixed-top navbar" style="background:#0EB493;">
             <div class="container">
                 <!-- main nav -->
                 <nav class="collapse navbar-collapse navbar-right" role="navigation">
