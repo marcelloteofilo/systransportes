@@ -18,8 +18,11 @@
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
         <title>SysTransportes</title>
+
+
+        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.min.css">
         <link rel="stylesheet" type="text/css" href="../../css/paginaTemplate.css">
-        <link rel="stylesheet" type="text/css" href="../../css/bootstrap.css">
+        
         <link rel="stylesheet" type="text/css" href="../../css/easyui.css">
         <link rel="stylesheet" type="text/css" href="../../css/icon.css">
         <link rel="stylesheet" type="text/css" href="../../css/demo.css">
