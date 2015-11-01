@@ -15,7 +15,7 @@
 		$cte->setChaveAcesso($_REQUEST['chaveAcesso']); 
 		$cte->setStatusCte($_REQUEST['statuscte']); 
 		$cte->setEmissao($_REQUEST['emissao']); 	
-		$cte->setEmissao($_REQUEST['chave_gcm']); 		
+		$cte->setChaveCgm($_REQUEST['chave_gcm']); 		
 
 
 		if (CteSql::alterar($cte)){
