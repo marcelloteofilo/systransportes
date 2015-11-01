@@ -37,11 +37,7 @@
       <!-- SCRIPT ADMIN -->
       <script type="text/javascript">
          var url;
-         /*function newUser(){
-           $('#dlg').dialog('open').dialog('setTitle','Novo Frete');
-           $('#fm').form('clear');
-           url = '../../webServices/veiculoWebService.php?editSave=incluirVeiculo';
-         }*/
+
          function editUser(){
            var row = $('#dg').datagrid('getSelected');
            if (row){
@@ -71,36 +67,6 @@
              }
            });
          }
-         /*function removeUser(){
-           var row = $('#dg').datagrid('getSelected');
-           if (row){
-             $.messager.confirm('Confirm','Tem certeza que deseja remover o Veículo?',function(r){
-               $('#dg').datagrid('reload');
-         
-               if (r){
-                 $.post('../../webServices/veiculoWebService.php?editSave=deletarVeiculo',{id:row.id},function(result){
-                   /*if (result.success){
-                     
-                     $('#dg').datagrid('reload');  // reload the user data
-                   } else {
-                     $.messager.show({ // show error message
-                       title: 'Error',
-                       msg: result.msg
-                     });
-                   }*/
-                 /*},'json');
-               }
-             });
-           }
-         else
-         {
-           $.messager.show(
-               {
-                   title: 'Erro!',
-                   msg: 'Selecione item da tabela!!!'//result.msg
-               });
-         }
-         }*/
          
       </script>
       <!-- FIM SCRIPT ADMIN -->
@@ -129,8 +95,8 @@
             <thead>
                <tr>
                   <th field="numcte" width="30">Código CTE</th>
+                  <th field="numTransp" width="30">Código Frete</th>
                   <th field="codCarga" width="30">Código Carga</th>
-                  <th field="codFrete" width="30">Código Frete</th>
                   <th field="chaveAcesso" width="30">Chave de Acesso</th>
                   <th field="situacao" width="50">Situação</th>
                   <th field="statuscte" width="50">Status da CTE</th>

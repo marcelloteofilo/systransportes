@@ -22,7 +22,7 @@ if ($_GET["editSave"] == "incluirFrete"){
 		$frete->setCidadeDestino($_REQUEST['cidadeDestino']);
 
 		$frete->setStatusFrete($_REQUEST['statusFrete']);
-		$frete->setCodTransp($_REQUEST['codTransp']);
+		//$frete->setCodTransp($_REQUEST['codTransp']);
 
 
 
@@ -48,7 +48,7 @@ if ($_GET["editSave"] == "incluirFrete"){
 		$frete->setCidadeDestino($_REQUEST['cidadeDestino']);
 
 		$frete->setStatusFrete($_REQUEST['statusFrete']);
-		$frete->setCodTransp($_REQUEST['codTransp']);
+		//$frete->setCodTransp($_REQUEST['codTransp']);
 
 
 

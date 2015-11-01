@@ -5,25 +5,6 @@
 	extract ($_REQUEST);
 	extract ($_SESSION);	
 
-	/*if ($_GET["editSave"] == "incluirCte") {			
-		$cte = new Cte();	
-
-		$cte->setNumeroCte($numeroCte); 
-		$cte->setCodigoCarga($codigoCarga); 
-		$cte->getCodigoRota($codigoRota); 
-		$cte->setSituacao($situacao); 
-		$cte->setChaveAcesso($chaveAcesso); 
-		$cte->setStatusCte($statusCte); 
-		$cte->setEmissao($emissao); 			
-		
-		if (CteSql::adicionar($cte)) {
-			$resultado[] = array(				
-					'oka'	=>  'oks',						
-			);			
-		}			
-		echo(json_encode($resultado ));	
-	}*/
-
 
 	if ($_GET["editSave"] == "alterarCte") {	
 		$cte = new Cte();	
@@ -43,8 +24,6 @@
 	}
 
 
-
-
 	if ($_GET["editSave"] == "carregarCte") {
 		
 		$cte = new Cte();
@@ -56,6 +35,7 @@
 				'numcte' 				=> $listaCtes[$i]->getNumeroCte(),	
 				'codCarga' 		=> $listaCtes[$i]->getCodigoCarga(),
 				'codFrete' 		=> $listaCtes[$i]->getCodigoRota(),
+				'numTransp' 			=> $listaCtes[$i]->getNumTransp(),
 				'situacao' 	=> $listaCtes[$i]->getSituacao(),
 				'chaveAcesso' 		=> $listaCtes[$i]->getChaveAcesso(),
 				'statuscte' 	=> $listaCtes[$i]->getStatusCte(),

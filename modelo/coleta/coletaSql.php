@@ -214,8 +214,8 @@
 
 	  $data = mysql_real_escape_string($coleta->getData(), $conexao); 
 
-	  $dataFormatada = explode("/", $data);		
-	  $dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
+	  //$dataFormatada = explode("/", $data);		
+	  //$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
 
 	  $hora = mysql_real_escape_string($coleta->getHora(), $conexao); 
 	  $coleta = mysql_real_escape_string($coleta->getColetada(), $conexao);
@@ -240,7 +240,7 @@
 	  			set 
 		  			codMotorista=$codMotorista,
 		  			codVeiculo=$codVeiculo,
-		  			data='$dataAmericana',
+		  			data='$data',
 		  			hora='$hora'
 	  			where 
 	  				codColeta=$codColeta";

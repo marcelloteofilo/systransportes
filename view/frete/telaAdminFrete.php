@@ -248,8 +248,8 @@
                   <td><b>Código Transporte</b></td>
                </tr>
                <tr>
-                   <td><input required="required" class="form-control" type="text" id="cidadeOrigem" name="cidadeOrigem" size="23" style="text-transform:uppercase"  placeholder="Cidade Origem" maxlength="10" onkeyup="validar(this,'text');"></td>
-                   <td><input required="required" class="form-control" type="text" id="cidadeDestino" name="cidadeDestino" size="23" style="text-transform:uppercase"  placeholder="Cidade Destino" maxlength="10" onkeyup="validar(this,'text');"></td>
+                   <td><input required="required" class="form-control" type="text" id="cidadeOrigem" name="cidadeOrigem" size="23" style="text-transform:uppercase"  placeholder="Cidade Origem" maxlength="20" onkeyup="validar(this,'text');"></td>
+                   <td><input required="required" class="form-control" type="text" id="cidadeDestino" name="cidadeDestino" size="23" style="text-transform:uppercase"  placeholder="Cidade Destino" maxlength="20" onkeyup="validar(this,'text');"></td>
                   <td>
                      <select required="required" class="form-control" id="statusFrete" name="statusFrete">
                         <option value=""> --- Qual Status? ---</option>
@@ -258,7 +258,7 @@
                         <option value="Finalizada">Finalizada</option>
                      </select>
                   </td>
-                  <td><input required="required" class="form-control" type="text" id="codTransp" name="codTransp" size="23" style="text-transform:uppercase"  placeholder="Código de Trans." maxlength="10" onkeyup="validar(this,'num');"></td>
+                  <td><input readonly class="form-control" type="text" id="codTransp" name="codTransp" size="23" style="text-transform:uppercase"  placeholder="###.###" maxlength="10" onkeyup="validar(this,'num');"></td>
                </tr>
             </table>
          </form>

@@ -22,7 +22,8 @@
 	  $cidadeDestino = mysql_real_escape_string($frete->getCidadeDestino(), $conexao);
 
 	  $statusFrete = mysql_real_escape_string($frete->getStatusFrete(), $conexao);
-	  $codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
+	  //$codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
+	  $codTransp = rand(111111,999999); 
    
   	  //Update para a tabela de Usuários do banco de dados
       
@@ -51,10 +52,10 @@
 	  $cidadeDestino = mysql_real_escape_string($frete->getCidadeDestino(), $conexao);
 
 	  $statusFrete = mysql_real_escape_string($frete->getStatusFrete(), $conexao);
-	  $codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
+	  //$codTransp = mysql_real_escape_string($frete->getCodTransp(), $conexao);
    
   	  //Update para a tabela de Usuários do banco de dados
-	  $sql = "update frete set codVeiculo=$codVeiculo,codMotorista=$codMotorista,ufOrigem='$ufOrigem',ufDestino='$ufDestino',cidadeOrigem='$cidadeOrigem',cidadeDestino='$cidadeDestino',statusFrete='$statusFrete',codTransp='$codTransp' where codFrete=$codFrete";
+	  $sql = "update frete set codVeiculo=$codVeiculo,codMotorista=$codMotorista,ufOrigem='$ufOrigem',ufDestino='$ufDestino',cidadeOrigem='$cidadeOrigem',cidadeDestino='$cidadeDestino',statusFrete='$statusFrete' where codFrete=$codFrete";
       echo($sql);
       $resultado = @mysql_query($sql, $conexao);
 
