@@ -2,7 +2,7 @@
   //require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");  
   
   require_once("/../banco.php");  
-  require_once("cidade.php"); 
+  require_once("cidade.php");  
 
   class CidadeSql {  
 

@@ -20,10 +20,6 @@
 		}				
 		
 		echo( json_encode( $resultado ) );				
-		
-		echo '<pre>';
-		var_dump($resultado);
-		echo '<pre>';
 	}
 
 	if (isset($_GET["consultaVeiculo"])) {			
