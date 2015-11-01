@@ -68,7 +68,7 @@
                 <hr>
                 <ul class="timeline">
                     <li>
-                        <div class="timeline-badge primary"><i class="glyphicon glyphicon-globe"></i></div>
+                        <div class="timeline-badge primary"><i class="glyphicon glyphicon-barcode"></i></div>
                         <div class="timeline-panel">
                             <div class="timeline-body">
 
