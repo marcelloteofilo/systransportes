@@ -166,8 +166,8 @@
 
                     $retorno[] = $carga;
                 }
-                var_dump($userAtual);
-                die;
+                //var_dump($userAtual);
+                //die;
 
                 return ($retorno);
             }

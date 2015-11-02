@@ -1,6 +1,6 @@
 ﻿<?php
-    require_once("../../modelo/carga/cargaSql.php");
-    require_once("../../modelo/mercadoria/mercadoriaSql.php");
+    require_once("../modelo/carga/cargaSql.php");
+    require_once("../modelo/mercadoria/mercadoriaSql.php");
 //require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");
 //require_once("/opt/lampp/htdocs/systransportes/modelo/mercadoria/mercadoriaSql.php");
     session_start();
