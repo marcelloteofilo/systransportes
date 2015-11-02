@@ -68,17 +68,24 @@
             $statusCarga = mysql_real_escape_string($carga->getStatusCarga(), $conexao);
             $coletada = mysql_real_escape_string($carga->getColetada(), $conexao);
 
+            
+            if($statusCarga === "Aprovado"){
             //Update para a tabela de Usuários do banco de dados
             $sql = "update cargas set statusCarga='$statusCarga',coletada='$coletada' where codCarga=$codCarga";
 
             $sqlDois = "insert into coleta (codCarga,codMotorista,codVeiculo) values($codCarga,2,1)";
-            //echo($sql);
-            $resultado = @mysql_query($sql, $conexao);
-
+            
             //Cria o registro de Coleta Automatica
             mysql_query($sqlDois, $conexao);
 
+            $resultado = @mysql_query($sql, $conexao);
             return ($resultado === true);
+            }
+            else{
+            $sql = "update cargas set statusCarga='$statusCarga' where codCarga=$codCarga";
+            $resultado = @mysql_query($sql, $conexao);
+            return ($resultado === true);
+            }
         }
 
         public static function alterarCargaAtendente(Carga $carga)
