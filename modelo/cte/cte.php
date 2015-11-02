@@ -17,6 +17,68 @@
 
     private $chaveCgm;
 
+
+    private $origemCarga;
+    private $destinoCarga;
+    private $nomeCompleto;
+    private $razaoSocial;
+    private $telefone;
+    private $email;
+
+    
+
+    public function setOrigemCarga($origemCarga) {
+      $this->origemCarga = trim($origemCarga);
+    }
+
+    public function getOrigemCarga() {
+      return $this->origemCarga;
+    }
+
+    public function setDestinoCarga($destinoCarga) {
+      $this->destinoCarga = trim($destinoCarga);
+    }
+
+    public function getDestinoCarga() {
+      return $this->destinoCarga;
+    }
+
+    public function setNomeCompleto($nomeCompleto) {
+      $this->nomeCompleto = trim($nomeCompleto);
+    }
+
+    public function getNomeCompleto() {
+      return $this->nomeCompleto;
+    }
+
+    public function setRazaoSocial($razaoSocial) {
+      $this->razaoSocial = trim($razaoSocial);
+    }
+
+    public function getRazaoSocial() {
+      return $this->razaoSocial;
+    }
+
+    public function setTelefone($telefone) {
+      $this->telefone = trim($telefone);
+    }
+
+    public function getTelefone() {
+      return $this->telefone;
+    }
+
+    public function setEmail($email) {
+      $this->email = trim($email);
+    }
+
+    public function getEmail() {
+      return $this->email;
+    }
+
+
+
+
+
     public function setChaveCgm($chaveCgm) {
       $this->chaveCgm = trim($chaveCgm);
     }

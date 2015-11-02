@@ -115,10 +115,36 @@
       </center>
       <!-- FIM TABELA ADMIN PESSOA FÍSICA -->
       <!-- DIALOG ADMIN PESSOA FÍSICA -->
-      <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:200px;padding:10px 20px"
+      <div id="dlg" class="easyui-dialog" style="background:#F3F8F7; width:1000px;height:350px;padding:10px 20px"
          closed="true" buttons="#dlg-buttons">
          <div class="ftitle"></div>
          <form id="fm" method="post" novalidate>
+             <table width="100%">
+               <!--Dados Pessoais -->
+               <h2>Dados da Cotação/Cliente</h2>
+               <!--Dados Pessoa Física -->
+               <tr>
+                  <td><b>Origem Carga</b></td>
+                  <td><b>Cliente PF</b></td>
+                  <td><b>Cliente PJ</b></td>
+               </tr>
+               <tr>
+                  <td><input readonly class="form-control" type="text" id="cidadeOrigem" name="cidadeOrigem" placeholder="Cidade Origem da Carga" maxlength="20"></td>
+                  <td><input readonly class="form-control" type="text" id="nomeCompleto" name="nomeCompleto" placeholder="Não é Pessoa Física" maxlength="20"></td>
+                  <td><input readonly class="form-control" type="text" id="razaoSocial" name="razaoSocial" placeholder="Não é Pessoa Jurídica" maxlength="20"></td>
+               </tr>
+               <tr>
+                  <td><b>Destino Carga</b></td>
+                  <td><b>Telefone</b></td>
+                  <td><b>E-mail</b></td>
+               </tr>
+               <tr>
+                  <td><input readonly class="form-control" type="text" id="cidadeDestino" name="cidadeDestino" placeholder="Cidade Origem da Carga" maxlength="20"></td>
+                  <td><input readonly class="form-control" type="text" id="telefone" name="telefone" placeholder="(00)00000-0000" maxlength="30"></td>
+                  <td><input readonly class="form-control" type="text" id="email" name="email" placeholder="usuario@dominio.com" maxlength="50"></td>
+               </tr>
+            </table><br>
+
             <table width="100%">
                <!--Dados Pessoais -->
                <h2>Dados do CTE</h2>

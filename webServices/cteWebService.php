@@ -40,7 +40,14 @@
 				'chaveAcesso' 		=> $listaCtes[$i]->getChaveAcesso(),
 				'statuscte' 	=> $listaCtes[$i]->getStatusCte(),
 				'emissao' 			=> $listaCtes[$i]->getEmissao(),
-				'chave_gcm' 			=> $listaCtes[$i]->getChaveCgm(),					
+				'chave_gcm' 			=> $listaCtes[$i]->getChaveCgm(),
+
+				'cidadeOrigem' 			=> $listaCtes[$i]->getOrigemCarga(),
+				'cidadeDestino' 			=> $listaCtes[$i]->getDestinoCarga(),
+				'nomeCompleto' 			=> $listaCtes[$i]->getNomeCompleto(),
+				'razaoSocial' 			=> $listaCtes[$i]->getRazaoSocial(),
+				'telefone' 			=> $listaCtes[$i]->getTelefone(),
+				'email' 			=> $listaCtes[$i]->getEmail(),					
 			);
 		}	
 		echo(json_encode($resultado));		
