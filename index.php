@@ -1,6 +1,6 @@
 <?php
-//require_once('modelo/usuario/usuario.php');
-require_once('/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php');
+require_once('modelo/usuario/usuario.php');
+//require_once('/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php');
     session_start();
     $objusuario = @$_SESSION['objusuario'];
     if(!empty($objusuario)) {

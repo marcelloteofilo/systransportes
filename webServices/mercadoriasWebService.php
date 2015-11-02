@@ -70,10 +70,10 @@ if ($_GET["editSave"] == "carregarMercadoria") {
     for ($i = 0; $i < count($listaMercadoria); $i++) {
         $resultado[] = array(
             'id' => $listaMercadoria[$i]->getId(),
-            'carga' => $listaMercadoria[$i]->getObjCarga()->getCodCarga(),
+            'codCarga' => $listaMercadoria[$i]->getObjCarga()->getCodCarga(),
             'descricao' => $listaMercadoria[$i]->getDescricaoMercadoria(),
-            'peso' => $listaMercadoria[$i]->getPeso(),
-            'valor' => $listaMercadoria[$i]->getValorMercadoria(),
+            'pesoMercadoria' => $listaMercadoria[$i]->getPeso(),
+            'valorMercadoria' => $listaMercadoria[$i]->getValorMercadoria(),
             'quantidade' => $listaMercadoria[$i]->getQuantidade()
         );
     }

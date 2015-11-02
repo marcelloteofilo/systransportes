@@ -57,7 +57,7 @@
 <!-- TABELA ADMIN PESSOA FÍSICA-->
 <center>
     <table id="dg" title="Consulta de Cotações" class="easyui-datagrid" style=" width:1250px;height:350px"
-           url="../../webServices/cargaWebService.php?editSave=carregarTodos"
+           url="../../carga/cargaWebService.php?editSave=carregarTodos"
            toolbar="#toolbar" pagination="true"
            rownumbers="true" fitColumns="true" singleSelect="true">
         <thead>

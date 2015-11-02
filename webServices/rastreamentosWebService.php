@@ -1,9 +1,9 @@
 <?php
 
-require_once("../modelo/rastreamento/rastreamentoSql.php");
-session_start();
-extract($_REQUEST);
-extract($_SESSION);
+    require_once("../modelo/rastreamento/rastreamentoSql.php");
+    session_start();
+    extract($_REQUEST);
+    extract($_SESSION);
 
 //if ($_GET["editSave"] == "incluirRastreamento") {
 //    //Classe de Rastreamento
@@ -57,23 +57,25 @@ extract($_SESSION);
 //}
 
 
-if ($_GET["editSave"] == "carregarRastreamento") {
+    if($_GET["editSave"] == "carregarRastreamento")
+    {
 
-    $listaRastreamento = rastreamentoSql::carregarLista();
+        $listaRastreamento = rastreamentoSql::carregarLista();
 
-    for ($i = 0; $i < count($listaRastreamento); $i++) {
-        $resultado[] = array(
-            //'codRastreamento' => $listaRastreamento[$i]->getId(),
-            'codRota' => $listaRastreamento[$i]->getCodRota(),
-            'localizacao' => $listaRastreamento[$i]->getLocalizacao(),
-            'longitude' => $listaRastreamento[$i]->getLongitude(),
-            'latitude' => $listaRastreamento[$i]->getLatitude(),
-            'data' => $listaRastreamento[$i]->getData()
-        );
+        for($i = 0; $i < count($listaRastreamento); $i++)
+        {
+            $resultado[] = array(
+                //'codRastreamento' => $listaRastreamento[$i]->getId(),
+                'codRota' => $listaRastreamento[$i]->getCodRota(),
+                'localizacao' => $listaRastreamento[$i]->getLocalizacao(),
+                'longitude' => $listaRastreamento[$i]->getLongitude(),
+                'latitude' => $listaRastreamento[$i]->getLatitude(),
+                'data' => $listaRastreamento[$i]->getData()
+            );
+        }
+
+        echo (json_encode($resultado));
+
+        return $resultado;
     }
-
-    echo (json_encode($resultado));
-
-    return $resultado;
-}
 ?>

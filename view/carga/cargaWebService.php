@@ -3,17 +3,16 @@
     require_once("../../modelo/mercadoria/mercadoriaSql.php");
 //require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");
 //require_once("/opt/lampp/htdocs/systransportes/modelo/mercadoria/mercadoriaSql.php");
-    session_start();
 
+    session_start();
     extract($_REQUEST);
     extract($_SESSION);
 
-
     if($_GET["editSave"] == "incluir")
     {
-       
+
         $objCarga = new Carga();
-       
+
         $objCarga->setObjUsuario($_REQUEST['idUsuario']);
         $objCarga->setObjCidadeOrigem($_REQUEST['cidadeOrigem']);
         $objCarga->setObjCidadeDestino($_REQUEST['cidadeDestino']);
@@ -55,8 +54,10 @@
             MercadoriaSql::adicionar($objMercadoria);
         }
 
-        
-      
+//        echo '<pre>';
+//        var_dump($objCarga);
+//        var_dump($objMercadoria);
+//        echo '</pre>';
     }
 
     if($_GET["editSave"] == "aprovarCliente")
@@ -134,8 +135,12 @@
                 'cotado' => $listaCarga[$i]->getCotado(),
             );
         }
-        //var_dump($resultado);
-        //die;
+
+        echo '<pre>';
+        var_dump($listaCarga);
+        var_dump($resultado);
+        die;
+        echo '<pre>';
 
         echo(json_encode($resultado));
         return $resultado;
@@ -269,8 +274,8 @@
                 'cotado' => $listaCarga[$i]->getCotado(),
             );
         }
-        //var_dump($resultado);
-        //die;
+//        var_dump($resultado);
+//        die;
 
         echo(json_encode($resultado));
         return $resultado;

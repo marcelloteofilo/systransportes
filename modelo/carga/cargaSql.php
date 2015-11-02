@@ -1,10 +1,12 @@
 <?php
-error_reporting(0);
-    require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
-    require_once ("/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php");
-    //require_once("/../banco.php");
+
+    //error_reporting(0);
+    //require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
+    //require_once ("/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php");
+    require_once("/../banco.php");
     require_once("carga.php");
-    //require_once ("/../usuario/usuario.php");
+
+    //require_once ("../../modelo/usuario/usuario.php");
 
     class CargaSql
     {
@@ -12,9 +14,13 @@ error_reporting(0);
         public static function adicionar(Carga $objCarga)
         {
 
+            //Criando a conexão com o banco de dados
+            $conexao = Conexao::getInstance()->getConexao();
+
+
             $idUsuario = $objCarga->getObjUsuario();
-            $idCidadeOrigem = substr($objCarga->getObjCidadeOrigem(),0, 7);
-            $idCidadeDestino = substr($objCarga->getObjCidadeDestino(),0, 7);
+            $idCidadeOrigem = substr($objCarga->getObjCidadeOrigem(), 0, 7);
+            $idCidadeDestino = substr($objCarga->getObjCidadeDestino(), 0, 7);
             $altura = number_format($objCarga->getAltura(), 2, '.', '');
             $largura = number_format($objCarga->getLargura(), 2, '.', '');
             $peso = number_format($objCarga->getPeso(), 2, '.', '');
@@ -36,11 +42,11 @@ error_reporting(0);
 
             //Inserção na tabela de veiculo relacionada ao banco de dados systransporte
             $sql = "insert into cargas (codUsuario, origem, destino, altura, largura, peso,
-		    	comprimento,quantidade,valor,telefone,logradouro,bairro,uf,cidade,numero,
-		    	observacao,naturezaCarga,dataPedido)
-				values ($idUsuario,$idCidadeOrigem,$idCidadeDestino,$altura ,$largura,$peso,
-				$comprimento ,$quantidade,$valor,'$telefone','$logradouro','$bairro','$uf',
-				'$cidade','$numero','$observacao','$naturezaCarga','$dataPedido')";
+            comprimento,quantidade,valor,telefone,logradouro,bairro,uf,cidade,numero,
+            observacao,naturezaCarga,dataPedido)
+            values ('$idUsuario','$idCidadeOrigem','$idCidadeDestino','$altura' ,'$largura','$peso',
+            '$comprimento' ,'$quantidade','$valor','$telefone','$logradouro','$bairro','$uf',
+            '$cidade','$numero','$observacao','$naturezaCarga','$dataPedido')";
 
 
             $resultado = @mysql_query($sql, $conexao);
@@ -101,7 +107,6 @@ error_reporting(0);
             //Conexão com o banco
             $conexao = Conexao::getInstance()->getConexao();
 
-
             $userAtual = $_SESSION['login'];
             $con = mysql_connect('localhost', 'root', '') or die('Sem conexão com o servidor');
             $sql = "select * from usuarios where login = '$userAtual'";
@@ -161,6 +166,9 @@ error_reporting(0);
 
                     $retorno[] = $carga;
                 }
+                var_dump($userAtual);
+                die;
+
                 return ($retorno);
             }
             else
