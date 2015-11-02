@@ -1,33 +1,20 @@
 <?php
-
-    //require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
-    require_once("/../banco.php");
+error_reporting(0);
+    require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
+    require_once ("/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php");
+    //require_once("/../banco.php");
     require_once("carga.php");
-    require_once ("/../usuario/usuario.php");
+    //require_once ("/../usuario/usuario.php");
 
     class CargaSql
     {
 
         public static function adicionar(Carga $objCarga)
         {
-            //Criando a conexão com o banco de dados
-            $conexao = Conexao::getInstance()->getConexao();
-
-            $userAtual = $_SESSION['login'];
-            $con = mysql_connect('localhost', 'root', '') or die('Sem conexão com o servidor');
-            $sql = "select * from usuarios where login = '$userAtual'";
-            $res = mysql_query($sql, $con);
-            $user = mysql_fetch_assoc($res);
-            $stringIdUser = (int) implode($user);
-
-            //Atributos da classe veiculo sendo definidas em uma variável,
-            //obtidas em um método para realização da
-            //obtenção do valor e logo em seguida, realizando a chamada do banco
-
 
             $idUsuario = $objCarga->getObjUsuario();
-            $idCidadeOrigem = $objCarga->getObjCidadeOrigem();
-            $idCidadeDestino = $objCarga->getObjCidadeDestino();
+            $idCidadeOrigem = substr($objCarga->getObjCidadeOrigem(),0, 7);
+            $idCidadeDestino = substr($objCarga->getObjCidadeDestino(),0, 7);
             $altura = number_format($objCarga->getAltura(), 2, '.', '');
             $largura = number_format($objCarga->getLargura(), 2, '.', '');
             $peso = number_format($objCarga->getPeso(), 2, '.', '');

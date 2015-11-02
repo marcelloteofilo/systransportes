@@ -1,18 +1,14 @@
 <?php
+//require_once('modelo/usuario/usuario.php');
+require_once('/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php');
     session_start();
-
-    if((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true))
-    {
-        session_destroy();
-        unset($_SESSION['login']);
-        unset($_SESSION['senha']);
-        header('');
+    $objusuario = @$_SESSION['objusuario'];
+    if(!empty($objusuario)) {
+        $logado = $objusuario->getLogin();
+    }else{
         $logado = 'Visitante';
     }
-    else
-    {
-        $logado = $_SESSION['login'];
-    }
+
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">

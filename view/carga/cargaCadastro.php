@@ -1,16 +1,16 @@
 ﻿<?php
+//require_once('modelo/usuario/usuario.php');
+require_once('/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php');
 session_start();
 extract($_REQUEST);
-?>
-<?php
-if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == true)) {
+
+$objusuario = @$_SESSION['objusuario'];
+if (!$objusuario) {
     session_destroy();
-    unset($_SESSION['login']);
-    unset($_SESSION['senha']);
     header('');
     $logado = 'Visitante';
 } else {
-    $logado = $_SESSION['login'];
+    $logado = $objusuario->getLogin();
 }
 ?>
 <!DOCTYPE html>
@@ -306,7 +306,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                               <tbody>
                                  <tr>
                                     <td><input class="form-control"type="text" name="item[]" id="item" value="1" size="4" readonly="readonly"/></td>
-                                    <td><input class="form-control"type="text" name="descricao[]" id="descricao" value="" size="90" placeholder="Descrição sobre a mercadoria" maxlength="50" /></td>
+                                    <td><input class="form-control"type="text" name="descricaoMercadoria[]" id="descricaoMercadoria" value="" size="90" placeholder="Descrição sobre a mercadoria" maxlength="50" /></td>
                                     <td><input class="form-control"type="text" name="quantidadeMercadoria[]" id="quantidadeMercadoria" value="" size="10" placeholder="0,00" maxlength="8" /></td>
                                     <td><input class="form-control"type="text" name="pesoMercadoria[]" id="pesoMercadoria" value="" size="4" placeholder="0,00" maxlength="8" /></td>
                                     <td><input class="form-control"	type="text" name="valorMercadoria[]" id="valorMercadoria" value="" size="4" placeholder="0,00" maxlength="8" /></td>
@@ -361,6 +361,7 @@ if ((!isset($_SESSION['login']) == true) and ( !isset($_SESSION['senha']) == tru
                                  <td><input readonly type="text" id="frete" name="frete" class="form-control" maxlength="14" placeholder="0,00" tabindex="1"></td>
                                  <td><input readonly type="text" id="prazo" name="prazo" class="form-control" maxlength="14" placeholder="0 Dia(as)" tabindex="1"></td>
                                  <td><input readonly type="text" id="dataPedido" name="dataPedido" maxlength="8" class="form-control" placeholder="00/00/0000" tabindex="1"></td>
+                                 <td><input type="hidden" name="idUsuario" id="idUsuario" value="<?php if($objusuario){ echo $objusuario->getId(); } ?>"></td>
                            </table>
 
                            <table>

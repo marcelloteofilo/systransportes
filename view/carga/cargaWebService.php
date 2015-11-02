@@ -11,29 +11,12 @@
 
     if($_GET["editSave"] == "incluir")
     {
-
-        //Criando a conexão com o banco de dados
-        $conexao = Conexao::getInstance()->getConexao();
-        //////// DADOS DA COTACAO ///////
+       
         $objCarga = new Carga();
-
-
-        $userAtual = $_SESSION['login'];
-        $con = mysql_connect('localhost', 'root', '') or die('Sem conexão com o servidor');
-        $sql = "select * from usuarios where login = '$userAtual'";
-        $res = mysql_query($sql, $con);
-        $user = mysql_fetch_assoc($res);
-        $stringIdUser = (int) implode($user);
-
-        //Atributos da classe Usuário/Valores
-        $objCarga->setObjUsuario($stringIdUser);
-        // falta adicionar na classe básica
-        //$objCarga->setObjEstadoOrigem($_REQUEST['ufOrigem']);
-        //$objCarga->setObjEstadoDestino($_REQUEST['ufDestino']);
-        //$objCarga->setObjCidadeOrigem($_REQUEST['cidadeOrigem']);
-        //$objCarga->setObjCidadeDestino($_REQUEST['cidadeDestino']);
-        $objCarga->setObjCidadeOrigem(1099910);
-        $objCarga->setObjCidadeDestino(1099910);
+       
+        $objCarga->setObjUsuario($_REQUEST['idUsuario']);
+        $objCarga->setObjCidadeOrigem($_REQUEST['cidadeOrigem']);
+        $objCarga->setObjCidadeDestino($_REQUEST['cidadeDestino']);
         $objCarga->setAltura($_REQUEST['altura']);
         $objCarga->setLargura($_REQUEST['largura']);
         $objCarga->setPeso($_REQUEST['peso']);
@@ -63,7 +46,7 @@
 
             $objMercadoria = new Mercadoria();
 
-            $objMercadoria->setDescricaoMercadoria($_REQUEST['descricao'][$i]);
+            $objMercadoria->setDescricaoMercadoria($_REQUEST['descricaoMercadoria'][$i]);
             $objMercadoria->setPeso($_REQUEST['pesoMercadoria'][$i]);
             $objMercadoria->setObjCarga($ultimoId);
             $objMercadoria->setValorMercadoria($_REQUEST['valorMercadoria'][$i]);
@@ -71,18 +54,9 @@
 
             MercadoriaSql::adicionar($objMercadoria);
         }
-        /* if (){
-          echo json_encode(array('success'=>true));
-          /*$resultado[] = array(
-          'oka'	=>  'oks',
-          );
-          } */
 
-//        echo '<pre>';
-//        echo 'O usuário da sessão é: ';
-//        var_dump($stringIdUser);
-//        var_dump($userAtual);
-//        echo '<pre>';
+        
+      
     }
 
     if($_GET["editSave"] == "aprovarCliente")
