@@ -97,6 +97,10 @@
                   <th field="numcte" width="30">Código CTE</th>
                   <th field="numTransp" width="30">Código Frete</th>
                   <th field="codCarga" width="30">Código Carga</th>
+
+                  <th field="cidadeOrigem" width="30">Origem da Carga</th>
+                  <th field="cidadeDestino" width="30">Destino da Carga</th>
+
                   <th field="chaveAcesso" width="30">Chave de Acesso</th>
                   <th field="situacao" width="50">Situação</th>
                   <th field="statuscte" width="50">Status da CTE</th>
