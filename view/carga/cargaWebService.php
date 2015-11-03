@@ -54,6 +54,8 @@
             MercadoriaSql::adicionar($objMercadoria);
         }
 
+        header('location: cargaConsulta.php');
+
 //        echo '<pre>';
 //        var_dump($objCarga);
 //        var_dump($objMercadoria);

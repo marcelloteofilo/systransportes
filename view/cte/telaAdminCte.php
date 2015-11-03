@@ -162,9 +162,9 @@
                   <td><b>Frete</b></td>
                </tr>
                <tr>
-                  <td><input required="required" class="form-control" type="text" id="chaveAcesso" name="chaveAcesso" placeholder="Chave de Acesso" maxlength="10"></td>
+                  <td><input required="required" class="form-control" type="text" id="chaveAcesso" onkeydown="teclasNumeros()"  name="chaveAcesso" placeholder="Chave de Acesso" maxlength="10"></td>
 
-                  <td><input required="required" class="form-control" type="text" id="emissao" name="emissao" placeholder="Data de Emissão" maxlength="10"></td>
+                  <td><input required="required" class="form-control" type="text" id="emissao" onkeydown="teclasNumeros()" onkeyup="mascaraData(this);" name="emissao" placeholder="Data de Emissão" maxlength="10"></td>
 
                   <td>
                      <select class="form-control" id="situacao" name="situacao">

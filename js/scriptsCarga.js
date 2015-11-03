@@ -35,6 +35,16 @@ function CalculaDistancia() {
     var peso = document.getElementById('peso').value;
     var valor = document.getElementById('valor').value;
     if (cidadeOrigem != "" && cidadeDestino != "" && peso != "" && valor != "") {
+       hoje = new Date()
+       dia = hoje.getDate()
+       mes = hoje.getMonth()
+       ano = hoje.getFullYear()
+       if (dia < 10)
+       dia = "0" + dia
+       if (ano < 2000)
+       ano = "19" + ano
+       data =  dia + '/' + (mes + 1) + '/' + ano
+       document.getElementById('dataPedido').value = data; 
         $('#litResultado').html('Aguarde...');
         // Instancia o DistanceMatrixService.
         var service = new google.maps.DistanceMatrixService();

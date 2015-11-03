@@ -1,5 +1,6 @@
 <?php
 //require_once("/opt/lampp/htdocs/systransportes/modelo/cidade/cidade.php");
+require_once('/../usuario/usuario.php');
   class Carga {
 
   //Atributos

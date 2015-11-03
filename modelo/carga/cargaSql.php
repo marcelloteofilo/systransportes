@@ -1,6 +1,6 @@
 <?php
 
-    //error_reporting(0);
+    error_reporting(0);
     //require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
     //require_once ("/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php");
     require_once("/../banco.php");
@@ -36,17 +36,19 @@
             $observacao = mysql_real_escape_string($objCarga->getObservacao(), $conexao);
             $naturezaCarga = mysql_real_escape_string($objCarga->getNaturezaCarga(), $conexao);
             $dataPedido = mysql_real_escape_string($objCarga->getDataPedido(), $conexao);
-            $distancia = mysql_real_escape_string($objCarga->getDistancia(), $conexao);
-            $prazo = mysql_real_escape_string($objCarga->getPrazo(), $conexao);
+            $distancia = $objCarga->getDistancia();
+            $prazo = $objCarga->getPrazo();
             $frete = number_format($objCarga->getFrete(), 2, '.', '');
+          
+
 
             //Inserção na tabela de veiculo relacionada ao banco de dados systransporte
             $sql = "insert into cargas (codUsuario, origem, destino, altura, largura, peso,
             comprimento,quantidade,valor,telefone,logradouro,bairro,uf,cidade,numero,
-            observacao,naturezaCarga,dataPedido)
+            observacao,naturezaCarga,dataPedido,frete,distancia,prazo)
             values ('$idUsuario','$idCidadeOrigem','$idCidadeDestino','$altura' ,'$largura','$peso',
             '$comprimento' ,'$quantidade','$valor','$telefone','$logradouro','$bairro','$uf',
-            '$cidade','$numero','$observacao','$naturezaCarga','$dataPedido')";
+            '$cidade','$numero','$observacao','$naturezaCarga','$dataPedido','$frete','$distancia','$prazo')";
 
 
             $resultado = @mysql_query($sql, $conexao);
