@@ -66,16 +66,6 @@
             );
             wow.init();
         </script>
-        <script>
-//            function bloquearCopia(Event) {
-//                var Event = Event ? Event : window.event;
-//                var tecla = (Event.keyCode) ? Event.keyCode : Event.which;
-//                if(tecla == 17){
-//                    mensagem();
-//                }
-//            }
-        </script>
-
     </head>
     <body id="body">
         <!-- preloader

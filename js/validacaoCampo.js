@@ -507,13 +507,24 @@ function teclasLetrasNumeros()
     }
 }
 
-function mensagem() 
-{
-    //alert('Conteúdo Bloqueado!');
-    return false;
-}
+//function mensagem()
+//{
+//    //alert('Conteúdo Bloqueado!');
+//    return false;
+//}
+//
+//function bloquearCopia(Event) {
+//    var Event = Event ? Event : window.event;
+//    var tecla = (Event.keyCode) ? Event.keyCode : Event.which;
+//    if(tecla === 17)
+//    {
+//        mensagem();
+//    }
+//}
+//document.onkeypress = bloquearCopia;
+//document.onkeydown = bloquearCopia;
 
-function click() 
+function click()
 {
     if(event.button == 2 || event.button == 3)
     {
@@ -525,13 +536,25 @@ document.oncontextmenu = new Function("return false;");
 
 
 
-function bloquearCopia(Event) {
-    var Event = Event ? Event : window.event;
-    var tecla = (Event.keyCode) ? Event.keyCode : Event.which;
-    if(tecla == 17)
-    {
-       mensagem();
+
+
+
+
+function alerta() {
+    alert('não pode ser cola.');
+    return true;
+}
+function verificaBotao(oEvent) {
+    var oEvent = oEvent ? oEvent : window.event;
+    var tecla = (oEvent.keyCode) ? oEvent.keyCode : oEvent.which;
+    if(tecla ==17){
+        alerta();
     }
 }
-document.onkeypress = bloquearCopia;
-document.onkeydown = bloquearCopia;
+
+document.onkeypress = verificaBotao;
+document.onkeydown = verificaBotao;
+document.onkeyup = verificaBotao;
+document.onblur = verificaBotao;
+document.oncontextmenu = alerta;
+

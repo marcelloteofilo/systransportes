@@ -34,11 +34,9 @@
         <script type="text/javascript" src="../../js/jquery.validate.min.js"></script>
         <script type="text/javascript" src="../../js/scriptPesquisa.js"></script>
 
-        <script>
-<!-- SCRIPT DO GRAFICO -->
-            < script type = "text/javascript" src = "https://www.google.com/jsapi" ></script>
+        <script type = "text/javascript" src = "https://www.google.com/jsapi" ></script>
         <script type="text/javascript">
-                    google.load("visualization", "1", {packages: ["corechart"]});
+            google.load("visualization", "1", {packages: ["corechart"]});
             google.setOnLoadCallback(drawChart);
             function drawChart() {
 
@@ -65,7 +63,6 @@
                 <ul  class="nav navbar-nav">
                     <li class="current"><a href="../telaAdminSystem.php">Início Admin</a></li>
                     <li><a href="#"><?php echo "Usuario: ".$logado; ?></a></li>
-
                 </ul>
             </nav>
             <div class="navbar-header">
@@ -79,33 +76,22 @@
 
 <body style="background:#F3F8F7">
 
-<center>
-    <table id="dg"
-           title="Cadastro de Rastreamentos"
-           class="easyui-datagrid"
-           style=" width:1250px;height:495px"
-           url="../../webServices/RastreamentosWebService.php?editSave=carregarRastreamento"
-           toolbar="#toolbar"
-           pagination="true"
-           rownumbers="true"
-           fitColumns="true"
-           singleSelect="true">
-        <thead>
-            <tr>
-                <th field="idCte" width="5">Id CTE</th>
-                <th field="localizacao" width="100">Localização</th>
-            </tr>
-        </thead>
+    <?php
+        $json_file = file_get_contents("http://www.imoveisredebrasil.com.br/SysTRANS/RastreamentoService.php?manifesto=4856");
+        $json_str = json_decode($json_file);
 
+        foreach($json_str->historico as $campo)
+        {
+            $local = $campo->local;
+            $data = $campo->data_hora;
 
-    </table>
+//            echo '<pre>';
+//            echo "<b>Data:</b>".$local;
+//            echo "<b>Data:</b>".$data;
+//            echo '</pre>';
+        }
+    ?>
 
-    <div id="toolbar">
-        <label for="pesquisar">Localizar Rastreamentos</label>
-        &nbsp;&nbsp;
-        <input type="text" id="pesquisar" name="pesquisar" size="30" />
-    </div>
-</center>
 
 </body>
 </html>
