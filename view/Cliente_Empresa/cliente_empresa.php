@@ -78,59 +78,60 @@
                             <li class="current"><a href="../usuario/logout.php">Sair</a></li>
 
                         </ul>
+                    </ul>
                 </nav>
                 <div class="navbar-header">
                     <ul  class="nav navbar-nav">
                         <li class=""><a href="#"><?php echo" BEM VINDO, $logado"; ?></a></li>
-                        <ul>
-                            </div>
-                            </div>
-                            </header>
+                    </ul>
+                </div>
+            </div>
+        </header>
 
-                            <section id="features" class="features">
-                                <div class="container">
-                                    <center>
-                                        <h3>Olá!! <?php echo $logado ?>. Este é um espaço no qual constará suas cotações.</h3>
-                                    </center>
-                                    <hr>
-                                    <ul class="timeline">
-                                        <li>
-                                            <div class="timeline-badge success"><i class="glyphicon glyphicon-eye-open"></i></div>
-                                            <div class="timeline-panel">
-                                                <div class="timeline-body">
-                                                    <table id="dg" title="Cotações" class="easyui-datagrid"
-                                                           style=" width:1020px;height:350px"
-                                                           url="../../webServices/cargaWebService.php?editSave=carregarTodos"
-                                                           toolbar="#toolbar" pagination="true"
-                                                           rownumbers="true" fitColumns="true" singleSelect="true">
-                                                        <thead>
-                                                            <tr>
-                                                                <th field="codCarga" width="4">Id</th>
-                                                                <th field="origem" width="50">Origem</th>
-                                                                <th field="destino" width="50">Destino</th>
-                                                                <th field="valor" width="10">Valor</th>
-                                                                <th field="naturezaCarga" width="20">Natureza Carga</th>
-                                                                <th field="dataPedido" width="20">Pedido</th>
-                                                                <th field="coletada" width="10">Coletada</th>
-                                                                <th field="statusCarga" width="15">Status</th>
-                                                            </tr>
-                                                        </thead>
-                                                    </table>
-                                                    <div id="toolbar">
-                                                        <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
-                                                        <!--<a href="#" class="easyui-linkbutton" iconCls="icon-Stats-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>-->
-                                                        <a href="#" class="easyui-linkbutton" iconCls="icon-Customer-service-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">Atendimento</a>
-                                                        <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
-                                                        <a href="#" class="easyui-linkbutton" iconCls="icon-Unit-completed-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
+        <section id="features" class="features">
+            <div class="container">
+                <center>
+                    <h3>Olá!! <?php echo $logado ?>. Este é um espaço no qual constará suas cotações.</h3>
+                </center>
+                <hr>
+                <ul class="timeline">
+                    <li>
+                        <div class="timeline-badge success"><i class="glyphicon glyphicon-eye-open"></i></div>
+                        <div class="timeline-panel">
+                            <div class="timeline-body">
+                                <table id="dg" title="Cotações" class="easyui-datagrid"
+                                       style=" width:1020px;height:350px"
+                                       url="../../webServices/cargaWebService.php?editSave=carregarTodos"
+                                       toolbar="#toolbar" pagination="true"
+                                       rownumbers="true" fitColumns="true" singleSelect="true">
+                                    <thead>
+                                        <tr>
+                                            <th field="codCarga" width="4">Id</th>
+                                            <th field="origem" width="50">Origem</th>
+                                            <th field="destino" width="50">Destino</th>
+                                            <th field="valor" width="10">Valor</th>
+                                            <th field="naturezaCarga" width="20">Natureza Carga</th>
+                                            <th field="dataPedido" width="20">Pedido</th>
+                                            <th field="coletada" width="10">Coletada</th>
+                                            <th field="statusCarga" width="15">Status</th>
+                                        </tr>
+                                    </thead>
+                                </table>
+                                <div id="toolbar">
+                                    <a href="#" class="easyui-linkbutton" iconCls="icon-open-file" plain="true" onclick="editUser();" title="Alterar Dados do Usuário">Abrir Cotação</a>
+                                    <!--<a href="#" class="easyui-linkbutton" iconCls="icon-Stats-icon" plain="true" onclick="carregarTodos();" title="Alterar Dados do Usuário">Todos</a>-->
+                                    <a href="#" class="easyui-linkbutton" iconCls="icon-Customer-service-icon" plain="true" onclick="carregarAtendimento();" title="Alterar Dados do Usuário">Atendimento</a>
+                                    <a href="#" class="easyui-linkbutton" iconCls="icon-like-icon" plain="true" onclick="carregarAprovados();" title="Alterar Dados do Usuário">Aprovados</a>
+                                    <a href="#" class="easyui-linkbutton" iconCls="icon-Unit-completed-icon" plain="true" onclick="carregarConcluidos();" title="Alterar Dados do Usuário">Concluídos</a>
 
-                                                        <label for="pesquisar">Busca Avançada</label>
-                                                        <input type="text" id="pesquisar" name="pesquisar" size="30" />
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </li>
-                                    </ul>
+                                    <label for="pesquisar">Busca Avançada</label>
+                                    <input type="text" id="pesquisar" name="pesquisar" size="30" />
                                 </div>
-                            </section>
-                            </body>
-                            </html>
+                            </div>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+        </section>
+    </body>
+</html>

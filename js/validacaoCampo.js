@@ -470,12 +470,12 @@ function validarTelefoneResidencial(campo) {
 
 //VALIDA NUMERO SE É INTEIRO
 function teclasNumeros() {
-    
+
     var ctrl = window.event.ctrlKey;
     var tecla = window.event.keyCode;
-    
-    if((tecla < 7 || tecla > 9)&&(tecla < 35 || tecla > 47)&&
-            (tecla < 48 || tecla > 57)&&(tecla < 96 || tecla > 105)){
+
+    if((tecla < 7 || tecla > 9) && (tecla < 35 || tecla > 47) &&
+            (tecla < 48 || tecla > 57) && (tecla < 96 || tecla > 105)){
         event.returnValue = false;
         return false;
     }
@@ -487,9 +487,9 @@ function teclasLetras()
     var ctrl = window.event.ctrlKey;
     var tecla = window.event.keyCode;
 
-    if((tecla < 7 || tecla > 9)&&(tecla < 31 || tecla > 47)&&
-       (tecla < 65 || tecla > 90)&&(tecla < 108 || tecla > 109)&&
-       (tecla < 188 || tecla > 189)){
+    if((tecla < 7 || tecla > 9) && (tecla < 31 || tecla > 47) &&
+            (tecla < 65 || tecla > 90) && (tecla < 108 || tecla > 109) &&
+            (tecla < 188 || tecla > 189)){
         //alert("CTRL+C");
         event.keyCode = 0;
         event.returnValue = false;
@@ -501,9 +501,37 @@ function teclasLetrasNumeros()
     var ctrl = window.event.ctrlKey;
     var tecla = window.event.keyCode;
 
-    if((tecla < 7 || tecla > 9)&&(tecla < 31 || tecla > 57)&&(tecla < 65 || tecla > 90)){
-        //alert("CTRL+C");
+    if((tecla < 7 || tecla > 9) && (tecla < 31 || tecla > 57) && (tecla < 65 || tecla > 90) && (tecla < 96 || tecla > 105)){
         event.keyCode = 0;
         event.returnValue = false;
     }
 }
+
+function mensagem() 
+{
+    //alert('Conteúdo Bloqueado!');
+    return false;
+}
+
+function click() 
+{
+    if(event.button == 2 || event.button == 3)
+    {
+        oncontextmenu = 'return false';
+    }
+}
+document.onmousedown = click;
+document.oncontextmenu = new Function("return false;");
+
+
+
+function bloquearCopia(Event) {
+    var Event = Event ? Event : window.event;
+    var tecla = (Event.keyCode) ? Event.keyCode : Event.which;
+    if(tecla == 17)
+    {
+       mensagem();
+    }
+}
+document.onkeypress = bloquearCopia;
+document.onkeydown = bloquearCopia;

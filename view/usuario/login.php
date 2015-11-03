@@ -30,6 +30,7 @@
         <script type="text/javascript" src="../../js/scriptsUsuarios.js"></script>
         <script type="text/javascript" src="../../js/scriptsCidades.js"></script>
         <script type="text/javascript" src="../../js/scriptsLoginUsuarios.js"></script>
+        <script type="text/javascript" src="../../js/validacaoCampo.js"></script>
 
         <!-- Essential jQuery Plugins -->
         <!-- Main jQuery -->
@@ -64,6 +65,15 @@
             }
             );
             wow.init();
+        </script>
+        <script>
+//            function bloquearCopia(Event) {
+//                var Event = Event ? Event : window.event;
+//                var tecla = (Event.keyCode) ? Event.keyCode : Event.which;
+//                if(tecla == 17){
+//                    mensagem();
+//                }
+//            }
         </script>
 
     </head>
@@ -181,9 +191,12 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="glyphicon glyphicon-user"></i>
                                                                     </span>
-                                                                    <input type="text" size="30" class="form-control" placeholder="Digíte seu usuário de acesso"
-                                                                           type="text" onfocus="focus_Blur(this, '#E0FFFF');" onblur="focus_Blur(this, 'white');"
-                                                                           value="" id="login" name="login">
+                                                                    <input type="text" size="30" class="form-control"
+                                                                           placeholder="Digíte seu usuário de acesso"
+                                                                           type="text" onfocus="focus_Blur(this, '#E0FFFF');"
+                                                                           onblur="focus_Blur(this, 'white');"
+                                                                           value="" id="login" name="login"
+                                                                           onkeydown="teclasLetrasNumeros()">
                                                                 </div>
                                                             </div>
 
@@ -192,14 +205,18 @@
                                                                     <span class="input-group-addon">
                                                                         <i class="glyphicon glyphicon-lock"></i>
                                                                     </span>
-                                                                    <input type="password" size="30" class="form-control" placeholder="Digíte sua senha"
-                                                                           type="text" onfocus="focus_Blur(this, '#E0FFFF');" onblur="focus_Blur(this, 'white');"
-                                                                           value="" id="senha" name="senha">
+                                                                    <input type="password" size="30" class="form-control"
+                                                                           placeholder="Digíte sua senha"
+                                                                           type="text" onfocus="focus_Blur(this, '#E0FFFF');"
+                                                                           onblur="focus_Blur(this, 'white');"
+                                                                           value="" id="senha" name="senha"
+                                                                           onkeydown="teclasLetrasNumeros()">
                                                                 </div>
                                                             </div>
                                                             <div class="form-group">
                                                                 <center>
-                                                                    <input type="submit" name="" id="" value="Acessar" class="btn btn-success btn-login-submit" class="btn btn-default">
+                                                                    <input type="submit" name="" id="" value="Acessar"
+                                                                           class="btn btn-success btn-login-submit" class="btn btn-default">
                                                                 </center>
                                                             </div>
 
@@ -251,5 +268,9 @@
                 </div>
             </div>
         </section>
+        <script>
+//            document.onkeypress = bloquearCopia;
+//            document.onkeydown = bloquearCopia;
+        </script>
     </body>
 </html>
