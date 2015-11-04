@@ -387,8 +387,9 @@
                                         <input name="pesquisaOrigem" type="hidden" id="txtOrigem" class="field" value="S&atilde;o Paulo" />
                                         <input name="pesquisaDestino" type="hidden" id="txtDestino" class="field" value="Rio de Janeiro" />
                                     </table><br>
-
+                                    <?php  if($objusuario){ ?>
                                     <input class="btn btn-success btn-login-submit" value="Criar Cotação" type="submit" id="btnCriarCota">
+                                    <?php } ?>
                                     <input class="btn btn-danger" value="Limpar" type="reset" id="btnLimpar">
 
                                 </form>

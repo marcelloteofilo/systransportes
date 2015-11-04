@@ -119,8 +119,7 @@
         </table>
 
         <div id="toolbar">
-            <a href="#" class="easyui-linkbutton" iconCls="icon-box-icon" plain="true"
-               onclick="newMercadoria()" title="Adicionar Mercadoria">Nova Mercadoria</a>
+            <!--<a href="#" class="easyui-linkbutton" iconCls="icon-box-icon" plain="true" onclick="newMercadoria()" title="Adicionar Mercadoria">Nova Mercadoria</a>-->
             <a href="#" class="easyui-linkbutton" iconCls="icon-save-as-icon" plain="true"
                onclick="editMercadoria()" title="Alterar Dados da Mercadoria">Editar Mercadoria</a>
             <a href="#" class="easyui-linkbutton" iconCls="icon-delete-icon" plain="true"

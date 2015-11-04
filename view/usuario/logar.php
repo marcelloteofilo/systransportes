@@ -52,7 +52,7 @@
     //echo $objusuario->getPerfil();
     //exit();
 
-    if($objusuario->getPerfil() == "Atendente")
+    if($objusuario->getPerfil() == "Atendente" && $objusuario->getStatus() == "Habilitado")
     {
         session_start();
         $_SESSION['objusuario'] = $objusuario;
@@ -60,7 +60,7 @@
         $_SESSION['senha'] = $senha;
         header('location: ../telaAdminSystem.php');
     }
-    else if($objusuario->getPerfil() == "Pessoa Juridica" or $objusuario->getPerfil() == "Pessoa Fisica")
+    else if($objusuario->getPerfil() == "Pessoa Juridica" or $objusuario->getPerfil() == "Pessoa Fisica" && $objusuario->getStatus() == "Habilitado")
     {
         session_start();
         $_SESSION['objusuario'] = $objusuario;

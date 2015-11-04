@@ -246,13 +246,13 @@
                        class="form-control"
                        type="text"
                        id="data"
-                       onkeypress="mascara(this, '##/##/####')"
-                       onkeyup="validar(this, 'num');"
                        maxlength="10"
                        name="data"
                        size="23"
                        style="text-transform:uppercase"
-                       placeholder="Data da Coleta">
+                       placeholder="Data da Coleta"
+                       onkeydown="teclasNumeros()"
+                       onkeyup="mascaraData(this);">
             </td>
             <!--maxlength="4" -->
 
@@ -261,12 +261,13 @@
                        type="text"
                        id="hora"
                        onkeypress="mascara(this, '##:##')"
-                       onkeyup="validar(this, 'num');"
-                       maxlength="5"
                        name="hora"
                        size="23"
                        style="text-transform:uppercase"
-                       placeholder="hora da Coleta">
+                       placeholder="hora da Coleta"
+                       OnKeyUp="Mascara_Hora(this.value, this)"
+                       size="5"
+                       maxlength="5">
             </td>
             <td><input type="hidden" class="form-control" name="codCarga" name="codCarga"></td>
 
