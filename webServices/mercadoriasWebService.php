@@ -88,7 +88,7 @@ if ($_GET["editSave"] == "carregarMercadoria") {
 if ($_GET["editSave"] == "carregarMercadoriaColeta") {
 
     //$codigoCarga = $_REQUEST['codigoCarga'];
-    //echo($_REQUEST['codigoCarga']);
+    //echo($_REQUEST['codCarga']);
     $mercadoria = new Mercadoria();
     $mercadoria->setCodCarga($_REQUEST['codigoCarga']);
 
@@ -122,7 +122,7 @@ if ($_GET["editSave"] == "carregarMercadoriaColeta") {
     return $resultado;
 }
 
-/*if ($_GET["editSave"] == "alterarMercadoriaColeta") {
+if ($_GET["editSave"] == "alterarMercadoriaColeta") {
     $mercadoria = new Mercadoria();
 
     //Atributos da classe Mercadoria/Valores
@@ -153,6 +153,6 @@ if ($_GET["editSave"] == "carregarMercadoriaColeta") {
     }
 
     echo(json_encode($resultado));
-}*/
+}
 
 ?>

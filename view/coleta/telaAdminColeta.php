@@ -123,8 +123,6 @@
           function carregaMercadoria() {
              var row = $('#dg').datagrid('getSelected');
 
-
-
              $("div.easyui-layout").layout();
              $('#dgc').edatagrid({
                  url: '../../webServices/mercadoriasWebService.php?editSave=carregarMercadoriaColeta&codigoCarga='+row.codCarga,
@@ -140,7 +138,7 @@
             if (row){
               $('#dlgc').dialog('open').dialog('setTitle','Finalizar Mercadoria');
               $('#fmc').form('load',row);
-              url2 = '../../webServices/cteWebService.php?editSave=alterarMercadoriaColeta&id='+row.id;
+              url2 = '../../webServices/mercadoriasWebService.php?editSave=alterarMercadoriaColeta&id='+row.id;
 
               //saveMercadoria();
             }
@@ -153,7 +151,9 @@
                 });
           }
           }
+
           function saveMercadoria(){
+            
             $('#fmc').form('submit',{
               url2: url2,
                 onSubmit: function(){

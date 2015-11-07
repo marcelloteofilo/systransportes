@@ -111,7 +111,7 @@
     //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 
-        /*public static function alterarColeta(Mercadoria $mercadoria)
+        public static function alterarColeta(Mercadoria $mercadoria)
         {
             //Criando a conexão com o banco de dados
             $conexao = Conexao::getInstance()->getConexao();
@@ -119,24 +119,25 @@
             $id = mysql_real_escape_string($mercadoria->getId(), $conexao);
             //$idCarga = mysql_real_escape_string($mercadoria->getObjCarga()->getCodCarga(), $conexao);
 
-            $numPedido = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $numPedido = mysql_real_escape_string($mercadoria->getNumPedido(), $conexao);
 
-            $nomeCompleto = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
-            $telefone = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
-            $email = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $nomeCompleto = mysql_real_escape_string($mercadoria->getNomeCompleto(), $conexao);
+            $telefone = mysql_real_escape_string($mercadoria->getTelefone(), $conexao);
+            $email = mysql_real_escape_string($mercadoria->getEmail(), $conexao);
 
-            $logradouro = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
-            $bairro = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
-            $numero = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
-            $cep = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
-            $estado = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
-            $cidade = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao)
+            $logradouro = mysql_real_escape_string($mercadoria->getLogradouro(), $conexao);
+            $bairro = mysql_real_escape_string($mercadoria->getBairro(), $conexao);
+            $numero = mysql_real_escape_string($mercadoria->getNumero(), $conexao);
+            $cep = mysql_real_escape_string($mercadoria->getCep(), $conexao);
+            $estado = mysql_real_escape_string($mercadoria->getEstado(), $conexao);
+            $cidade = mysql_real_escape_string($mercadoria->getCidade(), $conexao);
+        
+            $sql = "update mercadorias set numPedido='$numPedido' where id = $id ";
 
-            $sql = "update mercadorias set numPedido = $numPedido where id = $id ";
             $resultado = @mysql_query($sql, $conexao);
 
             return ($resultado === true);
-        }*/
+        }
 
         public static function carregarListaColeta(Mercadoria $mercadoria)
         {
