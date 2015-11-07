@@ -107,6 +107,72 @@
                 return null;
             }
         }
+    
+    //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+
+        /*public static function alterarColeta(Mercadoria $mercadoria)
+        {
+            //Criando a conexão com o banco de dados
+            $conexao = Conexao::getInstance()->getConexao();
+
+            $id = mysql_real_escape_string($mercadoria->getId(), $conexao);
+            //$idCarga = mysql_real_escape_string($mercadoria->getObjCarga()->getCodCarga(), $conexao);
+
+            $numPedido = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+
+            $nomeCompleto = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $telefone = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $email = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+
+            $logradouro = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $bairro = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $numero = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $cep = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $estado = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao);
+            $cidade = mysql_real_escape_string($mercadoria->getQuantidade(), $conexao)
+
+            $sql = "update mercadorias set numPedido = $numPedido where id = $id ";
+            $resultado = @mysql_query($sql, $conexao);
+
+            return ($resultado === true);
+        }*/
+
+        public static function carregarListaColeta(Mercadoria $mercadoria)
+        {
+            //Conexão com o banco
+            $conexao = Conexao::getInstance()->getConexao();
+
+            $codCarga = mysql_real_escape_string($mercadoria->getCodCarga(), $conexao);
+            //echo($codCarga);
+
+            $sql = "select * from mercadorias where codCarga='$codCarga'";
+
+            $rs = @mysql_query($sql, $conexao);
+            //echo($rs);
+
+            if($rs){
+                $resultado = array();
+                while($row = mysql_fetch_array($rs)){
+
+                    $objMercadoria = new Mercadoria();
+
+                    $objMercadoria->setId($row["id"]);
+                    $objMercadoria->setCodCarga($row["codCarga"]);
+                    $objMercadoria->setDescricaoMercadoria($row["descricao"]);
+                    $objMercadoria->setPeso($row["pesoMercadoria"]);
+                    $objMercadoria->setValorMercadoria($row["valorMercadoria"]);
+                    $objMercadoria->setQuantidade($row["quantidade"]);
+
+                    $resultado[] = $objMercadoria;
+                }
+                return $resultado;
+            }
+            else
+            {
+                return null;
+            }
+        }
     }
 
 ?>

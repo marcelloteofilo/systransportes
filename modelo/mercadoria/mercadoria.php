@@ -13,6 +13,20 @@ require_once("/../../modelo/carga/carga.php");
         private $quantidade;
         private $valorMercadoria;
 
+        private $codCarga;
+        private $numPedido;
+
+        private $nomeCompleto;
+        private $telefone;
+        private $email;
+
+        private $logradouro;
+        private $bairro;
+        private $numero;
+        private $cep;
+        private $estado;
+        private $cidade;
+
         //Id
         public function setId($l)
         {
@@ -82,6 +96,120 @@ require_once("/../../modelo/carga/carga.php");
         {
             $this->quantidade = trim($quantidade);
         }
+
+
+//////////////////////////////////////////////////////////////////////////////////////////////
+        
+        public function setCodCarga($codCarga)
+        {
+            $this->codCarga = trim($codCarga);
+        }
+
+        public function getCodCarga()
+        {
+            return $this->codCarga;
+        }
+
+        public function setNumPedido($numPedido)
+        {
+            $this->numPedido = trim($numPedido);
+        }
+
+        public function getNumPedido()
+        {
+            return $this->numPedido;
+        }
+
+        public function setNomeCompleto($nomeCompleto)
+        {
+            $this->nomeCompleto = trim($nomeCompleto);
+        }
+
+        public function getNomeCompleto()
+        {
+            return $this->nomeCompleto;
+        }
+
+        public function setTelefone($telefone)
+        {
+            $this->telefone = trim($telefone);
+        }
+
+        public function getTelefone()
+        {
+            return $this->telefone;
+        }
+
+        public function setEmail($email)
+        {
+            $this->email = trim($email);
+        }
+
+        public function getEmail()
+        {
+            return $this->email;
+        }
+
+        public function setLogradouro($logradouro)
+        {
+            $this->logradouro = trim($logradouro);
+        }
+
+        public function getLogradouro()
+        {
+            return $this->logradouro;
+        }
+
+        public function setBairro($bairro)
+        {
+            $this->bairro = trim($bairro);
+        }
+
+        public function getBairro()
+        {
+            return $this->bairro;
+        }
+
+        public function setNumero($numero)
+        {
+            $this->numero = trim($numero);
+        }
+
+        public function getNumero()
+        {
+            return $this->numero;
+        }
+
+        public function setCep($cep)
+        {
+            $this->cep = trim($cep);
+        }
+
+        public function getCep()
+        {
+            return $this->cep;
+        }
+
+        public function setEstado($estado)
+        {
+            $this->estado = trim($estado);
+        }
+
+        public function getEstado()
+        {
+            return $this->estado;
+        }
+
+        public function setCidade($cidade)
+        {
+            $this->cidade = trim($cidade);
+        }
+
+        public function getCidade()
+        {
+            return $this->cidade;
+        }
+
     }
 
 ?>
