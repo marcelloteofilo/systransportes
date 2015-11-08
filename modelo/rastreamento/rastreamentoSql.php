@@ -1,7 +1,14 @@
 <?php
 
-    require_once ("/../banco.php");
+//    define("BASEPATH", dirname(dirname(dirname(__FILE__))));
+//
+//    require_once (BASEPATH."/funcoes.php");
+    require_once (BASEPATH.MODELO."banco.php");
+    //require_once (BASEPATH.MODELO."frete/freteSql.php");
     require_once ("rastreamento.php");
+
+//    require_once ("/../banco.php");
+//    require_once ("rastreamento.php");
 
     class RastreamentoSql
     {

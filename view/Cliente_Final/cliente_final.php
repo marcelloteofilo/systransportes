@@ -16,8 +16,7 @@
 <!DOCTYPE html>
 <html lang="en" class="no-js">
     <head>
-
-        <title>Rota da mercadoria</title>
+        <title>Rota da Mercadoria</title>
 
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">

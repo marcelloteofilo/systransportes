@@ -1,6 +1,11 @@
 ﻿<?php
-    require_once('../../modelo/usuario/usuario.php');
-//require_once('/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php');
+
+	require_once('../../modelo/usuario/usuario.php');
+	//require_once('/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php');
+
+	//require_once ("../../funcoes.php");
+    //require_once(BASEPATH.MODELO.'usuario/usuario.php');
+
     session_start();
     extract($_REQUEST);
 

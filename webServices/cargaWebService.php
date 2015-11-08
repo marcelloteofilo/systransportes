@@ -1,19 +1,26 @@
 ﻿<?php
-    require_once("../modelo/carga/cargaSql.php");
-    require_once("../modelo/mercadoria/mercadoriaSql.php");
-//require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");
-//require_once("/opt/lampp/htdocs/systransportes/modelo/mercadoria/mercadoriaSql.php");
-    session_start();
 
+    define("BASEPATH", dirname(dirname(__FILE__)));
+    
+    require_once(BASEPATH."/funcoes.php");
+    require_once (BASEPATH.MODELO."carga/cargaSql.php");
+    require_once (BASEPATH.MODELO."mercadoria/mercadoriaSql.php");
+	
+//    require_once("../modelo/carga/cargaSql.php");
+//    require_once("../modelo/mercadoria/mercadoriaSql.php");
+////require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");
+////require_once("/opt/lampp/htdocs/systransportes/modelo/mercadoria/mercadoriaSql.php");
+    
+	session_start();
     extract($_REQUEST);
     extract($_SESSION);
 
 
     if($_GET["editSave"] == "incluir")
     {
-       
+
         $objCarga = new Carga();
-       
+
         $objCarga->setObjUsuario($_REQUEST['idUsuario']);
         $objCarga->setObjCidadeOrigem($_REQUEST['cidadeOrigem']);
         $objCarga->setObjCidadeDestino($_REQUEST['cidadeDestino']);
@@ -54,9 +61,6 @@
 
             MercadoriaSql::adicionar($objMercadoria);
         }
-
-        
-      
     }
 
     if($_GET["editSave"] == "aprovarCliente")
@@ -271,6 +275,51 @@
         }
         //var_dump($resultado);
         //die;
+
+        echo(json_encode($resultado));
+        return $resultado;
+    }
+
+    if($_GET["editSave"] == "carregarTodosAdmin")
+    {
+
+        $carga = new Carga();
+
+        $listaCarga = cargaSql::carregarListaAdmin($carga);
+
+        for($i = 0; $i < count($listaCarga); $i++)
+        {
+            $resultado[] = array(
+                'codCarga' => $listaCarga[$i]->getCodCarga(),
+                'origem' => $listaCarga[$i]->getObjCidadeOrigem(),
+                'destino' => $listaCarga[$i]->getObjCidadeDestino(),
+                'pessoaFisica' => $listaCarga[$i]->getPessoaFisicaNome(),
+                'codUsuario' => $listaCarga[$i]->getObjUsuario()->getId(),
+                'pessoaJuridica' => $listaCarga[$i]->getPessoaJuridicaNome(),
+                'altura' => $listaCarga[$i]->getAltura(),
+                'largura' => $listaCarga[$i]->getLargura(),
+                'peso' => $listaCarga[$i]->getPeso(),
+                'comprimento' => $listaCarga[$i]->getComprimento(),
+                'quantidade' => $listaCarga[$i]->getQuantidade(),
+                'valor' => $listaCarga[$i]->getValor(),
+                'telefone' => $listaCarga[$i]->getTelefone(),
+                'logradouro' => $listaCarga[$i]->getLogradouro(),
+                'bairro' => $listaCarga[$i]->getBairro(),
+                'uf' => $listaCarga[$i]->getUf(),
+                'cidade' => $listaCarga[$i]->getCidade(),
+                'numero' => $listaCarga[$i]->getNumero(),
+                'observacao' => $listaCarga[$i]->getObservacao(),
+                'naturezaCarga' => $listaCarga[$i]->getNaturezaCarga(),
+                'dataPedido' => $listaCarga[$i]->getDataPedido(),
+                'distancia' => $listaCarga[$i]->getDistancia(),
+                'frete' => $listaCarga[$i]->getFrete(),
+                'prazo' => $listaCarga[$i]->getPrazo(),
+                'coletada' => $listaCarga[$i]->getColetada(),
+                'statusCarga' => $listaCarga[$i]->getStatusCarga(),
+            );
+        }
+//        var_dump($resultado);
+//        die;
 
         echo(json_encode($resultado));
         return $resultado;

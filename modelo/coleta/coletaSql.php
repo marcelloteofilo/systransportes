@@ -1,16 +1,23 @@
 <?php
-  require_once("banco.php");  
-  require_once("coleta.php");  
 
-  class ColetaSql {   
-     
+//    define("BASEPATH", dirname(dirname(dirname(__FILE__))));
+//
+//    require_once (BASEPATH."/funcoes.php");
+    require_once (BASEPATH.MODELO."banco.php");
+    require_once("coleta.php");
 
+//    require_once("banco.php");
+//    require_once("coleta.php");
 
-    public static function carregarLista(Coleta $coleta) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao(); 
-		
-		$sql = 'select cl.*,
+    class ColetaSql
+    {
+
+        public static function carregarLista(Coleta $coleta)
+        {
+            //Conexão com o banco
+            $conexao = Conexao::getInstance()->getConexao();
+
+            $sql = 'select cl.*,
 					nomeMotorista.nomeCompleto as nomeMotorista,
 					nomeMotorista.telefone1 as telefoneMotorista,
 					placaVeiculo.placa as placaVeiculo,
@@ -28,56 +35,59 @@
 							INNER JOIN cargas as numero ON cl.codCarga = numero.codCarga
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
 							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga';
-	    
-		$resultado = @mysql_query($sql, $conexao);
 
-		if ($resultado) {
-			$retorno = array();
-			while ($row = mysql_fetch_array($resultado)) {
-				$coleta = new Coleta();
-				$coleta->setCodColeta($row["codColeta"]);
-				$coleta->setCodCarga($row["codCarga"]);
+            $resultado = @mysql_query($sql, $conexao);
 
-				//
-				$coleta->setCodMotorista($row["codMotorista"]);
-				$coleta->setNomeMotorista($row["nomeMotorista"]);
-				$coleta->setTelefoneMotorista($row["telefoneMotorista"]);
+            if($resultado)
+            {
+                $retorno = array();
+                while($row = mysql_fetch_array($resultado))
+                {
+                    $coleta = new Coleta();
+                    $coleta->setCodColeta($row["codColeta"]);
+                    $coleta->setCodCarga($row["codCarga"]);
 
-				$coleta->setCodVeiculo($row["codVeiculo"]);
-				$coleta->setPlacaVeiculo($row["placaVeiculo"]);
+                    //
+                    $coleta->setCodMotorista($row["codMotorista"]);
+                    $coleta->setNomeMotorista($row["nomeMotorista"]);
+                    $coleta->setTelefoneMotorista($row["telefoneMotorista"]);
 
-				//
-				//$dataFormatada = explode("-", $row['data']);
-				//$dataBrasileira = $dataFormatada[2]."/".$dataFormatada[1]."/".$dataFormatada[0];
+                    $coleta->setCodVeiculo($row["codVeiculo"]);
+                    $coleta->setPlacaVeiculo($row["placaVeiculo"]);
 
-				$coleta->setData($row["data"]);
-				$coleta->setHora($row["hora"]);
-				//
-				$coleta->setColetada($row["coletada"]);
-				$coleta->setTelefone($row["telefone"]);
-				$coleta->setLogradouro($row["logradouro"]);
-				$coleta->setBairro($row["bairro"]);
-				$coleta->setNumero($row["numero"]);
-				$coleta->setEstado($row["uf"]);
-				$coleta->setCidade($row["cidade"]);
-				$coleta->setObservacao($row["observacao"]);
+                    //
+                    //$dataFormatada = explode("-", $row['data']);
+                    //$dataBrasileira = $dataFormatada[2]."/".$dataFormatada[1]."/".$dataFormatada[0];
+
+                    $coleta->setData($row["data"]);
+                    $coleta->setHora($row["hora"]);
+                    //
+                    $coleta->setColetada($row["coletada"]);
+                    $coleta->setTelefone($row["telefone"]);
+                    $coleta->setLogradouro($row["logradouro"]);
+                    $coleta->setBairro($row["bairro"]);
+                    $coleta->setNumero($row["numero"]);
+                    $coleta->setEstado($row["uf"]);
+                    $coleta->setCidade($row["cidade"]);
+                    $coleta->setObservacao($row["observacao"]);
 
 
-			
-				$retorno[] = $coleta;
-         }
-        
-        return ($retorno);
-      } 
-      else
-        return null;
-    }
 
-    public static function carregarListaAprovados(Coleta $coleta) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao(); 
-		
-		$sql = 'select cl.*,
+                    $retorno[] = $coleta;
+                }
+
+                return ($retorno);
+            }
+            else
+                return null;
+        }
+
+        public static function carregarListaAprovados(Coleta $coleta)
+        {
+            //Conexão com o banco
+            $conexao = Conexao::getInstance()->getConexao();
+
+            $sql = 'select cl.*,
 					nomeMotorista.nomeCompleto as nomeMotorista,
 					nomeMotorista.telefone1 as telefoneMotorista,
 					placaVeiculo.placa as placaVeiculo,
@@ -96,51 +106,54 @@
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
 							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga
 							where coletada.coletada  = "Aprovado"';
-	    
-		$resultado = @mysql_query($sql, $conexao);
 
-		if ($resultado) {
-			$retorno = array();
-			while ($row = mysql_fetch_array($resultado)) {
-				$coleta = new Coleta();
-				$coleta->setCodColeta($row["codColeta"]);
-				$coleta->setCodCarga($row["codCarga"]);
+            $resultado = @mysql_query($sql, $conexao);
 
-				//
-				$coleta->setCodMotorista($row["codMotorista"]);
-				$coleta->setNomeMotorista($row["nomeMotorista"]);
-				$coleta->setTelefoneMotorista($row["telefoneMotorista"]);
+            if($resultado)
+            {
+                $retorno = array();
+                while($row = mysql_fetch_array($resultado))
+                {
+                    $coleta = new Coleta();
+                    $coleta->setCodColeta($row["codColeta"]);
+                    $coleta->setCodCarga($row["codCarga"]);
 
-				$coleta->setCodVeiculo($row["codVeiculo"]);
-				$coleta->setPlacaVeiculo($row["placaVeiculo"]);
+                    //
+                    $coleta->setCodMotorista($row["codMotorista"]);
+                    $coleta->setNomeMotorista($row["nomeMotorista"]);
+                    $coleta->setTelefoneMotorista($row["telefoneMotorista"]);
 
-				//
-				$coleta->setData($row["data"]);
-				$coleta->setHora($row["hora"]);
+                    $coleta->setCodVeiculo($row["codVeiculo"]);
+                    $coleta->setPlacaVeiculo($row["placaVeiculo"]);
 
-				//
-				$coleta->setColetada($row["coletada"]);
-				$coleta->setTelefone($row["telefone"]);
-				$coleta->setLogradouro($row["logradouro"]);
-				$coleta->setBairro($row["bairro"]);
-				$coleta->setNumero($row["numero"]);
-				$coleta->setEstado($row["uf"]);
-				$coleta->setCidade($row["cidade"]);
-				$coleta->setObservacao($row["observacao"]);
-			
-				$retorno[] = $coleta;
-         }
-        return ($retorno);
-      } 
-      else
-        return null;
-    }
+                    //
+                    $coleta->setData($row["data"]);
+                    $coleta->setHora($row["hora"]);
 
-    public static function carregarListaColetadas(Coleta $coleta) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao(); 
-		
-		$sql = 'select cl.*,
+                    //
+                    $coleta->setColetada($row["coletada"]);
+                    $coleta->setTelefone($row["telefone"]);
+                    $coleta->setLogradouro($row["logradouro"]);
+                    $coleta->setBairro($row["bairro"]);
+                    $coleta->setNumero($row["numero"]);
+                    $coleta->setEstado($row["uf"]);
+                    $coleta->setCidade($row["cidade"]);
+                    $coleta->setObservacao($row["observacao"]);
+
+                    $retorno[] = $coleta;
+                }
+                return ($retorno);
+            }
+            else
+                return null;
+        }
+
+        public static function carregarListaColetadas(Coleta $coleta)
+        {
+            //Conexão com o banco
+            $conexao = Conexao::getInstance()->getConexao();
+
+            $sql = 'select cl.*,
 					nomeMotorista.nomeCompleto as nomeMotorista,
 					nomeMotorista.telefone1 as telefoneMotorista,
 					placaVeiculo.placa as placaVeiculo,
@@ -159,96 +172,98 @@
 							INNER JOIN cargas as observacao ON cl.codCarga = observacao.codCarga
 							INNER JOIN cargas as coletada ON cl.codCarga = coletada.codCarga
 							where coletada.coletada  = "Coletado"';
-	    
-		$resultado = @mysql_query($sql, $conexao);
 
-		if ($resultado) {
-			$retorno = array();
-			while ($row = mysql_fetch_array($resultado)) {
-				$coleta = new Coleta();
-				$coleta->setCodColeta($row["codColeta"]);
-				$coleta->setCodCarga($row["codCarga"]);
+            $resultado = @mysql_query($sql, $conexao);
 
-				//
-				$coleta->setCodMotorista($row["codMotorista"]);
-				$coleta->setNomeMotorista($row["nomeMotorista"]);
-				$coleta->setTelefoneMotorista($row["telefoneMotorista"]);
+            if($resultado)
+            {
+                $retorno = array();
+                while($row = mysql_fetch_array($resultado))
+                {
+                    $coleta = new Coleta();
+                    $coleta->setCodColeta($row["codColeta"]);
+                    $coleta->setCodCarga($row["codCarga"]);
 
-				$coleta->setCodVeiculo($row["codVeiculo"]);
-				$coleta->setPlacaVeiculo($row["placaVeiculo"]);
+                    //
+                    $coleta->setCodMotorista($row["codMotorista"]);
+                    $coleta->setNomeMotorista($row["nomeMotorista"]);
+                    $coleta->setTelefoneMotorista($row["telefoneMotorista"]);
 
-				//
-				$coleta->setData($row["data"]);
-				$coleta->setHora($row["hora"]);
+                    $coleta->setCodVeiculo($row["codVeiculo"]);
+                    $coleta->setPlacaVeiculo($row["placaVeiculo"]);
 
-				//
-				$coleta->setColetada($row["coletada"]);
-				$coleta->setTelefone($row["telefone"]);
-				$coleta->setLogradouro($row["logradouro"]);
-				$coleta->setBairro($row["bairro"]);
-				$coleta->setNumero($row["numero"]);
-				$coleta->setEstado($row["uf"]);
-				$coleta->setCidade($row["cidade"]);
-				$coleta->setObservacao($row["observacao"]);
-			
-				$retorno[] = $coleta;
-         }
-        return ($retorno);
-      } 
-      else
-        return null;
-    }
+                    //
+                    $coleta->setData($row["data"]);
+                    $coleta->setHora($row["hora"]);
+
+                    //
+                    $coleta->setColetada($row["coletada"]);
+                    $coleta->setTelefone($row["telefone"]);
+                    $coleta->setLogradouro($row["logradouro"]);
+                    $coleta->setBairro($row["bairro"]);
+                    $coleta->setNumero($row["numero"]);
+                    $coleta->setEstado($row["uf"]);
+                    $coleta->setCidade($row["cidade"]);
+                    $coleta->setObservacao($row["observacao"]);
+
+                    $retorno[] = $coleta;
+                }
+                return ($retorno);
+            }
+            else
+                return null;
+        }
+
+        public static function alterarColeta(Coleta $coleta)
+        {
+            //Conexão com o banco
+            $conexao = Conexao::getInstance()->getConexao();
+
+            //Atributo da tabela usuário
+            $codColeta = mysql_real_escape_string($coleta->getCodColeta(), $conexao);
+            $coletada = mysql_real_escape_string($coleta->getColetada(), $conexao);
+            $codCarga = mysql_real_escape_string($coleta->getCodCarga(), $conexao);
+
+            $codMotorista = mysql_real_escape_string($coleta->getCodMotorista(), $conexao);
+            $codVeiculo = mysql_real_escape_string($coleta->getCodVeiculo(), $conexao);
+
+            $data = mysql_real_escape_string($coleta->getData(), $conexao);
+
+            //$dataFormatada = explode("/", $data);
+            //$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
+
+            $hora = mysql_real_escape_string($coleta->getHora(), $conexao);
+            $coleta = mysql_real_escape_string($coleta->getColetada(), $conexao);
+            $numCte = rand(111111, 999999);
 
 
-     public static function alterarColeta(Coleta $coleta) {
-      //Conexão com o banco
-      $conexao = Conexao::getInstance()->getConexao();     
-	  
-	  //Atributo da tabela usuário
-	  $codColeta = mysql_real_escape_string($coleta->getCodColeta(), $conexao);
-	  $coletada = mysql_real_escape_string($coleta->getColetada(), $conexao); 
-	  $codCarga = mysql_real_escape_string($coleta->getCodCarga(), $conexao); 
 
-	  $codMotorista = mysql_real_escape_string($coleta->getCodMotorista(), $conexao);
-	  $codVeiculo = mysql_real_escape_string($coleta->getCodVeiculo(), $conexao);
 
-	  $data = mysql_real_escape_string($coleta->getData(), $conexao); 
+            //Inseri uma CTE
+            if($coletada === "Coletado")
+            {
+                $sqlTres = "insert into ctes (numcte, codCarga, codFrete) values ($numCte ,$codCarga, 1)";
+                mysql_query($sqlTres, $conexao);
+            }
 
-	  //$dataFormatada = explode("/", $data);		
-	  //$dataAmericana = $dataFormatada[2]."-".$dataFormatada[1]."-".$dataFormatada[0];
+            //Atualiza a Carga Relacionada
+            $sqlDois = "update cargas set coletada='$coletada' where codCarga=$codCarga";
+            mysql_query($sqlDois, $conexao);
 
-	  $hora = mysql_real_escape_string($coleta->getHora(), $conexao); 
-	  $coleta = mysql_real_escape_string($coleta->getColetada(), $conexao);
-	  $numCte = rand(111111,999999); 
 
-   	  
-	  
-	   
-	   //Inseri uma CTE 
-      if($coletada === "Coletado"){
-      	$sqlTres    = "insert into ctes (numcte, codCarga, codFrete) values ($numCte ,$codCarga, 1)";
-      	mysql_query($sqlTres, $conexao);
-  	  }
-
-	  //Atualiza a Carga Relacionada
-      $sqlDois = "update cargas set coletada='$coletada' where codCarga=$codCarga";
-      mysql_query($sqlDois, $conexao);
-          
-
-      //Atualiza a Coleta
-	  $sql = "update coleta 
-	  			set 
+            //Atualiza a Coleta
+            $sql = "update coleta
+	  			set
 		  			codMotorista=$codMotorista,
 		  			codVeiculo=$codVeiculo,
 		  			data='$data',
 		  			hora='$hora'
-	  			where 
+	  			where
 	  				codColeta=$codColeta";
-      $resultado = @mysql_query($sql, $conexao);
+            $resultado = @mysql_query($sql, $conexao);
 
-      return ($resultado === true);
-
+            return ($resultado === true);
+        }
     }
 
-  }
 ?>

@@ -1,95 +1,101 @@
 <?php
-	require_once("../modelo/frete/freteSql.php");   	
-	session_start();   	
-	
-	extract ($_REQUEST);
-	extract ($_SESSION);
 
+    define("BASEPATH", dirname(dirname(__FILE__)));
+    
+    require_once(BASEPATH."/funcoes.php");
+    require_once(BASEPATH.MODELO."frete/freteSql.php");
 
-	
-if ($_GET["editSave"] == "incluirFrete"){	
-		$frete = new Frete();	
+//	require_once("../modelo/frete/freteSql.php");
 
-		//Atributos da classe Usuário/Valores 
-		//$frete->setCodFrete($_REQUEST['codFrete']);
-
-		$frete->setCodMotorista($_REQUEST['codMotorista']);
-		$frete->setCodVeiculo($_REQUEST['codVeiculo']);
-
-		$frete->setUfDestino($_REQUEST['ufDestino']);
-		$frete->setUfOrigem($_REQUEST['ufOrigem']);
-		$frete->setCidadeOrigem($_REQUEST['cidadeOrigem']);
-		$frete->setCidadeDestino($_REQUEST['cidadeDestino']);
-
-		$frete->setStatusFrete($_REQUEST['statusFrete']);
-		//$frete->setCodTransp($_REQUEST['codTransp']);
+    session_start();
+    extract($_REQUEST);
+    extract($_SESSION);
 
 
 
-		if (freteSql::incluirFrete($frete)){
-			echo json_encode(array('success'=>true));
-		}	
-		
-		//echo(json_encode($resultado ));						
-	}
+    if($_GET["editSave"] == "incluirFrete")
+    {
+        $frete = new Frete();
 
-	if ($_GET["editSave"] == "alterarFrete"){	
-		$frete = new Frete();	
+        //Atributos da classe Usuário/Valores
+        //$frete->setCodFrete($_REQUEST['codFrete']);
 
-		//Atributos da classe Usuário/Valores 
-		$frete->setCodFrete($_REQUEST['codFrete']);
+        $frete->setCodMotorista($_REQUEST['codMotorista']);
+        $frete->setCodVeiculo($_REQUEST['codVeiculo']);
 
-		$frete->setCodMotorista($_REQUEST['codMotorista']);
-		$frete->setCodVeiculo($_REQUEST['codVeiculo']);
+        $frete->setUfDestino($_REQUEST['ufDestino']);
+        $frete->setUfOrigem($_REQUEST['ufOrigem']);
+        $frete->setCidadeOrigem($_REQUEST['cidadeOrigem']);
+        $frete->setCidadeDestino($_REQUEST['cidadeDestino']);
 
-		$frete->setUfDestino($_REQUEST['ufDestino']);
-		$frete->setUfOrigem($_REQUEST['ufOrigem']);
-		$frete->setCidadeOrigem($_REQUEST['cidadeOrigem']);
-		$frete->setCidadeDestino($_REQUEST['cidadeDestino']);
-
-		$frete->setStatusFrete($_REQUEST['statusFrete']);
-		//$frete->setCodTransp($_REQUEST['codTransp']);
+        $frete->setStatusFrete($_REQUEST['statusFrete']);
+        //$frete->setCodTransp($_REQUEST['codTransp']);
 
 
 
-		if (freteSql::alterarFrete($frete)){
-			echo json_encode(array('success'=>true));
-		}	
-		
-		//echo(json_encode($resultado ));						
-	}
-	
-	if ($_GET["editSave"] == "carregarTodos") {
+        if(freteSql::incluirFrete($frete))
+        {
+            echo json_encode(array('success' => true));
+        }
 
-		$frete = new Frete();
+        //echo(json_encode($resultado ));
+    }
 
-		$listaFrete = freteSql::carregarLista($frete);
-		
-		for ($i=0; $i<count($listaFrete); $i++ ){											
-			$resultado[] = array(
-			    'codFrete'	=>  $listaFrete[$i]->getCodFrete(),
+    if($_GET["editSave"] == "alterarFrete")
+    {
+        $frete = new Frete();
 
-			    'codMotorista'	=>  $listaFrete[$i]->getCodMotorista(),
-			    'nomeMotorista'	=>  $listaFrete[$i]->getNomeMotorista(),
+        //Atributos da classe Usuário/Valores
+        $frete->setCodFrete($_REQUEST['codFrete']);
 
-				'codVeiculo'	=>  $listaFrete[$i]->getCodVeiculo(),
-				'placaVeiculo'	=>  $listaFrete[$i]->getPlacaVeiculo(),	
+        $frete->setCodMotorista($_REQUEST['codMotorista']);
+        $frete->setCodVeiculo($_REQUEST['codVeiculo']);
 
-			    'ufDestino'	=>  $listaFrete[$i]->getUfDestino(),	
-				'ufOrigem'	=>  $listaFrete[$i]->getUfOrigem(),		
-				'cidadeOrigem'	=>  $listaFrete[$i]->getCidadeOrigem(),	
-				'cidadeDestino'	=>  $listaFrete[$i]->getCidadeDestino(),					
+        $frete->setUfDestino($_REQUEST['ufDestino']);
+        $frete->setUfOrigem($_REQUEST['ufOrigem']);
+        $frete->setCidadeOrigem($_REQUEST['cidadeOrigem']);
+        $frete->setCidadeDestino($_REQUEST['cidadeDestino']);
 
-				'statusFrete'	=>  $listaFrete[$i]->getStatusFrete(),					
-				'codTransp'	=>   $listaFrete[$i]->getCodTransp(),								
-			);
-		}
-			//var_dump($resultado);
-		    //die;
+        $frete->setStatusFrete($_REQUEST['statusFrete']);
+        //$frete->setCodTransp($_REQUEST['codTransp']);
 
-		echo(json_encode($resultado));	
-		return $resultado;	
-	}
-	
 
+
+        if(freteSql::alterarFrete($frete))
+        {
+            echo json_encode(array('success' => true));
+        }
+
+        //echo(json_encode($resultado ));
+    }
+
+    if($_GET["editSave"] == "carregarTodos")
+    {
+
+        $frete = new Frete();
+
+        $listaFrete = freteSql::carregarLista($frete);
+
+        for($i = 0; $i < count($listaFrete); $i++)
+        {
+            $resultado[] = array(
+                'codFrete' => $listaFrete[$i]->getCodFrete(),
+                'codMotorista' => $listaFrete[$i]->getCodMotorista(),
+                'nomeMotorista' => $listaFrete[$i]->getNomeMotorista(),
+                'codVeiculo' => $listaFrete[$i]->getCodVeiculo(),
+                'placaVeiculo' => $listaFrete[$i]->getPlacaVeiculo(),
+                'ufDestino' => $listaFrete[$i]->getUfDestino(),
+                'ufOrigem' => $listaFrete[$i]->getUfOrigem(),
+                'cidadeOrigem' => $listaFrete[$i]->getCidadeOrigem(),
+                'cidadeDestino' => $listaFrete[$i]->getCidadeDestino(),
+                'statusFrete' => $listaFrete[$i]->getStatusFrete(),
+                'codTransp' => $listaFrete[$i]->getCodTransp(),
+            );
+        }
+        //var_dump($resultado);
+        //die;
+
+        echo(json_encode($resultado));
+        return $resultado;
+    }
 ?>

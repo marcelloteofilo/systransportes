@@ -1,14 +1,19 @@
 <?php
-require_once('modelo/usuario/usuario.php');
-//require_once('/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php');
+    define("BASEPATH", dirname(__FILE__));
+    
+    require_once (BASEPATH."/funcoes.php");
+    require_once(BASEPATH.MODELO.'usuario/usuario.php');
+
     session_start();
     $objusuario = @$_SESSION['objusuario'];
-    if(!empty($objusuario)) {
+    if(!empty($objusuario))
+    {
         $logado = $objusuario->getLogin();
-    }else{
+    }
+    else
+    {
         $logado = 'Visitante';
     }
-
 ?>
 <!DOCTYPE html>
 <html lang="en" class="no-js">

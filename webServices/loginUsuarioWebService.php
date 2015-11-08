@@ -1,5 +1,5 @@
 <?php
-	require_once("../modelo/loginUsuario/loginUsuarioSql.php");   	
+	require_once(BASEPATH.MODELO."loginUsuario/loginUsuarioSql.php");   	
 	session_start();   	
 	
 	extract ($_REQUEST);

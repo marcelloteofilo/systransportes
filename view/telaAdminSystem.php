@@ -28,7 +28,7 @@
                     <li class="current"><a href="usuario/logout.php">Início</a></li>
                 </ul>
                 <ul  class="nav navbar-nav">
-                    <li class="current"><a href="#"><!--<?php echo "Usuario: " . $logado; ?>--></a></li>
+                    <li class="current"><a href="#"><!--<?php echo "Usuario: ".$logado; ?>--></a></li>
                 </ul>
             </nav>
             <div class="navbar-header">
@@ -121,8 +121,8 @@
                     </div>
                 </div>
             </div>
-            <!--
-                        <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
+
+            <!--            <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                             <div class="offer offer-warning">
                                 <div class="offer-content">
                                     <h3 class="lead">
@@ -132,8 +132,8 @@
                                     <a class="btn btn-lg btn-block btn-default" href="rastreamento/telaAdminRastreamento.php">Acesse</a>
                                 </div>
                             </div>
-                        </div>
-            -->
+                        </div>-->
+
             <div class="col-xs-12 col-sm-6 col-md-4 col-lg-3">
                 <div class="offer offer-new1">
                     <div class="offer-content">

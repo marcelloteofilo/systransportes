@@ -1,7 +1,13 @@
 <?php
 
-    require_once("/../banco.php");
-    require_once("usuario.php");
+//    define("BASEPATH", dirname(dirname(dirname(__FILE__))));
+//
+//    require_once (BASEPATH."/funcoes.php");
+    require_once (BASEPATH.MODELO."banco.php");
+    require_once('usuario.php');
+    
+//    require_once("/../banco.php");
+//    require_once("usuario.php");
 
     class UsuarioSql
     {
@@ -155,7 +161,8 @@
                     $retorno[] = $usuario;
                 }
                 return ($retorno);
-            } else
+            }
+            else
                 return null;
         }
 
@@ -183,7 +190,8 @@
                     $retorno[] = $usuario;
                 }
                 return ($retorno);
-            } else
+            }
+            else
                 return null;
         }
     }

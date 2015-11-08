@@ -1,8 +1,8 @@
 ﻿<?php
-    require_once("../../modelo/carga/cargaSql.php");
-    require_once("../../modelo/mercadoria/mercadoriaSql.php");
-//require_once("/opt/lampp/htdocs/systransportes/modelo/carga/cargaSql.php");
-//require_once("/opt/lampp/htdocs/systransportes/modelo/mercadoria/mercadoriaSql.php");
+
+    require_once ("../../funcoes.php");
+    require_once (BASEPATH.MODELO."carga/cargaSql.php");
+    require_once (BASEPATH.MODELO."mercadoria/mercadoriaSql.php");
 
     session_start();
     extract($_REQUEST);

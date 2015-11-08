@@ -1,7 +1,11 @@
 <?php
 
-//require_once("/opt/lampp/htdocs/systransportes/modelo/carga/carga.php");
-require_once("/../../modelo/carga/carga.php");
+//    define("BASEPATH", dirname(dirname(dirname(__FILE__))));
+//
+//    require_once (BASEPATH."/funcoes.php");
+    require_once (BASEPATH.MODELO."/carga/carga.php");
+
+//    require_once("/../../modelo/carga/carga.php");
 
     class Mercadoria
     {
@@ -12,14 +16,11 @@ require_once("/../../modelo/carga/carga.php");
         private $objCarga;
         private $quantidade;
         private $valorMercadoria;
-
         private $codCarga;
         private $numPedido;
-
         private $nomeCompleto;
         private $telefone;
         private $email;
-
         private $logradouro;
         private $bairro;
         private $numero;
@@ -97,9 +98,8 @@ require_once("/../../modelo/carga/carga.php");
             $this->quantidade = trim($quantidade);
         }
 
-
 //////////////////////////////////////////////////////////////////////////////////////////////
-        
+
         public function setCodCarga($codCarga)
         {
             $this->codCarga = trim($codCarga);
@@ -209,7 +209,6 @@ require_once("/../../modelo/carga/carga.php");
         {
             return $this->cidade;
         }
-
     }
 
 ?>

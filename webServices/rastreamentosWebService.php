@@ -1,6 +1,12 @@
 <?php
 
-    require_once("../modelo/rastreamento/rastreamentoSql.php");
+    define("BASEPATH", dirname(dirname(__FILE__)));
+    
+    require_once(BASEPATH."/funcoes.php");
+    require_once(BASEPATH.MODELO."rastreamento/rastreamentoSql.php");
+
+//    require_once("../modelo/rastreamento/rastreamentoSql.php");
+
     session_start();
     extract($_REQUEST);
     extract($_SESSION);

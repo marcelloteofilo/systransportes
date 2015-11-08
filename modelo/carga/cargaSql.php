@@ -1,12 +1,19 @@
 <?php
 
-    error_reporting(0);
-    //require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
-    //require_once ("/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php");
-    require_once("/../banco.php");
-    require_once("carga.php");
+//    //error_reporting(0);
+//    //require_once("/opt/lampp/htdocs/systransportes/modelo/banco.php");
+//    //require_once ("/opt/lampp/htdocs/systransportes/modelo/usuario/usuario.php");
+//    require_once("/../banco.php");
+//    require_once("carga.php");
+//    //require_once ("../../modelo/usuario/usuario.php");
 
-    //require_once ("../../modelo/usuario/usuario.php");
+//    define("BASEPATH", dirname(dirname(dirname(__FILE__))));
+//
+//    require_once (BASEPATH."/funcoes.php");
+    require_once (BASEPATH.MODELO."banco.php");
+    require_once ("carga.php");
+
+    //require_once (BASEPATH.MODELO."usuario/usuario.php");
 
     class CargaSql
     {
@@ -39,7 +46,7 @@
             $distancia = $objCarga->getDistancia();
             $prazo = $objCarga->getPrazo();
             $frete = number_format($objCarga->getFrete(), 2, '.', '');
-          
+
 
 
             //Inserção na tabela de veiculo relacionada ao banco de dados systransporte
@@ -70,23 +77,25 @@
             $statusCarga = mysql_real_escape_string($carga->getStatusCarga(), $conexao);
             $coletada = mysql_real_escape_string($carga->getColetada(), $conexao);
 
-            
-            if($statusCarga === "Aprovado"){
-            //Update para a tabela de Usuários do banco de dados
-            $sql = "update cargas set statusCarga='$statusCarga',coletada='$coletada' where codCarga=$codCarga";
 
-            $sqlDois = "insert into coleta (codCarga,codMotorista,codVeiculo) values($codCarga,2,1)";
-            
-            //Cria o registro de Coleta Automatica
-            mysql_query($sqlDois, $conexao);
+            if($statusCarga === "Aprovado")
+            {
+                //Update para a tabela de Usuários do banco de dados
+                $sql = "update cargas set statusCarga='$statusCarga',coletada='$coletada' where codCarga=$codCarga";
 
-            $resultado = @mysql_query($sql, $conexao);
-            return ($resultado === true);
+                $sqlDois = "insert into coleta (codCarga,codMotorista,codVeiculo) values($codCarga,2,1)";
+
+                //Cria o registro de Coleta Automatica
+                mysql_query($sqlDois, $conexao);
+
+                $resultado = @mysql_query($sql, $conexao);
+                return ($resultado === true);
             }
-            else{
-            $sql = "update cargas set statusCarga='$statusCarga' where codCarga=$codCarga";
-            $resultado = @mysql_query($sql, $conexao);
-            return ($resultado === true);
+            else
+            {
+                $sql = "update cargas set statusCarga='$statusCarga' where codCarga=$codCarga";
+                $resultado = @mysql_query($sql, $conexao);
+                return ($resultado === true);
             }
         }
 
@@ -133,7 +142,8 @@
                     INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo
                     where codUsuario = '.$stringIdUser;
 
-            $resultado = @mysql_query($sql, $conexao);
+            $resultado = mysql_query($sql, $conexao);
+
             if($resultado)
             {
                 $retorno = array();
@@ -395,6 +405,63 @@
             }
             else
                 return null;
+        }
+
+        public static function carregarListaAdmin(Carga $carga)
+        {
+            $conexao = Conexao::getInstance()->getConexao();
+
+            $sql = 'select cg.*, cidOrigem.descricao as origem,cidDestino.descricao as destino,
+                clientePF.nomeCompleto as pessoaFisicaNome,clientePJ.razaoSocial as pessoaJuridicaNome
+            from cargas as cg INNER JOIN usuarios as clientePF ON cg.codUsuario = clientePF.id
+            INNER JOIN usuarios as clientePJ ON cg.codUsuario = clientePJ.id
+            INNER JOIN cidades as cidOrigem ON cg.origem = cidOrigem.codigo
+            INNER JOIN cidades as cidDestino ON cg.destino = cidDestino.codigo'; // where cg.codUsuario = '.$stringIdUser;
+
+            $resultado = mysql_query($sql, $conexao);
+
+            if($resultado)
+            {
+                $retorno = array();
+                while($row = mysql_fetch_array($resultado))
+                {
+                    $carga = new Carga();
+
+                    $carga->setCodCarga($row["codCarga"]);
+                    $carga->setObjCidadeOrigem($row["origem"]);
+                    $carga->setObjCidadeDestino($row["destino"]);
+                    $carga->setPessoaFisicaNome($row["pessoaFisicaNome"]);
+                    $carga->setPessoaJuridicaNome($row["pessoaJuridicaNome"]);
+                    $carga->getObjUsuario()->setId($row["codUsuario"]);
+                    $carga->setAltura($row["altura"]);
+                    $carga->setLargura($row["largura"]);
+                    $carga->setPeso($row["peso"]);
+                    $carga->setComprimento($row["comprimento"]);
+                    $carga->setQuantidade($row["quantidade"]);
+                    $carga->setValor($row["valor"]);
+                    $carga->setTelefone($row["telefone"]);
+                    $carga->setLogradouro($row["logradouro"]);
+                    $carga->setBairro($row["bairro"]);
+                    $carga->setUf($row["uf"]);
+                    $carga->setCidade($row["cidade"]);
+                    $carga->setNumero($row["numero"]);
+                    $carga->setObservacao($row["observacao"]);
+                    $carga->setNaturezaCarga($row["naturezaCarga"]);
+                    $carga->setDataPedido($row["dataPedido"]);
+                    $carga->setDistancia($row["distancia"]);
+                    $carga->setPrazo($row["prazo"]);
+                    $carga->setFrete($row["frete"]);
+                    $carga->setColetada($row["coletada"]);
+                    $carga->setStatusCarga($row["statusCarga"]);
+
+                    $retorno[] = $carga;
+                }
+                return ($retorno);
+            }
+            else
+            {
+                return null;
+            }
         }
     }
 

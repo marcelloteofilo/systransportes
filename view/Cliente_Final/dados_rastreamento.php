@@ -51,11 +51,11 @@
                         </ul>
                     </ul>
                 </nav>
-                            <div class="navbar-header">
-               <ul  class="nav navbar-nav">
-               <li class=""><a href="#"><?php echo" BEM VINDO, $logado"; ?></a></li>  
-               <ul>   
-            </div>
+                <div class="navbar-header">
+                    <ul  class="nav navbar-nav">
+                        <li class=""><a href="#"><?php echo" BEM VINDO, @$logado"; ?></a></li>
+                    </ul>
+                </div>
             </div>
         </header>
 
@@ -75,7 +75,10 @@
                                 <input required="required" class="form-control" id="codigo"
                                        name="codigo" style="text-transform:uppercase" size="23"
                                        placeholder="código de rastreamento da mercadoria" ></td>
-
+                                <br />
+                                <a href="rastreamento/telaAdminRastreamento.php">
+                                    <input class="btn btn-success btn-login-submit"
+                                           value="Rastrear" type="submit"></a>
                             </div>
                         </div>
                     </li>
